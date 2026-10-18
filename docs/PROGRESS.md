@@ -1,7 +1,7 @@
 # LANTERN progress log
 
 Project: Sensor Trust for Lunar South Pole Landing (context-aware sensor trust layer, tested on NASA PGDA Site04).
-Last updated: 19 Oct 2026. Full write-up with figures: `Progress_Report.pdf`. Plan: `../deliverables/`.
+Last updated: 19 Oct 2026. Full write-up with figures: `Progress_Report.pdf`. Everything in chronological order, including mistakes and corrections: `FULL_LOG.md` / `Full_Project_Log.pdf`. Plan: `../deliverables/`.
 
 ## Milestones
 

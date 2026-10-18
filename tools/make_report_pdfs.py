@@ -253,8 +253,65 @@ def paper():
     build("Paper_Draft.pdf", s, "Paper Draft")
 
 
+def _inline(t):
+    import re
+    t = t.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+    t = re.sub(r"\*\*(.+?)\*\*", r"<b>\1</b>", t)
+    t = re.sub(r"`(.+?)`", r'<font face="Courier" size="8">\1</font>', t)
+    return t
+
+
+def log_pdf():
+    """Render docs/FULL_LOG.md (headings, bullets, numbered lists, tables, paragraphs) to docs/Full_Project_Log.pdf."""
+    import re
+    lines = open(os.path.join(DOCS, "FULL_LOG.md"), encoding="utf-8").read().split("\n")
+    story = []
+    i = 0
+    para_buf = []
+
+    def flush():
+        if para_buf:
+            story.append(para(_inline(" ".join(para_buf))))
+            para_buf.clear()
+
+    while i < len(lines):
+        ln = lines[i]
+        if ln.startswith("# "):
+            flush(); story.append(para(_inline(ln[2:]), H1))
+        elif ln.startswith("## "):
+            flush(); story.append(para(_inline(ln[3:]), H2))
+        elif ln.startswith("### "):
+            flush(); story.append(para("<b>" + _inline(ln[4:]) + "</b>", B))
+        elif ln.startswith("|"):
+            flush()
+            rows = []
+            while i < len(lines) and lines[i].startswith("|"):
+                cells = [c.strip() for c in lines[i].strip().strip("|").split("|")]
+                if not all(re.fullmatch(r"-+", c) for c in cells):
+                    rows.append([_inline(c) for c in cells])
+                i += 1
+            ncol = len(rows[0])
+            story.append(table(rows, [174.0 / ncol] * ncol)); story.append(Spacer(1, 4))
+            continue
+        elif ln.startswith("* "):
+            flush(); story.append(Paragraph(_inline(ln[2:]), BUL, bulletText="•"))
+        elif re.match(r"^\d+\. ", ln):
+            flush(); m = re.match(r"^(\d+)\. (.*)", ln); story.append(Paragraph(_inline(m.group(2)), BUL, bulletText=m.group(1) + "."))
+        elif ln.startswith("  ") and story and para_buf == []:
+            # continuation line of a bullet: append to the previous paragraph text
+            story.append(para(_inline(ln.strip()), SM))
+        elif ln.strip() == "":
+            flush()
+        else:
+            para_buf.append(ln.strip())
+        i += 1
+    flush()
+    build("Full_Project_Log.pdf", story, "Full Project Log")
+
+
 if __name__ == "__main__":
     description()
     progress()
     paper()
+    log_pdf()
     print("wrote", os.listdir(DOCS))
