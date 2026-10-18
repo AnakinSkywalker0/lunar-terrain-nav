@@ -40,6 +40,8 @@ def get_world(key):
         _worlds.clear()
         if key[0] == "site04":
             w = W.site04_world(0, key[1], key[2])
+        elif key[0] == "site01":
+            w = W.site01_world(0, key[1], key[2])
         else:
             w = W.procedural(key[1], SUN_EL, SUN_AZ)
         _worlds[key] = (w, W.track_for(w))
@@ -77,7 +79,7 @@ def run_job(job):
     kw.update(job.get("kw") or {})
     t0 = time.time()
     col = [] if job.get("collect") else None
-    r = engine.simulate(w, tr, sc, job["judge"], d, scan=(job["judge"] == "trust_scan"), ml_model=get_ml(), collect=col, **kw)
+    r = engine.simulate(w, tr, sc, job["judge"], d, scan=job["judge"].endswith("_scan"), ml_model=get_ml(), collect=col, **kw)
     s = engine.summarize(r)
     s.update(judge=job["judge"], scenario=sc.name, tag=job.get("tag", ""), secs=time.time() - t0)
     if job.get("per_run"):
@@ -129,96 +131,99 @@ def stage_ml():
     json.dump(rep, open(os.path.join(OUT, "ml_report.json"), "w"), indent=2)
 
 
-# ------------------------------------------------------------------ tuning on procedural worlds only
+# ------------------------------------------------------------------ tuning on procedural worlds + Site01 only
 def stage_tune():
-    warm([("proc", s) for s in TUNE_SEEDS])
+    site01 = ("site01", SUN_EL, SUN_AZ)
+    warm([("proc", s) for s in TUNE_SEEDS] + [site01])
+    worlds = [("proc", s) for s in TUNE_SEEDS] + [site01]
     jobs = []
     for K in (8, 10, 12):
         for sp in (2.5, 3.0, 4.0):
-            for s in TUNE_SEEDS:
-                for name in ["cliff_fault", "shadow_noisy"]:
-                    jobs.append(dict(world=("proc", s), scen=engine.SCENARIOS[name], judge="trust", n=100, seed=7,
-                                     kw=dict(K_prob=K, sigma_probation=sp), tag=f"K{K}_s{sp}"))
+            for wk in worlds:
+                for name in ["cliff_fault", "shadow_noisy", "delayed"]:
+                    jobs.append(dict(world=wk, scen=engine.SCENARIOS[name], judge="trust2", n=100, seed=7,
+                                     kw=dict(K_prob=K, sigma_probation=sp, cam_policy="conf"), tag=f"K{K}_s{sp}"))
     res = pmap(jobs)
     df = pd.DataFrame(res)
     df["K_prob"] = df.tag.str.extract(r"K(\d+)").astype(int)
     df["sigma_probation"] = df.tag.str.extract(r"_s([\d.]+)").astype(float)
     g = df.groupby(["K_prob", "sigma_probation"]).agg(success=("success_pct", "mean"), false_rej=("false_rej_pct", "mean"), missed=("missed_fault_pct", "mean")).reset_index()
-    g.to_csv(os.path.join(OUT, "tuning_procedural.csv"), index=False)
+    g.to_csv(os.path.join(OUT, "tuning.csv"), index=False)
     best = g.sort_values(["success", "false_rej"], ascending=[False, True]).iloc[0]
     json.dump(dict(K_prob=int(best.K_prob), sigma_probation=float(best.sigma_probation)), open(os.path.join(OUT, "tuned.json"), "w"))
     log("tuning table\n" + g.to_string())
     log("chosen", dict(best))
 
 
-# ------------------------------------------------------------------ main Monte Carlo on Site04
+def tuned():
+    p = os.path.join(OUT, "tuned.json")
+    return json.load(open(p)) if os.path.exists(p) else dict(K_prob=10, sigma_probation=3.0)
+
+
+# ------------------------------------------------------------------ main Monte Carlo on Site04 (run once, after the freeze)
+MAIN_JUDGES = ["fixed", "pitfal", "tolerance", "wait", "second", "ml", "trust", "trust2", "trust2_scan"]
+ABL = ["trust_nophys", "trust_noprob"]
+
+
 def stage_main():
     key = ("site04", SUN_EL, SUN_AZ)
     warm([key])
     w, tr = get_world(key)
-    json.dump(dict(track=tr, tuned=tuned(), n=N_MAIN, sun_el=SUN_EL, sun_az=SUN_AZ), open(os.path.join(OUT, "main_config.json"), "w"), default=float, indent=2)
+    json.dump(dict(track=tr, tuned=tuned(), n=N_MAIN, sun_el=SUN_EL, sun_az=SUN_AZ, camera="conf (matcher confidence gate) for every judge"),
+              open(os.path.join(OUT, "main_config.json"), "w"), default=float, indent=2)
     pr = os.path.join(OUT, "per_run")
     jobs = []
     for sk in ["cliff", "cliff_fault", "shadow_noisy", "delayed", "dropout"]:
-        for j in MAIN_JUDGES + ABLATIONS:
-            jobs.append(dict(world=key, scen=engine.SCENARIOS[sk], judge=j, n=N_MAIN, seed=20260101, per_run=pr))
+        for j in MAIN_JUDGES + ABL:
+            jobs.append(dict(world=key, scen=engine.SCENARIOS[sk], judge=j, n=N_MAIN, seed=20260101, per_run=pr, kw=dict(cam_policy="conf")))
     res = pmap(jobs)
     pd.DataFrame(res).to_csv(os.path.join(OUT, "main_results.csv"), index=False)
+
+
+def stage_policies():
+    """Camera policy comparison for one filter family: naive / matcher confidence / Sun-geometry prediction / both."""
+    key = ("site04", SUN_EL, SUN_AZ)
+    warm([key])
+    jobs = []
+    for sk in ["cliff", "shadow_noisy"]:
+        for j in ("pitfal", "trust2"):
+            for pol in ("naive", "conf", "aware", "both"):
+                jobs.append(dict(world=key, scen=engine.SCENARIOS[sk], judge=j, n=N_MAIN, seed=20260101, kw=dict(cam_policy=pol), tag=pol))
+    res = pmap(jobs)
+    pd.DataFrame(res).to_csv(os.path.join(OUT, "camera_policies.csv"), index=False)
 
 
 # ------------------------------------------------------------------ sweeps and robustness
 def stage_sweeps():
     key = ("site04", SUN_EL, SUN_AZ)
+    site01 = ("site01", SUN_EL, SUN_AZ)
     suns = [("site04", el, az) for el in (1.5, 2.0, 3.0) for az in (90.0, 180.0, 270.0)]
-    warm([key, ("proc", TUNE_SEEDS[0])] + suns)
+    warm([key, site01] + suns)
+    kw = dict(cam_policy="conf")
     jobs = []
     for sig in (5, 20, 50, 100, 200, 400):
         sc = engine.Scenario("cliff", burst_rate=1 / 150.0, init_pos_sigma=float(sig))
-        for j in ("pitfal", "trust"):
-            jobs.append(dict(world=key, scen=sc, judge=j, n=300, seed=31, tag=f"sig{sig}"))
+        for j in ("pitfal", "trust2"):
+            jobs.append(dict(world=key, scen=sc, judge=j, n=300, seed=31, tag=f"sig{sig}", kw=kw))
     for mode, label in [("wrong", "map shifted 2 km"), ("missing", "no map")]:
         sc = engine.Scenario(label, burst_rate=1 / 60.0, map_mode=mode)
-        for j in ("fixed", "pitfal", "trust"):
-            jobs.append(dict(world=key, scen=sc, judge=j, n=300, seed=41, tag=f"map_{mode}"))
+        for j in ("fixed", "pitfal", "trust2"):
+            jobs.append(dict(world=key, scen=sc, judge=j, n=300, seed=41, tag=f"map_{mode}", kw=kw))
     sc = engine.Scenario("mid-descent divert", burst_rate=1 / 60.0, divert=True)
-    for j in ("fixed", "pitfal", "trust"):
-        jobs.append(dict(world=key, scen=sc, judge=j, n=300, seed=51, tag="divert"))
-    for wk, lab in [(("proc", TUNE_SEEDS[0]), "procedural(tuned on)"), (key, "Site04(unseen)")]:
-        for j in ("pitfal", "trust"):
-            jobs.append(dict(world=wk, scen=engine.SCENARIOS["shadow_noisy"], judge=j, n=300, seed=61, tag=f"site_{lab}"))
+    for j in ("fixed", "pitfal", "trust2"):
+        jobs.append(dict(world=key, scen=sc, judge=j, n=300, seed=51, tag="divert", kw=kw))
+    for wk, lab in [(site01, "Site01(tuned on)"), (key, "Site04(unseen)")]:
+        for sk in ["cliff", "cliff_fault", "shadow_noisy", "delayed"]:
+            for j in ("pitfal", "trust2"):
+                jobs.append(dict(world=wk, scen=engine.SCENARIOS[sk], judge=j, n=300, seed=61, tag=f"site_{lab}", kw=kw))
     for (_, el, az) in suns:
-        for j in ("pitfal", "trust"):
-            jobs.append(dict(world=("site04", el, az), scen=engine.SCENARIOS["shadow_noisy"], judge=j, n=200, seed=71, tag=f"sun_el{el}_az{az:.0f}"))
+        for j in ("pitfal", "trust2"):
+            jobs.append(dict(world=("site04", el, az), scen=engine.SCENARIOS["shadow_noisy"], judge=j, n=200, seed=71, tag=f"sun_el{el}_az{az:.0f}", kw=kw))
     res = pmap(jobs)
     df = pd.DataFrame(res)
     df.to_csv(os.path.join(OUT, "sweeps_all.csv"), index=False)
-    df[df.tag.str.startswith("sig")].assign(value=lambda d: d.tag.str[3:].astype(float)).assign(sweep="init_pos_sigma_m").to_csv(os.path.join(OUT, "sweeps_a.csv"), index=False)
+    df[df.tag.str.startswith("sig")].assign(value=lambda d: d.tag.str[3:].astype(float)).to_csv(os.path.join(OUT, "sweeps_a.csv"), index=False)
     df[df.tag.str.startswith("sun_")].to_csv(os.path.join(OUT, "sweeps_sun.csv"), index=False)
-
-
-# ------------------------------------------------------------------ controlled comparisons (added after the main run)
-ALT_JUDGES = ["fixed", "pitfal", "tolerance", "wait", "second", "ml", "trust_nocam"]
-
-
-def stage_controlled():
-    """Every altimeter judge gets the SAME shadow-aware camera policy, so only the altimeter logic differs;
-    then the camera-damage sensitivity of the headline comparison, and a well-lit (Sun from the east) check."""
-    key = ("site04", SUN_EL, SUN_AZ)
-    lit_key = ("site04", SUN_EL, 90.0)
-    warm([key, lit_key])
-    jobs = []
-    for sk in ["cliff", "cliff_fault", "shadow_noisy"]:
-        for j in ALT_JUDGES + ["trust"]:
-            jobs.append(dict(world=key, scen=engine.SCENARIOS[sk], judge=j, n=N_MAIN, seed=20260101, kw=dict(cam_aware=True), tag="camaware"))
-    for gain in (0.0, 2.0, 5.0, 10.0):
-        sc = engine.Scenario("cliff", burst_rate=1 / 150.0, cam_sig_gain=gain, cam_bias_gain=0.7 * gain / 10.0)
-        for j in ("pitfal", "trust"):
-            jobs.append(dict(world=key, scen=sc, judge=j, n=300, seed=81, tag=f"camdamage{gain}"))
-    for sk in ["cliff", "cliff_fault", "shadow_noisy"]:
-        for j in ALT_JUDGES + ["trust"]:
-            jobs.append(dict(world=lit_key, scen=engine.SCENARIOS[sk], judge=j, n=300, seed=91, tag="lit_east"))
-    res = pmap(jobs)
-    pd.DataFrame(res).to_csv(os.path.join(OUT, "controlled.csv"), index=False)
 
 
 # ------------------------------------------------------------------ replay export for Unity
@@ -231,14 +236,14 @@ def stage_replay():
     sc = engine.SCENARIOS["cliff_fault"]
     d = engine.Draws(w, sc, 100, 20260101)
     kw = tuned()
-    ra = {j: engine.simulate(w, tr, sc, j, d, ml_model=ml, **kw) for j in ("fixed", "pitfal", "trust")}
-    cand = np.nonzero(ra["trust"]["success"] & ~ra["fixed"]["success"] & ~ra["pitfal"]["success"])[0]
+    ra = {j: engine.simulate(w, tr, sc, j, d, ml_model=ml, cam_policy="conf", **kw) for j in ("fixed", "pitfal", "trust2")}
+    cand = np.nonzero(ra["trust2"]["success"] & ~ra["fixed"]["success"] & ~ra["pitfal"]["success"])[0]
     if len(cand) == 0:
-        cand = np.nonzero(ra["trust"]["success"] & ~ra["fixed"]["success"])[0]
+        cand = np.nonzero(ra["trust2"]["success"] & ~ra["fixed"]["success"])[0]
     idx = int(cand[0]) if len(cand) else 0
     meta = dict(run=idx, track=tr, scenario=sc.name, outcome={j: str(ra[j]["outcome"][idx]) for j in ra})
-    for j in ("fixed", "pitfal", "trust"):
-        r = engine.simulate(w, tr, sc, j, d, ml_model=ml, record_idx=idx, **kw)
+    for j in ("fixed", "pitfal", "trust2"):
+        r = engine.simulate(w, tr, sc, j, d, ml_model=ml, record_idx=idx, cam_policy="conf", **kw)
         pd.DataFrame(r["rec"]).to_csv(os.path.join(rd, f"replay_{j}.csv"), index=False)
     json.dump(meta, open(os.path.join(rd, "replay_meta.json"), "w"), indent=2, default=float)
     log("replay run", idx, meta["outcome"])
@@ -248,7 +253,7 @@ if __name__ == "__main__":
     mp.freeze_support()
     stages = sys.argv[1:] or ["all"]
     if "all" in stages:
-        stages = ["ml", "tune", "main", "sweeps", "replay"]
+        stages = ["ml", "tune", "main", "policies", "sweeps", "replay"]
     for s in stages:
         log("=== stage", s)
         globals()["stage_" + s]()

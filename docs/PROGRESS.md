@@ -41,6 +41,28 @@ Last updated: 19 Oct 2026. Full write-up with figures: `Progress_Report.pdf`. Pl
 * Delayed readings: every method fails. No-map fallback: 0%.
 * The shadow-camera advantage disappears if shadow only mildly hurts the camera model.
 
+## Round 2 (19 Oct 2026, in progress)
+
+Round 1 compared the trust layer's shadow-aware camera with judges that fed every camera fix to the filter, using a hand-made
+shadow-damage curve. That comparison was unfair, so round 2 redoes it on measured data. Round-1 results are kept in
+`out/mc_round1/` and git tag `round1`. The design and hypotheses are fixed in `PREREG.md` before the round-2 Site04 run.
+
+Done so far:
+* **Site01 downloaded** (NASA PGDA, elevation + total-error map, not in git) and added as a real tuning site.
+* **Camera survey in Unity** (`CameraSurvey.cs`, `sim/cam_survey_plan.py`, `sim/cam_survey_match.py`): 300 paired nadir images on Site04, a ZNCC landmark matcher,
+  sensor noise, Sun-prediction error. Results (direct-light-only onboard prediction): median error 0.8-1.3 m when more than half the footprint is lit,
+  4-8 m at 5-25% lit, but fully dark scenes fail (88% of fixes off by more than 100 m, matcher confidence about 0). The matcher's own confidence
+  (correlation peak >= 0.5) never let through a fix off by more than 100 m (0 of 226).
+  So a naive filter that ignores matcher confidence is a strawman; every judge now gets a confidence-gated camera.
+* **Trust layer v2** (`trust2`): learns the noise level online, time-stamped altimeter readings (delay compensation), and a terrain-relative
+  fallback for the no-map case (98% landing on a procedural tuning world in a smoke test; Site04 not yet run).
+* **ML classifier retrained** with the new camera model: 89.5% accuracy, AUC 0.97 on a held-out procedural world (round 1: 77.7%, 0.85).
+* **Replay HUD** now shows camera trust, altimeter state (used / rejected / on probation) and the learned noise level.
+* Disclosure in `PREREG.md`: a 100-run Site04 smoke test of the new code was seen before the document was written.
+
+Still to do: finish tuning (procedural + Site01), tag the frozen code `prereg-round2`, run the Site04 evaluation once, camera-policy comparison,
+sweeps, new replay, update the report, write the paper draft. Still missing: the real HAKUTO-R altitude record.
+
 ## Known issues
 
 * Camera-in-shadow model is an assumption and drives the headline result.

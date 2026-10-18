@@ -13,14 +13,14 @@ namespace SensorTrust
     public class ReplayPlayer : MonoBehaviour
     {
         public string folder = "../../out/replay";
-        public string[] variants = { "fixed", "pitfal", "trust" };
-        public string[] labels = { "Fixed gate (HAKUTO-R style)", "PITFAL-style", "Trust layer" };
+        public string[] variants = { "fixed", "pitfal", "trust2" };
+        public string[] labels = { "Fixed gate (HAKUTO-R style)", "PITFAL-style", "Trust layer v2" };
         public Color[] colors = { new Color(0.95f, 0.3f, 0.25f), new Color(1f, 0.75f, 0.2f), new Color(0.3f, 0.95f, 0.5f) };
         public float speed = 6f;
         public float tileSideM = 16000f;
         public Terrain terrain;
 
-        class Row { public float t, x, y, z, ex, ey, ez, aglTrue, aglEst, gate, acc, r, fault, fuel; }
+        class Row { public float t, x, y, z, ex, ey, ez, aglTrue, aglEst, gate, acc, r, fault, fuel, camW, prob, sHat; }
         class Track
         {
             public List<Row> rows = new List<Row>();
@@ -43,12 +43,17 @@ namespace SensorTrust
                 if (!File.Exists(path)) { Debug.LogWarning("[Replay] missing " + path); continue; }
                 var tr = new Track { label = labels[i], color = colors[i] };
                 var lines = File.ReadAllLines(path);
+                var head = lines[0].Split(',');
+                int Col(string n) { for (int h = 0; h < head.Length; h++) if (head[h] == n) return h; return -1; }
+                int ct = Col("t"), cx = Col("x"), cy = Col("y"), cz = Col("z"), cex = Col("ex"), cey = Col("ey"), cez = Col("ez"),
+                    cat = Col("agl_true"), cae = Col("agl_est"), cg = Col("gate"), cac = Col("acc"), cr = Col("r"), cf = Col("fault"),
+                    cfu = Col("fuel"), ccw = Col("cam_w"), cpr = Col("prob"), csh = Col("s_hat");
                 for (int k = 1; k < lines.Length; k++)
                 {
                     var f = lines[k].Split(',');
-                    if (f.Length < 14) continue;
-                    float P(int j) => float.Parse(f[j], CultureInfo.InvariantCulture);
-                    tr.rows.Add(new Row { t = P(0), x = P(1), y = P(2), z = P(3), ex = P(4), ey = P(5), ez = P(6), aglTrue = P(7), aglEst = P(8), gate = P(9), acc = P(10), r = P(11), fault = P(12), fuel = P(13) });
+                    if (f.Length < head.Length) continue;
+                    float P(int j) => j < 0 ? 0f : float.Parse(f[j], CultureInfo.InvariantCulture);
+                    tr.rows.Add(new Row { t = P(ct), x = P(cx), y = P(cy), z = P(cz), ex = P(cex), ey = P(cey), ez = P(cez), aglTrue = P(cat), aglEst = P(cae), gate = P(cg), acc = P(cac), r = P(cr), fault = P(cf), fuel = P(cfu), camW = P(ccw), prob = P(cpr), sHat = P(csh) });
                 }
                 Build(tr);
                 tracks.Add(tr);
@@ -100,7 +105,7 @@ namespace SensorTrust
                 t = time, x = Mathf.Lerp(a.x, b.x, u), y = Mathf.Lerp(a.y, b.y, u), z = Mathf.Lerp(a.z, b.z, u),
                 ex = Mathf.Lerp(a.ex, b.ex, u), ey = Mathf.Lerp(a.ey, b.ey, u), ez = Mathf.Lerp(a.ez, b.ez, u),
                 aglTrue = Mathf.Lerp(a.aglTrue, b.aglTrue, u), aglEst = Mathf.Lerp(a.aglEst, b.aglEst, u),
-                gate = Mathf.Lerp(a.gate, b.gate, u), acc = b.acc, r = b.r, fault = b.fault, fuel = Mathf.Lerp(a.fuel, b.fuel, u)
+                gate = Mathf.Lerp(a.gate, b.gate, u), acc = b.acc, r = b.r, fault = b.fault, fuel = Mathf.Lerp(a.fuel, b.fuel, u), camW = b.camW, prob = b.prob, sHat = Mathf.Lerp(a.sHat, b.sHat, u)
             };
         }
 
@@ -142,7 +147,7 @@ namespace SensorTrust
             if (style == null) style = new GUIStyle(GUI.skin.label);
             style.fontSize = Mathf.Max(14, Mathf.RoundToInt(Screen.height * 0.026f));
             float lineH = style.fontSize * 1.35f;
-            var box = new Rect(8, 8, style.fontSize * 36f, lineH * (tracks.Count * 3 + 2));
+            var box = new Rect(8, 8, style.fontSize * 36f, lineH * (tracks.Count * 4 + 2));
             var prev = GUI.color; GUI.color = new Color(0, 0, 0, 0.7f); GUI.DrawTexture(box, Texture2D.whiteTexture); GUI.color = prev;
             float y = box.y + 6;
             style.normal.textColor = Color.white;
@@ -155,7 +160,14 @@ namespace SensorTrust
                 GUI.Label(new Rect(box.x + 8, y, box.width, lineH), t.label + (ended ? "   (touchdown / end)" : ""), style); y += lineH;
                 style.normal.textColor = Color.white;
                 GUI.Label(new Rect(box.x + 8, y, box.width, lineH), $"  AGL true {r.aglTrue:F0} m   est {r.aglEst:F0} m   error {r.aglEst - r.aglTrue:F0} m", style); y += lineH;
-                GUI.Label(new Rect(box.x + 8, y, box.width, lineH), $"  gate +-{r.gate:F0} m   altimeter {(r.acc > 0.5 ? "used" : "rejected")}   fuel {r.fuel:F0} kg", style); y += lineH;
+                string alt = r.prob > 0.5 ? "on probation" : (r.acc > 0.5 ? "used" : "rejected");
+                GUI.Label(new Rect(box.x + 8, y, box.width, lineH), $"  gate +-{r.gate:F0} m   altimeter {alt}   fuel {r.fuel:F0} kg", style); y += lineH;
+                float bw = box.width * 0.30f, bh = lineH * 0.55f;
+                GUI.Label(new Rect(box.x + 8, y, bw, lineH), "  camera trust", style);
+                GUI.color = new Color(1, 1, 1, 0.25f); GUI.DrawTexture(new Rect(box.x + 8 + bw, y + lineH * 0.2f, bw, bh), Texture2D.whiteTexture);
+                GUI.color = t.color; GUI.DrawTexture(new Rect(box.x + 8 + bw, y + lineH * 0.2f, bw * Mathf.Clamp01(r.camW), bh), Texture2D.whiteTexture);
+                GUI.color = prev;
+                GUI.Label(new Rect(box.x + 8 + 2.1f * bw, y, bw, lineH), r.sHat > 0 ? $"noise {r.sHat:F1} m" : "", style); y += lineH;
             }
         }
     }

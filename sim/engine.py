@@ -35,7 +35,8 @@ class Scenario:
     t_max: float = 800.0
     scan_ok: bool = True
     cam_sig_gain: float = 10.0          # how badly a shadowed camera is wrong (noise multiplier at full dark)
-    cam_bias_gain: float = 0.7          # persistent shadow bias gain
+    cam_bias_gain: float = 0.7          # persistent shadow bias gain (assumed model only)
+    cam_model: str = "empirical"        # 'empirical' (Unity camera survey) or 'assumed' (earlier hand-made curve)
 
 
 SCENARIOS = {
@@ -46,6 +47,18 @@ SCENARIOS = {
     "delayed": Scenario("delayed altimeter (ispace M2)", burst_rate=1 / 300.0, delay_s=(1.0, 3.0)),
     "dropout": Scenario("altimeter dropout (IM-1)", burst_rate=1 / 300.0, dropout_agl=3000.0),
 }
+
+
+_CAM = {}
+
+
+def _cam_model():
+    if not _CAM:
+        import json, os
+        path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "out", "camera_survey", "cam_model.json")
+        d = json.load(open(path))
+        _CAM.update(lit=np.array(d["lit"]), rex=np.array(d["rel_ex"]), rez=np.array(d["rel_ez"]), peak=np.array(d["peak"]))
+    return _CAM
 
 
 class Draws:
@@ -79,6 +92,7 @@ class Draws:
         self.cam_bias = rng.standard_normal((n, 2)) * 150.0
         d_lo, d_hi = scen.delay_s
         self.delay_steps = np.rint(rng.uniform(d_lo, d_hi, n) / DT).astype(int)
+        self.cam_u = rng.random((n, T // 8 + 2))
 
 
 def _scalar_update(x, P, H, nu, R, m):
@@ -133,7 +147,7 @@ class ProbationState:
 
 
 def simulate(world, track, scen, judge, draws, veh=None, scan=False, ml_model=None, collect=None,
-             record_idx=None, sigma_probation=3.0, K_prob=10, ellipse_k=2.0, wide_gate=1.0, cam_aware=None):
+             record_idx=None, sigma_probation=3.0, K_prob=10, ellipse_k=2.0, wide_gate=1.0, cam_policy=None):
     """Run all N descents for one judge. Returns a dict of per-run result arrays (+ optional recorded traces)."""
     veh = veh or Vehicle()
     opts = {"cam": True, "prob": True, "phys": True}
@@ -141,7 +155,13 @@ def simulate(world, track, scen, judge, draws, veh=None, scan=False, ml_model=No
     if judge == "trust_noprob": opts["prob"] = False
     if judge == "trust_nophys": opts["phys"] = False
     is_trust = judge.startswith("trust")
-    cam_use_aware = (is_trust and opts["cam"]) if cam_aware is None else cam_aware
+    v2 = judge.startswith("trust2")
+    # camera policies: naive (always use the fix) | conf (use the matcher's own confidence) | aware (predicted lit
+    # fraction from Sun + DEM, the trust layer's step 3) | both. Default: trust layers 'both', all other judges 'conf'.
+    if cam_policy is None:
+        cam_policy = ("both" if opts["cam"] else "conf") if is_trust else "conf"
+    cam_use_aware = cam_policy in ("aware", "both")
+    cam_use_conf = cam_policy in ("conf", "both")
     n = draws.n
     T = draws.T
     sx, sy = track["start"]
@@ -175,7 +195,7 @@ def simulate(world, track, scen, judge, draws, veh=None, scan=False, ml_model=No
     res["outcome"] = np.array(["flying"] * n, dtype=object)
     rec = None
     if record_idx is not None:
-        rec = {k: [] for k in ["t", "x", "y", "z", "ex", "ey", "ez", "agl_true", "agl_est", "gate", "acc", "r", "fault", "fuel", "tgt_x", "tgt_y"]}
+        rec = {k: [] for k in ["t", "x", "y", "z", "ex", "ey", "ez", "agl_true", "agl_est", "gate", "acc", "r", "fault", "fuel", "tgt_x", "tgt_y", "cam_w", "prob", "s_hat"]}
     r_hist = np.zeros((n, T), dtype=np.float32)
     last_valid_r = np.full(n, np.nan)
     target = np.tile([tx, ty], (n, 1)).astype(np.float64)
@@ -210,6 +230,12 @@ def simulate(world, track, scen, judge, draws, veh=None, scan=False, ml_model=No
             gx[m], gy[m] = gxm, gym
         return gx, gy
 
+    g_est = coarse.height(nav.x[:, 0], nav.x[:, 1]).astype(np.float64)
+    s_hat = np.ones(n)
+    use_gest = v2 and missing
+    r_f = np.maximum(nav.x[:, 2] - g_est, 1.0)      # no-map mode: terrain-relative altitude and rate (alpha-beta filter)
+    rate_f = nav.x[:, 5].copy()
+    last_cam_w = np.zeros(n)
     allidx = np.arange(n)
     for k in range(T - 1):
         if not alive.any():
@@ -217,11 +243,18 @@ def simulate(world, track, scen, judge, draws, veh=None, scan=False, ml_model=No
         t = k * DT
         x_est = nav.x
         # ---------------- guidance on the estimate ----------------
-        if use_map and not missing:
+        if use_gest:
+            hb = g_est
+        elif use_map and not missing:
             hb = mapq(x_est[:, 0], x_est[:, 1], allidx)
         else:
             hb = coarse.height(x_est[:, 0], x_est[:, 1])
         agl_b = x_est[:, 2] - hb
+        vz_g = x_est[:, 5]
+        if use_gest:    # no map: final approach flies on the terrain-relative altimeter filter
+            fin = agl_b < 200.0
+            agl_b = np.where(fin, r_f, agl_b)
+            vz_g = np.where(fin, rate_f, vz_g)
         if div_target is not None:
             go = (agl_b < 5000.0) & ~diverted
             diverted |= go
@@ -240,12 +273,16 @@ def simulate(world, track, scen, judge, draws, veh=None, scan=False, ml_model=No
         cone = 0.08 * dist
         h_eff = np.maximum(agl_b - cone, 0.0)
         vdes_z = -(0.7 + np.sqrt(2.0 * a_net * np.maximum(h_eff - 15.0, 0.0)))   # constant 0.7 m/s final 15 m
-        av = np.clip(G + 1.5 * (vdes_z - x_est[:, 5]), 0.0, amax)
+        av = np.clip(G + 1.5 * (vdes_z - vz_g), 0.0, amax)
         horiz_room = np.sqrt(np.maximum(amax ** 2 - av ** 2, 0.0))
         scale = np.minimum(1.0, horiz_room / np.maximum(np.hypot(ah[:, 0], ah[:, 1]), 1e-9))
         a_cmd = np.stack([ah[:, 0] * scale, ah[:, 1] * scale, av], axis=1)
         a_cmd[fuel <= 0.0] = 0.0
         a_cmd[~alive] = 0.0
+        if use_gest:
+            aA = a_cmd[:, 2] - G
+            r_f = r_f + rate_f * DT + 0.5 * aA * DT * DT
+            rate_f = rate_f + aA * DT
         # ---------------- truth dynamics ----------------
         am = np.linalg.norm(a_cmd, axis=1)
         burn = mass * am / (veh.isp * G0) * DT
@@ -296,19 +333,29 @@ def simulate(world, track, scen, judge, draws, veh=None, scan=False, ml_model=No
             avail &= agl_true > scen.dropout_agl
         fault_lbl = np.abs(r_meas - r_true) > 5.0 * (1.0 + 0.0015 * np.maximum(r_true, 0)) + 1.0
         # judge prediction surface
-        if use_map and not missing:
-            hp = mapq(x_est[:, 0], x_est[:, 1], allidx)
-            gx, gy = mapg(x_est[:, 0], x_est[:, 1], allidx)
+        if v2:   # time-stamped readings: compare with the prediction at the instant the reading was taken
+            dsec = draws.delay_steps * DT
+            xe = x_est[:, 0] - x_est[:, 3] * dsec
+            ye = x_est[:, 1] - x_est[:, 4] * dsec
+            ze = x_est[:, 2] - x_est[:, 5] * dsec
         else:
-            hp = coarse.height(x_est[:, 0], x_est[:, 1])
-            gx, gy = coarse.grad(x_est[:, 0], x_est[:, 1], step=400.0)
+            xe, ye, ze = x_est[:, 0], x_est[:, 1], x_est[:, 2]
+        if use_gest:
+            hp = g_est.copy(); gx = np.zeros(n); gy = np.zeros(n)
+        elif use_map and not missing:
+            hp = mapq(xe, ye, allidx)
+            gx, gy = mapg(xe, ye, allidx)
+        else:
+            hp = coarse.height(xe, ye)
+            gx, gy = coarse.grad(xe, ye, step=400.0)
         H = np.zeros((n, 9)); H[:, 0] = -gx; H[:, 1] = -gy; H[:, 2] = 1.0
-        r_pred = x_est[:, 2] - hp
+        r_pred = ze - hp
         nu = r_meas - r_pred
         R = (1.0 + 0.0015 * np.maximum(r_meas, 0)) ** 2
+        Rg = np.maximum(R, s_hat ** 2) if v2 else R      # v2: noise level learned from accepted readings
         PHt = np.einsum("nij,nj->ni", nav.P, H)
         HPHt = np.einsum("ni,ni->n", H, PHt)
-        S0 = HPHt + R
+        S0 = HPHt + Rg
         sig_h = np.sqrt(np.maximum(nav.P[:, 0, 0], nav.P[:, 1, 1]))
         sig_z = np.sqrt(nav.P[:, 2, 2])
         accept = np.zeros(n, dtype=bool)
@@ -330,14 +377,14 @@ def simulate(world, track, scen, judge, draws, veh=None, scan=False, ml_model=No
             flag_timer = np.where(fl, 40, np.maximum(flag_timer - 1, 0))
         elif judge == "tolerance":
             s_terr = stats.hstd(x_est[:, 0], x_est[:, 1], rad) ** 2
-            s_map = 3.0 ** 2
+            s_map = world.map_sigma ** 2
             S_tol = S0 + s_terr + s_map
             accept = avail & (nu * nu / S_tol <= CHI2_99)
             R_use = R + s_terr + s_map
         elif judge in ("wait", "second", "ml") or is_trust:
             if is_trust:
                 s_terr = stats.hstd(x_est[:, 0], x_est[:, 1], rad) ** 2
-                S_tol = S0 + s_terr + 3.0 ** 2
+                S_tol = S0 + s_terr + world.map_sigma ** 2
                 # step 1: physical possibility (lowest and highest ground within the uncertainty region)
                 if not missing and opts["phys"]:
                     hmin = stats.hmin(x_est[:, 0], x_est[:, 1], rad + 30.0)
@@ -350,7 +397,7 @@ def simulate(world, track, scen, judge, draws, veh=None, scan=False, ml_model=No
                 gate_k = CHI2_99 if not missing else 10.83      # cautious mode: wider gate
                 surprising = avail & ~impossible & (nu * nu / S_tol > gate_k)
                 normal = avail & ~impossible & ~surprising
-                R_normal = R + (s_terr + 9.0) * 0.5
+                R_normal = Rg + (s_terr + world.map_sigma ** 2) * 0.5
                 accept = normal
                 R_use = np.where(normal, R_normal, R)
                 # impossible readings are rejected immediately (counted as decided rejections)
@@ -391,7 +438,7 @@ def simulate(world, track, scen, judge, draws, veh=None, scan=False, ml_model=No
                 if idxf.size:
                     slot = prob.n[idxf]
                     prob.buf[idxf, slot] = nu[idxf]
-                    prob.Rbuf[idxf, slot] = R[idxf]
+                    prob.Rbuf[idxf, slot] = Rg[idxf]
                     prob.fault[idxf, slot] = fault_lbl[idxf]
                     prob.n[idxf] = slot + 1
                 decided = ~feed
@@ -415,8 +462,13 @@ def simulate(world, track, scen, judge, draws, veh=None, scan=False, ml_model=No
                     if acc_runs.size:
                         m = np.zeros(n, dtype=bool); m[acc_runs] = True
                         nu_use = nu.copy(); nu_use[acc_runs] = mean[consistent]
-                        Rr = R + stats.hstd(x_est[:, 0], x_est[:, 1], rad) ** 2 * 0.5
+                        Rr = Rg + stats.hstd(x_est[:, 0], x_est[:, 1], rad) ** 2 * 0.5
                         _scalar_update(nav.x, nav.P, H, nu_use, Rr, m)
+                        if v2:
+                            s_hat[acc_runs] = np.maximum(s_hat[acc_runs], std[consistent])
+                        if use_gest:
+                            g_est[acc_runs] = nav.x[acc_runs, 2] - (r_pred[acc_runs] + mean[consistent])
+                            r_f[acc_runs] = r_pred[acc_runs] + mean[consistent]
                     prob.n[done] = 0
         # ---------------- bookkeeping + ordinary update ----------------
         direct = avail & decided
@@ -426,6 +478,14 @@ def simulate(world, track, scen, judge, draws, veh=None, scan=False, ml_model=No
         res["valid_rej"] += (rej & ~fault_lbl)
         res["fault_acc"] += (direct & accept & fault_lbl)
         _scalar_update(nav.x, nav.P, H, nu_use, R_use, direct & accept)
+        upd = direct & accept
+        if v2:
+            s_hat = np.where(upd, 0.97 * s_hat + 0.03 * np.minimum(np.abs(nu) * 1.25, 6.0 * s_hat + 1.0), s_hat)
+        if use_gest:
+            e_ab = r_meas - r_f
+            g_est = np.where(upd, nav.x[:, 2] - r_meas, g_est)
+            r_f = np.where(upd, r_f + 0.5 * e_ab, r_f)
+            rate_f = np.where(upd, rate_f + 0.05 * e_ab / DT, rate_f)
         if collect is not None and judge == "pitfal":
             fl = avail & (gate_chi > CHI2_99)
             if fl.any():
@@ -443,14 +503,28 @@ def simulate(world, track, scen, judge, draws, veh=None, scan=False, ml_model=No
             sig_n = 20.0 + 0.004 * agl_for
             bad = (1.0 - lit_true)
             sig_a = sig_n * (1.0 + scen.cam_sig_gain * bad ** 2)
-            meas = p[:, 0:2] + shift + scen.cam_bias_gain * draws.cam_bias * (bad ** 2)[:, None] + draws.cam_g[:, cam_i, :] * sig_a[:, None]
+            if scen.cam_model == "empirical":
+                cm = _cam_model()
+                pos = np.searchsorted(cm["lit"], lit_true)
+                kk = 15
+                idx = np.clip(pos + np.floor((draws.cam_u[:, cam_i] - 0.5) * 2 * kk).astype(int), 0, len(cm["lit"]) - 1)
+                meas = p[:, 0:2] + shift + np.stack([cm["rex"][idx], -cm["rez"][idx]], axis=1) * agl_for[:, None]
+            else:
+                idx = None
+                meas = p[:, 0:2] + shift + scen.cam_bias_gain * draws.cam_bias * (bad ** 2)[:, None] + draws.cam_g[:, cam_i, :] * sig_a[:, None]
             Rc = sig_n ** 2
             use = sel.copy()
             wgt = np.ones(n)
+            if cam_use_conf and scen.cam_model == "empirical":
+                use &= cm["peak"][idx] >= 0.5          # matcher confidence gate (fixed a priori)
             if cam_use_aware:
                 lit_pred = stats.litfrac(x_est[:, 0], x_est[:, 1], np.clip(np.maximum(x_est[:, 2] - hp, 0) * 0.36, 60, 3840))
+                if missing:     # no map: lit fraction unknown, use the camera as a cautious cross-check
+                    lit_pred = np.ones(n)
                 use &= lit_pred >= 0.25
                 wgt = np.where(lit_pred >= 0.25, np.clip(lit_pred, 0.25, 1.0) ** 2, 0.0)
+                if missing:
+                    wgt = np.where(use, 0.5, 0.0)
                 Rc = Rc / np.maximum(wgt, 1e-3)
                 if judge == "second":
                     pass
@@ -458,12 +532,14 @@ def simulate(world, track, scen, judge, draws, veh=None, scan=False, ml_model=No
                 Hc = np.zeros((n, 9)); Hc[:, ax] = 1.0
                 _scalar_update(nav.x, nav.P, Hc, meas[:, ax] - nav.x[:, ax], Rc, use)
             lit_cam_prev_ok = ((meas - nav.x[:, 0:2]) ** 2).sum(axis=1) < 9.0 * (Rc * 2 + 400.0)
+            wgt_used = wgt if cam_use_aware else np.ones(n)
+            last_cam_w = np.where(use, wgt_used, 0.0)
             shadow = sel & (lit_true < 0.3)
-            res["cam_w_sum"] += np.where(shadow, np.where(use, wgt if cam_use_aware else 1.0, 0.0), 0.0)
+            res["cam_w_sum"] += np.where(shadow, np.where(use, wgt_used, 0.0), 0.0)
             res["cam_w_n"] += shadow
             cam_i += 1
         # ---------------- live scan (extension) ----------------
-        if scan and judge == "trust_scan" and tt % scan_period == 0 and scen.scan_ok:
+        if scan and judge in ("trust_scan", "trust2_scan") and tt % scan_period == 0 and scen.scan_ok:
             cell = np.maximum(8.0, 0.0185 * np.maximum(agl_true, 0))
             sel = alive & (agl_true > 80.0) & (agl_true < 2500.0)
             rough = world.true_lit.hstd(p[:, 0], p[:, 1], 150.0)
@@ -491,6 +567,7 @@ def simulate(world, track, scen, judge, draws, veh=None, scan=False, ml_model=No
             rec["gate"].append(3.0 * np.sqrt(S0[i])); rec["acc"].append(float(direct[i] & accept[i]))
             rec["r"].append(r_meas[i]); rec["fault"].append(float(fault_lbl[i])); rec["fuel"].append(fuel[i])
             rec["tgt_x"].append(target[i, 0]); rec["tgt_y"].append(target[i, 1])
+            rec["cam_w"].append(float(last_cam_w[i])); rec["prob"].append(float(prob.n[i] > 0)); rec["s_hat"].append(float(s_hat[i]))
     # runs still alive at the end: timeout
     left = alive
     res["outcome"][left] = "timeout"

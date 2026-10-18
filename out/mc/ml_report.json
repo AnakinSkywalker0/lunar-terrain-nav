@@ -1,7 +1,7 @@
 {
-  "n_train": 2169141,
-  "n_heldout": 425547,
-  "fault_frac": 0.3571585485422525,
-  "heldout_accuracy": 0.7771198011030509,
-  "heldout_auc": 0.847089596899764
+  "n_train": 1292808,
+  "n_heldout": 173967,
+  "fault_frac": 0.4488820712106492,
+  "heldout_accuracy": 0.8954054504589951,
+  "heldout_auc": 0.9664996334107232
 }

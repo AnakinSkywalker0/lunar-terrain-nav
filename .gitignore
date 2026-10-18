@@ -21,3 +21,7 @@ out/cache/
 out/mc/*.pkl
 out/mc/log_*.txt
 nohup.out
+
+# Camera survey images are large (160 MB); regenerate with SensorTrust > Run Camera Survey
+out/camera_survey/img/
+out/mc/log_*.txt

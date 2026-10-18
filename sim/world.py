@@ -101,6 +101,13 @@ class RegionStats:
     def litfrac(self, x, y, r): return self._lookup(self.lit, x, y, r)
 
 
+def load_site01(px=10.0):
+    z = np.array(Image.open(os.path.join(ROOT, "data", "Site01_final_adj_5mpp_surf.tif")), dtype=np.float32)
+    err = np.array(Image.open(os.path.join(ROOT, "data", "Site01_final_adj_5mpp_toterr.tif")), dtype=np.float32)
+    f = int(round(px / 5.0))
+    return z[::f, ::f], float(np.mean(err))
+
+
 def load_site04(px=10.0):
     z = np.array(Image.open(os.path.join(ROOT, "data", "Site04_final_adj_5mpp_surf.tif")), dtype=np.float32)
     f = int(round(px / 5.0))
@@ -165,13 +172,14 @@ def map_error_field(shape, px, seed, sigma_m=3.0, corr_m=150.0):
 class World:
     """Truth surface, onboard map, coarse reference, shadow and statistics for one site."""
 
-    def __init__(self, dem, px=10.0, seed=0, sun_el=2.0, sun_az=135.0, n_map_banks=4, name="site"):
+    def __init__(self, dem, px=10.0, seed=0, sun_el=2.0, sun_az=135.0, n_map_banks=4, name="site", map_sigma=3.0):
         self.name = name
+        self.map_sigma = float(map_sigma)      # LOLA height error (PGDA total-error map where available)
         self.px = px
         self.seed = seed
         self.truth_dem = dem
         self.truth = Grid(dem + unmapped_features(dem.shape, px, seed), px)
-        self.map_banks = [Grid(dem + map_error_field(dem.shape, px, seed + k), px) for k in range(n_map_banks)]
+        self.map_banks = [Grid(dem + map_error_field(dem.shape, px, seed + k, sigma_m=map_sigma), px) for k in range(n_map_banks)]
         self.dem_grid = Grid(dem, px)
         # Coarse reference (global-topography style): what a mission without a LOLA-resolution DEM would use.
         c = 8
@@ -237,3 +245,8 @@ def site04_world(seed=0, sun_el=2.0, sun_az=135.0):
 
 def procedural(seed, sun_el=2.0, sun_az=135.0):
     return World(procedural_world(seed), 10.0, seed, sun_el, sun_az, name=f"proc{seed}")
+
+
+def site01_world(seed=0, sun_el=2.0, sun_az=135.0):
+    dem, sig = load_site01()
+    return World(dem, 10.0, seed, sun_el, sun_az, name="Site01", map_sigma=max(sig, 0.5))
