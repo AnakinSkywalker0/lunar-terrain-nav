@@ -147,7 +147,7 @@ class ProbationState:
 
 
 def simulate(world, track, scen, judge, draws, veh=None, scan=False, ml_model=None, collect=None,
-             record_idx=None, sigma_probation=3.0, K_prob=10, ellipse_k=2.0, wide_gate=1.0, cam_policy=None):
+             record_idx=None, sigma_probation=3.0, K_prob=10, ellipse_k=2.0, wide_gate=1.0, cam_policy=None, timestamps=None):
     """Run all N descents for one judge. Returns a dict of per-run result arrays (+ optional recorded traces)."""
     veh = veh or Vehicle()
     opts = {"cam": True, "prob": True, "phys": True}
@@ -156,6 +156,7 @@ def simulate(world, track, scen, judge, draws, veh=None, scan=False, ml_model=No
     if judge == "trust_nophys": opts["phys"] = False
     is_trust = judge.startswith("trust")
     v2 = judge.startswith("trust2")
+    use_ts = v2 if timestamps is None else timestamps      # time-stamped altimeter readings (delay compensation)
     # camera policies: naive (always use the fix) | conf (use the matcher's own confidence) | aware (predicted lit
     # fraction from Sun + DEM, the trust layer's step 3) | both. Default: trust layers 'both', all other judges 'conf'.
     if cam_policy is None:
@@ -333,7 +334,7 @@ def simulate(world, track, scen, judge, draws, veh=None, scan=False, ml_model=No
             avail &= agl_true > scen.dropout_agl
         fault_lbl = np.abs(r_meas - r_true) > 5.0 * (1.0 + 0.0015 * np.maximum(r_true, 0)) + 1.0
         # judge prediction surface
-        if v2:   # time-stamped readings: compare with the prediction at the instant the reading was taken
+        if use_ts:   # time-stamped readings: compare with the prediction at the instant the reading was taken
             dsec = draws.delay_steps * DT
             xe = x_est[:, 0] - x_est[:, 3] * dsec
             ye = x_est[:, 1] - x_est[:, 4] * dsec

@@ -18,7 +18,7 @@ BUL = ParagraphStyle("BUL", parent=B, leftIndent=12, bulletIndent=2)
 
 
 def para(t, s=B): return Paragraph(t, s)
-def bullets(items): return [Paragraph(i, BUL, bulletText="â€¢") for i in items]
+def bullets(items): return [Paragraph(i, BUL, bulletText="•") for i in items]
 
 
 def table(rows, widths, head=True):
@@ -120,101 +120,141 @@ def description():
 
 # =============================================================== PROGRESS REPORT
 def progress():
-    s = [para("Progress Report and Results", H1),
-         para("Sensor Trust for Lunar South Pole Landing - LANTERN testbed, 19 October 2026", SM), Spacer(1, 4),
-         para("Conclusion in plain words", H2),
-         para("<b>1.</b> A navigation filter with a fixed rule fails on real Site04 terrain exactly like HAKUTO-R: it rejects 99% of valid altimeter readings and the lander crashes (about 500 of 500 runs). "
-              "<b>2.</b> Simply putting the terrain map into the filter fixes most of that. "
-              "<b>3.</b> The biggest further gain comes from not believing the camera when the ground below is in shadow: with it, landing success is 89% instead of about 49%. "
-              "<b>4.</b> The specific four-step altimeter rule (physical-possibility check plus probation) did <b>not</b> beat a simpler map-tolerance gate once every method was given the same camera handling (89% versus 93%), and it performs worse when the altimeter is noisy but the scene is well lit (61% versus 99%). "
-              "<b>5.</b> The camera result depends on how badly my simulated camera is hurt by shadow; if shadow hurts it only mildly, the PITFAL-style filter does as well or better. "
-              "<b>6.</b> Delayed altimeter readings defeat every method, and the trust layer's no-map fallback failed. "
-              "So the honest message is: shadow-aware sensor weighting matters a lot, the four-step altimeter rule adds little beyond a simple tolerance gate, and the evidence is simulation-only."),
+    s = [para("Progress Report and Results (round 2)", H1),
+         para("Sensor Trust for Lunar South Pole Landing - LANTERN testbed, 19 October 2026. Design and hypotheses were fixed in docs/PREREG.md (git tag prereg-round2) before the Site04 run.", SM), Spacer(1, 4),
+         para("Conclusions in plain words", H2),
+         ] + bullets([
+        "<b>The HAKUTO-R failure is real and reproducible.</b> A filter with a fixed rule and a coarse terrain reference rejects 99% of good altimeter readings on Site04 and the lander is lost in 499 of 500 runs.",
+        "<b>The big fix is simply putting the terrain map into the filter.</b> Success goes from 0.2% to 82% (PITFAL-style) and to 97% with a plain map-tolerance gate that allows bigger surprises where the map is bumpy.",
+        "<b>The four-step rule's own ingredients add little in the cliff cases.</b> Trust v2 (97%) matches the plain tolerance gate (97%); probation changes nothing (95.0% without it, 94.6% with it, v1).",
+        "<b>Where trust v2 clearly wins:</b> a noisy altimeter in shadow (88% vs 64%), no map at all (91% vs 3%) and a mid-descent divert (91% vs 74%). The price: it is fooled by faults more often in the noisy case (52% vs 33%).",
+        "<b>Where it fails badly:</b> a noisy altimeter in good light (39% vs 99.5% for PITFAL-style) and a map shifted by 2 km (1% vs 35%). Its physical-possibility check rejects readings that do not fit the map.",
+        "<b>The camera lesson:</b> a navigation camera must never be used without its matcher's confidence (every fix used: 0.4-3% success). Predicting darkness from the Sun and terrain adds nothing over the matcher's own confidence (it is slightly worse).",
+        "<b>Delayed readings:</b> the 83% for trust v2 comes entirely from time-stamping the readings. With the same time stamps the plain tolerance gate scores 97.6% and PITFAL-style 74%; without time stamps trust v2 scores 0%.",
+        "<b>Round 1's headline (shadow-aware camera is the big win) did not survive a fair camera baseline.</b> That is the main scientific outcome of this round."]) + [
          para("1. Verified in Unity", H2),
          table([["Item", "Result"],
-                ["Descent", "From 102.5 km above a flat spot at Site04 (Unity 6198, 8512; 2.8 deg maximum slope over 45 m): touchdown at t = 583-587 s, 0.50 m/s vertical, 0 m/s horizontal, 0.0 deg tilt, 251 kg fuel left, exactly on target"],
-                ["Live scan (LUMEN)", "Fix from 2463 m down. Error 47 m at 2205 m (41 m cell), 14.5 m at 921 m, 4 m at 155 m (8 m cell); median 8.9 m over 108 fixes. No fix below about 80 m or above about 2.5 km"],
-                ["HUD, logging, shadows", "HUD text scales with screen height; every run writes CSV to out/runs/; low-Sun cast shadows render"],
-                ["Replay scene", "Site04Replay plays one recorded descent with the three filters side by side (true lander solid, filter estimate as a ghost, live altitude error and gate)"]],
+                ["Descent", "From 102.5 km to a flat Site04 spot: touchdown at t = 583-587 s, 0.50 m/s vertical, 0 m/s horizontal, 0.0 deg tilt, 251 kg fuel left, exactly on target"],
+                ["Live scan (LUMEN)", "Fix from 2463 m down (patch cell grows with altitude). Error 47 m at 2205 m, 14.5 m at 921 m, 4 m at 155 m; median 8.9 m over 108 fixes. No fix below ~80 m"],
+                ["Replay scene", "Site04Replay plays a recorded descent with the three filters side by side, with true lander, estimate ghost, altitude error, gate, camera trust bar and learned noise level"]],
                [34, 140]),
-         Spacer(1, 3), img("out/plots/unity_descent.png", 105), para("Figure 2. Logged Unity descent from 102.5 km.", SM),
-         img("out/replay_final.png", 150),
-         para("Figure 3. Unity replay of one descent (cliff plus faults). The fixed-gate lander (red) hovers 1372 m above ground believing it is 62 m below the surface; the PITFAL-style (yellow) and trust-layer (green) landers have landed.", SM),
+         Spacer(1, 3), img("out/replay_round2.png", 150),
+         para("Figure 1. Unity replay of one descent (cliff + faults, run 7): the fixed-gate lander (red) hovers 1268 m up believing it is 75 m below the surface; the PITFAL-style (yellow) and trust v2 (green) landers have landed.", SM),
          PageBreak(),
-         para("2. Monte Carlo results (Python test bench, Site04, never used for tuning)", H2),
-         para("500 seeded runs per cell. Every method sees the same descents, noise and faults. The ML classifier and the probation settings were trained or tuned on procedural crater worlds only (classifier: 77.7% accuracy, AUC 0.85 on a held-out world; probation window 8 samples, 4 sigma). Sun 2 degrees above the horizon from the west, so the descent enters shadow."),
-         table([["Scenario", "Fixed", "PITFAL-style", "Map tol.", "Wait&see", "2nd opinion", "ML", "Trust 4-step", "Trust + scan"],
-                ["Cliff (HAKUTO-R)", "0.4", "49.0", "45.6", "53.0", "46.2", "48.8", "89.2", "100.0"],
-                ["Cliff + faults", "0.0", "45.6", "40.4", "53.6", "32.8", "46.0", "84.6", "100.0"],
-                ["Shadow + noisy altimeter (IM-2)", "0.0", "27.0", "18.0", "33.2", "33.8", "25.0", "55.0", "64.2"],
-                ["Delayed altimeter (ispace M2)", "0.0", "1.2", "4.0", "35.6", "18.4", "23.8", "0.2", "2.2"],
-                ["Altimeter dropout (IM-1)", "0.0", "7.8", "9.0", "7.4", "7.6", "8.6", "44.4", "55.8"]],
-               [38, 14, 20, 16, 18, 20, 12, 20, 20]),
-         para("Table 1. Landing success (%). 95% intervals are about +/-4 points (cliff row: trust 86-92, PITFAL 45-53). Judges other than the trust layer used the camera whether or not the ground was lit.", SM),
+         para("2. Camera reliability measured in Unity", H2),
+         para("300 paired nadir images on Site04 (true Sun vs a prediction from the map with 0.05-0.25 deg Sun-elevation error and +-1 deg azimuth error; reflections off so shadows are dark; read noise 2 DN plus shot noise), matched with a normalised-cross-correlation landmark matcher. The onboard prediction uses direct light only."),
+         table([["Lit fraction of footprint", "Median error (m)", "Fixes off by >100 m", "Matcher confidence (median peak)"],
+                ["0 - 5%", "401", "88%", "0.00"], ["5 - 25%", "7.6", "20%", "0.86"], ["25 - 50%", "2.4", "0%", "0.98"],
+                ["50 - 80%", "1.3", "0%", "0.97"], ["80 - 100%", "0.8", "0%", "0.92"]], [48, 36, 40, 50]),
+         para("Table 1. Camera fix error by lit fraction. Among the 226 fixes with confidence >= 0.5, none was off by more than 100 m, so the matcher's own confidence is a reliable failure detector. This replaced round 1's hand-made damage curve. Caveat: the survey uses one renderer, one matcher and one site.", SM),
+         para("3. Site04 Monte Carlo (round 2, run once after the freeze)", H2),
+         para("500 seeded runs per cell, every judge uses the same confidence-gated camera. Probation window 10 samples and 4 sigma were tuned on procedural worlds and Site01 only (87% mean success there). The ML classifier was retrained on procedural worlds (held-out accuracy 89.5%, AUC 0.97). Sun 2 degrees above the horizon from the west."),
+         table([["Scenario", "Fixed", "PITFAL", "Map tol.", "Wait", "2nd op.", "ML", "Trust v1", "Trust v2", "v2+scan"],
+                ["Cliff (HAKUTO-R)", "0.2", "82.0", "97.2", "79.6", "56.6", "75.8", "94.6", "96.8", "100.0"],
+                ["Cliff + faults", "0.0", "85.6", "97.6", "80.2", "8.6", "76.0", "94.8", "97.4", "99.8"],
+                ["Shadow + noisy altimeter (IM-2)", "0.0", "64.0", "61.6", "28.6", "15.6", "23.8", "53.4", "88.0", "59.2"],
+                ["Delayed altimeter (ispace M2)", "0.0", "0.0", "0.0", "0.2", "0.0", "0.4", "0.0", "83.0*", "95.8*"],
+                ["Altimeter dropout (IM-1)", "0.0", "34.8", "41.6", "29.0", "26.2", "24.2", "31.4", "37.0", "61.4"]],
+               [40, 11, 14, 14, 11, 13, 10, 15, 15, 15]),
+         para("Table 2. Landing success (%). 95% intervals about +-2 to 4 points. * Trust v2 uses time-stamped readings, the other judges do not (see the exploratory control).", SM),
          img("out/plots/01_success_by_scenario.png", 170),
-         para("3. Controlled checks that change the interpretation", H2),
-         para("Table 1 compares the trust layer, which includes shadow-aware camera handling, with judges that lack it. To separate the two ideas, every judge was re-run with the same shadow-aware camera (500 runs):"),
-         table([["Scenario", "Map tol.", "Trust 4-step", "PITFAL-style", "Wait&see", "ML", "2nd opinion"],
-                ["Cliff", "93.0", "89.2", "72.8", "68.0", "64.4", "33.6"],
-                ["Cliff + faults", "90.6", "84.6", "73.2", "68.8", "57.8", "1.0"],
-                ["Shadow + noisy altimeter", "60.0", "55.0", "52.8", "22.8", "14.4", "5.8"]],
-               [44, 22, 26, 26, 22, 18, 24]),
-         para("Table 2. Landing success (%) with identical camera handling. The simple map-tolerance gate matches or beats the four-step rule.", SM),
-         img("out/plots/06_altimeter_logic_only.png", 170),
-         para("Ablations (cliff scenario): removing the camera step drops the trust layer from 89% to 47%; removing probation leaves it at 89%; removing the physical-possibility check leaves it at 88%. In the shadow-plus-noise scenario probation helps (55% versus 38% without), while the physical check hurts (63% without it)."),
-         img("out/plots/07_camera_damage_sensitivity.png", 110),
-         para("Figure 4. Sensitivity to the camera model. If shadow only mildly degrades the camera, PITFAL-style reaches 94-100% and the trust layer's advantage disappears; the trust layer is flat at 88% because it ignores the camera in the dark."),
-         para("In a well-lit run (Sun from the east) every map-based judge except the second-opinion one lands at least 98.7% in the cliff scenarios, so the trust layer is not harmful there. With a noisy altimeter in good light, though, PITFAL-style lands 99% and the trust layer only 61%, because probation compares readings to the nominal noise level and rejects noisy but valid ones."),
          PageBreak(),
-         para("4. Sweeps and robustness (300 runs each unless noted)", H2),
-         table([["Test", "PITFAL-style", "Trust layer", "Reading"],
-                ["Initial position error 5 m / 50 m / 200 m / 400 m (cliff)", "48 / 48 / 49 / 45", "94 / 92 / 81 / 73", "Trust layer gap is largest when position is well known, the opposite of hypothesis H3; the gap is driven by shadow handling"],
-                ["Mid-descent divert", "54.3", "72.7", "Works without re-planning; one test, not tuned"],
-                ["Map shifted by 2 km", "17.7", "26.0", "Both fail; false rejections 70% and 90%"],
-                ["No map", "6.7", "0.0", "The trust layer's cautious fallback does not work (fixed rule: 0)"],
-                ["Unseen site vs tuned site (shadow + noise)", "29.3 vs 35.3", "51.7 vs 41.7", "No drop on the unseen site; the procedural world is simply harder"],
-                ["Sun azimuth 90 degrees (well lit), shadow + noise", "99.0", "58.0", "Trust layer worse in good light with noisy altimeter"],
-                ["Sun azimuth 180 / 270 degrees, elevation 1.5-3 degrees", "28 to 31", "55.0", "Identical for all three elevations: the lander is in shadow throughout"]],
-               [58, 24, 24, 68]),
-         img("out/plots/03_when_does_it_help.png", 100), img("out/plots/04_lighting_sweep.png", 120),
-         para("5. Hypotheses against the plan", H2),
-         table([["#", "Expectation", "Outcome"],
-                ["H1", "Four-step rule rejects far fewer real cliff readings than the fixed rule without being fooled noticeably more (at most 1 extra fooled run in 100)", "Versus the fixed rule: yes (99% false rejection down to 0.2%). Versus PITFAL-style: false rejection 8.3% down to 0.2%, but missed faults rise from 7.3% to 10.7%, which breaks the stated threshold"],
-                ["H2", "Shadow-aware camera trust reduces error in dark areas", "Supported in this model (89% versus 47-49%), but depends on how badly shadow hurts the camera; see Figure 4"],
-                ["H3", "When position is already well known, the NASA-style method does as well as ours", "Not supported here; confounded by the shadow effect"],
-                ["H4", "The rule still works on a site it was never tuned on", "Supported: 51.7% on Site04 versus 41.7% on the tuned world, with the trust layer ahead of PITFAL on both"]],
-               [10, 76, 88]),
-         para("6. Limits and honest caveats", H2),
+         para("4. Pre-registered hypotheses", H2),
+         table([["#", "Hypothesis (docs/PREREG.md)", "Outcome"],
+                ["P1", "Trust v2 beats PITFAL-style by >= 10 points in cliff, cliff + faults, shadow + noisy", "Met: +14.8, +11.8, +24.0"],
+                ["P2", "Lower false rejection than PITFAL-style in those scenarios", "Mixed: lower in cliff (0.2 vs 0.8) and shadow + noisy (3.8 vs 4.3); higher in cliff + faults (1.7 vs 0.6)"],
+                ["P3", "Fooled by faults at most 1 point more often", "Met in cliff scenarios (4.9 vs 7.1, 6.1 vs 7.9); failed in shadow + noisy (52.4 vs 32.5)"],
+                ["P4", "Sun-geometry camera prediction improves on the matcher confidence gate by <= 5 points", "Supported: prediction is 5-11 points worse than the confidence gate in three of four cases and 2 points better in the fourth (trust v2, shadow + noisy)"],
+                ["P5", "Gap to PITFAL-style on unseen Site04 at least the tuning-site gap minus 10 points", "Met: Site04 98.0 vs 81.7 (cliff); Site01 100 vs 100"],
+                ["P6", "Trust v2 lands >= 50% with delayed readings", "Met numerically (83.0%), but only because of time stamps (exploratory control)"]],
+               [10, 84, 80]),
+         img("out/plots/06_camera_policies.png", 120),
+         para("Figure 2. Camera policies (500 runs). Using every fix without a confidence check fails almost every landing; the matcher's own confidence is enough.", SM),
+         para("5. Exploratory control (not pre-registered)", H2),
+         para("Does trust v2's delayed-reading result come from its trust logic or from time stamps? Every other judge was re-run with the same time stamps (500 runs): PITFAL-style 74.2%, wait-and-see 79.0%, trust v1 79.6%, trust v2 83.0%, <b>plain map-tolerance gate 97.6%</b>; trust v2 without time stamps 0.0%. The time stamps, not the trust rule, solve this scenario."),
+         img("out/plots/07_timestamps_exploratory.png", 100),
+         PageBreak(),
+         para("6. Sweeps and robustness (300 runs; sun sweep 200)", H2),
+         table([["Test", "PITFAL-style", "Trust v2", "Reading"],
+                ["Initial position error 5 / 50 / 200 / 400 m (cliff)", "81 / 83 / 76 / 61", "97 / 98 / 95 / 96", "Gap grows with position uncertainty, as the plan expected"],
+                ["Mid-descent divert", "74.3", "91.3", "Works without re-planning"],
+                ["No map", "2.7", "90.7", "Fallback works; the baseline uses a coarse reference, so this shows the fallback design matters"],
+                ["Map shifted by 2 km", "35.0", "1.3", "Trust v2 rejects readings that do not match the wrong map (90% false rejection)"],
+                ["Site01 (tuned on) vs Site04 (unseen), cliff", "100 vs 81.7", "100 vs 98.0", "No drop on the unseen, harder site"],
+                ["Delayed readings, Site01 vs Site04", "0 vs 0", "98 vs 85", "With time stamps"],
+                ["Sun from the east (well lit), shadow + noisy", "99.5", "39", "Trust v2 collapses in good light with a noisy altimeter"],
+                ["Sun from the south / west, elevation 1.5-3 deg", "62-70", "81-90", "Trust v2 ahead when the lander is in shadow"]],
+               [58, 28, 24, 64]),
+         img("out/plots/03_when_does_it_help.png", 95), img("out/plots/04_lighting_sweep.png", 115),
+         para("Live scan (extension): trust v2 + scan lifts cliff to 100%, delayed to 95.8% and dropout to 61.4%, but hurts shadow + noisy (59% with 203 of 500 runs timing out in a hover).", SM),
+         para("7. Limits and honest caveats", H2),
          ] + bullets([
-        "Everything is simulation. The shadowed-camera model, the unmapped-terrain roughness and the fault models are my assumptions, and the headline result is sensitive to the camera model (Figure 4).",
-        "Guidance, sensor models and the first judge designs were chosen while looking at Site04 smoke runs. Only the probation settings and the ML model were tuned strictly on procedural worlds; the controlled comparisons in section 3 were added after the main run because the first table confounded two ideas.",
-        "Site01 is not available, so the tuned site is procedural terrain only. The HAKUTO-R altitude debriefing curve was not available, so no replay of the real data was done.",
-        "The Python bench starts at 15 km as the plan specifies; the Unity demonstration starts at 102.5 km from rest at the user's request, which ignores the real orbital speed.",
-        "Delayed readings, dead altimeters and a missing map are not solved, as the plan stated for the first two.",
-        "The ML classifier is moderate and was no better than PITFAL-style in the tests."]) + [
-         para("7. Is it publishable?", H2),
-         para("As a negative-and-mixed result, possibly at a workshop: a controlled study on real Site04 terrain showing that (a) a fixed rule reproduces the HAKUTO-R failure, (b) putting the map in the filter fixes most of it, (c) shadow-aware camera weighting gives the largest further gain but depends on the camera model, and (d) a four-step rule with probation adds little over a map-tolerance gate. "
-              "To be stronger it would need a better-justified camera model, real image-based navigation, Site01 and a second real site, and a redesign of probation for noisy but valid readings. The data, code and seeds are in the repository."),
-         para("8. Next steps", H2),
-         ] + bullets([
-        "<b>Justify the camera model first</b> (it decides whether the headline holds): render camera images in Unity under low Sun, measure how a simple landmark matcher degrades with lit fraction, replace the assumed shadow-damage curve, and re-run the sensitivity test.",
-        "Redesign probation to learn the noise level from the data, add a time-stamp check for delayed readings, tune on procedural worlds, then run Site04 once with settings frozen beforehand.",
-        "Fix the no-map fallback (currently 0%) and re-run the shifted-map and missing-map tests.",
-        "Obtain Site01 and PGDA Product 104 for a second real site, and the published HAKUTO-R altitude record for a real-data replay.",
-        "Write the workshop-style paper after the first three steps; add per-sensor trust bars and live gate width to the Unity HUD."]) + [
+        "Simulation only. The camera model comes from one renderer, one matcher and one site; shadowed scenes in the renderer are very dark but not physically exact.",
+        "Disclosure: guidance, sensor settings and round-1 judge designs were chosen while looking at Site04 runs. Round 2 redid the camera model from measurements and fixed the settings in docs/PREREG.md, but a 100-run Site04 smoke test of the new code was seen before that document was written (recorded in it). The exploratory time-stamp control was added after the main run.",
+        "Trust v2 assumes time-stamped altimeter readings and a map registered to within the position uncertainty; it fails when the map is wrong (1% with a 2 km shift).",
+        "The no-map comparison is against a coarse-reference baseline; a terrain-relative baseline would be a fairer opponent.",
+        "Site01 was used for tuning, so Site04 is the only unseen real site. The real HAKUTO-R altitude record was not available.",
+        "The Python bench starts at 15 km as planned; the Unity demo starts at 102.5 km from rest and ignores orbital speed."]) + [
+         para("8. Is it publishable, and what next?", H2),
+         para("Yes as a controlled-comparison workshop paper (draft: docs/Paper_Draft.pdf): a measured camera model, a pre-registered design, and honest negative findings. The practical recommendation that falls out is a map-tolerance gate, a confidence-gated camera and time-stamped readings; the four-step rule is not needed for the cliff cases. "
+              "Next: repair the two weaknesses found (physical check should scale with the noise level; wrong-map detection), add a terrain-relative no-map baseline, survey the camera on a second site and with a second matcher, and replay the real HAKUTO-R altitude record when it is obtained."),
          para("9. Repository map", H2),
          table([["Path", "Contents"],
-                ["LANTERN/", "Unity 6 project: Site04 and Site04Replay scenes, lander, autopilot, LUMEN, HUD, logger, replay"],
-                ["sim/", "Python test bench and pipeline (world.py, engine.py, pipeline.py, plots.py)"],
-                ["out/mc/", "Monte Carlo results: main_results.csv/.md, controlled.csv, sweeps, tuning, ML report; per-run CSVs"],
-                ["out/plots/, out/replay/", "Result figures; replay data for Unity"],
-                ["docs/", "This report and the project description"],
-                ["data/", "NASA PGDA GeoTIFFs (not in git; see README)"]],
-               [34, 140])]
+                ["LANTERN/", "Unity 6 project: Site04 and Site04Replay scenes, lander, autopilot, LUMEN, HUD, logger, replay, camera survey"],
+                ["sim/", "Python test bench and pipeline (world, engine, pipeline, plots, camera survey scripts)"],
+                ["out/mc/", "Round-2 results: main_results.csv, camera_policies.csv, sweeps_*.csv, exploratory_timestamps.csv, tuning.csv, ML report"],
+                ["out/mc_round1/, out/plots_round1/", "Round-1 results (kept for comparison; git tag round1)"],
+                ["out/camera_survey/", "Survey positions, matcher results, empirical camera model (images not in git)"],
+                ["docs/", "PREREG.md, PROGRESS.md, this report, the project description, the paper draft"]],
+               [44, 130])]
     build("Progress_Report.pdf", s, "Progress Report")
+
+
+def paper():
+    s = [para("When should a lunar lander believe its altimeter?", H1),
+         para("A controlled comparison of sensor-trust rules on real South Pole terrain (draft, 19 October 2026)", SM), Spacer(1, 4),
+         para("Abstract", H2),
+         para("Two recent lunar landers were lost partly because their navigation filters misjudged a sensor: a valid altimeter reading at a crater edge was rejected as a fault, and a camera was trusted in shadow. We build a seeded descent simulator on NASA PGDA Site04 (Shackleton rim), measure a landmark-matching camera's reliability in a Unity renderer instead of assuming it, and compare seven ways of judging a surprising altimeter reading over 500 landings per scenario, with a pre-registered design and a held-out site. "
+              "A fixed-gate filter with a coarse reference reproduces the HAKUTO-R failure (0.2% landing success). Putting the terrain map in the filter recovers most of it (82%), and a plain map-tolerance gate reaches 97%. A four-step trust rule with probation matches but does not beat that gate in cliff scenarios, wins with a noisy altimeter in shadow (88% vs 64%) and with no map (91% vs 3%), and fails when the altimeter is noisy in good light (39% vs 99%) or the map is shifted (1% vs 35%). "
+              "Camera fixes must be gated by the matcher's own confidence (ungated: under 3% success); predicting darkness from Sun and terrain adds nothing. Delayed readings are solved by time stamps, not by trust logic. We report limits and the points where an earlier, unfairly designed comparison had overstated the benefit."),
+         para("1. Introduction", H2),
+         para("Powered descent navigation fuses a laser altimeter, a camera and an IMU. A fixed chi-square gate cannot tell a real terrain discontinuity from a sensor fault. HAKUTO-R M1 (April 2023) rejected altimeter readings after crossing a crater rim; IM-2 (March 2025) kept trusting a camera that could not see in shadow. PITFAL-style filters put a terrain map into the prediction (Adams et al., 2025). We ask which additional judging rule, if any, is worth having once the map is in the filter and the camera is handled honestly."),
+         para("2. Method", H2),
+         para("<b>Terrain.</b> PGDA Product 78 (Barker et al., 2021): Site04 (unseen test) and Site01 (tuning, with NASA's total-error map) at 5 m/pixel, resampled to 10 m; procedural crater worlds for tuning and classifier training. The simulated Moon contains unmapped craters and roughness absent from the onboard map, plus a registration shift (fair-testing rule 1). "
+              "<b>Vehicle and guidance.</b> Point-mass lander, lunar gravity, throttleable engine with fuel; guidance flies a speed profile on the estimated terrain-relative altitude. Success: vertical speed <= 2 m/s, horizontal <= 1.5 m/s, slope <= 10 degrees, fuel left. "
+              "<b>Sensors.</b> IMU with bias and noise; laser altimeter with range-dependent noise and fault bursts; camera position fixes drawn from a Unity survey (300 image pairs, normalised cross-correlation matcher, direct-light-only prediction); optional live lidar scan. "
+              "<b>Judges.</b> Fixed gate with coarse reference; PITFAL-style (map in prediction, noise inflation after a flag); map tolerance (gate widened by local terrain variance and map error); wait-and-see (probation); second opinion; random-forest classifier (trained on procedural worlds only); and the four-step trust rule (physical possibility, probation, camera, no-map fallback) in two versions. "
+              "<b>Scenarios.</b> Cliff crossing, cliff with frequent faults, shadow with a noisy altimeter, delayed readings, altimeter dropout. All judges see identical noise and faults. "
+              "<b>Protocol.</b> Hypotheses and settings were fixed in a pre-registration committed before the Site04 run; tuning used procedural worlds and Site01 only; 500 runs per cell with 95% intervals; an exploratory control was added afterwards and is labelled."),
+         para("3. Results", H2),
+         table([["Scenario", "Fixed", "PITFAL", "Map tol.", "Trust v1", "Trust v2"],
+                ["Cliff (HAKUTO-R)", "0.2", "82.0", "97.2", "94.6", "96.8"], ["Cliff + faults", "0.0", "85.6", "97.6", "94.8", "97.4"],
+                ["Shadow + noisy altimeter", "0.0", "64.0", "61.6", "53.4", "88.0"], ["Delayed readings (v2 time-stamped)", "0.0", "0.0", "0.0", "0.0", "83.0"],
+                ["Altimeter dropout", "0.0", "34.8", "41.6", "31.4", "37.0"]], [56, 16, 18, 20, 20, 20]),
+         para("Table 1. Landing success (%), Site04, 500 runs per cell, confidence-gated camera for every judge.", SM),
+         img("out/plots/01_success_by_scenario.png", 165),
+         para("<b>Camera.</b> The matcher is accurate (median 0.8-2.4 m) once a quarter of the footprint is lit and fails in the dark (88% of fixes off by more than 100 m); its confidence flags every failure in our survey (0 of 226 accepted fixes off by >100 m). Using every fix: 0.4-3% success. Sun-geometry prediction instead of confidence: 5-11 points worse in three of four cases. "
+              "<b>Delays.</b> With time stamps PITFAL-style reaches 74%, the tolerance gate 97.6% and trust v2 83%; without them trust v2 reaches 0%. "
+              "<b>Robustness.</b> No map: 91% vs 3%; divert: 91% vs 74%; position uncertainty 400 m: 96% vs 61%; unseen Site04 98% vs 82% (Site01: both 100%). Failures: noisy altimeter in good light 39% vs 99.5%; map shifted by 2 km 1% vs 35%. Live scan adds up to 24 points in three scenarios and removes 29 in the shadow + noisy one."),
+         para("4. Discussion", H2),
+         para("The map in the filter does most of the work; a plain tolerance gate does the rest in cliff cases. The four-step rule's distinctive parts (physical-possibility check, probation) add little there and introduce brittleness: the check rejects valid noisy readings when position is well known and any reading when the map is wrong. Its learned noise level is what helps with a noisy altimeter, at the cost of accepting more faulty readings. "
+              "For camera handling the practical lesson is to trust the matcher's confidence. An earlier version of this study compared a shadow-aware camera rule with judges that used every fix, and reported a large benefit; with a measured camera and a fair baseline that benefit disappeared."),
+         para("5. Limitations", H2),
+         ] + bullets([
+        "One simulator, one renderer and matcher, one unseen real site; no hardware, no real image-based navigation, no real HAKUTO-R altitude record.",
+        "Settings were first explored while looking at Site04 runs; the pre-registration limits this but does not erase it (disclosed in the registration).",
+        "Trust v2 assumes time-stamped readings and a registered map.",
+        "The no-map baseline uses a coarse reference rather than a terrain-relative filter."]) + [
+         para("6. Conclusion", H2),
+         para("For this class of descent, a map-tolerance gate with a confidence-gated camera and time-stamped altimeter readings is about as good as the four-step trust rule in the cliff cases. The trust rule is worth keeping only for its noise-learning, no-map fallback and divert behaviour, and it needs a physical check that scales with measurement noise and a way to detect a wrong map."),
+         para("References", H2),
+         para("Adams et al. (2025), AIAA SciTech, NTRS 20240014100 (PITFAL). Barker et al. (2021), Planetary and Space Science 203 (LOLA 5 m DEMs). Bertone et al., Planetary Science Journal, doi:10.3847/PSJ/ae5b70. Karlgaard et al. (2025), NTRS 20250010290. ispace HAKUTO-R Mission 1 debriefing (2023). "
+              "Code, data products, seeds and the pre-registration: github.com/AnakinSkywalker0/lantern-sensor-trust (private).", SM)]
+    build("Paper_Draft.pdf", s, "Paper Draft")
 
 
 if __name__ == "__main__":
     description()
     progress()
+    paper()
     print("wrote", os.listdir(DOCS))

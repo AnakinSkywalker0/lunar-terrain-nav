@@ -1,5 +1,5 @@
 {
-  "run": 0,
+  "run": 7,
   "track": {
     "start": [
       5530.741737109318,
@@ -15,6 +15,6 @@
   "outcome": {
     "fixed": "crash",
     "pitfal": "rough",
-    "trust": "landed"
+    "trust2": "landed"
   }
 }

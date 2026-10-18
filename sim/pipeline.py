@@ -226,6 +226,19 @@ def stage_sweeps():
     df[df.tag.str.startswith("sun_")].to_csv(os.path.join(OUT, "sweeps_sun.csv"), index=False)
 
 
+# ------------------------------------------------------------------ exploratory (post-hoc, NOT pre-registered)
+def stage_explore():
+    """Is trust v2's delayed-reading result due to its trust logic or to time stamps? Give other judges the same time stamps."""
+    key = ("site04", SUN_EL, SUN_AZ)
+    warm([key])
+    jobs = []
+    for sk in ["delayed", "shadow_noisy"]:
+        for j, ts in [("pitfal", True), ("tolerance", True), ("wait", True), ("trust", True), ("trust2", False), ("trust2", True)]:
+            jobs.append(dict(world=key, scen=engine.SCENARIOS[sk], judge=j, n=N_MAIN, seed=20260101, kw=dict(cam_policy="conf", timestamps=ts), tag=f"ts={ts}"))
+    res = pmap(jobs)
+    pd.DataFrame(res).to_csv(os.path.join(OUT, "exploratory_timestamps.csv"), index=False)
+
+
 # ------------------------------------------------------------------ replay export for Unity
 def stage_replay():
     key = ("site04", SUN_EL, SUN_AZ)

@@ -11,10 +11,11 @@
     "start_agl": 15000.0
   },
   "tuned": {
-    "K_prob": 8,
+    "K_prob": 10,
     "sigma_probation": 4.0
   },
   "n": 500,
   "sun_el": 2.0,
-  "sun_az": 270.0
+  "sun_az": 270.0,
+  "camera": "conf (matcher confidence gate) for every judge"
 }

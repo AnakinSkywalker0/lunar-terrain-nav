@@ -41,7 +41,7 @@ Last updated: 19 Oct 2026. Full write-up with figures: `Progress_Report.pdf`. Pl
 * Delayed readings: every method fails. No-map fallback: 0%.
 * The shadow-camera advantage disappears if shadow only mildly hurts the camera model.
 
-## Round 2 (19 Oct 2026, in progress)
+## Round 2 (19 Oct 2026, complete)
 
 Round 1 compared the trust layer's shadow-aware camera with judges that fed every camera fix to the filter, using a hand-made
 shadow-damage curve. That comparison was unfair, so round 2 redoes it on measured data. Round-1 results are kept in
@@ -60,22 +60,27 @@ Done so far:
 * **Replay HUD** now shows camera trust, altimeter state (used / rejected / on probation) and the learned noise level.
 * Disclosure in `PREREG.md`: a 100-run Site04 smoke test of the new code was seen before the document was written.
 
-Still to do: finish tuning (procedural + Site01), tag the frozen code `prereg-round2`, run the Site04 evaluation once, camera-policy comparison,
-sweeps, new replay, update the report, write the paper draft. Still missing: the real HAKUTO-R altitude record.
+Round-2 results (details in `Progress_Report.pdf`, draft paper in `Paper_Draft.pdf`):
+* Tuned on procedural worlds + Site01 (probation 10 samples, 4 sigma), frozen at git tag `prereg-round2`, Site04 run once.
+* Fixed gate 0.2% (HAKUTO-R reproduced); PITFAL-style 82%; plain map-tolerance gate 97%; trust v1 95%; trust v2 97% (cliff scenario).
+* Trust v2 wins with a noisy altimeter in shadow (88% vs 64%), with no map (91% vs 3%) and on a divert (91% vs 74%); it fails with a noisy altimeter in good light (39% vs 99.5%) and with a map shifted 2 km (1% vs 35%).
+* Camera: never use fixes without the matcher's confidence (0.4-3% success); Sun-geometry prediction adds nothing over confidence.
+* Delayed readings: solved by time stamps (plain tolerance gate 97.6% with them), not by trust logic (exploratory control).
+* Pre-registered hypotheses: P1 met, P2 mixed, P3 met in cliff cases and failed in shadow + noisy, P4 supported, P5 met, P6 met only via time stamps.
 
 ## Known issues
 
-* Camera-in-shadow model is an assumption and drives the headline result.
-* Probation compares readings to nominal noise, so it rejects noisy-but-valid readings.
-* Guidance and sensor settings were chosen while looking at Site04 smoke runs; only the probation settings and ML model were tuned strictly off-site.
-* Site01 and the real HAKUTO-R altitude record are not available.
+* Camera model is measured on one renderer, one matcher and one site (round 2); round 1's assumed model is retired.
+* Trust v2's physical-possibility check rejects noisy valid readings when position is well known, and everything when the map is wrong.
+* Guidance and sensor settings were first chosen while looking at Site04 smoke runs; round 2 pre-registered the rest (disclosure in `PREREG.md`).
+* The real HAKUTO-R altitude record is not available; the no-map baseline uses a coarse reference.
 * Unity: no LUMEN fix below ~80 m or above ~2.5 km; camera capture tool did not follow the lander in Play; the HUD shows no per-sensor trust bars yet.
 * Python bench starts at 15 km (plan); the Unity demo starts at 102.5 km from rest and ignores orbital speed.
 
-## Next steps (in order)
+## Next steps
 
-1. **Justify the camera model (recommended first).** It decides whether the headline result holds. Render real camera images in Unity under low Sun, measure how a simple crater/landmark matcher degrades with lit fraction, and replace the assumed shadow-damage curve with it. Re-run the camera-damage sensitivity.
-2. **Redesign probation** to learn the noise level from the data so noisy-but-valid readings are not rejected, and add a time-stamp check for delayed readings. Tune on procedural worlds, then run Site04 once with the settings frozen beforehand.
-3. **Fix the no-map fallback** (cautious mode currently scores 0%) and re-run the shifted-map and missing-map tests.
-4. **Get more data:** Site01 and PGDA Product 104 for a second real site (true unseen-site test); the published HAKUTO-R altitude record for the real-data replay.
-5. **Write the paper** (workshop-style controlled study) once 1-3 are done; add trust bars and live gate width to the Unity HUD for the demo.
+1. Repair the two weaknesses: make the physical check scale with the noise level; detect a wrong map (e.g. persistent disagreement between map and altimeter plus scan).
+2. Add a terrain-relative no-map baseline so the no-map comparison is fair.
+3. Repeat the camera survey on Site01 and with a second matcher; add a scattered-light prediction case.
+4. Obtain the HAKUTO-R altitude record for a real-data replay; consider PGDA Product 104 for a second high-detail site.
+5. Submit the paper draft after 1-3 (workshop-style controlled study), after a read-through by someone outside the project.

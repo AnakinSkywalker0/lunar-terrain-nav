@@ -15,16 +15,16 @@ PL = os.path.join(ROOT, "out", "plots")
 os.makedirs(PL, exist_ok=True)
 
 NAMES = {"fixed": "Fixed gate", "pitfal": "PITFAL-style", "tolerance": "Map tolerance", "wait": "Wait and see",
-         "second": "Second opinion", "ml": "ML classifier", "trust": "Trust layer (4-step)", "trust_scan": "Trust + live scan",
+         "second": "Second opinion", "ml": "ML classifier", "trust": "Trust v1 (4-step)", "trust2": "Trust v2", "trust2_scan": "Trust v2 + live scan", "trust_scan": "Trust + live scan",
          "trust_nocam": "ablation: no camera step", "trust_noprob": "ablation: no probation", "trust_nophys": "ablation: no physical check"}
 COL = {"fixed": "#d9534f", "pitfal": "#f0ad4e", "tolerance": "#8c6bb1", "wait": "#5bc0de", "second": "#999999", "ml": "#5cb85c",
-       "trust": "#1f6f43", "trust_scan": "#0b3d91", "trust_nocam": "#cfcfcf", "trust_noprob": "#bdbdbd", "trust_nophys": "#adadad"}
+       "trust": "#6aa57f", "trust2": "#1f6f43", "trust2_scan": "#0b3d91", "trust_scan": "#0b3d91", "trust_nocam": "#cfcfcf", "trust_noprob": "#bdbdbd", "trust_nophys": "#adadad"}
 
 
 def main_plots():
     df = pd.read_csv(os.path.join(OUT, "main_results.csv"))
     scen = list(dict.fromkeys(df.scenario))
-    judges = ["fixed", "pitfal", "tolerance", "wait", "second", "ml", "trust", "trust_scan"]
+    judges = ["fixed", "pitfal", "tolerance", "wait", "second", "ml", "trust", "trust2", "trust2_scan"]
     fig, axs = plt.subplots(1, len(scen), figsize=(4 * len(scen), 4.6), sharey=True)
     for ax, s in zip(np.atleast_1d(axs), scen):
         d = df[df.scenario == s].set_index("judge")
@@ -36,7 +36,7 @@ def main_plots():
         ax.set_xticks(x); ax.set_xticklabels([NAMES[j] for j in judges], rotation=60, ha="right", fontsize=8)
         ax.set_title(s, fontsize=9); ax.set_ylim(0, 105)
     np.atleast_1d(axs)[0].set_ylabel("Landing success (%), 95% interval")
-    fig.suptitle("Landing success on Site04 (unseen site), 500 runs per cell", fontsize=12)
+    fig.suptitle("Round 2: landing success on Site04 (unseen site), 500 runs per cell, same confidence-gated camera for every judge", fontsize=11)
     fig.tight_layout(); fig.savefig(os.path.join(PL, "01_success_by_scenario.png"), dpi=130); plt.close(fig)
 
     # error trade-off: false rejection vs missed faults
@@ -57,7 +57,7 @@ def main_plots():
         for s in scen:
             f.write(f"\n### {s}\n\n| judge | success % | 95% CI | alt RMS m | false rej % | missed fault % | cam weight in shadow | fuel left (landed) kg |\n|---|---|---|---|---|---|---|---|\n")
             d = df[df.scenario == s].set_index("judge")
-            for j in judges + ["trust_nocam", "trust_noprob", "trust_nophys"]:
+            for j in judges + ["trust_noprob", "trust_nophys"]:
                 r = d.loc[j]
                 f.write(f"| {NAMES[j]} | {r.success_pct:.1f} | {r.success_lo:.0f}-{r.success_hi:.0f} | {r.alt_rms_m:.0f} | {r.false_rej_pct:.1f} | {r.missed_fault_pct:.1f} | {r.cam_weight_in_shadow:.2f} | {r.fuel_left_landed_kg:.0f} |\n")
 
@@ -66,9 +66,9 @@ def sweep_plots():
     pa = os.path.join(OUT, "sweeps_a.csv")
     if os.path.exists(pa):
         a = pd.read_csv(pa)
-        h = a[a.sweep == "init_pos_sigma_m"]
+        h = a
         fig, ax = plt.subplots(figsize=(6, 4))
-        for j in ("pitfal", "trust"):
+        for j in ("pitfal", "trust2"):
             d = h[h.judge == j].sort_values("value")
             ax.errorbar(d.value.astype(float), d.success_pct, yerr=[d.success_pct - d.success_lo, d.success_hi - d.success_pct], marker="o", color=COL[j], label=NAMES[j], capsize=3)
         ax.set_xscale("log"); ax.set_xlabel("Initial horizontal position uncertainty (m)"); ax.set_ylabel("Landing success (%)")
@@ -81,7 +81,7 @@ def sweep_plots():
         fig, ax = plt.subplots(figsize=(8, 4))
         keys = list(dict.fromkeys(s.value))
         x = np.arange(len(keys)); wd = 0.38
-        for i, j in enumerate(("pitfal", "trust")):
+        for i, j in enumerate(("pitfal", "trust2")):
             d = s[s.judge == j].set_index("value").loc[keys]
             ax.bar(x + (i - 0.5) * wd, d.success_pct, wd, color=COL[j], label=NAMES[j])
         ax.set_xticks(x); ax.set_xticklabels(keys, rotation=45, ha="right", fontsize=8); ax.set_ylabel("Landing success (%)")
@@ -91,10 +91,10 @@ def sweep_plots():
 
 def replay_plot():
     rd = os.path.join(ROOT, "out", "replay")
-    if not os.path.exists(os.path.join(rd, "replay_trust.csv")):
+    if not os.path.exists(os.path.join(rd, "replay_trust2.csv")):
         return
     fig, axs = plt.subplots(2, 1, figsize=(9, 7), sharex=True)
-    for j, c in (("fixed", "#d9534f"), ("pitfal", "#f0ad4e"), ("trust", "#1f6f43")):
+    for j, c in (("fixed", "#d9534f"), ("pitfal", "#f0ad4e"), ("trust2", "#1f6f43")):
         d = pd.read_csv(os.path.join(rd, f"replay_{j}.csv"))
         axs[0].plot(d.t, d.agl_est - d.agl_true, color=c, label=NAMES[j])
         axs[1].plot(d.t, d.agl_true, color=c, label=NAMES[j])
