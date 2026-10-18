@@ -1,0 +1,2 @@
+run_id,scenario,end_reason,start_agl_m,duration_s,impact_vertical_mps,impact_horizontal_mps,fuel_left_kg,max_speed_mps,lumen_valid_fraction,lumen_first_fix_agl_m,lumen_max_shift_err_m,csv
+20261018_211822,site04_descent,touchdown,0,583.34,0.503,0,250.838,315.282,0.093,2463.444,48.674,run_20261018_211822.csv

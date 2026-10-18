@@ -1,0 +1,23 @@
+# Unity generated
+LANTERN/Library/
+LANTERN/Temp/
+LANTERN/Logs/
+LANTERN/UserSettings/
+LANTERN/obj/
+LANTERN/Build*/
+*.csproj
+*.sln
+*.pidb
+*.suo
+
+# Large NASA rasters (download from PGDA, see README)
+data/*.tif
+data/*.tiff
+
+# Python / caches / models
+__pycache__/
+*.pyc
+out/cache/
+out/mc/*.pkl
+out/mc/log_*.txt
+nohup.out
