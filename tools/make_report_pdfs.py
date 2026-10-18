@@ -195,7 +195,14 @@ def progress():
          para("7. Is it publishable?", H2),
          para("As a negative-and-mixed result, possibly at a workshop: a controlled study on real Site04 terrain showing that (a) a fixed rule reproduces the HAKUTO-R failure, (b) putting the map in the filter fixes most of it, (c) shadow-aware camera weighting gives the largest further gain but depends on the camera model, and (d) a four-step rule with probation adds little over a map-tolerance gate. "
               "To be stronger it would need a better-justified camera model, real image-based navigation, Site01 and a second real site, and a redesign of probation for noisy but valid readings. The data, code and seeds are in the repository."),
-         para("8. Repository map", H2),
+         para("8. Next steps", H2),
+         ] + bullets([
+        "<b>Justify the camera model first</b> (it decides whether the headline holds): render camera images in Unity under low Sun, measure how a simple landmark matcher degrades with lit fraction, replace the assumed shadow-damage curve, and re-run the sensitivity test.",
+        "Redesign probation to learn the noise level from the data, add a time-stamp check for delayed readings, tune on procedural worlds, then run Site04 once with settings frozen beforehand.",
+        "Fix the no-map fallback (currently 0%) and re-run the shifted-map and missing-map tests.",
+        "Obtain Site01 and PGDA Product 104 for a second real site, and the published HAKUTO-R altitude record for a real-data replay.",
+        "Write the workshop-style paper after the first three steps; add per-sensor trust bars and live gate width to the Unity HUD."]) + [
+         para("9. Repository map", H2),
          table([["Path", "Contents"],
                 ["LANTERN/", "Unity 6 project: Site04 and Site04Replay scenes, lander, autopilot, LUMEN, HUD, logger, replay"],
                 ["sim/", "Python test bench and pipeline (world.py, engine.py, pipeline.py, plots.py)"],

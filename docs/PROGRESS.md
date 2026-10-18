@@ -1,0 +1,59 @@
+# LANTERN progress log
+
+Project: Sensor Trust for Lunar South Pole Landing (context-aware sensor trust layer, tested on NASA PGDA Site04).
+Last updated: 19 Oct 2026. Full write-up with figures: `Progress_Report.pdf`. Plan: `../deliverables/`.
+
+## Milestones
+
+| Date | Milestone | Evidence |
+|---|---|---|
+| 16 Oct | Site04 DEM rendered; plan documents written; Unity Site04 scene, lander physics and LUMEN live scan built | `deliverables/`, `out/site04/`, `LANTERN/` |
+| 18 Oct | Unity connection verified; Play mode stall diagnosed (editor inactive) and fixed with `runInBackground` | Unity console, frame counters |
+| 18 Oct | Landing site chosen from DEM-derived slope (supplied slope file is truncated): Unity (6198, 8512), 2.8 deg max slope over 45 m | `Site04SceneBuilder.cs` |
+| 18 Oct | Descent autopilot; start moved to 102.5 km; time warp; touchdown 0.50 m/s, 0 m/s horizontal, 251 kg fuel left | `out/runs/`, `out/plots/unity_descent.png` |
+| 18 Oct | LUMEN fixed for altitude (patch cell scales with beam spacing): fix from 2463 m down, 4 m error at 155 m | `LumenModule.cs`, run CSV |
+| 18 Oct | HUD text scaled to screen; per-run telemetry CSV logger | `LanderHud.cs`, `TelemetryLogger.cs` |
+| 18 Oct | Project description and progress PDFs; private GitHub repo created | `docs/`, repo |
+| 18-19 Oct | Python test bench: worlds, batched EKF, 7 judges + 3 ablations, 5 scenarios, pipeline | `sim/` |
+| 19 Oct | ML classifier (77.7% acc, AUC 0.85) and probation tuning on procedural worlds only | `out/mc/ml_report.json`, `tuning_procedural.csv` |
+| 19 Oct | 500-run Site04 Monte Carlo, sweeps, controlled same-camera comparison, camera-damage sensitivity | `out/mc/` |
+| 19 Oct | Unity replay scene (`Site04Replay`) showing fixed / PITFAL-style / trust filters side by side | `LANTERN/Assets/Scenes/`, `out/replay_final.png` |
+| 19 Oct | Results report with conclusions and caveats | `docs/Progress_Report.pdf` |
+
+## Status against the plan objectives
+
+| # | Objective | Status |
+|---|---|---|
+| O1 | Hazard and blind-spot maps | Done inside the test bench (terrain-height spread, lit fraction). Site04 only; Site01 data missing |
+| O2 | Trust layer and fault-vs-terrain check | Done; evaluated |
+| O3 | Reproduce baseline failures | Done: cliff, shadow, delay, dropout. HAKUTO-R failure reproduced |
+| O4 | Monte Carlo comparison (~500 runs per scenario) | Done: 500 runs per cell, 95% intervals |
+| O5 | Reproducible release and side-by-side replay | Done (repo, seeds, replay scene). No in-flight trust-bar HUD yet |
+| O6 | Site-change robustness | Done: unseen site, divert, shifted map, missing map. Missing-map fallback fails |
+| O7 | Live 3D scan extension | Done: LUMEN in Unity; three-way check in the bench |
+
+## Headline results (Site04, 500 runs, Sun from the west)
+
+* Fixed rule: 0.4% success (reproduces HAKUTO-R). Map in the filter (PITFAL-style): 49%.
+* Trust layer: 89% (cliff), 85% (cliff + faults), 55% (shadow + noisy altimeter).
+* With identical camera handling the simple map-tolerance gate scores 93%: the four-step rule's advantage is the shadow-aware camera, not the altimeter logic.
+* Trust layer worse than PITFAL-style with a noisy altimeter in good light (61% vs 99%).
+* Delayed readings: every method fails. No-map fallback: 0%.
+* The shadow-camera advantage disappears if shadow only mildly hurts the camera model.
+
+## Known issues
+
+* Camera-in-shadow model is an assumption and drives the headline result.
+* Probation compares readings to nominal noise, so it rejects noisy-but-valid readings.
+* Guidance and sensor settings were chosen while looking at Site04 smoke runs; only the probation settings and ML model were tuned strictly off-site.
+* Site01 and the real HAKUTO-R altitude record are not available.
+* Unity: no LUMEN fix below ~80 m or above ~2.5 km; camera capture tool did not follow the lander in Play; the HUD shows no per-sensor trust bars yet.
+* Python bench starts at 15 km (plan); the Unity demo starts at 102.5 km from rest and ignores orbital speed.
+
+## Next steps (in order)
+
+1. **Justify the camera model (recommended first).** It decides whether the headline result holds. Render real camera images in Unity under low Sun, measure how a simple crater/landmark matcher degrades with lit fraction, and replace the assumed shadow-damage curve with it. Re-run the camera-damage sensitivity.
+2. **Redesign probation** to learn the noise level from the data so noisy-but-valid readings are not rejected, and add a time-stamp check for delayed readings. Tune on procedural worlds, then run Site04 once with the settings frozen beforehand.
+3. **Fix the no-map fallback** (cautious mode currently scores 0%) and re-run the shifted-map and missing-map tests.
+4. **Get more data:** Site01 and PGDA Product 104 for a second real site (true unseen-site test); the published HAKUTO-R altitude record for the real-data replay.
+5. **Write the paper** (workshop-style controlled study) once 1-3 are done; add trust bars and live gate width to the Unity HUD for the demo.
