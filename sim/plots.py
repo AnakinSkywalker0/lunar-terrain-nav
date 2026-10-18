@@ -77,6 +77,7 @@ def sweep_plots():
     ps = os.path.join(OUT, "sweeps_sun.csv")
     if os.path.exists(ps):
         s = pd.read_csv(ps)
+        s['value'] = s.tag.str[4:]
         fig, ax = plt.subplots(figsize=(8, 4))
         keys = list(dict.fromkeys(s.value))
         x = np.arange(len(keys)); wd = 0.38

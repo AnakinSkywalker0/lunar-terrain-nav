@@ -34,6 +34,8 @@ class Scenario:
     divert: bool = False
     t_max: float = 800.0
     scan_ok: bool = True
+    cam_sig_gain: float = 10.0          # how badly a shadowed camera is wrong (noise multiplier at full dark)
+    cam_bias_gain: float = 0.7          # persistent shadow bias gain
 
 
 SCENARIOS = {
@@ -131,7 +133,7 @@ class ProbationState:
 
 
 def simulate(world, track, scen, judge, draws, veh=None, scan=False, ml_model=None, collect=None,
-             record_idx=None, sigma_probation=3.0, K_prob=10, ellipse_k=2.0, wide_gate=1.0):
+             record_idx=None, sigma_probation=3.0, K_prob=10, ellipse_k=2.0, wide_gate=1.0, cam_aware=None):
     """Run all N descents for one judge. Returns a dict of per-run result arrays (+ optional recorded traces)."""
     veh = veh or Vehicle()
     opts = {"cam": True, "prob": True, "phys": True}
@@ -139,6 +141,7 @@ def simulate(world, track, scen, judge, draws, veh=None, scan=False, ml_model=No
     if judge == "trust_noprob": opts["prob"] = False
     if judge == "trust_nophys": opts["phys"] = False
     is_trust = judge.startswith("trust")
+    cam_use_aware = (is_trust and opts["cam"]) if cam_aware is None else cam_aware
     n = draws.n
     T = draws.T
     sx, sy = track["start"]
@@ -439,12 +442,12 @@ def simulate(world, track, scen, judge, draws, veh=None, scan=False, ml_model=No
             agl_for = np.maximum(agl_true, 0)
             sig_n = 20.0 + 0.004 * agl_for
             bad = (1.0 - lit_true)
-            sig_a = sig_n * (1.0 + 10.0 * bad ** 2)
-            meas = p[:, 0:2] + shift + 0.7 * draws.cam_bias * (bad ** 2)[:, None] + draws.cam_g[:, cam_i, :] * sig_a[:, None]
+            sig_a = sig_n * (1.0 + scen.cam_sig_gain * bad ** 2)
+            meas = p[:, 0:2] + shift + scen.cam_bias_gain * draws.cam_bias * (bad ** 2)[:, None] + draws.cam_g[:, cam_i, :] * sig_a[:, None]
             Rc = sig_n ** 2
             use = sel.copy()
             wgt = np.ones(n)
-            if is_trust and opts["cam"]:
+            if cam_use_aware:
                 lit_pred = stats.litfrac(x_est[:, 0], x_est[:, 1], np.clip(np.maximum(x_est[:, 2] - hp, 0) * 0.36, 60, 3840))
                 use &= lit_pred >= 0.25
                 wgt = np.where(lit_pred >= 0.25, np.clip(lit_pred, 0.25, 1.0) ** 2, 0.0)
@@ -456,7 +459,7 @@ def simulate(world, track, scen, judge, draws, veh=None, scan=False, ml_model=No
                 _scalar_update(nav.x, nav.P, Hc, meas[:, ax] - nav.x[:, ax], Rc, use)
             lit_cam_prev_ok = ((meas - nav.x[:, 0:2]) ** 2).sum(axis=1) < 9.0 * (Rc * 2 + 400.0)
             shadow = sel & (lit_true < 0.3)
-            res["cam_w_sum"] += np.where(shadow, np.where(use, wgt if (is_trust and opts["cam"]) else 1.0, 0.0), 0.0)
+            res["cam_w_sum"] += np.where(shadow, np.where(use, wgt if cam_use_aware else 1.0, 0.0), 0.0)
             res["cam_w_n"] += shadow
             cam_i += 1
         # ---------------- live scan (extension) ----------------
@@ -479,7 +482,7 @@ def simulate(world, track, scen, judge, draws, veh=None, scan=False, ml_model=No
         res["alt_sq"] += np.where(alive, (agl_b - agl_true) ** 2, 0.0)
         res["alt_n"] += alive
         res["z_sq"] += np.where(alive, (nav.x[:, 2] - p[:, 2]) ** 2, 0.0)
-        if rec is not None:
+        if rec is not None and (alive[record_idx] or contact[record_idx]):
             i = record_idx
             rec["t"].append(t + DT)
             rec["x"].append(p[i, 0]); rec["y"].append(p[i, 1]); rec["z"].append(p[i, 2])

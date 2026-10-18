@@ -196,6 +196,31 @@ def stage_sweeps():
     df[df.tag.str.startswith("sun_")].to_csv(os.path.join(OUT, "sweeps_sun.csv"), index=False)
 
 
+# ------------------------------------------------------------------ controlled comparisons (added after the main run)
+ALT_JUDGES = ["fixed", "pitfal", "tolerance", "wait", "second", "ml", "trust_nocam"]
+
+
+def stage_controlled():
+    """Every altimeter judge gets the SAME shadow-aware camera policy, so only the altimeter logic differs;
+    then the camera-damage sensitivity of the headline comparison, and a well-lit (Sun from the east) check."""
+    key = ("site04", SUN_EL, SUN_AZ)
+    lit_key = ("site04", SUN_EL, 90.0)
+    warm([key, lit_key])
+    jobs = []
+    for sk in ["cliff", "cliff_fault", "shadow_noisy"]:
+        for j in ALT_JUDGES + ["trust"]:
+            jobs.append(dict(world=key, scen=engine.SCENARIOS[sk], judge=j, n=N_MAIN, seed=20260101, kw=dict(cam_aware=True), tag="camaware"))
+    for gain in (0.0, 2.0, 5.0, 10.0):
+        sc = engine.Scenario("cliff", burst_rate=1 / 150.0, cam_sig_gain=gain, cam_bias_gain=0.7 * gain / 10.0)
+        for j in ("pitfal", "trust"):
+            jobs.append(dict(world=key, scen=sc, judge=j, n=300, seed=81, tag=f"camdamage{gain}"))
+    for sk in ["cliff", "cliff_fault", "shadow_noisy"]:
+        for j in ALT_JUDGES + ["trust"]:
+            jobs.append(dict(world=lit_key, scen=engine.SCENARIOS[sk], judge=j, n=300, seed=91, tag="lit_east"))
+    res = pmap(jobs)
+    pd.DataFrame(res).to_csv(os.path.join(OUT, "controlled.csv"), index=False)
+
+
 # ------------------------------------------------------------------ replay export for Unity
 def stage_replay():
     key = ("site04", SUN_EL, SUN_AZ)

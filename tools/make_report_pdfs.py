@@ -18,7 +18,7 @@ BUL = ParagraphStyle("BUL", parent=B, leftIndent=12, bulletIndent=2)
 
 
 def para(t, s=B): return Paragraph(t, s)
-def bullets(items): return [Paragraph(i, BUL, bulletText="•") for i in items]
+def bullets(items): return [Paragraph(i, BUL, bulletText="â€¢") for i in items]
 
 
 def table(rows, widths, head=True):
@@ -87,13 +87,13 @@ def description():
                [28, 92, 54]),
          para("5. Objectives and experiments", H2),
          table([["#", "Objective (from the project plan)", "Status"],
-                ["O1", "Hazard (cliff) and blind-spot (shadow) maps for Site04 and Site01", "Partly: DEM slope/shadow rasters exist; trust maps are computed inside the test bench"],
-                ["O2", "Trust layer producing gate width and measurement noise, with fault-vs-terrain check", "Implemented in sim/engine.py; not yet evaluated at scale"],
-                ["O3", "Reproduce baseline failures (cliff, shadow, delay, dropout)", "Scenarios implemented; early small runs reproduce the cliff failure"],
-                ["O4", "Compare baseline, PITFAL-style and trust layer over ~500 Monte Carlo runs per scenario", "Pipeline written; not run"],
-                ["O5", "Release Unity project, code, scenarios and a side-by-side replay", "Replay player written; not built into a scene or run"],
-                ["O6", "Site-change robustness (unseen site, divert, wrong or missing map)", "Implemented as sweeps; not run"],
-                ["O7", "Live 3D scan extension with three-way check", "LUMEN works in Unity; scan fix and check modelled in the test bench"]],
+                ["O1", "Hazard (cliff) and blind-spot (shadow) maps for Site04 and Site01", "Done inside the test bench: cliff (terrain-height spread) and shadow (lit-fraction) statistics from the DEM and Sun position"],
+                ["O2", "Trust layer producing gate width and measurement noise, with fault-vs-terrain check", "Done and evaluated: sim/engine.py (500 runs per scenario)"],
+                ["O3", "Reproduce baseline failures (cliff, shadow, delay, dropout)", "Done: cliff failure reproduced (fixed rule fails 99.6% of runs); shadow, delay and dropout scenarios run"],
+                ["O4", "Compare baseline, PITFAL-style and trust layer over ~500 Monte Carlo runs per scenario", "Done: 500 runs per cell, 11 judges and ablations, 95% intervals"],
+                ["O5", "Release Unity project, code, scenarios and a side-by-side replay", "Done: Site04Replay scene plays a recorded descent with all three filters side by side"],
+                ["O6", "Site-change robustness (unseen site, divert, wrong or missing map)", "Done: unseen site, mid-descent divert, shifted map, missing map"],
+                ["O7", "Live 3D scan extension with three-way check", "Done: LUMEN in Unity; scan fix and three-way check in the test bench"]],
                [10, 100, 64]),
          para("Metrics: landing success (upright within speed and tilt limits), altitude error (RMS), false rejection of valid altimeter readings, missed injected faults, "
               "camera weight in shadow, fuel left at touchdown, and success on an unseen site compared with the tuned site. Landing success here means: vertical speed at most 2 m/s, horizontal speed at most 1.5 m/s, ground slope at most 10 degrees, fuel remaining."),
@@ -120,60 +120,89 @@ def description():
 
 # =============================================================== PROGRESS REPORT
 def progress():
-    s = [para("Progress Report", H1),
-         para("Sensor Trust for Lunar South Pole Landing - state of the LANTERN testbed on 18 October 2026", SM), Spacer(1, 4),
-         para("Summary", H2),
-         para("The Unity side is working and verified: a lander descends from 102.5 km above a flat spot on the Site04 crater floor and touches down at 0.50 m/s under autopilot, with a live-scan position fix (LUMEN) and per-run data logging. "
-              "A fast Python test bench for the 500-run comparison is written and was smoke-tested on 40-100 runs, but <b>the full Monte Carlo evaluation, the ML classifier, the tuning, the sweeps and the Unity replay have not been run</b>. "
-              "No result in this report from the Python bench should be quoted as a finding."),
+    s = [para("Progress Report and Results", H1),
+         para("Sensor Trust for Lunar South Pole Landing - LANTERN testbed, 19 October 2026", SM), Spacer(1, 4),
+         para("Conclusion in plain words", H2),
+         para("<b>1.</b> A navigation filter with a fixed rule fails on real Site04 terrain exactly like HAKUTO-R: it rejects 99% of valid altimeter readings and the lander crashes (about 500 of 500 runs). "
+              "<b>2.</b> Simply putting the terrain map into the filter fixes most of that. "
+              "<b>3.</b> The biggest further gain comes from not believing the camera when the ground below is in shadow: with it, landing success is 89% instead of about 49%. "
+              "<b>4.</b> The specific four-step altimeter rule (physical-possibility check plus probation) did <b>not</b> beat a simpler map-tolerance gate once every method was given the same camera handling (89% versus 93%), and it performs worse when the altimeter is noisy but the scene is well lit (61% versus 99%). "
+              "<b>5.</b> The camera result depends on how badly my simulated camera is hurt by shadow; if shadow hurts it only mildly, the PITFAL-style filter does as well or better. "
+              "<b>6.</b> Delayed altimeter readings defeat every method, and the trust layer's no-map fallback failed. "
+              "So the honest message is: shadow-aware sensor weighting matters a lot, the four-step altimeter rule adds little beyond a simple tolerance gate, and the evidence is simulation-only."),
          para("1. Verified in Unity", H2),
-         table([["Item", "Result", "How it was checked"],
-                ["Unity connection and Play mode", "Works. Play did not advance while the editor window was inactive; Application.runInBackground fixes it and is now set by the autopilot", "Frame counter and Time.time sampled in Play"],
-                ["Landing site", "Unity (6198, 8512), 1.88 km from the tile centre, 1729.5 m elevation, mean slope 1.1 deg, 45 m-window maximum 2.8 deg. The tile centre itself is 33 deg", "Slope derived from the DEM (the supplied slope file is truncated); Unity terrain height at the point equals the DEM"],
-                ["Shadows", "Low-Sun cast shadows render across the terrain", "Camera captures"],
-                ["Autopilot, 500 m start", "First run touched down at 2.07 m/s (over target); after retuning, 0.50 m/s", "Console and sampled state"],
-                ["Autopilot, 102.5 km start", "Touchdown at t = 583-587 s, 0.50 m/s vertical, 0 m/s horizontal, 0.0 deg tilt, 251 kg fuel left (549 kg used), exactly on the target. Coast about 190 s to 312 m/s, then about 0.69 throttle to touchdown", "Two full runs and the logged CSV"],
-                ["LUMEN live scan", "Shift opposed the injected error (+60, -40) m: (-64, 32) m at 390 m and 272 m altitude, confidence 1.00. After the altitude-scaled cell fix it gets a fix from 2463 m down; error 47 m at 2205 m (41 m cell), 14.5 m at 921 m, 4 m at 155 m (8 m cell). Valid in 9% of logged rows; median error 8.9 m; max 48.7 m", "Logged run CSV (108 valid fixes)"],
-                ["HUD", "Text now scales to 3% of screen height with a dark backing box and is readable at 1920x1080", "Game-view screenshot (out/hud_check.png)"],
-                ["Data logging", "TelemetryLogger writes per-run CSV and runs_summary.csv; flushed per row. The first run's summary line recorded a start altitude of 0 (logging bug, fixed afterwards, fix not re-verified)", "Files in out/runs/"]],
-               [34, 96, 44]),
-         Spacer(1, 4), img("out/plots/unity_descent.png", 120),
-         para("Figure 2. Logged Unity descent from 102.5 km: altitude, descent rate with throttle, and LUMEN position error.", SM),
-         img("out/unity_landed_view.png", 130), para("Figure 3. Lander on the Site04 crater-floor landing spot (Unity camera capture).", SM),
-         para("2. Built but not run at scale", H2),
-         para("<b>Python test bench (sim/).</b> world.py (Site04 and procedural crater worlds, onboard map with registration shift and noise, unmapped craters, coarse reference surface, shadow and lighting statistics), "
-              "engine.py (batched truth physics, IMU, altimeter, camera and live-scan sensors, fault bursts, delay, dropout, a 9-state EKF, guidance on the estimate, seven judges plus three ablations), "
-              "pipeline.py (parallel ML, tuning, main, sweeps and replay stages) and plots.py. Scenarios: cliff crossing (HAKUTO-R), cliff with frequent faults, shadow with noisy altimeter (IM-2), delayed readings (ispace M2), altimeter dropout (IM-1)."),
-         para("<b>Unity replay.</b> ReplayPlayer.cs and ReplaySceneBuilder.cs compile without errors; the replay scene has not been built because no replay data has been exported yet."),
-         para("<b>Smoke test only (40-100 runs, Site04, Sun from the west, not tuned, not a result).</b> The fixed-gate baseline rejected about 99% of valid readings and crashed in nearly every run, which matches the HAKUTO-R failure mechanism. "
-              "The trust layer landed more often than the PITFAL-style filter in the cliff and shadow scenarios, but scored 0% on delayed readings and about half on dropout. "
-              "These early numbers came from a model whose guidance and sensor settings were chosen while looking at Site04 runs, so they need the tuning-on-procedural-only procedure before any claim."),
-         para("3. Not done", H2),
+         table([["Item", "Result"],
+                ["Descent", "From 102.5 km above a flat spot at Site04 (Unity 6198, 8512; 2.8 deg maximum slope over 45 m): touchdown at t = 583-587 s, 0.50 m/s vertical, 0 m/s horizontal, 0.0 deg tilt, 251 kg fuel left, exactly on target"],
+                ["Live scan (LUMEN)", "Fix from 2463 m down. Error 47 m at 2205 m (41 m cell), 14.5 m at 921 m, 4 m at 155 m (8 m cell); median 8.9 m over 108 fixes. No fix below about 80 m or above about 2.5 km"],
+                ["HUD, logging, shadows", "HUD text scales with screen height; every run writes CSV to out/runs/; low-Sun cast shadows render"],
+                ["Replay scene", "Site04Replay plays one recorded descent with the three filters side by side (true lander solid, filter estimate as a ghost, live altitude error and gate)"]],
+               [34, 140]),
+         Spacer(1, 3), img("out/plots/unity_descent.png", 105), para("Figure 2. Logged Unity descent from 102.5 km.", SM),
+         img("out/replay_final.png", 150),
+         para("Figure 3. Unity replay of one descent (cliff plus faults). The fixed-gate lander (red) hovers 1372 m above ground believing it is 62 m below the surface; the PITFAL-style (yellow) and trust-layer (green) landers have landed.", SM),
+         PageBreak(),
+         para("2. Monte Carlo results (Python test bench, Site04, never used for tuning)", H2),
+         para("500 seeded runs per cell. Every method sees the same descents, noise and faults. The ML classifier and the probation settings were trained or tuned on procedural crater worlds only (classifier: 77.7% accuracy, AUC 0.85 on a held-out world; probation window 8 samples, 4 sigma). Sun 2 degrees above the horizon from the west, so the descent enters shadow."),
+         table([["Scenario", "Fixed", "PITFAL-style", "Map tol.", "Wait&see", "2nd opinion", "ML", "Trust 4-step", "Trust + scan"],
+                ["Cliff (HAKUTO-R)", "0.4", "49.0", "45.6", "53.0", "46.2", "48.8", "89.2", "100.0"],
+                ["Cliff + faults", "0.0", "45.6", "40.4", "53.6", "32.8", "46.0", "84.6", "100.0"],
+                ["Shadow + noisy altimeter (IM-2)", "0.0", "27.0", "18.0", "33.2", "33.8", "25.0", "55.0", "64.2"],
+                ["Delayed altimeter (ispace M2)", "0.0", "1.2", "4.0", "35.6", "18.4", "23.8", "0.2", "2.2"],
+                ["Altimeter dropout (IM-1)", "0.0", "7.8", "9.0", "7.4", "7.6", "8.6", "44.4", "55.8"]],
+               [38, 14, 20, 16, 18, 20, 12, 20, 20]),
+         para("Table 1. Landing success (%). 95% intervals are about +/-4 points (cliff row: trust 86-92, PITFAL 45-53). Judges other than the trust layer used the camera whether or not the ground was lit.", SM),
+         img("out/plots/01_success_by_scenario.png", 170),
+         para("3. Controlled checks that change the interpretation", H2),
+         para("Table 1 compares the trust layer, which includes shadow-aware camera handling, with judges that lack it. To separate the two ideas, every judge was re-run with the same shadow-aware camera (500 runs):"),
+         table([["Scenario", "Map tol.", "Trust 4-step", "PITFAL-style", "Wait&see", "ML", "2nd opinion"],
+                ["Cliff", "93.0", "89.2", "72.8", "68.0", "64.4", "33.6"],
+                ["Cliff + faults", "90.6", "84.6", "73.2", "68.8", "57.8", "1.0"],
+                ["Shadow + noisy altimeter", "60.0", "55.0", "52.8", "22.8", "14.4", "5.8"]],
+               [44, 22, 26, 26, 22, 18, 24]),
+         para("Table 2. Landing success (%) with identical camera handling. The simple map-tolerance gate matches or beats the four-step rule.", SM),
+         img("out/plots/06_altimeter_logic_only.png", 170),
+         para("Ablations (cliff scenario): removing the camera step drops the trust layer from 89% to 47%; removing probation leaves it at 89%; removing the physical-possibility check leaves it at 88%. In the shadow-plus-noise scenario probation helps (55% versus 38% without), while the physical check hurts (63% without it)."),
+         img("out/plots/07_camera_damage_sensitivity.png", 110),
+         para("Figure 4. Sensitivity to the camera model. If shadow only mildly degrades the camera, PITFAL-style reaches 94-100% and the trust layer's advantage disappears; the trust layer is flat at 88% because it ignores the camera in the dark."),
+         para("In a well-lit run (Sun from the east) every map-based judge except the second-opinion one lands at least 98.7% in the cliff scenarios, so the trust layer is not harmful there. With a noisy altimeter in good light, though, PITFAL-style lands 99% and the trust layer only 61%, because probation compares readings to the nominal noise level and rejects noisy but valid ones."),
+         PageBreak(),
+         para("4. Sweeps and robustness (300 runs each unless noted)", H2),
+         table([["Test", "PITFAL-style", "Trust layer", "Reading"],
+                ["Initial position error 5 m / 50 m / 200 m / 400 m (cliff)", "48 / 48 / 49 / 45", "94 / 92 / 81 / 73", "Trust layer gap is largest when position is well known, the opposite of hypothesis H3; the gap is driven by shadow handling"],
+                ["Mid-descent divert", "54.3", "72.7", "Works without re-planning; one test, not tuned"],
+                ["Map shifted by 2 km", "17.7", "26.0", "Both fail; false rejections 70% and 90%"],
+                ["No map", "6.7", "0.0", "The trust layer's cautious fallback does not work (fixed rule: 0)"],
+                ["Unseen site vs tuned site (shadow + noise)", "29.3 vs 35.3", "51.7 vs 41.7", "No drop on the unseen site; the procedural world is simply harder"],
+                ["Sun azimuth 90 degrees (well lit), shadow + noise", "99.0", "58.0", "Trust layer worse in good light with noisy altimeter"],
+                ["Sun azimuth 180 / 270 degrees, elevation 1.5-3 degrees", "28 to 31", "55.0", "Identical for all three elevations: the lander is in shadow throughout"]],
+               [58, 24, 24, 68]),
+         img("out/plots/03_when_does_it_help.png", 100), img("out/plots/04_lighting_sweep.png", 120),
+         para("5. Hypotheses against the plan", H2),
+         table([["#", "Expectation", "Outcome"],
+                ["H1", "Four-step rule rejects far fewer real cliff readings than the fixed rule without being fooled noticeably more (at most 1 extra fooled run in 100)", "Versus the fixed rule: yes (99% false rejection down to 0.2%). Versus PITFAL-style: false rejection 8.3% down to 0.2%, but missed faults rise from 7.3% to 10.7%, which breaks the stated threshold"],
+                ["H2", "Shadow-aware camera trust reduces error in dark areas", "Supported in this model (89% versus 47-49%), but depends on how badly shadow hurts the camera; see Figure 4"],
+                ["H3", "When position is already well known, the NASA-style method does as well as ours", "Not supported here; confounded by the shadow effect"],
+                ["H4", "The rule still works on a site it was never tuned on", "Supported: 51.7% on Site04 versus 41.7% on the tuned world, with the trust layer ahead of PITFAL on both"]],
+               [10, 76, 88]),
+         para("6. Limits and honest caveats", H2),
          ] + bullets([
-        "The 500-run Monte Carlo on Site04, ablation table, lighting sweep, position-uncertainty sweep, wrong/missing-map and divert tests.",
-        "ML classifier training (a run was started and stopped at the user's request; no model was produced) and tuning on procedural worlds.",
-        "Site01 tuning data (the tile is not in the repository); the HAKUTO-R altitude-curve replay (debriefing data not available).",
-        "Building and running the Unity replay scene; the in-flight HUD showing true vs estimated altitude, gate width and per-sensor trust bars.",
-        "LUMEN has no fix below roughly 80 m (footprint smaller than the 40 cells needed) and none above about 2.5 km (by design); only partly investigated."]) + [
-         para("4. Deviations and caveats", H2),
-         ] + bullets([
-        "The plan scopes powered descent from about 15 km; the Unity demonstration starts at 102.5 km at the user's request, from rest, falling straight down. A real descent from 100 km altitude starts with about 1.7 km/s of horizontal speed, which the autopilot does not handle. The Python bench starts at 15 km.",
-        "Several Unity checks (HUD, camera) rely on one screenshot each; the camera capture tool did not appear to follow the lander during Play.",
-        "The simulated 'real Moon' differs from the onboard map only by synthetic craters, noise and shifts, not by real unmapped terrain."]) + [
-         para("5. Next steps", H2),
-         ] + bullets([
-        "Run ML training and tuning on procedural worlds, then the Site04 evaluation with fixed seeds.",
-        "Export a replay where the baseline crashes and the trust layer lands; build and capture the Unity replay scene.",
-        "Write up results with confidence intervals and the stated limits."]) + [
-         para("6. Repository map", H2),
+        "Everything is simulation. The shadowed-camera model, the unmapped-terrain roughness and the fault models are my assumptions, and the headline result is sensitive to the camera model (Figure 4).",
+        "Guidance, sensor models and the first judge designs were chosen while looking at Site04 smoke runs. Only the probation settings and the ML model were tuned strictly on procedural worlds; the controlled comparisons in section 3 were added after the main run because the first table confounded two ideas.",
+        "Site01 is not available, so the tuned site is procedural terrain only. The HAKUTO-R altitude debriefing curve was not available, so no replay of the real data was done.",
+        "The Python bench starts at 15 km as the plan specifies; the Unity demonstration starts at 102.5 km from rest at the user's request, which ignores the real orbital speed.",
+        "Delayed readings, dead altimeters and a missing map are not solved, as the plan stated for the first two.",
+        "The ML classifier is moderate and was no better than PITFAL-style in the tests."]) + [
+         para("7. Is it publishable?", H2),
+         para("As a negative-and-mixed result, possibly at a workshop: a controlled study on real Site04 terrain showing that (a) a fixed rule reproduces the HAKUTO-R failure, (b) putting the map in the filter fixes most of it, (c) shadow-aware camera weighting gives the largest further gain but depends on the camera model, and (d) a four-step rule with probation adds little over a map-tolerance gate. "
+              "To be stronger it would need a better-justified camera model, real image-based navigation, Site01 and a second real site, and a redesign of probation for noisy but valid readings. The data, code and seeds are in the repository."),
+         para("8. Repository map", H2),
          table([["Path", "Contents"],
-                ["LANTERN/", "Unity 6 project (scene Site04, scripts, editor builders)"],
-                ["sim/", "Python test bench and experiment pipeline"],
-                ["tools/", "Heightmap and rendering scripts, PDF generator"],
-                ["deliverables/", "Project plan PDFs (literature review, gap, objectives, methodology, summaries)"],
-                ["docs/", "This project description and progress report"],
-                ["out/", "Plots, telemetry runs, figures (large caches excluded from git)"],
-                ["data/", "NASA PGDA GeoTIFFs (excluded from git; see README)"]],
+                ["LANTERN/", "Unity 6 project: Site04 and Site04Replay scenes, lander, autopilot, LUMEN, HUD, logger, replay"],
+                ["sim/", "Python test bench and pipeline (world.py, engine.py, pipeline.py, plots.py)"],
+                ["out/mc/", "Monte Carlo results: main_results.csv/.md, controlled.csv, sweeps, tuning, ML report; per-run CSVs"],
+                ["out/plots/, out/replay/", "Result figures; replay data for Unity"],
+                ["docs/", "This report and the project description"],
+                ["data/", "NASA PGDA GeoTIFFs (not in git; see README)"]],
                [34, 140])]
     build("Progress_Report.pdf", s, "Progress Report")
 
