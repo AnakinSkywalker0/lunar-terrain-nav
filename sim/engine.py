@@ -147,9 +147,20 @@ class ProbationState:
 
 
 def simulate(world, track, scen, judge, draws, veh=None, scan=False, ml_model=None, collect=None,
-             record_idx=None, sigma_probation=3.0, K_prob=10, ellipse_k=2.0, wide_gate=1.0, cam_policy=None, timestamps=None):
-    """Run all N descents for one judge. Returns a dict of per-run result arrays (+ optional recorded traces)."""
+             record_idx=None, sigma_probation=3.0, K_prob=10, ellipse_k=2.0, wide_gate=1.0, cam_policy=None, timestamps=None,
+             ml2_mode="soft", ml2_vertical_only=False, ml2_terrain_R=False):
+    """Run all N descents for one judge. Returns a dict of per-run result arrays (+ optional recorded traces).
+
+    judge "ml2" (added on branch ml-eval): learned fault/terrain classifier with a 10 s history of flagged readings
+    (sim/ml_features.py, models/fault_clf_v3.pkl, passed as ml_model). ml2_mode: "soft" = accept every flagged reading but
+    inflate its noise by 1/(1-p)^2 where p is the predicted fault probability; "hard" = reject if p > 0.5.
+    Diagnostic switches (default off): ml2_vertical_only = an accepted flagged reading corrects altitude only (no horizontal
+    terrain-gradient update); ml2_terrain_R = unflagged readings get the terrain+map variance that tolerance/trust use.
+    All other judges are unchanged.
+    """
     veh = veh or Vehicle()
+    if judge == "ml2":
+        import ml_features as MF
     opts = {"cam": True, "prob": True, "phys": True}
     if judge == "trust_nocam": opts["cam"] = False
     if judge == "trust_noprob": opts["prob"] = False
@@ -210,6 +221,7 @@ def simulate(world, track, scen, judge, draws, veh=None, scan=False, ml_model=No
     scan_i = 0
     lit_cam_prev_ok = np.ones(n, dtype=bool)
     nu_hist = np.zeros((n, 4))
+    z_buf = np.full((n, 40), np.nan)          # ml2: normalised innovations of flagged readings in the last 40 steps
     ml_feat_all = []
 
     def mapq(x, y, idx):
@@ -361,6 +373,7 @@ def simulate(world, track, scen, judge, draws, veh=None, scan=False, ml_model=No
         sig_z = np.sqrt(nav.P[:, 2, 2])
         accept = np.zeros(n, dtype=bool)
         R_use = R.copy()
+        vo_mask = np.zeros(n, dtype=bool)        # ml2 diagnostic: rows whose update is vertical-only
         nu_use = nu.copy()
         decided = np.ones(n, dtype=bool)     # False while a reading is held in probation (counted later)
         gate_chi = nu * nu / S0
@@ -382,7 +395,7 @@ def simulate(world, track, scen, judge, draws, veh=None, scan=False, ml_model=No
             S_tol = S0 + s_terr + s_map
             accept = avail & (nu * nu / S_tol <= CHI2_99)
             R_use = R + s_terr + s_map
-        elif judge in ("wait", "second", "ml") or is_trust:
+        elif judge in ("wait", "second", "ml", "ml2") or is_trust:
             if is_trust:
                 s_terr = stats.hstd(x_est[:, 0], x_est[:, 1], rad) ** 2
                 S_tol = S0 + s_terr + world.map_sigma ** 2
@@ -419,6 +432,8 @@ def simulate(world, track, scen, judge, draws, veh=None, scan=False, ml_model=No
                 R_use = np.where(acc2, R + stats.hstd(x_est[:, 0], x_est[:, 1], rad) ** 2 + 9.0, R_use)
                 surprising = np.zeros(n, dtype=bool)
             if judge == "ml":
+                if ml2_terrain_R:      # diagnostic switch (default off), same as for ml2: terrain+map variance on unflagged readings
+                    R_use = np.where(normal, R + (stats.hstd(x_est[:, 0], x_est[:, 1], rad) ** 2 + world.map_sigma ** 2) * 0.5, R_use)
                 if np.any(surprising):
                     feats = _features(nu, S0, R, stats, x_est, rad, agl_true=r_meas, nu_hist=nu_hist)
                     isfault = np.zeros(n, dtype=bool)
@@ -428,6 +443,26 @@ def simulate(world, track, scen, judge, draws, veh=None, scan=False, ml_model=No
                     acc2 = surprising & ~isfault
                     accept = accept | acc2
                     R_use = np.where(acc2, R + stats.hstd(x_est[:, 0], x_est[:, 1], rad) ** 2 + 9.0, R_use)
+                surprising = np.zeros(n, dtype=bool)
+            if judge == "ml2":
+                if ml2_terrain_R:
+                    R_use = np.where(normal, R + (stats.hstd(x_est[:, 0], x_est[:, 1], rad) ** 2 + world.map_sigma ** 2) * 0.5, R_use)
+                if np.any(surprising):
+                    si = np.nonzero(surprising)[0]
+                    mdl = ml_model["model"] if isinstance(ml_model, dict) else ml_model
+                    feats = MF.features_v3(nu, S0, R, stats, x_est, rad, r_meas, nu_hist, z_buf)
+                    p_fault = np.ones(n)
+                    if mdl is not None:
+                        p_fault[si] = mdl.predict_proba(feats[si])[:, 1]
+                    r_terr = R + stats.hstd(x_est[:, 0], x_est[:, 1], rad) ** 2 + 9.0
+                    if ml2_mode == "hard":
+                        acc2 = surprising & (p_fault <= 0.5)
+                        R_use = np.where(acc2, r_terr, R_use)
+                    else:   # soft: keep the reading but trust it less the more likely it is a fault
+                        acc2 = surprising
+                        R_use = np.where(acc2, r_terr / np.maximum(1.0 - p_fault, 0.01) ** 2, R_use)
+                    accept = accept | acc2
+                    vo_mask = acc2.copy()
                 surprising = np.zeros(n, dtype=bool)
             # --- probation for the remaining surprising readings
             if judge == "wait" or (is_trust and opts["prob"]):
@@ -478,7 +513,12 @@ def simulate(world, track, scen, judge, draws, veh=None, scan=False, ml_model=No
         rej = direct & ~accept
         res["valid_rej"] += (rej & ~fault_lbl)
         res["fault_acc"] += (direct & accept & fault_lbl)
-        _scalar_update(nav.x, nav.P, H, nu_use, R_use, direct & accept)
+        if ml2_vertical_only and judge == "ml2":
+            Hv = H.copy(); Hv[:, 0] = 0.0; Hv[:, 1] = 0.0
+            _scalar_update(nav.x, nav.P, H, nu_use, R_use, direct & accept & ~vo_mask)
+            _scalar_update(nav.x, nav.P, Hv, nu_use, R_use, direct & accept & vo_mask)
+        else:
+            _scalar_update(nav.x, nav.P, H, nu_use, R_use, direct & accept)
         upd = direct & accept
         if v2:
             s_hat = np.where(upd, 0.97 * s_hat + 0.03 * np.minimum(np.abs(nu) * 1.25, 6.0 * s_hat + 1.0), s_hat)
@@ -494,6 +534,8 @@ def simulate(world, track, scen, judge, draws, veh=None, scan=False, ml_model=No
                 feats = _features(nu, S0, R, stats, x_est, ellipse_k * sig_h, agl_true=r_meas, nu_hist=nu_hist)
                 collect.append((feats[fi], fault_lbl[fi]))
         nu_hist = np.concatenate([nu_hist[:, 1:], (nu / np.sqrt(S0))[:, None]], axis=1)
+        if judge == "ml2":
+            z_buf = MF.push_history(z_buf, flagged, nu / np.sqrt(S0))
         last_valid_r = np.where(direct & accept, r_meas, last_valid_r)
         # ---------------- camera ----------------
         if tt % cam_period == 0:

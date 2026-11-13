@@ -32,9 +32,41 @@ import engine  # noqa: E402
 import pipeline as P  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-CACHE = os.path.join(ROOT, "out", "cache", "ml_data.npz")
-OUT = os.path.join(ROOT, "out", "ml_eval")
+# Feature set is chosen by environment variable so multiprocessing workers (spawned) see the same choice.
+FSET = os.environ.get("ML_EVAL_FEATURES", "v1")
+CACHE = os.path.join(ROOT, "out", "cache", "ml_data.npz" if FSET == "v1" else f"ml_data_{FSET}.npz")
+OUT = os.path.join(ROOT, "out", "ml_eval" if FSET == "v1" else f"ml_eval_{FSET}")
 FEATURES = ["nu_over_sd", "nu", "h_std", "h_range", "abs_nu_over_sqrtR", "mean_abs_nu_hist", "agl_km", "ellipse_rad"]
+FEATURES_V2_EXTRA = ["dist_outside_m", "pos_in_interval", "interval_width_m", "range_over_rad", "h_std_small", "h_std_large", "lit_frac"]
+
+
+def features_v2(nu, S0, R, stats, x_est, rad, agl_true, nu_hist):
+    """The 8 original features plus map-consistency features (computed only from what the filter already knows).
+
+    The question the trust rule really asks: is this reading physically possible given the map? The map says the ground
+    under the lander lies between hmin and hmax inside the position-uncertainty disc, so the measured range must lie in
+    [z_est - hmax, z_est - hmin]. A reading outside that interval cannot be real terrain (a sensor fault); a reading inside
+    it that is merely 'surprising' is more likely a real cliff or bump.
+    """
+    x, y, z = x_est[:, 0], x_est[:, 1], x_est[:, 2]
+    hmax = stats.hmax(x, y, rad + 30.0); hmin = stats.hmin(x, y, rad + 30.0)
+    r_lo, r_hi = z - hmax, z - hmin
+    width = np.maximum(r_hi - r_lo, 0.0)
+    dist_out = np.maximum(np.maximum(r_lo - agl_true, agl_true - r_hi), 0.0)
+    pos = (agl_true - r_lo) / (width + 1.0)
+    try:
+        lit = stats.litfrac(x, y, rad)
+    except Exception:  # worlds without a shadow raster
+        lit = np.full(len(x), 0.5, dtype=np.float32)
+    return np.concatenate([
+        _FEATURES_V1(nu, S0, R, stats, x_est, rad, agl_true, nu_hist),
+        np.stack([dist_out, pos, width, width / (rad + 1.0), stats.hstd(x, y, 60.0), stats.hstd(x, y, 960.0), lit], axis=1)], axis=1)
+
+
+_FEATURES_V1 = engine._features
+if FSET == "v2":
+    engine._features = features_v2          # patched in every process (workers re-import this module)
+    FEATURES = FEATURES + FEATURES_V2_EXTRA
 SCENARIOS = ["cliff", "cliff_fault", "shadow_noisy", "delayed"]
 WORKERS = 4  # 16 GB machine: more workers ran out of memory in the original project
 
@@ -111,6 +143,8 @@ def gate_only_score(X):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--quick", action="store_true", help="subsample 15%% of rows")
+    ap.add_argument("--balance", action="store_true", help="weight rows so every scenario counts equally in training")
+    ap.add_argument("--skip-logistic", action="store_true")
     args = ap.parse_args()
     os.makedirs(OUT, exist_ok=True)
     t0 = time.time()
@@ -122,6 +156,16 @@ def main():
         print("quick mode, rows", len(y))
 
     models = make_models()
+    if args.skip_logistic:
+        models.pop("logistic")
+    sw_all = None
+    if args.balance:
+        sw_all = np.ones(len(y))
+        for k in range(len(SCENARIOS)):
+            m = sc == k
+            if m.any():
+                sw_all[m] = len(y) / (len(SCENARIOS) * m.sum())
+        print("balanced training weights per scenario:", {SCENARIOS[k]: round(float(sw_all[sc == k][0]), 3) for k in range(4) if (sc == k).any()})
     rows, per_scen, preds = [], [], {}
     for name in ["gate_only"] + list(models):
         pred = np.zeros(len(y))
@@ -131,7 +175,10 @@ def main():
                 pred[te] = gate_only_score(X[te])
             else:
                 m = models[name]()
-                m.fit(X[~te], y[~te])
+                if sw_all is not None and name != "logistic":
+                    m.fit(X[~te], y[~te], sample_weight=sw_all[~te])
+                else:
+                    m.fit(X[~te], y[~te])
                 pred[te] = m.predict_proba(X[te])[:, 1]
             rows.append(dict(model=name, held_out_world=held, **metrics(y[te], pred[te])))
             print(f"  {name:14s} held-out world {held}: AUC {rows[-1]['auc']:.3f}  acc {rows[-1]['acc']:.3f}", flush=True)
@@ -163,7 +210,8 @@ def main():
     held = sorted(set(w))[-1]
     te = np.nonzero(w == held)[0]
     te = np.random.default_rng(1).choice(te, min(40000, len(te)), replace=False)
-    m = models["random_forest"](); m.fit(X[w != held], y[w != held])
+    m = models["random_forest"]()
+    m.fit(X[w != held], y[w != held], sample_weight=None if sw_all is None else sw_all[w != held])
     pi = permutation_importance(m, X[te], y[te], scoring="roc_auc", n_repeats=5, random_state=0, n_jobs=1)
     imp = pd.DataFrame(dict(feature=FEATURES, auc_drop=pi.importances_mean, std=pi.importances_std)).sort_values("auc_drop", ascending=False)
     imp.to_csv(os.path.join(OUT, "importance.csv"), index=False)
