@@ -1,0 +1,55 @@
+{
+  "rows": 1466775,
+  "fault_frac": 0.4488820712106492,
+  "quick": false,
+  "summary": {
+    "gate_only": {
+      "acc_mean": 0.4607,
+      "acc_std": 0.0711,
+      "bal_acc_mean": 0.5,
+      "bal_acc_std": 0.0,
+      "auc_mean": 0.4794,
+      "auc_std": 0.0275,
+      "brier_mean": 0.3947,
+      "brier_std": 0.0576,
+      "ece_mean": 0.3527,
+      "ece_std": 0.0848
+    },
+    "grad_boost": {
+      "acc_mean": 0.8532,
+      "acc_std": 0.0349,
+      "bal_acc_mean": 0.8453,
+      "bal_acc_std": 0.0368,
+      "auc_mean": 0.9261,
+      "auc_std": 0.0309,
+      "brier_mean": 0.104,
+      "brier_std": 0.0227,
+      "ece_mean": 0.0332,
+      "ece_std": 0.0069
+    },
+    "logistic": {
+      "acc_mean": 0.7846,
+      "acc_std": 0.0339,
+      "bal_acc_mean": 0.7695,
+      "bal_acc_std": 0.0404,
+      "auc_mean": 0.8249,
+      "auc_std": 0.0249,
+      "brier_mean": 0.1746,
+      "brier_std": 0.0109,
+      "ece_mean": 0.1138,
+      "ece_std": 0.0237
+    },
+    "random_forest": {
+      "acc_mean": 0.8568,
+      "acc_std": 0.0372,
+      "bal_acc_mean": 0.8487,
+      "bal_acc_std": 0.0384,
+      "auc_mean": 0.9296,
+      "auc_std": 0.0316,
+      "brier_mean": 0.1016,
+      "brier_std": 0.0229,
+      "ece_mean": 0.0358,
+      "ece_std": 0.0163
+    }
+  }
+}
