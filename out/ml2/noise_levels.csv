@@ -1,0 +1,101 @@
+world,condition,judge,success
+"('site01', 2.0)",x2 below 6000 m,pitfal,100
+"('site01', 2.0)",x2 below 6000 m,tolerance,100
+"('site01', 2.0)",x2 below 6000 m,trust2,100
+"('site01', 2.0)",x2 below 6000 m,ml2_hard + terrain_R,100
+"('site01', 2.0)",x2 below 6000 m,ml2_hard + terrain_R + predicted noise,100
+"('site01', 2.0)",x4 below 6000 m,pitfal,100
+"('site01', 2.0)",x4 below 6000 m,tolerance,92
+"('site01', 2.0)",x4 below 6000 m,trust2,100
+"('site01', 2.0)",x4 below 6000 m,ml2_hard + terrain_R,100
+"('site01', 2.0)",x4 below 6000 m,ml2_hard + terrain_R + predicted noise,100
+"('site01', 2.0)",x8 below 6000 m (TRAINING),pitfal,100
+"('site01', 2.0)",x8 below 6000 m (TRAINING),tolerance,58
+"('site01', 2.0)",x8 below 6000 m (TRAINING),trust2,99
+"('site01', 2.0)",x8 below 6000 m (TRAINING),ml2_hard + terrain_R,100
+"('site01', 2.0)",x8 below 6000 m (TRAINING),ml2_hard + terrain_R + predicted noise,98
+"('site01', 2.0)",x16 below 6000 m,pitfal,66
+"('site01', 2.0)",x16 below 6000 m,tolerance,35
+"('site01', 2.0)",x16 below 6000 m,trust2,69
+"('site01', 2.0)",x16 below 6000 m,ml2_hard + terrain_R,94
+"('site01', 2.0)",x16 below 6000 m,ml2_hard + terrain_R + predicted noise,83
+"('site01', 2.0)",x8 below 2500 m,pitfal,100
+"('site01', 2.0)",x8 below 2500 m,tolerance,84
+"('site01', 2.0)",x8 below 2500 m,trust2,100
+"('site01', 2.0)",x8 below 2500 m,ml2_hard + terrain_R,100
+"('site01', 2.0)",x8 below 2500 m,ml2_hard + terrain_R + predicted noise,100
+"('proc', 13)",x2 below 6000 m,pitfal,77
+"('proc', 13)",x2 below 6000 m,tolerance,84
+"('proc', 13)",x2 below 6000 m,trust2,83
+"('proc', 13)",x2 below 6000 m,ml2_hard + terrain_R,80
+"('proc', 13)",x2 below 6000 m,ml2_hard + terrain_R + predicted noise,78
+"('proc', 13)",x4 below 6000 m,pitfal,74
+"('proc', 13)",x4 below 6000 m,tolerance,64
+"('proc', 13)",x4 below 6000 m,trust2,71
+"('proc', 13)",x4 below 6000 m,ml2_hard + terrain_R,54
+"('proc', 13)",x4 below 6000 m,ml2_hard + terrain_R + predicted noise,68
+"('proc', 13)",x8 below 6000 m (TRAINING),pitfal,68
+"('proc', 13)",x8 below 6000 m (TRAINING),tolerance,41
+"('proc', 13)",x8 below 6000 m (TRAINING),trust2,63
+"('proc', 13)",x8 below 6000 m (TRAINING),ml2_hard + terrain_R,20
+"('proc', 13)",x8 below 6000 m (TRAINING),ml2_hard + terrain_R + predicted noise,56
+"('proc', 13)",x16 below 6000 m,pitfal,35
+"('proc', 13)",x16 below 6000 m,tolerance,30
+"('proc', 13)",x16 below 6000 m,trust2,55
+"('proc', 13)",x16 below 6000 m,ml2_hard + terrain_R,12
+"('proc', 13)",x16 below 6000 m,ml2_hard + terrain_R + predicted noise,52
+"('proc', 13)",x8 below 2500 m,pitfal,86
+"('proc', 13)",x8 below 2500 m,tolerance,91
+"('proc', 13)",x8 below 2500 m,trust2,93
+"('proc', 13)",x8 below 2500 m,ml2_hard + terrain_R,80
+"('proc', 13)",x8 below 2500 m,ml2_hard + terrain_R + predicted noise,93
+"('proc', 11)",x2 below 6000 m,pitfal,86
+"('proc', 11)",x2 below 6000 m,tolerance,87
+"('proc', 11)",x2 below 6000 m,trust2,97
+"('proc', 11)",x2 below 6000 m,ml2_hard + terrain_R,79
+"('proc', 11)",x2 below 6000 m,ml2_hard + terrain_R + predicted noise,89
+"('proc', 11)",x4 below 6000 m,pitfal,93
+"('proc', 11)",x4 below 6000 m,tolerance,75
+"('proc', 11)",x4 below 6000 m,trust2,95
+"('proc', 11)",x4 below 6000 m,ml2_hard + terrain_R,55
+"('proc', 11)",x4 below 6000 m,ml2_hard + terrain_R + predicted noise,73
+"('proc', 11)",x8 below 6000 m (TRAINING),pitfal,82
+"('proc', 11)",x8 below 6000 m (TRAINING),tolerance,54
+"('proc', 11)",x8 below 6000 m (TRAINING),trust2,75
+"('proc', 11)",x8 below 6000 m (TRAINING),ml2_hard + terrain_R,34
+"('proc', 11)",x8 below 6000 m (TRAINING),ml2_hard + terrain_R + predicted noise,67
+"('proc', 11)",x16 below 6000 m,pitfal,48
+"('proc', 11)",x16 below 6000 m,tolerance,45
+"('proc', 11)",x16 below 6000 m,trust2,56
+"('proc', 11)",x16 below 6000 m,ml2_hard + terrain_R,11
+"('proc', 11)",x16 below 6000 m,ml2_hard + terrain_R + predicted noise,68
+"('proc', 11)",x8 below 2500 m,pitfal,82
+"('proc', 11)",x8 below 2500 m,tolerance,79
+"('proc', 11)",x8 below 2500 m,trust2,83
+"('proc', 11)",x8 below 2500 m,ml2_hard + terrain_R,65
+"('proc', 11)",x8 below 2500 m,ml2_hard + terrain_R + predicted noise,79
+"('proc', 12)",x2 below 6000 m,pitfal,86
+"('proc', 12)",x2 below 6000 m,tolerance,93
+"('proc', 12)",x2 below 6000 m,trust2,88
+"('proc', 12)",x2 below 6000 m,ml2_hard + terrain_R,81
+"('proc', 12)",x2 below 6000 m,ml2_hard + terrain_R + predicted noise,86
+"('proc', 12)",x4 below 6000 m,pitfal,86
+"('proc', 12)",x4 below 6000 m,tolerance,54
+"('proc', 12)",x4 below 6000 m,trust2,89
+"('proc', 12)",x4 below 6000 m,ml2_hard + terrain_R,60
+"('proc', 12)",x4 below 6000 m,ml2_hard + terrain_R + predicted noise,51
+"('proc', 12)",x8 below 6000 m (TRAINING),pitfal,58
+"('proc', 12)",x8 below 6000 m (TRAINING),tolerance,40
+"('proc', 12)",x8 below 6000 m (TRAINING),trust2,75
+"('proc', 12)",x8 below 6000 m (TRAINING),ml2_hard + terrain_R,35
+"('proc', 12)",x8 below 6000 m (TRAINING),ml2_hard + terrain_R + predicted noise,58
+"('proc', 12)",x16 below 6000 m,pitfal,32
+"('proc', 12)",x16 below 6000 m,tolerance,39
+"('proc', 12)",x16 below 6000 m,trust2,71
+"('proc', 12)",x16 below 6000 m,ml2_hard + terrain_R,7
+"('proc', 12)",x16 below 6000 m,ml2_hard + terrain_R + predicted noise,51
+"('proc', 12)",x8 below 2500 m,pitfal,82
+"('proc', 12)",x8 below 2500 m,tolerance,72
+"('proc', 12)",x8 below 2500 m,trust2,89
+"('proc', 12)",x8 below 2500 m,ml2_hard + terrain_R,61
+"('proc', 12)",x8 below 2500 m,ml2_hard + terrain_R + predicted noise,78
