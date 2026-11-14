@@ -1,14 +1,89 @@
 # Handoff: new ML judge on branch `ml-eval` (14 Nov 2026)
 
 **For:** the person who owns the simulator (`sim/engine.py`).  **From:** the ML-side contributor, with Claude's help.
-**Status:** nothing here is merged into `main`. Please review first. All of it is simulation only.
+**Status:** the first version of this work was merged into `main` through PR #1 (14 Nov, by the ML-side contributor, no review). Everything in the UPDATE section below is only on branch `ml-eval` (ahead of `main`, merges cleanly). Please review before relying on any of it. All of it is simulation only; Site04 has not been touched.
 
 ## In five lines
 1. We re-examined the random-forest "fault vs terrain" classifier (the `ml` judge) and found its **training label was wrong** in the noisy-altimeter scenario, its inputs were thin, and its quoted accuracy is a best-case world.
 2. We built a corrected version: new label, 22 features (map consistency, vertical speed, 10 s history of flagged readings), a small model (`models/fault_clf_v3.pkl`, 0.5 MB).
 3. We added a new judge **`ml2`** to `sim/engine.py` (additive; all existing judges are bit-identical, see step 2 below).
-4. Offline it is clearly better, **but in flight (tuning worlds, 400 descents per cell) it did NOT beat the simpler judges, and not even the old random forest once both get the same engine fix** (see "First flight result"). The useful finding is a handicap in how the engine feeds the ML judges: fixing it lifts the OLD `ml` judge to PITFAL level (90.2% vs 89.2%, cliff + faults). Treat `ml2` as an unsuccessful first attempt plus a corrected evaluation, not as an improvement.
+4. In flight the new classifier ALONE did not help, but the investigation found what does (see UPDATE): the terrain-variance fix, an adaptive measurement-noise estimate, and the classifier's accept/reject decision. The resulting `ml2` structure beats PITFAL by about 15 landing-success points on average on worlds it was never tuned on and is level with or ahead of trust v2 under noise. **A simple non-ML noise rule matches our learned noise model**, so the learning part of the noise model is not what helps. A NON-ML rule gate (a tolerance-style gate with adaptive noise, no model) also does as well as the classifier version overall (mean -0.3 points over 42 fresh cells); the classifier is ahead only at high noise (about +4 to +6 points at x8/x16). Your tolerance gate collapses under noise (48% at x8, tuning worlds); adding terrain variance and an adaptive noise estimate takes it to 87% (table D2).
 5. Site04 has NOT been touched. A round-3 pre-registration is needed before Site04 is run again (step 6).
+
+## UPDATE (second session): what actually helps, with the controls that changed the picture
+`ml2` (hard mode + terrain-variance fix, `ml2_terrain_R`) with a measurement-noise floor for accepted readings. Three ways of setting that floor were compared:
+none; the **learned error-size model** (`models/err_reg_v3.pkl`: predicts `log1p(|error| / nominal sigma)`, median |error|/prediction 0.95-1.02 on an unseen world; floor `(nominal sigma * expm1(pred))^2`,
+for flagged readings, and with `ml2_noise_normal=True` also unflagged ones); and a **non-ML control**, `ml2_noise_heuristic=True`: the running innovation-size estimate `s_hat` that trust v2 already uses (floor `s_hat^2`).
+Landing success %, 100 descents per world, confidence-gated camera, tuning worlds only. Noise conditions are `shadow_noisy` variants (x2/x4/x8/x16 below 6000 m AGL, x8 below 2500 m); x8 below 6000 m is the only noise level the models were trained on.
+
+### A. Tuning worlds (procedural 11-13 + Site01), seed 7 (`out/ml2/noise_normal.csv`, `control_noise.csv`)
+| Condition | PITFAL | trust v2 | non-ML control | learned, flagged only | learned, flagged + unflagged |
+|---|---|---|---|---|---|
+| cliff + faults (nominal noise) | 89.2 | 96.0 | 93.2 | 93.5 | 95.0 |
+| x2 | 87.2 | 92.0 | 93.0 | 88.2 | 94.0 |
+| x4 | 88.2 | 88.8 | 90.5 | 73.0 | 92.0 |
+| x8 (training level) | 77.0 | 78.0 | 91.0 | 69.8 | 84.0 |
+| x16 | 45.2 | 62.8 | 89.0 | 63.5 | 87.2 |
+| x8 below 2500 m | 87.5 | 91.2 | 89.5 | 87.5 | 90.5 |
+
+### B. Fresh worlds, `sim/ml2_fresh.py` (`out/ml2/fresh.csv`): procedural worlds 14-16 (never used for training or tuning), seed 101, plus the four tuning worlds with a new seed 202; 7 world runs pooled
+| Condition | PITFAL | trust v2 | non-ML control | learned, flagged + unflagged |
+|---|---|---|---|---|
+| cliff + faults | 83.3 | 91.6 | 88.9 | 93.4 |
+| x2 | 81.6 | 90.4 | 90.6 | 93.0 |
+| x4 | 83.0 | 84.3 | 87.7 | 91.7 |
+| x8 | 70.1 | 81.0 | 89.0 | 78.9 |
+| x16 | 40.0 | 63.6 | 85.1 | 83.9 |
+| x8 below 2500 m | 78.7 | 88.9 | 88.4 | 89.6 |
+
+Cell by cell (42 cells): learned minus PITFAL +15.6 on average (positive in 35); learned minus trust v2 +5.1 (positive in 27); **learned minus non-ML control +0.1 (positive in 20)**. The fresh worlds are harder for every judge (PITFAL cliff + faults 77.0 on worlds 14-16 vs about 88 on the tuning worlds).
+
+### C. Is the classifier needed? `sim/ml2_ablate.py` (`out/ml2/ablate.csv`): non-ML structure with the classifier's decision replaced by a constant; tuning worlds, seed 7
+| Condition | full control (classifier at 0.5) | accept ALL flagged readings | reject ALL flagged readings |
+|---|---|---|---|
+| cliff + faults | 93.2 | 34.0 | 94.0 |
+| x2 | 93.0 | 47.5 | 93.2 |
+| x4 | 90.5 | 64.0 | 68.8 |
+| x8 | 91.0 | 75.2 | 44.5 |
+| x16 | 89.0 | 80.0 | 36.5 |
+| x8 below 2500 m | 89.5 | 70.5 | 82.0 |
+
+### D. Fresh-world ablation and a NON-ML replacement for the classifier (`sim/ml2_classifier_tests.py`, `out/ml2/classifier_tests.csv`)
+The **rule gate** (`ml2_rule_gate=True`, with `ml2_terrain_R=True`, `ml2_noise_heuristic=True`, no model): a reading that fails the 99% gate is accepted only if `nu^2 / (H P H' + max(R, s_hat^2) + terrain variance + map variance) <= 6.635`
+(a tolerance-style gate whose noise level adapts through trust v2's running estimate `s_hat`); accepted flagged readings use `R + terrain variance + 9` and every accepted reading gets the floor `s_hat^2`. It was first run on these fresh worlds and not tuned.
+
+**D1. Fresh worlds** (procedural 14-16 seed 101; tuning worlds seed 202; 7 world runs pooled, 100 descents each)
+| Condition | PITFAL | trust v2 | full version (classifier) | accept ALL flagged | reject ALL flagged | **non-ML rule gate** |
+|---|---|---|---|---|---|---|
+| cliff + faults | 83.3 | 91.6 | 88.9 | 34.9 | 89.1 | **90.9** |
+| x2 | 81.6 | 90.4 | 90.6 | 47.9 | 88.4 | **94.4** |
+| x4 | 83.0 | 84.3 | 87.7 | 59.1 | 70.0 | **90.4** |
+| x8 | 70.1 | 81.0 | 89.0 | 70.9 | 43.0 | **83.9** |
+| x16 | 40.0 | 63.6 | 85.1 | 76.4 | 33.4 | **78.7** |
+| x8 below 2500 m | 78.7 | 88.9 | 88.4 | 67.0 | 80.1 | **89.4** |
+Rule gate minus classifier version over the 42 fresh cells: mean -0.3, positive in 16. The ablation result of table C is confirmed on fresh worlds.
+
+**D2. Tuning worlds, seed 7: your tolerance gate, the rule gate, and the classifier version** (`out/ml2/compare_tune.csv`, `noise_levels.csv`, `control_noise.csv`, `classifier_tests.csv`)
+| Condition | PITFAL | trust v2 | tolerance gate (existing judge) | **non-ML rule gate (tolerance + terrain variance + adaptive noise)** | classifier version |
+|---|---|---|---|---|---|
+| cliff + faults | 89.2 | 96.0 | 92.0 | **94.0** | 93.2 |
+| x2 | 87.2 | 92.0 | 91.0 | **93.2** | 93.0 |
+| x4 | 88.2 | 88.8 | 71.2 | **90.8** | 90.5 |
+| x8 | 77.0 | 78.0 | 48.2 | **86.5** | 91.0 |
+| x16 | 45.2 | 62.8 | 37.2 | **84.8** | 89.0 |
+| x8 below 2500 m | 87.5 | 91.2 | 81.5 | **90.8** | 89.5 |
+
+### What this means
+1. The gain is not an artefact of the four tuning worlds or one seed: on fresh worlds the `ml2` structure still beats PITFAL by a wide margin and is level with or ahead of trust v2 in most cells.
+2. **The learned noise model does not beat a simple running noise estimate** (A, B). The learned version is ahead at nominal and low noise (about +4 to +5 points at cliff, x2, x4 in both groups of worlds), the running estimate is ahead at high noise (x8: +10 on fresh worlds, and the learned model is worse than the control at the very noise level it was trained on). They look complementary; a combined floor (the larger of the two) is untested.
+3. **The classifier does real work inside this structure** (C): accept-all collapses with faults (34%), reject-all collapses with high noise (44.5% at x8, 36.5% at x16), only the classifier version stays at 89-93% everywhere. At nominal/low noise "reject all" is as good, which fits your finding that the map in the filter does most of the work. We have NOT shown a non-ML gate cannot do the classifier's job; a gate that adapts to the noise level is untested.
+4. **What probably transfers to your judges regardless of ML:** (i) terrain+map variance on unflagged readings (the `ml` / `wait` / `second` branch used the bare altimeter noise; adding it lifted the OLD `ml` judge from 78.5 to 90.2 in cliff + faults), (ii) a running innovation-size noise floor like trust v2's `s_hat` (lifts `ml2` from about 47 to 91 at x8 on the tuning worlds).
+5. Not run on Site04. Fresh worlds are procedural; Site01 is the only real terrain, with fresh draws only. Differences of about 4 points per cell are within noise. Several variants were compared on the tuning worlds before the fresh test.
+6. **A fully non-ML judge does about as well as the classifier version** (D1, D2): the rule gate is at or above trust v2 in 5 of 6 fresh conditions and beats PITFAL in all of them (+7 to +39 points). The classifier's only visible edge is at high noise (x8/x16: +5 to +6 on fresh worlds, +4 on tuning worlds, same sign in both).
+7. **For the project's original idea (G1, a map-informed gate): the plain tolerance gate fails under a noisy altimeter; terrain variance plus an adaptive noise estimate fixes it.** That, not machine learning, is the main improvement we can offer. The honest ML statement: a learned classifier adds a small edge at high noise; a learned noise model adds nothing over a running estimate.
+8. Caveats for 6-7: simulation, procedural worlds + Site01, rule-gate constants (6.635, +9 m^2, 0.5 terrain weight) not tuned, differences of a few points per cell are within noise, Site04 not run.
+
+Scripts: `ml2_noise_normal.py` (6-condition grid), `ml2_control_noise.py` (non-ML control), `ml2_fresh.py` (fresh worlds), `ml2_ablate.py` (classifier ablation), plus the earlier `ml2_x4.py`, `ml2_noise_levels.py`, `ml2_noise.py` (thresholds, unseen noise levels, the x4 investigation: other thresholds and soft mode did not help; the terrain-variance fix is essential, x4 drops from 73% to 56% without it).
 
 ## What we found (details and tables: `out/ml_eval*/`, `out/ml_labels/`, `out/ml_faults/`)
 | Finding | Evidence |
@@ -30,6 +105,10 @@
 | `sim/check_unchanged.py`, `tests/ref_old_judges.npz` | Proves the old judges still give identical results. |
 | `sim/ml2_compare.py` | Runs `ml2` against the other judges on the **tuning worlds only**. |
 | `sim/ml2_diagnose.py`, `sim/ml2_control.py` | The 2x2 diagnostic (vertical-only / terrain variance) and the control with the old random forest. The old forest `out/mc/ml_model.pkl` is untracked: regenerate with `python sim/pipeline.py ml` (about 9 min). |
+| `sim/ml_train_noise.py`, `models/err_reg_v3.pkl` | Trains / holds the error-size model (560 KB). Regenerate with `python sim/ml_train_noise.py` (needs the cached rows, see `ml_train.py`). |
+| `sim/ml2_classifier_tests.py` | Fresh-world classifier ablation and the non-ML rule gate (tables D1, D2); about 30-35 min. |
+| `sim/ml2_control_noise.py`, `sim/ml2_fresh.py`, `sim/ml2_ablate.py` | Non-ML control, fresh-worlds test, classifier ablation (tables above). The engine switch `ml2_noise_heuristic` is the non-ML control. |
+| `sim/ml2_noise_normal.py` (**key**), `sim/ml2_noise_levels.py`, `sim/ml2_x4.py`, `sim/ml2_noise.py` | The learned-noise experiments: the 6-condition confirmation grid, unseen noise levels, the x4 investigation, thresholds. |
 | `out/ml_*/`, `out/ml2/` | Result tables and plots. |
 
 How `ml2` decides: for every reading that fails the 99% gate it asks the model for the probability `p` that the reading is a fault.
@@ -40,21 +119,31 @@ How `ml2` decides: for every reading that fails the 99% gate it asks the model f
 Assume a Python 3 environment with numpy, scipy, pandas, scikit-learn, matplotlib, Pillow, and the NASA files in `data/`.
 1. **Read the engine diff** (about 15 minutes): `git fetch && git diff main..origin/ml-eval -- sim/engine.py`. Tell us if you want any of it done differently.
 2. **Check nothing else changed:** `python sim/check_unchanged.py` (10 min; `--quick` for 2 min) should end with `UNCHANGED`. Then `python sim/check_ml2.py` should end with `ALL CHECKS PASSED`.
-3. **Run the tuning comparison:** `python sim/ml2_compare.py --n 100` (about 15 min), then `--n 500` for paper-size numbers. Uses 4 workers; on a 16 GB machine do not go above 6. Output: `out/ml2/compare_tune.csv`.
+3. **Reproduce the key results first** (each 8-35 min, 4 workers, one at a time on a 16 GB machine): `python sim/ml2_noise_normal.py` (table A), `python sim/ml2_control_noise.py` (non-ML control), `python sim/ml2_fresh.py` (table B), `python sim/ml2_ablate.py` (table C), `python sim/ml2_classifier_tests.py` (tables D1, D2). Then, if you like, the older comparison: `python sim/ml2_compare.py --n 100` (about 15 min), then `--n 500` for paper-size numbers. Uses 4 workers; on a 16 GB machine do not go above 6. Output: `out/ml2/compare_tune.csv`.
 4. **Judge the result.** Do you reproduce the table above? If yes, we need your view on the suspected causes (in particular the horizontal-position hypothesis, which you know best) before spending more time on the model. The questions are in the next section.
 5. **Fix the simulator's own label** (`fault_lbl`, `engine.py:335`) so it compares with the actual noise level, as `sim/ml_labels.py` does. This changes the "false rejection" and "missed fault" columns in your tables, so decide how to report it. We did not edit it.
 6. **If ml2 helps: write a round-3 pre-registration** (new file, like `docs/PREREG.md`) *before* any Site04 run: the judges, `ml2_mode`, the model file, and the decision rules. Then freeze, tag, and run Site04 once.
+
+## Decision points for you (suggested order)
+1. **Merge or not.** `ml-eval` is ahead of `main` by several commits and merges cleanly (checked with `git merge-tree`); `main` already contains the first version (PR #1, merged by the ML-side contributor). We suggest a pull request you review, not a direct merge.
+2. **Adopt the two engine findings in your judges?** (i) terrain + map variance on unflagged readings in the `ml` / `wait` / `second` branch (the old `ml` judge: 78.5 -> 90.2 in cliff + faults); (ii) a running innovation-size noise floor (trust v2's `s_hat`) in the tolerance gate (48.2 -> 86.5 at x8, table D2). Your published `ml` row on Site04 is probably under-reported for (i).
+3. **Round-3 candidate judge.** Suggested: the **tolerance gate with terrain variance and adaptive noise** (`ml2_rule_gate`), with the classifier as an optional add-on for high noise. Do you agree, or do you want a different definition?
+4. **Pre-registration (new file, like `docs/PREREG.md`) before any Site04 run:** judges, noise conditions, n (we suggest 500), seeds, success criteria, decision rules; then freeze, tag, run Site04 ONCE. Constants of the rule gate need a single tuning pass on tuning/fresh worlds first.
+5. **Known weaknesses to decide on:** delayed readings without time stamps (trust v2 assumes them), stuck-value faults (not simulated), wrong map, and the engine's own fault label (`engine.py:335`, ignores the noise multiplier; affects your false-rejection numbers).
+6. **Framing for the paper:** a map-aware adaptive gate (G1) made robust to noise; ML gave a small high-noise edge and exposed a labelling and plumbing problem; PITFAL-style is our reimplementation, not NASA's system; check the paywalled literature via the college library before claiming novelty.
+7. **What is still missing for any claim:** n = 500 with several seeds and confidence intervals, more fresh worlds, a second real site, and the Site04 run itself.
 
 ## Questions we need you to answer
 * Is the `engine.py` edit acceptable as written? Prefer a different hook?
 * Do you know a real altimeter failure shape we have not simulated? **"Stuck at last value" is not covered** (it needs the true range at run time).
 * Should the delayed scenario treat a stale reading as a fault? Today it is labelled one; trust v2 instead compensates using time stamps.
 * Do you want `ml2` in the paper as a new judge, or as an improved version of the `ml` judge?
+* Would you add a terrain-variance term and a running noise floor (trust v2's `s_hat`) to the `ml` / `wait` / `second` branch, or to the tolerance gate? Our results suggest those two changes, not learning, carry most of the gain.
 
 ## Rules
 * **Do not run Site04** (`--allow-site04`) before step 6. It is the only unseen real site.
 * Do not tune on Site04. Do not move or delete the git tags `round1` and `prereg-round2`.
-* `models/fault_clf_v3.pkl` was trained on procedural worlds 21-26 only.
+* `models/fault_clf_v3.pkl` and `models/err_reg_v3.pkl` were trained on procedural worlds 21-26 only.
 
 ## Caveats (please keep them in the write-up)
 * Offline AUC is not landing success. Nothing proves `ml2` lands more often until step 3 is done.

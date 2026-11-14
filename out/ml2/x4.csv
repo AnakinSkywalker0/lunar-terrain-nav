@@ -1,0 +1,57 @@
+world,condition,variant,success,rough,crash,alt_rms
+"('site01', 2.0)",x4 below 6000 m,pitfal (reference),100,0,0,20.588763942355467
+"('site01', 2.0)",x4 below 6000 m,ml2 + terrain_R + predicted noise (reference),100,0,0,20.42680132899634
+"('site01', 2.0)",x4 below 6000 m,  threshold 0.7 (accept more),100,0,0,20.436548585485006
+"('site01', 2.0)",x4 below 6000 m,  threshold 0.3 (reject more),100,0,0,20.456925308487683
+"('site01', 2.0)",x4 below 6000 m,  noise model also on unflagged readings,100,0,0,20.627985379897897
+"('site01', 2.0)",x4 below 6000 m,  soft mode,100,0,0,20.42819738420149
+"('site01', 2.0)",x4 below 6000 m,  without terrain_R,100,0,0,20.534114027409338
+"('site01', 2.0)",x2 below 6000 m,pitfal (reference),100,0,0,20.519549858469208
+"('site01', 2.0)",x2 below 6000 m,ml2 + terrain_R + predicted noise (reference),100,0,0,20.327381728442973
+"('site01', 2.0)",x2 below 6000 m,  threshold 0.7 (accept more),100,0,0,20.33172188319329
+"('site01', 2.0)",x2 below 6000 m,  threshold 0.3 (reject more),100,0,0,20.3267961655531
+"('site01', 2.0)",x2 below 6000 m,  noise model also on unflagged readings,100,0,0,20.773269948035207
+"('site01', 2.0)",x2 below 6000 m,  soft mode,100,0,0,20.333723131796987
+"('site01', 2.0)",x2 below 6000 m,  without terrain_R,100,0,0,20.32901299884249
+"('proc', 13)",x4 below 6000 m,pitfal (reference),74,25,1,22.873287446575517
+"('proc', 13)",x4 below 6000 m,ml2 + terrain_R + predicted noise (reference),68,30,2,22.763402910832014
+"('proc', 13)",x4 below 6000 m,  threshold 0.7 (accept more),66,34,0,22.588972255608265
+"('proc', 13)",x4 below 6000 m,  threshold 0.3 (reject more),67,28,5,23.067974098203553
+"('proc', 13)",x4 below 6000 m,  noise model also on unflagged readings,76,24,0,22.068672834295707
+"('proc', 13)",x4 below 6000 m,  soft mode,67,31,2,23.02644439143951
+"('proc', 13)",x4 below 6000 m,  without terrain_R,41,52,7,24.226415138462443
+"('proc', 13)",x2 below 6000 m,pitfal (reference),77,22,1,22.815309766662274
+"('proc', 13)",x2 below 6000 m,ml2 + terrain_R + predicted noise (reference),78,22,0,21.490459395810934
+"('proc', 13)",x2 below 6000 m,  threshold 0.7 (accept more),79,21,0,21.49274784611149
+"('proc', 13)",x2 below 6000 m,  threshold 0.3 (reject more),77,23,0,21.493088353771174
+"('proc', 13)",x2 below 6000 m,  noise model also on unflagged readings,80,20,0,22.185036279512282
+"('proc', 13)",x2 below 6000 m,  soft mode,79,21,0,21.50784659874186
+"('proc', 13)",x2 below 6000 m,  without terrain_R,64,35,1,22.579997526461867
+"('proc', 11)",x4 below 6000 m,pitfal (reference),93,7,0,21.439644507610186
+"('proc', 11)",x4 below 6000 m,ml2 + terrain_R + predicted noise (reference),73,26,1,21.947115649989502
+"('proc', 11)",x4 below 6000 m,  threshold 0.7 (accept more),74,26,0,21.746890221627524
+"('proc', 11)",x4 below 6000 m,  threshold 0.3 (reject more),75,22,3,22.135662033791775
+"('proc', 11)",x4 below 6000 m,  noise model also on unflagged readings,98,2,0,22.02440372200225
+"('proc', 11)",x4 below 6000 m,  soft mode,72,27,1,22.21928254292539
+"('proc', 11)",x4 below 6000 m,  without terrain_R,49,48,3,22.04861301712796
+"('proc', 11)",x2 below 6000 m,pitfal (reference),86,14,0,21.289369327658076
+"('proc', 11)",x2 below 6000 m,ml2 + terrain_R + predicted noise (reference),89,11,0,21.093890296158133
+"('proc', 11)",x2 below 6000 m,  threshold 0.7 (accept more),89,11,0,21.099376403319578
+"('proc', 11)",x2 below 6000 m,  threshold 0.3 (reject more),90,10,0,21.087800307917227
+"('proc', 11)",x2 below 6000 m,  noise model also on unflagged readings,99,1,0,22.158568204699556
+"('proc', 11)",x2 below 6000 m,  soft mode,91,9,0,21.09246433965443
+"('proc', 11)",x2 below 6000 m,  without terrain_R,74,26,0,21.282573747517823
+"('proc', 12)",x4 below 6000 m,pitfal (reference),86,14,0,25.73959492461884
+"('proc', 12)",x4 below 6000 m,ml2 + terrain_R + predicted noise (reference),51,41,8,22.912165789427128
+"('proc', 12)",x4 below 6000 m,  threshold 0.7 (accept more),51,48,1,22.51855845655288
+"('proc', 12)",x4 below 6000 m,  threshold 0.3 (reject more),54,33,13,23.294084378352316
+"('proc', 12)",x4 below 6000 m,  noise model also on unflagged readings,94,6,0,22.56637475431241
+"('proc', 12)",x4 below 6000 m,  soft mode,53,43,4,23.304766232741347
+"('proc', 12)",x4 below 6000 m,  without terrain_R,34,57,9,23.395787144749516
+"('proc', 12)",x2 below 6000 m,pitfal (reference),86,14,0,21.844189864036224
+"('proc', 12)",x2 below 6000 m,ml2 + terrain_R + predicted noise (reference),86,14,0,21.72247312977991
+"('proc', 12)",x2 below 6000 m,  threshold 0.7 (accept more),89,11,0,21.706203875223455
+"('proc', 12)",x2 below 6000 m,  threshold 0.3 (reject more),86,14,0,21.720783432728336
+"('proc', 12)",x2 below 6000 m,  noise model also on unflagged readings,97,3,0,22.722172975494413
+"('proc', 12)",x2 below 6000 m,  soft mode,88,11,1,21.86188242807832
+"('proc', 12)",x2 below 6000 m,  without terrain_R,80,20,0,21.847437254897258

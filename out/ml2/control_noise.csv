@@ -1,0 +1,25 @@
+world,condition,judge,success,alt_rms
+"('site01', 2.0)",cliff + faults (nominal noise),ml2 + running-innovation noise (NON-ML control),100,20.62111752880759
+"('site01', 2.0)",x2 below 6000 m,ml2 + running-innovation noise (NON-ML control),100,20.400625336928044
+"('site01', 2.0)",x4 below 6000 m,ml2 + running-innovation noise (NON-ML control),100,20.42613044823718
+"('site01', 2.0)",x8 below 6000 m (TRAINING),ml2 + running-innovation noise (NON-ML control),100,20.773307602213993
+"('site01', 2.0)",x16 below 6000 m,ml2 + running-innovation noise (NON-ML control),100,20.273429370519885
+"('site01', 2.0)",x8 below 2500 m,ml2 + running-innovation noise (NON-ML control),100,20.370537146927653
+"('proc', 11)",cliff + faults (nominal noise),ml2 + running-innovation noise (NON-ML control),92,21.463283370325506
+"('proc', 11)",x2 below 6000 m,ml2 + running-innovation noise (NON-ML control),96,21.44357691786641
+"('proc', 11)",x4 below 6000 m,ml2 + running-innovation noise (NON-ML control),99,21.607605716038044
+"('proc', 11)",x8 below 6000 m (TRAINING),ml2 + running-innovation noise (NON-ML control),96,21.898024947743927
+"('proc', 11)",x16 below 6000 m,ml2 + running-innovation noise (NON-ML control),93,23.151869579073367
+"('proc', 11)",x8 below 2500 m,ml2 + running-innovation noise (NON-ML control),84,21.14183690912192
+"('proc', 12)",cliff + faults (nominal noise),ml2 + running-innovation noise (NON-ML control),94,21.82576443785437
+"('proc', 12)",x2 below 6000 m,ml2 + running-innovation noise (NON-ML control),95,21.959315378288405
+"('proc', 12)",x4 below 6000 m,ml2 + running-innovation noise (NON-ML control),88,22.464009875933556
+"('proc', 12)",x8 below 6000 m (TRAINING),ml2 + running-innovation noise (NON-ML control),92,22.331283590568255
+"('proc', 12)",x16 below 6000 m,ml2 + running-innovation noise (NON-ML control),92,22.99929621818324
+"('proc', 12)",x8 below 2500 m,ml2 + running-innovation noise (NON-ML control),85,21.573362596893315
+"('proc', 13)",cliff + faults (nominal noise),ml2 + running-innovation noise (NON-ML control),87,22.487951691022392
+"('proc', 13)",x2 below 6000 m,ml2 + running-innovation noise (NON-ML control),81,21.655614563178204
+"('proc', 13)",x4 below 6000 m,ml2 + running-innovation noise (NON-ML control),75,21.85743723776701
+"('proc', 13)",x8 below 6000 m (TRAINING),ml2 + running-innovation noise (NON-ML control),76,22.200386383969217
+"('proc', 13)",x16 below 6000 m,ml2 + running-innovation noise (NON-ML control),71,23.31916918607161
+"('proc', 13)",x8 below 2500 m,ml2 + running-innovation noise (NON-ML control),89,21.421920190870665

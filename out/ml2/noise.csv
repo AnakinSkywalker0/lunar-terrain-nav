@@ -1,0 +1,57 @@
+world,scenario,variant,success,rough,crash,alt_rms
+"('site01', 2.0)",cliff + faults,pitfal (reference),100,0,0,20.873134592436628
+"('site01', 2.0)",cliff + faults,ml2_hard + terrain_R (thr 0.5),100,0,0,20.557101302458413
+"('site01', 2.0)",cliff + faults,  thr 0.3,100,0,0,20.5054154722278
+"('site01', 2.0)",cliff + faults,  thr 0.2,100,0,0,20.46581292963052
+"('site01', 2.0)",cliff + faults,  + predicted noise x1.0,100,0,0,20.460413885174145
+"('site01', 2.0)",cliff + faults,  + predicted noise x1.5,100,0,0,20.47371362293935
+"('site01', 2.0)",cliff + faults,  thr 0.3 + predicted noise x1.5,100,0,0,20.47158994909147
+"('site01', 2.0)",shadow + noisy altimeter (IM-2),pitfal (reference),100,0,0,21.192465897399764
+"('site01', 2.0)",shadow + noisy altimeter (IM-2),ml2_hard + terrain_R (thr 0.5),100,0,0,20.700820575356058
+"('site01', 2.0)",shadow + noisy altimeter (IM-2),  thr 0.3,100,0,0,20.63014628714056
+"('site01', 2.0)",shadow + noisy altimeter (IM-2),  thr 0.2,100,0,0,20.585998246458708
+"('site01', 2.0)",shadow + noisy altimeter (IM-2),  + predicted noise x1.0,98,2,0,20.724751872170895
+"('site01', 2.0)",shadow + noisy altimeter (IM-2),  + predicted noise x1.5,96,3,1,21.348295796164898
+"('site01', 2.0)",shadow + noisy altimeter (IM-2),  thr 0.3 + predicted noise x1.5,94,2,4,21.537812806729157
+"('proc', 11)",cliff + faults,pitfal (reference),86,14,0,21.62588764285982
+"('proc', 11)",cliff + faults,ml2_hard + terrain_R (thr 0.5),82,18,0,24.448197201357395
+"('proc', 11)",cliff + faults,  thr 0.3,81,19,0,21.799030847569135
+"('proc', 11)",cliff + faults,  thr 0.2,87,13,0,21.649711564349328
+"('proc', 11)",cliff + faults,  + predicted noise x1.0,89,11,0,21.60034854149539
+"('proc', 11)",cliff + faults,  + predicted noise x1.5,88,12,0,21.691781392121374
+"('proc', 11)",cliff + faults,  thr 0.3 + predicted noise x1.5,88,12,0,21.73321637856114
+"('proc', 11)",shadow + noisy altimeter (IM-2),pitfal (reference),82,16,2,22.180627926677968
+"('proc', 11)",shadow + noisy altimeter (IM-2),ml2_hard + terrain_R (thr 0.5),34,66,0,21.606540610157957
+"('proc', 11)",shadow + noisy altimeter (IM-2),  thr 0.3,33,66,1,21.428451877587154
+"('proc', 11)",shadow + noisy altimeter (IM-2),  thr 0.2,31,69,0,21.57512140479897
+"('proc', 11)",shadow + noisy altimeter (IM-2),  + predicted noise x1.0,67,33,0,21.96424912477605
+"('proc', 11)",shadow + noisy altimeter (IM-2),  + predicted noise x1.5,63,31,6,23.596332900694446
+"('proc', 11)",shadow + noisy altimeter (IM-2),  thr 0.3 + predicted noise x1.5,63,29,8,23.730577500517015
+"('proc', 13)",cliff + faults,pitfal (reference),79,21,0,22.431450295820905
+"('proc', 13)",cliff + faults,ml2_hard + terrain_R (thr 0.5),85,14,1,59.20518845082843
+"('proc', 13)",cliff + faults,  thr 0.3,88,12,0,22.162137084736642
+"('proc', 13)",cliff + faults,  thr 0.2,92,8,0,21.747752163521017
+"('proc', 13)",cliff + faults,  + predicted noise x1.0,93,7,0,21.717721171042356
+"('proc', 13)",cliff + faults,  + predicted noise x1.5,93,7,0,21.74066140551683
+"('proc', 13)",cliff + faults,  thr 0.3 + predicted noise x1.5,93,7,0,21.752140472598555
+"('proc', 13)",shadow + noisy altimeter (IM-2),pitfal (reference),68,31,1,23.434948755941605
+"('proc', 13)",shadow + noisy altimeter (IM-2),ml2_hard + terrain_R (thr 0.5),20,66,14,23.645046973610718
+"('proc', 13)",shadow + noisy altimeter (IM-2),  thr 0.3,21,59,20,23.33589925583289
+"('proc', 13)",shadow + noisy altimeter (IM-2),  thr 0.2,22,61,17,23.323053685092823
+"('proc', 13)",shadow + noisy altimeter (IM-2),  + predicted noise x1.0,56,43,1,22.65545029872198
+"('proc', 13)",shadow + noisy altimeter (IM-2),  + predicted noise x1.5,50,47,3,24.087846297686404
+"('proc', 13)",shadow + noisy altimeter (IM-2),  thr 0.3 + predicted noise x1.5,52,42,6,24.517560566579427
+"('proc', 12)",cliff + faults,pitfal (reference),92,8,0,22.113335599991938
+"('proc', 12)",cliff + faults,ml2_hard + terrain_R (thr 0.5),82,17,1,22.08817180619553
+"('proc', 12)",cliff + faults,  thr 0.3,87,13,0,21.794677927772298
+"('proc', 12)",cliff + faults,  thr 0.2,86,14,0,21.82330983705981
+"('proc', 12)",cliff + faults,  + predicted noise x1.0,92,8,0,21.6734789958506
+"('proc', 12)",cliff + faults,  + predicted noise x1.5,89,11,0,21.68696084195872
+"('proc', 12)",cliff + faults,  thr 0.3 + predicted noise x1.5,90,10,0,21.72581239301597
+"('proc', 12)",shadow + noisy altimeter (IM-2),pitfal (reference),58,37,5,34.287371693352746
+"('proc', 12)",shadow + noisy altimeter (IM-2),ml2_hard + terrain_R (thr 0.5),35,63,2,22.242747693310818
+"('proc', 12)",shadow + noisy altimeter (IM-2),  thr 0.3,33,61,6,240.88660645085994
+"('proc', 12)",shadow + noisy altimeter (IM-2),  thr 0.2,26,71,3,22.68202273189252
+"('proc', 12)",shadow + noisy altimeter (IM-2),  + predicted noise x1.0,58,42,0,21.95137991892986
+"('proc', 12)",shadow + noisy altimeter (IM-2),  + predicted noise x1.5,51,43,6,23.290136001572183
+"('proc', 12)",shadow + noisy altimeter (IM-2),  thr 0.3 + predicted noise x1.5,51,42,7,23.428477452362248
