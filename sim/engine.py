@@ -149,7 +149,7 @@ class ProbationState:
 def simulate(world, track, scen, judge, draws, veh=None, scan=False, ml_model=None, collect=None,
              record_idx=None, sigma_probation=3.0, K_prob=10, ellipse_k=2.0, wide_gate=1.0, cam_policy=None, timestamps=None,
              ml2_mode="soft", ml2_vertical_only=False, ml2_terrain_R=False, ml2_threshold=0.5, ml2_noise_model=None,
-             ml2_noise_scale=1.0, ml2_noise_normal=False):
+             ml2_noise_scale=1.0, ml2_noise_normal=False, ml2_noise_heuristic=False, ml2_rule_gate=False):
     """Run all N descents for one judge. Returns a dict of per-run result arrays (+ optional recorded traces).
 
     judge "ml2" (added on branch ml-eval): learned fault/terrain classifier with a 10 s history of flagged readings
@@ -158,7 +158,10 @@ def simulate(world, track, scen, judge, draws, veh=None, scan=False, ml_model=No
     Diagnostic switches (default off): ml2_vertical_only = an accepted flagged reading corrects altitude only (no horizontal
     terrain-gradient update); ml2_terrain_R = unflagged readings get the terrain+map variance that tolerance/trust use;
     ml2_threshold = reject threshold in hard mode (default 0.5); ml2_noise_model = error-size regressor (models/err_reg_v3.pkl):
-    accepted flagged readings get a variance floor (sigma_nominal * expm1(pred) * ml2_noise_scale)^2.
+    accepted flagged readings get a variance floor (sigma_nominal * expm1(pred) * ml2_noise_scale)^2; ml2_noise_normal = also for
+    unflagged readings; ml2_noise_heuristic = NON-ML control: every accepted reading gets the floor s_hat^2 where s_hat is the running
+    innovation-size estimate trust v2 uses (no learned model); ml2_rule_gate = EXPERIMENTAL non-ML replacement for the classifier:
+    a tolerance-style chi-square gate whose noise level adapts through s_hat (use together with ml2_noise_heuristic=True).
     All other judges are unchanged.
     """
     veh = veh or Vehicle()
@@ -457,7 +460,15 @@ def simulate(world, track, scen, judge, draws, veh=None, scan=False, ml_model=No
                     fa = MF.features_v3(nu, S0, R, stats, x_est, rad, r_meas, nu_hist, z_buf)
                     s_n = np.sqrt(R[ni]) * np.expm1(np.clip(nm.predict(fa[ni]), 0.0, 7.0)) * ml2_noise_scale
                     R_use[ni] = np.maximum(R_use[ni], s_n ** 2)
-                if np.any(surprising):
+                if ml2_rule_gate and np.any(surprising):
+                    # EXPERIMENTAL non-ML replacement for the classifier: tolerance-style gate whose noise level adapts (s_hat)
+                    s_terr2 = stats.hstd(x_est[:, 0], x_est[:, 1], rad) ** 2
+                    S_ad = (S0 - R) + np.maximum(R, s_hat ** 2) + s_terr2 + world.map_sigma ** 2
+                    acc2 = surprising & (nu * nu / S_ad <= CHI2_99)
+                    R_use = np.where(acc2, R + s_terr2 + 9.0, R_use)
+                    accept = accept | acc2
+                    vo_mask = acc2.copy()
+                elif np.any(surprising):
                     si = np.nonzero(surprising)[0]
                     mdl = ml_model["model"] if isinstance(ml_model, dict) else ml_model
                     feats = MF.features_v3(nu, S0, R, stats, x_est, rad, r_meas, nu_hist, z_buf)
@@ -480,6 +491,8 @@ def simulate(world, track, scen, judge, draws, veh=None, scan=False, ml_model=No
                         R_use = np.where(acc2, r_terr / np.maximum(1.0 - p_fault, 0.01) ** 2, R_use)
                     accept = accept | acc2
                     vo_mask = acc2.copy()
+                if ml2_noise_heuristic:   # non-ML control: running innovation-size estimate (trust v2's rule) instead of the learned error model
+                    R_use = np.where(accept, np.maximum(R_use, s_hat ** 2), R_use)
                 surprising = np.zeros(n, dtype=bool)
             # --- probation for the remaining surprising readings
             if judge == "wait" or (is_trust and opts["prob"]):
@@ -537,7 +550,7 @@ def simulate(world, track, scen, judge, draws, veh=None, scan=False, ml_model=No
         else:
             _scalar_update(nav.x, nav.P, H, nu_use, R_use, direct & accept)
         upd = direct & accept
-        if v2:
+        if v2 or (judge == "ml2" and ml2_noise_heuristic):
             s_hat = np.where(upd, 0.97 * s_hat + 0.03 * np.minimum(np.abs(nu) * 1.25, 6.0 * s_hat + 1.0), s_hat)
         if use_gest:
             e_ab = r_meas - r_f
