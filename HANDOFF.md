@@ -1,7 +1,7 @@
 # Handoff: new ML judge on branch `ml-eval` (14 Nov 2026)
 
 **For:** the person who owns the simulator (`sim/engine.py`).  **From:** the ML-side contributor, with Claude's help.
-**Status:** nothing here is merged into `main`. Please review first. All of it is simulation only.
+**Status:** the first version of this work was merged into `main` through PR #1 (14 Nov, by the ML-side contributor, no review). The UPDATE section below and the learned-noise experiments are only on branch `ml-eval` (one commit ahead of `main`, merges cleanly). Please review before relying on any of it. All of it is simulation only.
 
 ## In five lines
 1. We re-examined the random-forest "fault vs terrain" classifier (the `ml` judge) and found its **training label was wrong** in the noisy-altimeter scenario, its inputs were thin, and its quoted accuracy is a best-case world.
