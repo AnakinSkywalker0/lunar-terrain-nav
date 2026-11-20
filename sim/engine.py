@@ -149,8 +149,16 @@ class ProbationState:
 def simulate(world, track, scen, judge, draws, veh=None, scan=False, ml_model=None, collect=None,
              record_idx=None, sigma_probation=3.0, K_prob=10, ellipse_k=2.0, wide_gate=1.0, cam_policy=None, timestamps=None,
              ml2_mode="soft", ml2_vertical_only=False, ml2_terrain_R=False, ml2_threshold=0.5, ml2_noise_model=None,
-             ml2_noise_scale=1.0, ml2_noise_normal=False, ml2_noise_heuristic=False, ml2_rule_gate=False):
+             ml2_noise_scale=1.0, ml2_noise_normal=False, ml2_noise_heuristic=False, ml2_rule_gate=False,
+             fault_label_noise_aware=False, terrain_R=False, tol_noise_floor=False):
     """Run all N descents for one judge. Returns a dict of per-run result arrays (+ optional recorded traces).
+
+    Round-3 candidate switches (all default off, so every earlier result and tag stays reproducible bit for bit):
+    fault_label_noise_aware = the ground-truth fault label uses the TRUE noise sigma (nominal sigma x the scenario's noise
+    multiplier) instead of the nominal sigma, as sim/ml_labels.py does; it changes only the "false rejection" and "missed fault"
+    bookkeeping, never a decision. terrain_R = judges wait / second / ml give unflagged readings the terrain + map variance
+    that tolerance / trust already use (finding (i) of the ml-eval handoff). tol_noise_floor = the tolerance judge adds trust v2's
+    running innovation-size noise estimate s_hat to its gate and its measurement variance (finding (ii)).
 
     judge "ml2" (added on branch ml-eval): learned fault/terrain classifier with a 10 s history of flagged readings
     (sim/ml_features.py, models/fault_clf_v3.pkl, passed as ml_model). ml2_mode: "soft" = accept every flagged reading but
@@ -350,7 +358,10 @@ def simulate(world, track, scen, judge, draws, veh=None, scan=False, ml_model=No
         avail = alive & (agl_true < 20000.0)
         if scen.dropout_agl > 0:
             avail &= agl_true > scen.dropout_agl
-        fault_lbl = np.abs(r_meas - r_true) > 5.0 * (1.0 + 0.0015 * np.maximum(r_true, 0)) + 1.0
+        if fault_label_noise_aware:      # true noise level (nominal sigma x scenario multiplier), as in sim/ml_labels.py
+            fault_lbl = np.abs(r_meas - r_true) > 5.0 * (sig_nom * mult) + 1.0
+        else:
+            fault_lbl = np.abs(r_meas - r_true) > 5.0 * (1.0 + 0.0015 * np.maximum(r_true, 0)) + 1.0
         # judge prediction surface
         if use_ts:   # time-stamped readings: compare with the prediction at the instant the reading was taken
             dsec = draws.delay_steps * DT
@@ -398,9 +409,14 @@ def simulate(world, track, scen, judge, draws, veh=None, scan=False, ml_model=No
         elif judge == "tolerance":
             s_terr = stats.hstd(x_est[:, 0], x_est[:, 1], rad) ** 2
             s_map = world.map_sigma ** 2
-            S_tol = S0 + s_terr + s_map
+            if tol_noise_floor:      # adaptive noise level: never trust the reading more than the running innovation size
+                R_ad = np.maximum(R, s_hat ** 2)
+                S_tol = (S0 - R) + R_ad + s_terr + s_map
+                R_use = R_ad + s_terr + s_map
+            else:
+                S_tol = S0 + s_terr + s_map
+                R_use = R + s_terr + s_map
             accept = avail & (nu * nu / S_tol <= CHI2_99)
-            R_use = R + s_terr + s_map
         elif judge in ("wait", "second", "ml", "ml2") or is_trust:
             if is_trust:
                 s_terr = stats.hstd(x_est[:, 0], x_est[:, 1], rad) ** 2
@@ -426,6 +442,8 @@ def simulate(world, track, scen, judge, draws, veh=None, scan=False, ml_model=No
                 impossible = np.zeros(n, dtype=bool)
                 normal = avail & ~flagged
                 accept = normal
+                if terrain_R:        # unflagged readings get the terrain + map variance, as tolerance / trust do
+                    R_use = np.where(normal, R + (stats.hstd(x_est[:, 0], x_est[:, 1], rad) ** 2 + world.map_sigma ** 2) * 0.5, R_use)
             if judge == "second":
                 # second opinion: IMU/camera consistency. Accept a surprise only if the camera is trustworthy
                 # (and the IMU shows no fall matching the jump); otherwise treat it as a fault.
@@ -550,7 +568,7 @@ def simulate(world, track, scen, judge, draws, veh=None, scan=False, ml_model=No
         else:
             _scalar_update(nav.x, nav.P, H, nu_use, R_use, direct & accept)
         upd = direct & accept
-        if v2 or (judge == "ml2" and ml2_noise_heuristic):
+        if v2 or (judge == "ml2" and ml2_noise_heuristic) or (judge == "tolerance" and tol_noise_floor):
             s_hat = np.where(upd, 0.97 * s_hat + 0.03 * np.minimum(np.abs(nu) * 1.25, 6.0 * s_hat + 1.0), s_hat)
         if use_gest:
             e_ab = r_meas - r_f
