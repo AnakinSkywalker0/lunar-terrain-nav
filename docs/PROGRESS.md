@@ -1,12 +1,86 @@
 # LANTERN progress log
 
-Project: Sensor Trust for Lunar South Pole Landing (context-aware sensor trust layer, tested on NASA PGDA Site04).
-Last updated: 19 Oct 2026. Full write-up with figures: `Progress_Report.pdf`. Everything in chronological order, including mistakes and corrections: `FULL_LOG.md` / `Full_Project_Log.pdf`. Plan: `../deliverables/`.
+Project: Sensor Trust for Lunar South Pole Landing (sensor trust and terrain-relative navigation, tested on NASA PGDA Site04 and Site01).
+Last updated: 20 Nov 2026. Latest implementation and verification record: [navigation v3](NAVIGATION_V3.md). Earlier PDFs describe earlier sensor-trust work. Everything in chronological order, including mistakes and corrections: `FULL_LOG.md`; the PDF predates the newest entries. Plan: `../deliverables/`.
+
+## Round 3 (20 Nov 2026, Site04 run once, all five pre-registered rules met)
+
+Local `main` was fast-forwarded to `origin/main` (ml-eval merged as PR #1 and #2). Three default-off switches were added to `sim/engine.py`
+(`tol_noise_floor`, `terrain_R`, `fault_label_noise_aware`); old judges verified identical (`check_unchanged.py`, 29 tests). Screened on tuning worlds, confirmed
+by pre-written rules on fresh worlds 14-16, then frozen in [PREREG_ROUND3.md](PREREG_ROUND3.md) (tag `prereg-round3`, commit `e63c7a6`) and run once on Site04.
+Plain tolerance with the noise floor lands about 95% at x8 noise (plain tolerance 62%, PITFAL-style 66%, trust v2 89%); terrain variance lifts `wait` and `ml`;
+the noise-aware label shows that the old missed-fault columns were misleading at high noise. Weak spots: more faults let through than trust v2, dropout still
+poor, wrong map and delayed readings without time stamps untested. Details and tables: [ROUND3_RESULTS.md](ROUND3_RESULTS.md).
+
+## Navigation v3 (4 Nov; Unity execution paused)
+
+Implemented a separate estimated-state landing loop: ten-state EKF with local
+map-height bias, delayed-measurement replay, innovation/geometry checks,
+terminal braking, seeded sensor faults and optional bounded frozen-ML advice.
+Added live scene `NavigationV3.unity` and batch/offline verification tools.
+
+Before the user paused Unity execution, 324 reserved-crop engineering cases
+completed: classical terminal / ML map-target successes 45/108 versus 37/108
+at 10 m, and 83/108 versus 87/108 at 50 m. Excess-speed contacts: 21 versus 17.
+Six non-contact timeouts were retained. Neither broad reliability nor a
+consistent ML advantage is established. All 324 records and 315,724 sensor
+receipts passed offline verification. The map-error field is a correlated
+synthetic proxy scaled by PGDA `toterr`, not a clone DEM.
+
+After the pause: code-only replay input-ownership protection, a new contract
+check, fallback HUD and completion/reporting improvements. These final C# edits
+await Unity compilation/execution; 19 Python tests passed. Details, limitations
+and later-run commands: [NAVIGATION_V3.md](NAVIGATION_V3.md).
+
+## Latest transfer result (22 Oct)
+
+Research framing: [original idea and novelty review](RESEARCH_NOVELTY_REVIEW.md).
+Verified direct prior work on lidar-to-DEM localization and terrain-informed
+range fault rejection. A joint map/registration/sensor-uncertainty method is a
+candidate contribution, not established novelty. The recent Unity correction
+gain policy does not yet implement that complete camera/altimeter trust loop.
+
+Completed 810 Site01 descents across three areas with the frozen utility model.
+No training. Utility/geometric successes both 54/162; mean miss 43.60/45.99 m;
+speed violations 47/39. The prewritten transfer criterion failed. Accurate maps
+achieved 54/54 successes for both; changed terrain and shifted maps each 0/54.
+All 810 cases and 13,011 scan records passed integrity checks, including terrain
+and new-input inference parity. The selected crops lie outside the Site04 tile.
+The earlier speed benefit is not a general result. Next: diagnose map-mismatch
+control failures, run component ablations and test explicit contact-speed
+safeguards on a newly reserved evaluation. Details: [transfer results](SCAN_UTILITY_TRANSFER_RESULTS.md).
+
+## Earlier Site04 significance assessment (22 Oct; before transfer)
+
+**Substantial engineering; meaningful early applied research.** We have moved
+from a visual demonstration to controlled estimated-state Unity descents with
+live learned correction gains and preserved records. The latest policy reduced
+mean miss by 16.5% and speed violations from 12 to 7 versus geometric matching,
+while target successes remained 24/54. The failed first learned veto established
+why scan rejection scores must be checked against complete landing outcomes.
+
+This is one reserved-area result from Site04, not established statistical
+significance, method novelty or mission reliability. Seven excessive-speed
+contacts remain and shifted maps still fail. Next: independent terrain tests,
+component ablations with matched baseline tuning, independent map registration
+and contact-speed safeguards. No new training or runs for this assessment.
+See [current explanation and mentor-ready summary](PROJECT_EXPLAINED_AND_REFOCUSED.md).
+
+The older objective table and round-1/round-2 sections below record those earlier
+study scopes; "Done" there does not mean the new scan-utility system has solved
+the broader problem. Older PDFs do not include this latest assessment.
 
 ## Milestones
 
 | Date | Milestone | Evidence |
 |---|---|---|
+| 20 Nov | Round 3 on Site04 (500 runs per cell, run once after freeze `prereg-round3`): Q1-Q5 all met. Tolerance + noise floor 94.6% at x8 noise vs 61.6% plain tolerance, 65.6% PITFAL-style, 89.0% trust v2; terrain variance lifts `wait` and `ml`; noise-aware fault label. Ml-eval results reproduced row for row (19-20 Nov). | `ROUND3_RESULTS.md`, `PREREG_ROUND3.md`, `out/round3/site04.csv`, `out/ml2_repro_2026-11-20/` |
+| 22 Oct | Frozen-model Site01 transfer: 15 smoke + 810 final descents; 3 evaluation areas outside Site04. Utility/geometric 54/162 successes, mean miss 43.60/45.99 m, speed violations 47/39. Transfer criterion failed; no training or tuning. All final integrity checks passed. | `SCAN_UTILITY_TRANSFER_RESULTS.md`, `out/scan_utility_transfer/20261022_091502_eval/` |
+| 22 Oct | Utility v2: 7,680 newly collected proposals, 672 development descents, 270 reserved-area descents. Utility/geometric 24/54 target successes; mean miss 28.92/34.64 m; speed violations 7/12. Old ML 0/54. Model/policy frozen before evaluation; only one fresh eligible crop remained. Shifted maps still 0/18. | `SCAN_UTILITY_RESULTS.md`, `out/scan_utility/20261021_204054_eval/` |
+| 22 Oct | User authorized scan-specific ML training. Exported 32-tree model; Python/Unity parity passed 10,530 inputs. Ran 648 fresh four-arm descents: geometric 90/162 target successes, tuned rule 45/162, ML 18/162, OFF 0/162. ML rejected useful corrections and worsened landing accuracy; preserved this negative result. | `SCAN_TRUST_RESULTS.md`, `out/scan_trust/20261021_190929_closed_loop_v1/` |
+| 22 Oct | Audited the existing altimeter classifier; prepared 10,530 labelled scan proposals with area-grouped development splits and a schema-checked Python inference gate. Eight contract tests and archived no-model parity passed. No training, live Unity ML integration or new landing claims. | `SCAN_TRUST_ML_NEXT_EXPERIMENT.md`, `out/scan_trust/20261022_preparation_v1/` |
+| 22 Oct | Five-area expansion: 270 stationary scans and 540 descents, frozen matcher. Accurate map: 90/90 target successes ON, mean miss 93.94 m OFF / 0.49 m ON. Changed terrain: 3/90; shifted map: 0/90. Actual contact measured; lateral-speed failures retained. | `TERRAIN_MATCHING_EXPANDED_RESULTS.md`, `out/terrain_matching/20261021_183805_expanded_v2/` |
+| 21 Oct | Estimated-state Unity short descents: 27 stationary scans and 54 paired descents at 500-2000 m. Aligned-map mean target miss 70.31 m OFF versus 0.42 m ON; changed terrain and shifted maps expose confident wrong corrections. No ML training. | `TERRAIN_MATCHING_RESULTS.md`, `out/terrain_matching/20261021_181450_v1/` |
 | 16 Oct | Site04 DEM rendered; plan documents written; Unity Site04 scene, lander physics and LUMEN live scan built | `deliverables/`, `out/site04/`, `LANTERN/` |
 | 18 Oct | Unity connection verified; Play mode stall diagnosed (editor inactive) and fixed with `runInBackground` | Unity console, frame counters |
 | 18 Oct | Landing site chosen from DEM-derived slope (supplied slope file is truncated): Unity (6198, 8512), 2.8 deg max slope over 45 m | `Site04SceneBuilder.cs` |

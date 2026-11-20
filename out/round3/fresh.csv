@@ -1,0 +1,421 @@
+group,world,condition,config,success,alt_rms
+A fresh worlds (seed 101),"('proc', 14)",x2 below 6000 m,pitfal,65,39.42127942052449
+A fresh worlds (seed 101),"('proc', 14)",x2 below 6000 m,trust2,85,30.1482000469672
+A fresh worlds (seed 101),"('proc', 14)",x2 below 6000 m,tolerance,87,29.24647119506786
+A fresh worlds (seed 101),"('proc', 14)",x2 below 6000 m,tolerance + noise floor,96,29.612789298254835
+A fresh worlds (seed 101),"('proc', 14)",x2 below 6000 m,wait,55,40.550939247006646
+A fresh worlds (seed 101),"('proc', 14)",x2 below 6000 m,wait + terrain_R,83,36.1759883592086
+A fresh worlds (seed 101),"('proc', 14)",x2 below 6000 m,second,23,87.2182550963672
+A fresh worlds (seed 101),"('proc', 14)",x2 below 6000 m,second + terrain_R,40,158.98793148731687
+A fresh worlds (seed 101),"('proc', 14)",x2 below 6000 m,ml,36,57.42724334504325
+A fresh worlds (seed 101),"('proc', 14)",x2 below 6000 m,ml + terrain_R,82,38.101017556300356
+A fresh worlds (seed 101),"('proc', 14)",cliff + faults (nominal noise),pitfal,66,79.82539178952202
+A fresh worlds (seed 101),"('proc', 14)",cliff + faults (nominal noise),trust2,88,32.07413391639247
+A fresh worlds (seed 101),"('proc', 14)",cliff + faults (nominal noise),tolerance,93,31.826136466534507
+A fresh worlds (seed 101),"('proc', 14)",cliff + faults (nominal noise),tolerance + noise floor,92,33.23883231012022
+A fresh worlds (seed 101),"('proc', 14)",cliff + faults (nominal noise),wait,70,43.35644335739553
+A fresh worlds (seed 101),"('proc', 14)",cliff + faults (nominal noise),wait + terrain_R,81,39.03804858976197
+A fresh worlds (seed 101),"('proc', 14)",cliff + faults (nominal noise),second,8,136.4248477641642
+A fresh worlds (seed 101),"('proc', 14)",cliff + faults (nominal noise),second + terrain_R,3,159.33458844131226
+A fresh worlds (seed 101),"('proc', 14)",cliff + faults (nominal noise),ml,37,62.38387963003284
+A fresh worlds (seed 101),"('proc', 14)",cliff + faults (nominal noise),ml + terrain_R,76,42.41541948010485
+A fresh worlds (seed 101),"('proc', 14)",x4 below 6000 m,pitfal,65,38.77034985681667
+A fresh worlds (seed 101),"('proc', 14)",x4 below 6000 m,trust2,81,30.043600038431666
+A fresh worlds (seed 101),"('proc', 14)",x4 below 6000 m,tolerance,59,30.060642403713306
+A fresh worlds (seed 101),"('proc', 14)",x4 below 6000 m,tolerance + noise floor,90,29.61869159619546
+A fresh worlds (seed 101),"('proc', 14)",x4 below 6000 m,wait,47,41.053737227118084
+A fresh worlds (seed 101),"('proc', 14)",x4 below 6000 m,wait + terrain_R,83,36.48870600006004
+A fresh worlds (seed 101),"('proc', 14)",x4 below 6000 m,second,9,133.72671848476674
+A fresh worlds (seed 101),"('proc', 14)",x4 below 6000 m,second + terrain_R,29,64.48945794843915
+A fresh worlds (seed 101),"('proc', 14)",x4 below 6000 m,ml,18,57.92429683240827
+A fresh worlds (seed 101),"('proc', 14)",x4 below 6000 m,ml + terrain_R,40,39.5714094831646
+A fresh worlds (seed 101),"('proc', 14)",x8 below 6000 m (TRAINING),pitfal,43,40.054304374950725
+A fresh worlds (seed 101),"('proc', 14)",x8 below 6000 m (TRAINING),trust2,76,36.30625117480921
+A fresh worlds (seed 101),"('proc', 14)",x8 below 6000 m (TRAINING),tolerance,39,34.40806216246031
+A fresh worlds (seed 101),"('proc', 14)",x8 below 6000 m (TRAINING),tolerance + noise floor,83,29.782140779188012
+A fresh worlds (seed 101),"('proc', 14)",x8 below 6000 m (TRAINING),wait,18,98.80911321556296
+A fresh worlds (seed 101),"('proc', 14)",x8 below 6000 m (TRAINING),wait + terrain_R,34,65.20498298464449
+A fresh worlds (seed 101),"('proc', 14)",x8 below 6000 m (TRAINING),second,13,183.06159312476544
+A fresh worlds (seed 101),"('proc', 14)",x8 below 6000 m (TRAINING),second + terrain_R,22,105.41990866213355
+A fresh worlds (seed 101),"('proc', 14)",x8 below 6000 m (TRAINING),ml,12,59.66377273611877
+A fresh worlds (seed 101),"('proc', 14)",x8 below 6000 m (TRAINING),ml + terrain_R,37,42.21451579174573
+A fresh worlds (seed 101),"('proc', 14)",x8 below 2500 m,pitfal,57,39.08321998693888
+A fresh worlds (seed 101),"('proc', 14)",x8 below 2500 m,trust2,92,29.626035331932364
+A fresh worlds (seed 101),"('proc', 14)",x8 below 2500 m,tolerance,87,29.084275039695353
+A fresh worlds (seed 101),"('proc', 14)",x8 below 2500 m,tolerance + noise floor,94,29.508868223952156
+A fresh worlds (seed 101),"('proc', 14)",x8 below 2500 m,wait,43,64.50198998138272
+A fresh worlds (seed 101),"('proc', 14)",x8 below 2500 m,wait + terrain_R,79,43.053757890862904
+A fresh worlds (seed 101),"('proc', 14)",x8 below 2500 m,second,17,69.0004699543389
+A fresh worlds (seed 101),"('proc', 14)",x8 below 2500 m,second + terrain_R,36,118.22404233210825
+A fresh worlds (seed 101),"('proc', 14)",x8 below 2500 m,ml,26,55.98676821595321
+A fresh worlds (seed 101),"('proc', 14)",x8 below 2500 m,ml + terrain_R,81,37.65711542751874
+A fresh worlds (seed 101),"('proc', 14)",x16 below 6000 m,pitfal,26,80.0615208885598
+A fresh worlds (seed 101),"('proc', 14)",x16 below 6000 m,trust2,47,363.1601865036883
+A fresh worlds (seed 101),"('proc', 14)",x16 below 6000 m,tolerance,39,47.17928054439518
+A fresh worlds (seed 101),"('proc', 14)",x16 below 6000 m,tolerance + noise floor,74,29.953326039119688
+A fresh worlds (seed 101),"('proc', 14)",x16 below 6000 m,wait,12,180.77515316403134
+A fresh worlds (seed 101),"('proc', 14)",x16 below 6000 m,wait + terrain_R,28,180.22062263920716
+A fresh worlds (seed 101),"('proc', 14)",x16 below 6000 m,second,7,175.2724208622374
+A fresh worlds (seed 101),"('proc', 14)",x16 below 6000 m,second + terrain_R,8,103.14255792832118
+A fresh worlds (seed 101),"('proc', 14)",x16 below 6000 m,ml,19,61.42419413844957
+A fresh worlds (seed 101),"('proc', 14)",x16 below 6000 m,ml + terrain_R,38,41.697022226522165
+A fresh worlds (seed 101),"('proc', 15)",cliff + faults (nominal noise),pitfal,81,21.92326478265769
+A fresh worlds (seed 101),"('proc', 15)",cliff + faults (nominal noise),trust2,91,21.81008326545727
+A fresh worlds (seed 101),"('proc', 15)",cliff + faults (nominal noise),tolerance,85,21.67908156156148
+A fresh worlds (seed 101),"('proc', 15)",cliff + faults (nominal noise),tolerance + noise floor,90,21.757709022922562
+A fresh worlds (seed 101),"('proc', 15)",cliff + faults (nominal noise),wait,76,21.649781912406404
+A fresh worlds (seed 101),"('proc', 15)",cliff + faults (nominal noise),wait + terrain_R,87,21.538078450143836
+A fresh worlds (seed 101),"('proc', 15)",cliff + faults (nominal noise),second,6,156.09105604897715
+A fresh worlds (seed 101),"('proc', 15)",cliff + faults (nominal noise),second + terrain_R,10,239.66384537993008
+A fresh worlds (seed 101),"('proc', 15)",cliff + faults (nominal noise),ml,63,22.743107372179647
+A fresh worlds (seed 101),"('proc', 15)",cliff + faults (nominal noise),ml + terrain_R,82,21.829108833009737
+A fresh worlds (seed 101),"('proc', 15)",x2 below 6000 m,pitfal,84,21.90534432448334
+A fresh worlds (seed 101),"('proc', 15)",x2 below 6000 m,trust2,98,21.954267292159766
+A fresh worlds (seed 101),"('proc', 15)",x2 below 6000 m,tolerance,87,21.59923878699265
+A fresh worlds (seed 101),"('proc', 15)",x2 below 6000 m,tolerance + noise floor,94,21.53742150274679
+A fresh worlds (seed 101),"('proc', 15)",x2 below 6000 m,wait,72,22.017030714762843
+A fresh worlds (seed 101),"('proc', 15)",x2 below 6000 m,wait + terrain_R,87,21.64906623491303
+A fresh worlds (seed 101),"('proc', 15)",x2 below 6000 m,second,30,145.3609590694295
+A fresh worlds (seed 101),"('proc', 15)",x2 below 6000 m,second + terrain_R,34,164.26939377732506
+A fresh worlds (seed 101),"('proc', 15)",x2 below 6000 m,ml,61,22.16689381452234
+A fresh worlds (seed 101),"('proc', 15)",x2 below 6000 m,ml + terrain_R,78,22.070032051577385
+A fresh worlds (seed 101),"('proc', 15)",x4 below 6000 m,pitfal,86,21.974751062920145
+A fresh worlds (seed 101),"('proc', 15)",x4 below 6000 m,trust2,87,22.427306530868098
+A fresh worlds (seed 101),"('proc', 15)",x4 below 6000 m,tolerance,65,26.70384497844803
+A fresh worlds (seed 101),"('proc', 15)",x4 below 6000 m,tolerance + noise floor,95,21.698767793124482
+A fresh worlds (seed 101),"('proc', 15)",x4 below 6000 m,wait,69,22.288961769460908
+A fresh worlds (seed 101),"('proc', 15)",x4 below 6000 m,wait + terrain_R,90,21.873097646040858
+A fresh worlds (seed 101),"('proc', 15)",x4 below 6000 m,second,23,140.12577337313974
+A fresh worlds (seed 101),"('proc', 15)",x4 below 6000 m,second + terrain_R,27,175.78069649918908
+A fresh worlds (seed 101),"('proc', 15)",x4 below 6000 m,ml,42,25.07732426521711
+A fresh worlds (seed 101),"('proc', 15)",x4 below 6000 m,ml + terrain_R,39,25.42881084866665
+A fresh worlds (seed 101),"('proc', 15)",x8 below 6000 m (TRAINING),pitfal,77,22.5989739988293
+A fresh worlds (seed 101),"('proc', 15)",x8 below 6000 m (TRAINING),trust2,90,23.241922000302004
+A fresh worlds (seed 101),"('proc', 15)",x8 below 6000 m (TRAINING),tolerance,45,107.0714458726669
+A fresh worlds (seed 101),"('proc', 15)",x8 below 6000 m (TRAINING),tolerance + noise floor,89,22.09479773639299
+A fresh worlds (seed 101),"('proc', 15)",x8 below 6000 m (TRAINING),wait,50,134.3956847214274
+A fresh worlds (seed 101),"('proc', 15)",x8 below 6000 m (TRAINING),wait + terrain_R,58,113.92855380152065
+A fresh worlds (seed 101),"('proc', 15)",x8 below 6000 m (TRAINING),second,21,101.00408455565368
+A fresh worlds (seed 101),"('proc', 15)",x8 below 6000 m (TRAINING),second + terrain_R,17,178.69791340802809
+A fresh worlds (seed 101),"('proc', 15)",x8 below 6000 m (TRAINING),ml,44,28.62960110159707
+A fresh worlds (seed 101),"('proc', 15)",x8 below 6000 m (TRAINING),ml + terrain_R,52,27.967023779559312
+A fresh worlds (seed 101),"('proc', 15)",x8 below 2500 m,pitfal,75,22.136355055546
+A fresh worlds (seed 101),"('proc', 15)",x8 below 2500 m,trust2,83,21.761188896258474
+A fresh worlds (seed 101),"('proc', 15)",x8 below 2500 m,tolerance,67,22.180735997752304
+A fresh worlds (seed 101),"('proc', 15)",x8 below 2500 m,tolerance + noise floor,90,21.700924298541647
+A fresh worlds (seed 101),"('proc', 15)",x8 below 2500 m,wait,51,30.659156226350433
+A fresh worlds (seed 101),"('proc', 15)",x8 below 2500 m,wait + terrain_R,69,22.833362883637164
+A fresh worlds (seed 101),"('proc', 15)",x8 below 2500 m,second,25,70.61354566805393
+A fresh worlds (seed 101),"('proc', 15)",x8 below 2500 m,second + terrain_R,29,102.4005771237762
+A fresh worlds (seed 101),"('proc', 15)",x8 below 2500 m,ml,63,21.84461193564714
+A fresh worlds (seed 101),"('proc', 15)",x8 below 2500 m,ml + terrain_R,75,21.286315989614764
+A fresh worlds (seed 101),"('proc', 15)",x16 below 6000 m,pitfal,37,164.8811532257878
+A fresh worlds (seed 101),"('proc', 15)",x16 below 6000 m,trust2,78,138.42007655518637
+A fresh worlds (seed 101),"('proc', 15)",x16 below 6000 m,tolerance,49,184.86835336689697
+A fresh worlds (seed 101),"('proc', 15)",x16 below 6000 m,tolerance + noise floor,92,22.72839416481746
+A fresh worlds (seed 101),"('proc', 15)",x16 below 6000 m,wait,27,330.161456525944
+A fresh worlds (seed 101),"('proc', 15)",x16 below 6000 m,wait + terrain_R,30,328.86241176856936
+A fresh worlds (seed 101),"('proc', 15)",x16 below 6000 m,second,12,157.82719718309124
+A fresh worlds (seed 101),"('proc', 15)",x16 below 6000 m,second + terrain_R,12,264.1043733818539
+A fresh worlds (seed 101),"('proc', 15)",x16 below 6000 m,ml,42,38.52686540889045
+A fresh worlds (seed 101),"('proc', 15)",x16 below 6000 m,ml + terrain_R,58,36.05580868776158
+A fresh worlds (seed 101),"('proc', 16)",cliff + faults (nominal noise),pitfal,84,25.10277381180369
+A fresh worlds (seed 101),"('proc', 16)",cliff + faults (nominal noise),trust2,86,24.692484446332845
+A fresh worlds (seed 101),"('proc', 16)",cliff + faults (nominal noise),tolerance,90,23.526169775388745
+A fresh worlds (seed 101),"('proc', 16)",cliff + faults (nominal noise),tolerance + noise floor,89,23.834926476002686
+A fresh worlds (seed 101),"('proc', 16)",cliff + faults (nominal noise),wait,78,27.47590244849977
+A fresh worlds (seed 101),"('proc', 16)",cliff + faults (nominal noise),wait + terrain_R,91,23.64825847766138
+A fresh worlds (seed 101),"('proc', 16)",cliff + faults (nominal noise),second,5,259.40612125626996
+A fresh worlds (seed 101),"('proc', 16)",cliff + faults (nominal noise),second + terrain_R,4,272.28112892871343
+A fresh worlds (seed 101),"('proc', 16)",cliff + faults (nominal noise),ml,69,38.22204326939251
+A fresh worlds (seed 101),"('proc', 16)",cliff + faults (nominal noise),ml + terrain_R,84,25.33984226717913
+A fresh worlds (seed 101),"('proc', 16)",x4 below 6000 m,pitfal,79,24.721279335705944
+A fresh worlds (seed 101),"('proc', 16)",x4 below 6000 m,trust2,74,23.631315056053744
+A fresh worlds (seed 101),"('proc', 16)",x4 below 6000 m,tolerance,67,23.359335443400788
+A fresh worlds (seed 101),"('proc', 16)",x4 below 6000 m,tolerance + noise floor,87,23.136723876341428
+A fresh worlds (seed 101),"('proc', 16)",x4 below 6000 m,wait,58,27.9758702830924
+A fresh worlds (seed 101),"('proc', 16)",x4 below 6000 m,wait + terrain_R,80,23.78547109361252
+A fresh worlds (seed 101),"('proc', 16)",x4 below 6000 m,second,18,187.37633179974
+A fresh worlds (seed 101),"('proc', 16)",x4 below 6000 m,second + terrain_R,23,49.729036481801536
+A fresh worlds (seed 101),"('proc', 16)",x4 below 6000 m,ml,27,38.093664189275074
+A fresh worlds (seed 101),"('proc', 16)",x4 below 6000 m,ml + terrain_R,36,28.473892957079027
+A fresh worlds (seed 101),"('proc', 16)",x2 below 6000 m,pitfal,74,24.57068601113711
+A fresh worlds (seed 101),"('proc', 16)",x2 below 6000 m,trust2,83,23.660898509406593
+A fresh worlds (seed 101),"('proc', 16)",x2 below 6000 m,tolerance,86,22.981798299266956
+A fresh worlds (seed 101),"('proc', 16)",x2 below 6000 m,tolerance + noise floor,91,23.03098528767033
+A fresh worlds (seed 101),"('proc', 16)",x2 below 6000 m,wait,74,27.515379960860756
+A fresh worlds (seed 101),"('proc', 16)",x2 below 6000 m,wait + terrain_R,87,23.507610610517425
+A fresh worlds (seed 101),"('proc', 16)",x2 below 6000 m,second,33,120.03533738063689
+A fresh worlds (seed 101),"('proc', 16)",x2 below 6000 m,second + terrain_R,41,81.47121407588364
+A fresh worlds (seed 101),"('proc', 16)",x2 below 6000 m,ml,65,35.354232570950856
+A fresh worlds (seed 101),"('proc', 16)",x2 below 6000 m,ml + terrain_R,83,23.885917429162888
+A fresh worlds (seed 101),"('proc', 16)",x8 below 6000 m (TRAINING),pitfal,58,25.75409336847513
+A fresh worlds (seed 101),"('proc', 16)",x8 below 6000 m (TRAINING),trust2,65,181.59583693922963
+A fresh worlds (seed 101),"('proc', 16)",x8 below 6000 m (TRAINING),tolerance,44,32.94737401051953
+A fresh worlds (seed 101),"('proc', 16)",x8 below 6000 m (TRAINING),tolerance + noise floor,71,23.394889442236657
+A fresh worlds (seed 101),"('proc', 16)",x8 below 6000 m (TRAINING),wait,22,105.17117021112851
+A fresh worlds (seed 101),"('proc', 16)",x8 below 6000 m (TRAINING),wait + terrain_R,32,95.78253824902285
+A fresh worlds (seed 101),"('proc', 16)",x8 below 6000 m (TRAINING),second,14,211.57351436868063
+A fresh worlds (seed 101),"('proc', 16)",x8 below 6000 m (TRAINING),second + terrain_R,14,144.28854729585893
+A fresh worlds (seed 101),"('proc', 16)",x8 below 6000 m (TRAINING),ml,22,42.18736840582742
+A fresh worlds (seed 101),"('proc', 16)",x8 below 6000 m (TRAINING),ml + terrain_R,39,30.23270646102147
+A fresh worlds (seed 101),"('proc', 16)",x8 below 2500 m,pitfal,76,24.56354789264628
+A fresh worlds (seed 101),"('proc', 16)",x8 below 2500 m,trust2,88,23.356571738791477
+A fresh worlds (seed 101),"('proc', 16)",x8 below 2500 m,tolerance,86,22.906318174290003
+A fresh worlds (seed 101),"('proc', 16)",x8 below 2500 m,tolerance + noise floor,91,22.969813785786364
+A fresh worlds (seed 101),"('proc', 16)",x8 below 2500 m,wait,52,75.61959838558391
+A fresh worlds (seed 101),"('proc', 16)",x8 below 2500 m,wait + terrain_R,85,23.69649313176559
+A fresh worlds (seed 101),"('proc', 16)",x8 below 2500 m,second,23,118.16403005718102
+A fresh worlds (seed 101),"('proc', 16)",x8 below 2500 m,second + terrain_R,34,59.583447861422215
+A fresh worlds (seed 101),"('proc', 16)",x8 below 2500 m,ml,68,32.140076660230626
+A fresh worlds (seed 101),"('proc', 16)",x8 below 2500 m,ml + terrain_R,83,22.88611632683617
+A fresh worlds (seed 101),"('proc', 16)",x16 below 6000 m,pitfal,28,181.830639122656
+A fresh worlds (seed 101),"('proc', 16)",x16 below 6000 m,trust2,49,481.6835521525951
+A fresh worlds (seed 101),"('proc', 16)",x16 below 6000 m,tolerance,42,35.44437378474657
+A fresh worlds (seed 101),"('proc', 16)",x16 below 6000 m,tolerance + noise floor,64,24.09815589634045
+A fresh worlds (seed 101),"('proc', 16)",x16 below 6000 m,wait,13,254.16871639785595
+A fresh worlds (seed 101),"('proc', 16)",x16 below 6000 m,wait + terrain_R,22,212.3730953728172
+A fresh worlds (seed 101),"('proc', 16)",x16 below 6000 m,second,6,180.43450777175897
+A fresh worlds (seed 101),"('proc', 16)",x16 below 6000 m,second + terrain_R,7,204.6100807117275
+A fresh worlds (seed 101),"('proc', 16)",x16 below 6000 m,ml,24,44.26442875140949
+A fresh worlds (seed 101),"('proc', 16)",x16 below 6000 m,ml + terrain_R,34,31.144342287720566
+"B tuning worlds, new seed 202","('proc', 11)",cliff + faults (nominal noise),pitfal,81,22.543555920678656
+"B tuning worlds, new seed 202","('proc', 11)",cliff + faults (nominal noise),trust2,90,21.94436965921682
+"B tuning worlds, new seed 202","('proc', 11)",cliff + faults (nominal noise),tolerance,84,21.89063644714213
+"B tuning worlds, new seed 202","('proc', 11)",cliff + faults (nominal noise),tolerance + noise floor,91,22.04550388560029
+"B tuning worlds, new seed 202","('proc', 11)",cliff + faults (nominal noise),wait,76,22.82689911346655
+"B tuning worlds, new seed 202","('proc', 11)",cliff + faults (nominal noise),wait + terrain_R,87,21.78632840854851
+"B tuning worlds, new seed 202","('proc', 11)",cliff + faults (nominal noise),second,9,293.11764104553055
+"B tuning worlds, new seed 202","('proc', 11)",cliff + faults (nominal noise),second + terrain_R,6,302.09615593779506
+"B tuning worlds, new seed 202","('proc', 11)",cliff + faults (nominal noise),ml,62,21.910205825583994
+"B tuning worlds, new seed 202","('proc', 11)",cliff + faults (nominal noise),ml + terrain_R,84,21.396827564099734
+"B tuning worlds, new seed 202","('proc', 11)",x2 below 6000 m,pitfal,83,21.86185236463524
+"B tuning worlds, new seed 202","('proc', 11)",x2 below 6000 m,trust2,91,22.084947695625
+"B tuning worlds, new seed 202","('proc', 11)",x2 below 6000 m,tolerance,86,21.787746970255327
+"B tuning worlds, new seed 202","('proc', 11)",x2 below 6000 m,tolerance + noise floor,95,21.82080213160267
+"B tuning worlds, new seed 202","('proc', 11)",x2 below 6000 m,wait,68,22.226338415818756
+"B tuning worlds, new seed 202","('proc', 11)",x2 below 6000 m,wait + terrain_R,91,21.63258527787466
+"B tuning worlds, new seed 202","('proc', 11)",x2 below 6000 m,second,37,145.9859577866157
+"B tuning worlds, new seed 202","('proc', 11)",x2 below 6000 m,second + terrain_R,41,267.5344190949821
+"B tuning worlds, new seed 202","('proc', 11)",x2 below 6000 m,ml,56,21.977977515778214
+"B tuning worlds, new seed 202","('proc', 11)",x2 below 6000 m,ml + terrain_R,76,21.824949210395204
+"B tuning worlds, new seed 202","('proc', 11)",x4 below 6000 m,pitfal,90,21.93987226098679
+"B tuning worlds, new seed 202","('proc', 11)",x4 below 6000 m,trust2,88,22.33058903608794
+"B tuning worlds, new seed 202","('proc', 11)",x4 below 6000 m,tolerance,77,22.50385419641525
+"B tuning worlds, new seed 202","('proc', 11)",x4 below 6000 m,tolerance + noise floor,95,21.94481326304648
+"B tuning worlds, new seed 202","('proc', 11)",x4 below 6000 m,wait,76,22.429484181365385
+"B tuning worlds, new seed 202","('proc', 11)",x4 below 6000 m,wait + terrain_R,93,21.687194872689506
+"B tuning worlds, new seed 202","('proc', 11)",x4 below 6000 m,second,19,272.71330937877985
+"B tuning worlds, new seed 202","('proc', 11)",x4 below 6000 m,second + terrain_R,34,330.2167419759038
+"B tuning worlds, new seed 202","('proc', 11)",x4 below 6000 m,ml,45,24.9717224457928
+"B tuning worlds, new seed 202","('proc', 11)",x4 below 6000 m,ml + terrain_R,45,25.22535730093024
+"B tuning worlds, new seed 202","('proc', 11)",x8 below 2500 m,pitfal,76,22.02027242391414
+"B tuning worlds, new seed 202","('proc', 11)",x8 below 2500 m,trust2,81,21.397482468790265
+"B tuning worlds, new seed 202","('proc', 11)",x8 below 2500 m,tolerance,82,21.827942196028733
+"B tuning worlds, new seed 202","('proc', 11)",x8 below 2500 m,tolerance + noise floor,87,21.844361547590417
+"B tuning worlds, new seed 202","('proc', 11)",x8 below 2500 m,wait,57,23.61342375028972
+"B tuning worlds, new seed 202","('proc', 11)",x8 below 2500 m,wait + terrain_R,74,38.45316387330578
+"B tuning worlds, new seed 202","('proc', 11)",x8 below 2500 m,second,24,241.23894226002278
+"B tuning worlds, new seed 202","('proc', 11)",x8 below 2500 m,second + terrain_R,33,239.16777233032153
+"B tuning worlds, new seed 202","('proc', 11)",x8 below 2500 m,ml,55,21.225771216667017
+"B tuning worlds, new seed 202","('proc', 11)",x8 below 2500 m,ml + terrain_R,64,20.851807289050395
+"B tuning worlds, new seed 202","('proc', 11)",x16 below 6000 m,pitfal,50,156.30664268170332
+"B tuning worlds, new seed 202","('proc', 11)",x16 below 6000 m,trust2,59,335.4100737992011
+"B tuning worlds, new seed 202","('proc', 11)",x16 below 6000 m,tolerance,41,221.12643869933362
+"B tuning worlds, new seed 202","('proc', 11)",x16 below 6000 m,tolerance + noise floor,85,23.35680699809897
+"B tuning worlds, new seed 202","('proc', 11)",x16 below 6000 m,wait,20,351.70793902586945
+"B tuning worlds, new seed 202","('proc', 11)",x16 below 6000 m,wait + terrain_R,27,295.2834111396722
+"B tuning worlds, new seed 202","('proc', 11)",x16 below 6000 m,second,9,403.58872701910514
+"B tuning worlds, new seed 202","('proc', 11)",x16 below 6000 m,second + terrain_R,17,412.40668331853783
+"B tuning worlds, new seed 202","('proc', 11)",x16 below 6000 m,ml,46,33.82115448797253
+"B tuning worlds, new seed 202","('proc', 11)",x16 below 6000 m,ml + terrain_R,57,31.234053080128476
+"B tuning worlds, new seed 202","('proc', 11)",x8 below 6000 m (TRAINING),pitfal,81,22.608400467253215
+"B tuning worlds, new seed 202","('proc', 11)",x8 below 6000 m (TRAINING),trust2,82,79.56604492470828
+"B tuning worlds, new seed 202","('proc', 11)",x8 below 6000 m (TRAINING),tolerance,52,83.65938324187273
+"B tuning worlds, new seed 202","('proc', 11)",x8 below 6000 m (TRAINING),tolerance + noise floor,91,22.22713642481001
+"B tuning worlds, new seed 202","('proc', 11)",x8 below 6000 m (TRAINING),wait,44,54.96724646216424
+"B tuning worlds, new seed 202","('proc', 11)",x8 below 6000 m (TRAINING),wait + terrain_R,52,54.31861813850013
+"B tuning worlds, new seed 202","('proc', 11)",x8 below 6000 m (TRAINING),second,15,347.80061568625143
+"B tuning worlds, new seed 202","('proc', 11)",x8 below 6000 m (TRAINING),second + terrain_R,24,216.01996519576446
+"B tuning worlds, new seed 202","('proc', 11)",x8 below 6000 m (TRAINING),ml,33,28.308062758696533
+"B tuning worlds, new seed 202","('proc', 11)",x8 below 6000 m (TRAINING),ml + terrain_R,51,27.861611156346644
+"B tuning worlds, new seed 202","('proc', 12)",cliff + faults (nominal noise),pitfal,88,22.32732462613845
+"B tuning worlds, new seed 202","('proc', 12)",cliff + faults (nominal noise),trust2,92,21.86086505141351
+"B tuning worlds, new seed 202","('proc', 12)",cliff + faults (nominal noise),tolerance,85,22.16329263224235
+"B tuning worlds, new seed 202","('proc', 12)",cliff + faults (nominal noise),tolerance + noise floor,90,22.339064207109992
+"B tuning worlds, new seed 202","('proc', 12)",cliff + faults (nominal noise),wait,82,21.895597740459067
+"B tuning worlds, new seed 202","('proc', 12)",cliff + faults (nominal noise),wait + terrain_R,95,21.61085986951785
+"B tuning worlds, new seed 202","('proc', 12)",cliff + faults (nominal noise),second,7,290.20100077852254
+"B tuning worlds, new seed 202","('proc', 12)",cliff + faults (nominal noise),second + terrain_R,8,281.3904067954193
+"B tuning worlds, new seed 202","('proc', 12)",cliff + faults (nominal noise),ml,78,22.42997896085125
+"B tuning worlds, new seed 202","('proc', 12)",cliff + faults (nominal noise),ml + terrain_R,76,21.637565476655144
+"B tuning worlds, new seed 202","('proc', 12)",x2 below 6000 m,pitfal,87,21.78517454722444
+"B tuning worlds, new seed 202","('proc', 12)",x2 below 6000 m,trust2,91,21.690017538739447
+"B tuning worlds, new seed 202","('proc', 12)",x2 below 6000 m,tolerance,94,21.73632719991641
+"B tuning worlds, new seed 202","('proc', 12)",x2 below 6000 m,tolerance + noise floor,94,21.71896254965275
+"B tuning worlds, new seed 202","('proc', 12)",x2 below 6000 m,wait,82,21.723231465047135
+"B tuning worlds, new seed 202","('proc', 12)",x2 below 6000 m,wait + terrain_R,94,21.62198256030377
+"B tuning worlds, new seed 202","('proc', 12)",x2 below 6000 m,second,38,59.704483960875855
+"B tuning worlds, new seed 202","('proc', 12)",x2 below 6000 m,second + terrain_R,30,96.46275141461282
+"B tuning worlds, new seed 202","('proc', 12)",x2 below 6000 m,ml,75,22.480989193181138
+"B tuning worlds, new seed 202","('proc', 12)",x2 below 6000 m,ml + terrain_R,86,22.337396040573356
+"B tuning worlds, new seed 202","('proc', 12)",x4 below 6000 m,pitfal,87,21.778109952855946
+"B tuning worlds, new seed 202","('proc', 12)",x4 below 6000 m,trust2,89,21.878091954813662
+"B tuning worlds, new seed 202","('proc', 12)",x4 below 6000 m,tolerance,70,23.51109580868502
+"B tuning worlds, new seed 202","('proc', 12)",x4 below 6000 m,tolerance + noise floor,97,21.765066297987612
+"B tuning worlds, new seed 202","('proc', 12)",x4 below 6000 m,wait,74,22.075733645823284
+"B tuning worlds, new seed 202","('proc', 12)",x4 below 6000 m,wait + terrain_R,90,21.888541608801116
+"B tuning worlds, new seed 202","('proc', 12)",x4 below 6000 m,second,14,71.73762127957143
+"B tuning worlds, new seed 202","('proc', 12)",x4 below 6000 m,second + terrain_R,24,247.02193850539527
+"B tuning worlds, new seed 202","('proc', 12)",x4 below 6000 m,ml,30,29.077781683787723
+"B tuning worlds, new seed 202","('proc', 12)",x4 below 6000 m,ml + terrain_R,41,28.053012615711545
+"B tuning worlds, new seed 202","('proc', 12)",x8 below 6000 m (TRAINING),pitfal,66,22.519609288006308
+"B tuning worlds, new seed 202","('proc', 12)",x8 below 6000 m (TRAINING),trust2,83,22.444892335609573
+"B tuning worlds, new seed 202","('proc', 12)",x8 below 6000 m (TRAINING),tolerance,35,28.829183611687668
+"B tuning worlds, new seed 202","('proc', 12)",x8 below 6000 m (TRAINING),tolerance + noise floor,86,22.15492595575191
+"B tuning worlds, new seed 202","('proc', 12)",x8 below 6000 m (TRAINING),wait,32,71.03636544019606
+"B tuning worlds, new seed 202","('proc', 12)",x8 below 6000 m (TRAINING),wait + terrain_R,42,59.11853441611986
+"B tuning worlds, new seed 202","('proc', 12)",x8 below 6000 m (TRAINING),second,6,102.73163024356413
+"B tuning worlds, new seed 202","('proc', 12)",x8 below 6000 m (TRAINING),second + terrain_R,13,114.03254076965811
+"B tuning worlds, new seed 202","('proc', 12)",x8 below 6000 m (TRAINING),ml,29,31.05603824666051
+"B tuning worlds, new seed 202","('proc', 12)",x8 below 6000 m (TRAINING),ml + terrain_R,37,29.08507686366698
+"B tuning worlds, new seed 202","('proc', 12)",x16 below 6000 m,pitfal,40,166.4651105010014
+"B tuning worlds, new seed 202","('proc', 12)",x16 below 6000 m,trust2,70,120.73559680641428
+"B tuning worlds, new seed 202","('proc', 12)",x16 below 6000 m,tolerance,34,58.46777578646038
+"B tuning worlds, new seed 202","('proc', 12)",x16 below 6000 m,tolerance + noise floor,82,23.754728400322858
+"B tuning worlds, new seed 202","('proc', 12)",x16 below 6000 m,wait,17,294.18860187296184
+"B tuning worlds, new seed 202","('proc', 12)",x16 below 6000 m,wait + terrain_R,34,186.44587816670884
+"B tuning worlds, new seed 202","('proc', 12)",x16 below 6000 m,second,5,292.18413074004445
+"B tuning worlds, new seed 202","('proc', 12)",x16 below 6000 m,second + terrain_R,8,126.3369250086214
+"B tuning worlds, new seed 202","('proc', 12)",x16 below 6000 m,ml,35,31.803376114835828
+"B tuning worlds, new seed 202","('proc', 12)",x16 below 6000 m,ml + terrain_R,37,30.856847234627
+"B tuning worlds, new seed 202","('proc', 12)",x8 below 2500 m,pitfal,82,21.927794553399533
+"B tuning worlds, new seed 202","('proc', 12)",x8 below 2500 m,trust2,81,21.48152986592525
+"B tuning worlds, new seed 202","('proc', 12)",x8 below 2500 m,tolerance,71,21.86587256455394
+"B tuning worlds, new seed 202","('proc', 12)",x8 below 2500 m,tolerance + noise floor,88,21.77282666235513
+"B tuning worlds, new seed 202","('proc', 12)",x8 below 2500 m,wait,62,104.51163556670942
+"B tuning worlds, new seed 202","('proc', 12)",x8 below 2500 m,wait + terrain_R,83,22.11240170043977
+"B tuning worlds, new seed 202","('proc', 12)",x8 below 2500 m,second,28,42.48915322635911
+"B tuning worlds, new seed 202","('proc', 12)",x8 below 2500 m,second + terrain_R,33,80.39860331621203
+"B tuning worlds, new seed 202","('proc', 12)",x8 below 2500 m,ml,69,21.574246455961703
+"B tuning worlds, new seed 202","('proc', 12)",x8 below 2500 m,ml + terrain_R,79,21.12721918542829
+"B tuning worlds, new seed 202","('proc', 13)",cliff + faults (nominal noise),pitfal,83,22.657538173880997
+"B tuning worlds, new seed 202","('proc', 13)",cliff + faults (nominal noise),trust2,94,22.504932899050047
+"B tuning worlds, new seed 202","('proc', 13)",cliff + faults (nominal noise),tolerance,90,22.599144989578026
+"B tuning worlds, new seed 202","('proc', 13)",cliff + faults (nominal noise),tolerance + noise floor,88,22.696003383318303
+"B tuning worlds, new seed 202","('proc', 13)",cliff + faults (nominal noise),wait,90,22.176830440815273
+"B tuning worlds, new seed 202","('proc', 13)",cliff + faults (nominal noise),wait + terrain_R,93,21.60255306251235
+"B tuning worlds, new seed 202","('proc', 13)",cliff + faults (nominal noise),second,7,354.07783990161255
+"B tuning worlds, new seed 202","('proc', 13)",cliff + faults (nominal noise),second + terrain_R,7,88.03641006804625
+"B tuning worlds, new seed 202","('proc', 13)",cliff + faults (nominal noise),ml,79,28.910895913047433
+"B tuning worlds, new seed 202","('proc', 13)",cliff + faults (nominal noise),ml + terrain_R,89,26.054743107357382
+"B tuning worlds, new seed 202","('proc', 13)",x2 below 6000 m,pitfal,78,22.283297966593786
+"B tuning worlds, new seed 202","('proc', 13)",x2 below 6000 m,trust2,85,21.6720634744664
+"B tuning worlds, new seed 202","('proc', 13)",x2 below 6000 m,tolerance,83,21.649630740212885
+"B tuning worlds, new seed 202","('proc', 13)",x2 below 6000 m,tolerance + noise floor,89,21.587325747006325
+"B tuning worlds, new seed 202","('proc', 13)",x2 below 6000 m,wait,71,22.942472888056923
+"B tuning worlds, new seed 202","('proc', 13)",x2 below 6000 m,wait + terrain_R,81,21.639669204903083
+"B tuning worlds, new seed 202","('proc', 13)",x2 below 6000 m,second,30,185.4838793986192
+"B tuning worlds, new seed 202","('proc', 13)",x2 below 6000 m,second + terrain_R,30,189.8060864622467
+"B tuning worlds, new seed 202","('proc', 13)",x2 below 6000 m,ml,66,22.27177001058146
+"B tuning worlds, new seed 202","('proc', 13)",x2 below 6000 m,ml + terrain_R,81,21.93835033753776
+"B tuning worlds, new seed 202","('proc', 13)",x4 below 6000 m,pitfal,74,22.281945566448126
+"B tuning worlds, new seed 202","('proc', 13)",x4 below 6000 m,trust2,71,21.785815442536833
+"B tuning worlds, new seed 202","('proc', 13)",x4 below 6000 m,tolerance,60,46.94616869594538
+"B tuning worlds, new seed 202","('proc', 13)",x4 below 6000 m,tolerance + noise floor,80,21.690937334354725
+"B tuning worlds, new seed 202","('proc', 13)",x4 below 6000 m,wait,67,22.985711261533996
+"B tuning worlds, new seed 202","('proc', 13)",x4 below 6000 m,wait + terrain_R,81,21.811946492616745
+"B tuning worlds, new seed 202","('proc', 13)",x4 below 6000 m,second,20,56.94857571308866
+"B tuning worlds, new seed 202","('proc', 13)",x4 below 6000 m,second + terrain_R,26,202.40863752370907
+"B tuning worlds, new seed 202","('proc', 13)",x4 below 6000 m,ml,38,24.93125965930734
+"B tuning worlds, new seed 202","('proc', 13)",x4 below 6000 m,ml + terrain_R,62,24.61344322637657
+"B tuning worlds, new seed 202","('proc', 13)",x8 below 6000 m (TRAINING),pitfal,66,23.0083002812573
+"B tuning worlds, new seed 202","('proc', 13)",x8 below 6000 m (TRAINING),trust2,73,22.438745695670704
+"B tuning worlds, new seed 202","('proc', 13)",x8 below 6000 m (TRAINING),tolerance,46,123.03554567755256
+"B tuning worlds, new seed 202","('proc', 13)",x8 below 6000 m (TRAINING),tolerance + noise floor,77,22.1087754513555
+"B tuning worlds, new seed 202","('proc', 13)",x8 below 6000 m (TRAINING),wait,24,175.95230239023653
+"B tuning worlds, new seed 202","('proc', 13)",x8 below 6000 m (TRAINING),wait + terrain_R,43,80.02664746252503
+"B tuning worlds, new seed 202","('proc', 13)",x8 below 6000 m (TRAINING),second,15,106.30887379127402
+"B tuning worlds, new seed 202","('proc', 13)",x8 below 6000 m (TRAINING),second + terrain_R,16,288.0212322554498
+"B tuning worlds, new seed 202","('proc', 13)",x8 below 6000 m (TRAINING),ml,36,28.343501016402904
+"B tuning worlds, new seed 202","('proc', 13)",x8 below 6000 m (TRAINING),ml + terrain_R,44,26.6103445818044
+"B tuning worlds, new seed 202","('proc', 13)",x8 below 2500 m,pitfal,85,22.087455342783237
+"B tuning worlds, new seed 202","('proc', 13)",x8 below 2500 m,trust2,97,21.619507229307015
+"B tuning worlds, new seed 202","('proc', 13)",x8 below 2500 m,tolerance,89,21.409979725715512
+"B tuning worlds, new seed 202","('proc', 13)",x8 below 2500 m,tolerance + noise floor,93,21.44453941947806
+"B tuning worlds, new seed 202","('proc', 13)",x8 below 2500 m,wait,75,48.4291830178147
+"B tuning worlds, new seed 202","('proc', 13)",x8 below 2500 m,wait + terrain_R,76,35.9667984902189
+"B tuning worlds, new seed 202","('proc', 13)",x8 below 2500 m,second,33,47.49932843192756
+"B tuning worlds, new seed 202","('proc', 13)",x8 below 2500 m,second + terrain_R,33,189.84427168674227
+"B tuning worlds, new seed 202","('proc', 13)",x8 below 2500 m,ml,73,21.585217693051185
+"B tuning worlds, new seed 202","('proc', 13)",x8 below 2500 m,ml + terrain_R,86,21.10769586603734
+"B tuning worlds, new seed 202","('site01', 2.0)",cliff + faults (nominal noise),pitfal,100,20.95163207139386
+"B tuning worlds, new seed 202","('site01', 2.0)",cliff + faults (nominal noise),trust2,100,20.621810053036
+"B tuning worlds, new seed 202","('site01', 2.0)",cliff + faults (nominal noise),tolerance,100,20.681237188746397
+"B tuning worlds, new seed 202","('site01', 2.0)",cliff + faults (nominal noise),tolerance + noise floor,100,20.719412967616588
+"B tuning worlds, new seed 202","('site01', 2.0)",cliff + faults (nominal noise),wait,100,20.461741472434046
+"B tuning worlds, new seed 202","('site01', 2.0)",cliff + faults (nominal noise),wait + terrain_R,100,20.50524443404753
+"B tuning worlds, new seed 202","('site01', 2.0)",cliff + faults (nominal noise),second,26,40.07501567202227
+"B tuning worlds, new seed 202","('site01', 2.0)",cliff + faults (nominal noise),second + terrain_R,28,37.977034320269176
+"B tuning worlds, new seed 202","('site01', 2.0)",cliff + faults (nominal noise),ml,100,20.57584757108722
+"B tuning worlds, new seed 202","('site01', 2.0)",cliff + faults (nominal noise),ml + terrain_R,100,20.4681646806676
+"B tuning worlds, new seed 202","('proc', 13)",x16 below 6000 m,pitfal,32,144.55329726067748
+"B tuning worlds, new seed 202","('proc', 13)",x16 below 6000 m,trust2,64,25.464676447090614
+"B tuning worlds, new seed 202","('proc', 13)",x16 below 6000 m,tolerance,31,134.38321931301556
+"B tuning worlds, new seed 202","('proc', 13)",x16 below 6000 m,tolerance + noise floor,74,22.96243663338075
+"B tuning worlds, new seed 202","('proc', 13)",x16 below 6000 m,wait,12,352.3506844616157
+"B tuning worlds, new seed 202","('proc', 13)",x16 below 6000 m,wait + terrain_R,26,333.3397997373893
+"B tuning worlds, new seed 202","('proc', 13)",x16 below 6000 m,second,10,450.4960984541812
+"B tuning worlds, new seed 202","('proc', 13)",x16 below 6000 m,second + terrain_R,11,394.332124571796
+"B tuning worlds, new seed 202","('proc', 13)",x16 below 6000 m,ml,34,39.06037387337946
+"B tuning worlds, new seed 202","('proc', 13)",x16 below 6000 m,ml + terrain_R,45,31.581264272208475
+"B tuning worlds, new seed 202","('site01', 2.0)",x2 below 6000 m,pitfal,100,20.624289014674595
+"B tuning worlds, new seed 202","('site01', 2.0)",x2 below 6000 m,trust2,100,20.40184554223544
+"B tuning worlds, new seed 202","('site01', 2.0)",x2 below 6000 m,tolerance,100,20.476992699487525
+"B tuning worlds, new seed 202","('site01', 2.0)",x2 below 6000 m,tolerance + noise floor,100,20.49110342107187
+"B tuning worlds, new seed 202","('site01', 2.0)",x2 below 6000 m,wait,100,20.423148039399848
+"B tuning worlds, new seed 202","('site01', 2.0)",x2 below 6000 m,wait + terrain_R,100,20.39304940448903
+"B tuning worlds, new seed 202","('site01', 2.0)",x2 below 6000 m,second,72,26.442648842463424
+"B tuning worlds, new seed 202","('site01', 2.0)",x2 below 6000 m,second + terrain_R,73,24.899320042572974
+"B tuning worlds, new seed 202","('site01', 2.0)",x2 below 6000 m,ml,100,20.559011362934026
+"B tuning worlds, new seed 202","('site01', 2.0)",x2 below 6000 m,ml + terrain_R,100,20.516202519839577
+"B tuning worlds, new seed 202","('site01', 2.0)",x4 below 6000 m,pitfal,100,20.630305156424523
+"B tuning worlds, new seed 202","('site01', 2.0)",x4 below 6000 m,trust2,100,20.535651270053673
+"B tuning worlds, new seed 202","('site01', 2.0)",x4 below 6000 m,tolerance,98,21.225702896299975
+"B tuning worlds, new seed 202","('site01', 2.0)",x4 below 6000 m,tolerance + noise floor,100,20.566969356530883
+"B tuning worlds, new seed 202","('site01', 2.0)",x4 below 6000 m,wait,100,20.664046817286984
+"B tuning worlds, new seed 202","('site01', 2.0)",x4 below 6000 m,wait + terrain_R,100,20.57746868419878
+"B tuning worlds, new seed 202","('site01', 2.0)",x4 below 6000 m,second,73,26.7053546041334
+"B tuning worlds, new seed 202","('site01', 2.0)",x4 below 6000 m,second + terrain_R,68,26.50434805070793
+"B tuning worlds, new seed 202","('site01', 2.0)",x4 below 6000 m,ml,92,21.89613344682061
+"B tuning worlds, new seed 202","('site01', 2.0)",x4 below 6000 m,ml + terrain_R,98,22.20888486750314
+"B tuning worlds, new seed 202","('site01', 2.0)",x8 below 6000 m (TRAINING),pitfal,100,21.180914404134985
+"B tuning worlds, new seed 202","('site01', 2.0)",x8 below 6000 m (TRAINING),trust2,98,22.109900511898168
+"B tuning worlds, new seed 202","('site01', 2.0)",x8 below 6000 m (TRAINING),tolerance,57,212.2419687042077
+"B tuning worlds, new seed 202","('site01', 2.0)",x8 below 6000 m (TRAINING),tolerance + noise floor,100,20.764465090131363
+"B tuning worlds, new seed 202","('site01', 2.0)",x8 below 6000 m (TRAINING),wait,67,66.46154283347005
+"B tuning worlds, new seed 202","('site01', 2.0)",x8 below 6000 m (TRAINING),wait + terrain_R,70,61.09331065423499
+"B tuning worlds, new seed 202","('site01', 2.0)",x8 below 6000 m (TRAINING),second,70,24.036183857286346
+"B tuning worlds, new seed 202","('site01', 2.0)",x8 below 6000 m (TRAINING),second + terrain_R,71,23.138283383632448
+"B tuning worlds, new seed 202","('site01', 2.0)",x8 below 6000 m (TRAINING),ml,79,25.6097022351869
+"B tuning worlds, new seed 202","('site01', 2.0)",x8 below 6000 m (TRAINING),ml + terrain_R,86,24.63740139099249
+"B tuning worlds, new seed 202","('site01', 2.0)",x8 below 2500 m,pitfal,100,20.617542372605687
+"B tuning worlds, new seed 202","('site01', 2.0)",x8 below 2500 m,trust2,100,20.437677021944186
+"B tuning worlds, new seed 202","('site01', 2.0)",x8 below 2500 m,tolerance,88,119.03124754820583
+"B tuning worlds, new seed 202","('site01', 2.0)",x8 below 2500 m,tolerance + noise floor,100,20.47675000604539
+"B tuning worlds, new seed 202","('site01', 2.0)",x8 below 2500 m,wait,90,22.595913776072045
+"B tuning worlds, new seed 202","('site01', 2.0)",x8 below 2500 m,wait + terrain_R,90,31.04229795204597
+"B tuning worlds, new seed 202","('site01', 2.0)",x8 below 2500 m,second,69,23.996856499914415
+"B tuning worlds, new seed 202","('site01', 2.0)",x8 below 2500 m,second + terrain_R,71,22.763556462285244
+"B tuning worlds, new seed 202","('site01', 2.0)",x8 below 2500 m,ml,100,20.364696889587556
+"B tuning worlds, new seed 202","('site01', 2.0)",x8 below 2500 m,ml + terrain_R,98,20.310945250642504
+"B tuning worlds, new seed 202","('site01', 2.0)",x16 below 6000 m,pitfal,67,209.81441593240206
+"B tuning worlds, new seed 202","('site01', 2.0)",x16 below 6000 m,trust2,78,67.86388891199714
+"B tuning worlds, new seed 202","('site01', 2.0)",x16 below 6000 m,tolerance,37,389.1897458568887
+"B tuning worlds, new seed 202","('site01', 2.0)",x16 below 6000 m,tolerance + noise floor,100,21.21309429907638
+"B tuning worlds, new seed 202","('site01', 2.0)",x16 below 6000 m,wait,21,318.56454109621103
+"B tuning worlds, new seed 202","('site01', 2.0)",x16 below 6000 m,wait + terrain_R,31,308.87614846443756
+"B tuning worlds, new seed 202","('site01', 2.0)",x16 below 6000 m,second,78,23.878265803851072
+"B tuning worlds, new seed 202","('site01', 2.0)",x16 below 6000 m,second + terrain_R,73,25.144309539206798
+"B tuning worlds, new seed 202","('site01', 2.0)",x16 below 6000 m,ml,57,164.33010588482963
+"B tuning worlds, new seed 202","('site01', 2.0)",x16 below 6000 m,ml + terrain_R,53,166.53847114740793

@@ -1,0 +1,151 @@
+group,world,condition,judge,success,alt_rms
+A fresh worlds (seed 101),"('proc', 15)",cliff + faults (nominal noise),ablation: accept ALL flagged readings,32,37.37917714301087
+A fresh worlds (seed 101),"('proc', 15)",cliff + faults (nominal noise),ablation: reject ALL flagged readings,87,22.057178779361802
+A fresh worlds (seed 101),"('proc', 15)",cliff + faults (nominal noise),non-ML rule gate (adaptive tolerance) instead of classifier,88,21.933158889097623
+A fresh worlds (seed 101),"('proc', 15)",x2 below 6000 m,ablation: accept ALL flagged readings,42,25.73091098646013
+A fresh worlds (seed 101),"('proc', 15)",x2 below 6000 m,ablation: reject ALL flagged readings,85,21.849355348845204
+A fresh worlds (seed 101),"('proc', 15)",x2 below 6000 m,non-ML rule gate (adaptive tolerance) instead of classifier,97,21.595392951732094
+A fresh worlds (seed 101),"('proc', 15)",x4 below 6000 m,ablation: accept ALL flagged readings,58,25.482443292473416
+A fresh worlds (seed 101),"('proc', 15)",x4 below 6000 m,ablation: reject ALL flagged readings,72,225.15692170286724
+A fresh worlds (seed 101),"('proc', 15)",x4 below 6000 m,non-ML rule gate (adaptive tolerance) instead of classifier,94,21.757880490788846
+A fresh worlds (seed 101),"('proc', 15)",x8 below 6000 m (TRAINING),ablation: accept ALL flagged readings,75,23.453120180789654
+A fresh worlds (seed 101),"('proc', 15)",x8 below 6000 m (TRAINING),ablation: reject ALL flagged readings,47,326.1710986912602
+A fresh worlds (seed 101),"('proc', 15)",x8 below 6000 m (TRAINING),non-ML rule gate (adaptive tolerance) instead of classifier,89,22.247127430287083
+A fresh worlds (seed 101),"('proc', 15)",x16 below 6000 m,ablation: accept ALL flagged readings,81,24.632122097492655
+A fresh worlds (seed 101),"('proc', 15)",x16 below 6000 m,ablation: reject ALL flagged readings,42,366.9509419549221
+A fresh worlds (seed 101),"('proc', 15)",x16 below 6000 m,non-ML rule gate (adaptive tolerance) instead of classifier,92,22.876596843592676
+A fresh worlds (seed 101),"('proc', 15)",x8 below 2500 m,ablation: accept ALL flagged readings,66,23.915562450907757
+A fresh worlds (seed 101),"('proc', 15)",x8 below 2500 m,ablation: reject ALL flagged readings,70,22.834235250741216
+A fresh worlds (seed 101),"('proc', 15)",x8 below 2500 m,non-ML rule gate (adaptive tolerance) instead of classifier,89,21.783122716129945
+A fresh worlds (seed 101),"('proc', 16)",cliff + faults (nominal noise),ablation: accept ALL flagged readings,31,39.577511009388346
+A fresh worlds (seed 101),"('proc', 16)",cliff + faults (nominal noise),ablation: reject ALL flagged readings,90,25.471011614784242
+A fresh worlds (seed 101),"('proc', 16)",cliff + faults (nominal noise),non-ML rule gate (adaptive tolerance) instead of classifier,93,24.425594717580495
+A fresh worlds (seed 101),"('proc', 16)",x2 below 6000 m,ablation: accept ALL flagged readings,39,31.578311790813853
+A fresh worlds (seed 101),"('proc', 16)",x2 below 6000 m,ablation: reject ALL flagged readings,89,24.915710228453406
+A fresh worlds (seed 101),"('proc', 16)",x2 below 6000 m,non-ML rule gate (adaptive tolerance) instead of classifier,93,23.171532540213292
+A fresh worlds (seed 101),"('proc', 16)",x4 below 6000 m,ablation: accept ALL flagged readings,51,29.2785130865847
+A fresh worlds (seed 101),"('proc', 16)",x4 below 6000 m,ablation: reject ALL flagged readings,62,102.62966656302126
+A fresh worlds (seed 101),"('proc', 16)",x4 below 6000 m,non-ML rule gate (adaptive tolerance) instead of classifier,88,23.30840541345351
+A fresh worlds (seed 101),"('proc', 16)",x8 below 6000 m (TRAINING),ablation: accept ALL flagged readings,60,29.41475946003676
+A fresh worlds (seed 101),"('proc', 16)",x8 below 6000 m (TRAINING),ablation: reject ALL flagged readings,33,235.00379492027793
+A fresh worlds (seed 101),"('proc', 16)",x8 below 6000 m (TRAINING),non-ML rule gate (adaptive tolerance) instead of classifier,75,23.58538836816409
+A fresh worlds (seed 101),"('proc', 16)",x16 below 6000 m,ablation: accept ALL flagged readings,65,30.12697507144406
+A fresh worlds (seed 101),"('proc', 16)",x16 below 6000 m,ablation: reject ALL flagged readings,33,201.76277619072485
+A fresh worlds (seed 101),"('proc', 16)",x16 below 6000 m,non-ML rule gate (adaptive tolerance) instead of classifier,63,24.305326358786527
+A fresh worlds (seed 101),"('proc', 16)",x8 below 2500 m,ablation: accept ALL flagged readings,55,29.328227784412135
+A fresh worlds (seed 101),"('proc', 16)",x8 below 2500 m,ablation: reject ALL flagged readings,85,28.39601010009864
+A fresh worlds (seed 101),"('proc', 16)",x8 below 2500 m,non-ML rule gate (adaptive tolerance) instead of classifier,89,23.110163653443156
+A fresh worlds (seed 101),"('proc', 14)",cliff + faults (nominal noise),ablation: accept ALL flagged readings,22,40.60262338625684
+A fresh worlds (seed 101),"('proc', 14)",cliff + faults (nominal noise),ablation: reject ALL flagged readings,74,47.347509045987785
+A fresh worlds (seed 101),"('proc', 14)",cliff + faults (nominal noise),non-ML rule gate (adaptive tolerance) instead of classifier,85,32.63743857927502
+A fresh worlds (seed 101),"('proc', 14)",x2 below 6000 m,ablation: accept ALL flagged readings,42,35.678875589056005
+A fresh worlds (seed 101),"('proc', 14)",x2 below 6000 m,ablation: reject ALL flagged readings,71,44.21049301632373
+A fresh worlds (seed 101),"('proc', 14)",x2 below 6000 m,non-ML rule gate (adaptive tolerance) instead of classifier,95,30.590035580265088
+A fresh worlds (seed 101),"('proc', 14)",x4 below 6000 m,ablation: accept ALL flagged readings,48,34.379756954506625
+A fresh worlds (seed 101),"('proc', 14)",x4 below 6000 m,ablation: reject ALL flagged readings,54,45.30327642488694
+A fresh worlds (seed 101),"('proc', 14)",x4 below 6000 m,non-ML rule gate (adaptive tolerance) instead of classifier,85,30.590506219257875
+A fresh worlds (seed 101),"('proc', 14)",x8 below 6000 m (TRAINING),ablation: accept ALL flagged readings,58,32.90610276338411
+A fresh worlds (seed 101),"('proc', 14)",x8 below 6000 m (TRAINING),ablation: reject ALL flagged readings,32,242.36263887536776
+A fresh worlds (seed 101),"('proc', 14)",x8 below 6000 m (TRAINING),non-ML rule gate (adaptive tolerance) instead of classifier,77,30.836595321026167
+A fresh worlds (seed 101),"('proc', 14)",x16 below 6000 m,ablation: accept ALL flagged readings,67,33.297284008704246
+A fresh worlds (seed 101),"('proc', 14)",x16 below 6000 m,ablation: reject ALL flagged readings,27,229.67749857927058
+A fresh worlds (seed 101),"('proc', 14)",x16 below 6000 m,non-ML rule gate (adaptive tolerance) instead of classifier,65,31.03545978633589
+A fresh worlds (seed 101),"('proc', 14)",x8 below 2500 m,ablation: accept ALL flagged readings,54,33.41649148705
+A fresh worlds (seed 101),"('proc', 14)",x8 below 2500 m,ablation: reject ALL flagged readings,75,44.89025098104191
+A fresh worlds (seed 101),"('proc', 14)",x8 below 2500 m,non-ML rule gate (adaptive tolerance) instead of classifier,90,30.479247110407197
+"B tuning worlds, new seed 202","('proc', 11)",cliff + faults (nominal noise),ablation: accept ALL flagged readings,27,35.00398963953653
+"B tuning worlds, new seed 202","('proc', 11)",cliff + faults (nominal noise),ablation: reject ALL flagged readings,90,23.02906952605547
+"B tuning worlds, new seed 202","('proc', 11)",cliff + faults (nominal noise),non-ML rule gate (adaptive tolerance) instead of classifier,87,22.266870332506414
+"B tuning worlds, new seed 202","('proc', 11)",x2 below 6000 m,ablation: accept ALL flagged readings,48,25.783996714695874
+"B tuning worlds, new seed 202","('proc', 11)",x2 below 6000 m,ablation: reject ALL flagged readings,92,331.63934574159185
+"B tuning worlds, new seed 202","('proc', 11)",x2 below 6000 m,non-ML rule gate (adaptive tolerance) instead of classifier,93,21.852537957588712
+"B tuning worlds, new seed 202","('proc', 11)",x4 below 6000 m,ablation: accept ALL flagged readings,60,24.20528592876125
+"B tuning worlds, new seed 202","('proc', 11)",x4 below 6000 m,ablation: reject ALL flagged readings,76,234.88750970647854
+"B tuning worlds, new seed 202","('proc', 11)",x4 below 6000 m,non-ML rule gate (adaptive tolerance) instead of classifier,93,21.991313080163337
+"B tuning worlds, new seed 202","('proc', 11)",x8 below 6000 m (TRAINING),ablation: accept ALL flagged readings,71,23.213029443289255
+"B tuning worlds, new seed 202","('proc', 11)",x8 below 6000 m (TRAINING),ablation: reject ALL flagged readings,45,341.31744197822275
+"B tuning worlds, new seed 202","('proc', 11)",x8 below 6000 m (TRAINING),non-ML rule gate (adaptive tolerance) instead of classifier,90,22.300622121386855
+"B tuning worlds, new seed 202","('proc', 11)",x16 below 6000 m,ablation: accept ALL flagged readings,75,24.16850107635186
+"B tuning worlds, new seed 202","('proc', 11)",x16 below 6000 m,ablation: reject ALL flagged readings,36,327.26119337928594
+"B tuning worlds, new seed 202","('proc', 11)",x16 below 6000 m,non-ML rule gate (adaptive tolerance) instead of classifier,84,23.506612936041915
+"B tuning worlds, new seed 202","('proc', 11)",x8 below 2500 m,ablation: accept ALL flagged readings,70,23.35953376789031
+"B tuning worlds, new seed 202","('proc', 11)",x8 below 2500 m,ablation: reject ALL flagged readings,78,67.69521344711576
+"B tuning worlds, new seed 202","('proc', 11)",x8 below 2500 m,non-ML rule gate (adaptive tolerance) instead of classifier,80,21.85255342161119
+"C tuning worlds, seed 7","('proc', 11)",cliff + faults (nominal noise),non-ML rule gate (adaptive tolerance) instead of classifier,89,21.701003644031662
+"C tuning worlds, seed 7","('proc', 11)",x2 below 6000 m,non-ML rule gate (adaptive tolerance) instead of classifier,92,21.086088104569633
+"C tuning worlds, seed 7","('proc', 11)",x4 below 6000 m,non-ML rule gate (adaptive tolerance) instead of classifier,96,21.147504169145826
+"C tuning worlds, seed 7","('proc', 11)",x8 below 6000 m (TRAINING),non-ML rule gate (adaptive tolerance) instead of classifier,91,21.697105799966636
+"C tuning worlds, seed 7","('proc', 11)",x16 below 6000 m,non-ML rule gate (adaptive tolerance) instead of classifier,83,22.879484247297373
+"C tuning worlds, seed 7","('proc', 11)",x8 below 2500 m,non-ML rule gate (adaptive tolerance) instead of classifier,85,21.047285287429297
+"C tuning worlds, seed 7","('proc', 12)",cliff + faults (nominal noise),non-ML rule gate (adaptive tolerance) instead of classifier,94,21.688223556013284
+"C tuning worlds, seed 7","('proc', 12)",x2 below 6000 m,non-ML rule gate (adaptive tolerance) instead of classifier,95,21.55393497207116
+"C tuning worlds, seed 7","('proc', 12)",x4 below 6000 m,non-ML rule gate (adaptive tolerance) instead of classifier,91,21.753116877653135
+"C tuning worlds, seed 7","('proc', 12)",x8 below 6000 m (TRAINING),non-ML rule gate (adaptive tolerance) instead of classifier,85,22.047454585236302
+"C tuning worlds, seed 7","('proc', 12)",x16 below 6000 m,non-ML rule gate (adaptive tolerance) instead of classifier,85,22.930767116927626
+"C tuning worlds, seed 7","('proc', 12)",x8 below 2500 m,non-ML rule gate (adaptive tolerance) instead of classifier,87,21.568495860697737
+"C tuning worlds, seed 7","('proc', 13)",cliff + faults (nominal noise),non-ML rule gate (adaptive tolerance) instead of classifier,93,21.812509136471565
+"C tuning worlds, seed 7","('proc', 13)",x2 below 6000 m,non-ML rule gate (adaptive tolerance) instead of classifier,86,21.45045011981653
+"C tuning worlds, seed 7","('proc', 13)",x4 below 6000 m,non-ML rule gate (adaptive tolerance) instead of classifier,76,21.631342679816456
+"C tuning worlds, seed 7","('proc', 13)",x8 below 6000 m (TRAINING),non-ML rule gate (adaptive tolerance) instead of classifier,70,21.986962455308706
+"C tuning worlds, seed 7","('proc', 13)",x16 below 6000 m,non-ML rule gate (adaptive tolerance) instead of classifier,71,22.830017834104954
+"C tuning worlds, seed 7","('proc', 13)",x8 below 2500 m,non-ML rule gate (adaptive tolerance) instead of classifier,91,21.295044932593687
+"C tuning worlds, seed 7","('site01', 2.0)",cliff + faults (nominal noise),non-ML rule gate (adaptive tolerance) instead of classifier,100,20.532517659236447
+"C tuning worlds, seed 7","('site01', 2.0)",x2 below 6000 m,non-ML rule gate (adaptive tolerance) instead of classifier,100,20.34294754923332
+"C tuning worlds, seed 7","('site01', 2.0)",x4 below 6000 m,non-ML rule gate (adaptive tolerance) instead of classifier,100,20.49792043264315
+"C tuning worlds, seed 7","('site01', 2.0)",x8 below 6000 m (TRAINING),non-ML rule gate (adaptive tolerance) instead of classifier,100,20.763834649505696
+"C tuning worlds, seed 7","('site01', 2.0)",x16 below 6000 m,non-ML rule gate (adaptive tolerance) instead of classifier,100,21.708035192835673
+"C tuning worlds, seed 7","('site01', 2.0)",x8 below 2500 m,non-ML rule gate (adaptive tolerance) instead of classifier,100,20.318382468791814
+"B tuning worlds, new seed 202","('proc', 12)",cliff + faults (nominal noise),ablation: accept ALL flagged readings,30,33.86522273365637
+"B tuning worlds, new seed 202","('proc', 12)",cliff + faults (nominal noise),ablation: reject ALL flagged readings,91,22.227173215515258
+"B tuning worlds, new seed 202","('proc', 12)",cliff + faults (nominal noise),non-ML rule gate (adaptive tolerance) instead of classifier,91,22.338217375470872
+"B tuning worlds, new seed 202","('proc', 12)",x2 below 6000 m,ablation: accept ALL flagged readings,42,31.455035340156083
+"B tuning worlds, new seed 202","('proc', 12)",x2 below 6000 m,ablation: reject ALL flagged readings,96,22.01301061254285
+"B tuning worlds, new seed 202","('proc', 12)",x2 below 6000 m,non-ML rule gate (adaptive tolerance) instead of classifier,94,21.66730827311307
+"B tuning worlds, new seed 202","('proc', 12)",x4 below 6000 m,ablation: accept ALL flagged readings,57,25.711502773615923
+"B tuning worlds, new seed 202","('proc', 12)",x4 below 6000 m,ablation: reject ALL flagged readings,68,92.07816245952101
+"B tuning worlds, new seed 202","('proc', 12)",x4 below 6000 m,non-ML rule gate (adaptive tolerance) instead of classifier,97,21.736654063274905
+"B tuning worlds, new seed 202","('proc', 12)",x8 below 6000 m (TRAINING),ablation: accept ALL flagged readings,72,24.410648510014266
+"B tuning worlds, new seed 202","('proc', 12)",x8 below 6000 m (TRAINING),ablation: reject ALL flagged readings,41,148.36341056459278
+"B tuning worlds, new seed 202","('proc', 12)",x8 below 6000 m (TRAINING),non-ML rule gate (adaptive tolerance) instead of classifier,85,22.177143680632295
+"B tuning worlds, new seed 202","('proc', 12)",x16 below 6000 m,ablation: accept ALL flagged readings,84,24.282003125883726
+"B tuning worlds, new seed 202","('proc', 12)",x16 below 6000 m,ablation: reject ALL flagged readings,28,270.48704661887245
+"B tuning worlds, new seed 202","('proc', 12)",x16 below 6000 m,non-ML rule gate (adaptive tolerance) instead of classifier,82,23.880266587114843
+"B tuning worlds, new seed 202","('proc', 12)",x8 below 2500 m,ablation: accept ALL flagged readings,63,24.945277974720234
+"B tuning worlds, new seed 202","('proc', 12)",x8 below 2500 m,ablation: reject ALL flagged readings,77,22.457835177709285
+"B tuning worlds, new seed 202","('proc', 12)",x8 below 2500 m,non-ML rule gate (adaptive tolerance) instead of classifier,85,21.704406351834002
+"B tuning worlds, new seed 202","('proc', 13)",cliff + faults (nominal noise),ablation: accept ALL flagged readings,29,35.14200714504917
+"B tuning worlds, new seed 202","('proc', 13)",cliff + faults (nominal noise),ablation: reject ALL flagged readings,92,27.517320168466238
+"B tuning worlds, new seed 202","('proc', 13)",cliff + faults (nominal noise),non-ML rule gate (adaptive tolerance) instead of classifier,92,22.928969519298636
+"B tuning worlds, new seed 202","('proc', 13)",x2 below 6000 m,ablation: accept ALL flagged readings,40,26.979268555484733
+"B tuning worlds, new seed 202","('proc', 13)",x2 below 6000 m,ablation: reject ALL flagged readings,86,23.621116121472852
+"B tuning worlds, new seed 202","('proc', 13)",x2 below 6000 m,non-ML rule gate (adaptive tolerance) instead of classifier,89,21.70672193461501
+"B tuning worlds, new seed 202","('proc', 13)",x4 below 6000 m,ablation: accept ALL flagged readings,51,25.91735818151196
+"B tuning worlds, new seed 202","('proc', 13)",x4 below 6000 m,ablation: reject ALL flagged readings,63,272.3203871427048
+"B tuning worlds, new seed 202","('proc', 13)",x4 below 6000 m,non-ML rule gate (adaptive tolerance) instead of classifier,76,21.831168974953822
+"B tuning worlds, new seed 202","('proc', 13)",x8 below 6000 m (TRAINING),ablation: accept ALL flagged readings,64,24.250530147543156
+"B tuning worlds, new seed 202","('proc', 13)",x8 below 6000 m (TRAINING),ablation: reject ALL flagged readings,39,238.01951923223007
+"B tuning worlds, new seed 202","('proc', 13)",x8 below 6000 m (TRAINING),non-ML rule gate (adaptive tolerance) instead of classifier,71,22.28453760081548
+"B tuning worlds, new seed 202","('proc', 13)",x16 below 6000 m,ablation: accept ALL flagged readings,67,24.75795652750287
+"B tuning worlds, new seed 202","('proc', 13)",x16 below 6000 m,ablation: reject ALL flagged readings,24,292.6119532321397
+"B tuning worlds, new seed 202","('proc', 13)",x16 below 6000 m,non-ML rule gate (adaptive tolerance) instead of classifier,65,23.268031600605767
+"B tuning worlds, new seed 202","('proc', 13)",x8 below 2500 m,ablation: accept ALL flagged readings,64,24.618188498468854
+"B tuning worlds, new seed 202","('proc', 13)",x8 below 2500 m,ablation: reject ALL flagged readings,83,75.04568867865272
+"B tuning worlds, new seed 202","('proc', 13)",x8 below 2500 m,non-ML rule gate (adaptive tolerance) instead of classifier,93,21.56627816736207
+"B tuning worlds, new seed 202","('site01', 2.0)",cliff + faults (nominal noise),ablation: accept ALL flagged readings,73,36.86949715714039
+"B tuning worlds, new seed 202","('site01', 2.0)",cliff + faults (nominal noise),ablation: reject ALL flagged readings,100,21.07730281466276
+"B tuning worlds, new seed 202","('site01', 2.0)",cliff + faults (nominal noise),non-ML rule gate (adaptive tolerance) instead of classifier,100,20.675726835359807
+"B tuning worlds, new seed 202","('site01', 2.0)",x2 below 6000 m,ablation: accept ALL flagged readings,82,28.088876625462728
+"B tuning worlds, new seed 202","('site01', 2.0)",x2 below 6000 m,ablation: reject ALL flagged readings,100,20.81343574474741
+"B tuning worlds, new seed 202","('site01', 2.0)",x2 below 6000 m,non-ML rule gate (adaptive tolerance) instead of classifier,100,20.467793474655796
+"B tuning worlds, new seed 202","('site01', 2.0)",x4 below 6000 m,ablation: accept ALL flagged readings,89,23.04381259439944
+"B tuning worlds, new seed 202","('site01', 2.0)",x4 below 6000 m,ablation: reject ALL flagged readings,95,72.72364014842499
+"B tuning worlds, new seed 202","('site01', 2.0)",x4 below 6000 m,non-ML rule gate (adaptive tolerance) instead of classifier,100,20.547587421259248
+"B tuning worlds, new seed 202","('site01', 2.0)",x8 below 6000 m (TRAINING),ablation: accept ALL flagged readings,96,21.869067417919528
+"B tuning worlds, new seed 202","('site01', 2.0)",x8 below 6000 m (TRAINING),ablation: reject ALL flagged readings,64,311.6276799300143
+"B tuning worlds, new seed 202","('site01', 2.0)",x8 below 6000 m (TRAINING),non-ML rule gate (adaptive tolerance) instead of classifier,100,20.805735691963985
+"B tuning worlds, new seed 202","('site01', 2.0)",x16 below 6000 m,ablation: accept ALL flagged readings,96,22.627490759273172
+"B tuning worlds, new seed 202","('site01', 2.0)",x16 below 6000 m,ablation: reject ALL flagged readings,44,276.4750494036663
+"B tuning worlds, new seed 202","('site01', 2.0)",x16 below 6000 m,non-ML rule gate (adaptive tolerance) instead of classifier,100,21.32181264232099
+"B tuning worlds, new seed 202","('site01', 2.0)",x8 below 2500 m,ablation: accept ALL flagged readings,97,21.89958846626225
+"B tuning worlds, new seed 202","('site01', 2.0)",x8 below 2500 m,ablation: reject ALL flagged readings,93,125.8639431219237
+"B tuning worlds, new seed 202","('site01', 2.0)",x8 below 2500 m,non-ML rule gate (adaptive tolerance) instead of classifier,100,20.43711335864519

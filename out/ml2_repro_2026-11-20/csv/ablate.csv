@@ -1,0 +1,49 @@
+world,condition,judge,success,alt_rms
+"('proc', 11)",cliff + faults (nominal noise),ablation: accept ALL flagged readings (no classifier),27,31.687220017002073
+"('proc', 11)",cliff + faults (nominal noise),ablation: reject ALL flagged readings (no classifier),90,21.872654219949972
+"('proc', 11)",x2 below 6000 m,ablation: accept ALL flagged readings (no classifier),48,25.14910323330126
+"('proc', 11)",x2 below 6000 m,ablation: reject ALL flagged readings (no classifier),97,21.174991810975655
+"('proc', 11)",x4 below 6000 m,ablation: accept ALL flagged readings (no classifier),61,24.323284478718143
+"('proc', 11)",x4 below 6000 m,ablation: reject ALL flagged readings (no classifier),73,24.894880379622315
+"('proc', 11)",x8 below 6000 m (TRAINING),ablation: accept ALL flagged readings (no classifier),79,22.985615306967563
+"('proc', 11)",x8 below 6000 m (TRAINING),ablation: reject ALL flagged readings (no classifier),43,315.1065612792783
+"('proc', 11)",x16 below 6000 m,ablation: accept ALL flagged readings (no classifier),80,24.415082682139783
+"('proc', 11)",x16 below 6000 m,ablation: reject ALL flagged readings (no classifier),37,314.09782144957927
+"('proc', 11)",x8 below 2500 m,ablation: accept ALL flagged readings (no classifier),68,22.74162121648143
+"('proc', 11)",x8 below 2500 m,ablation: reject ALL flagged readings (no classifier),76,113.39390675017765
+"('site01', 2.0)",cliff + faults (nominal noise),ablation: accept ALL flagged readings (no classifier),63,35.59889542344918
+"('site01', 2.0)",cliff + faults (nominal noise),ablation: reject ALL flagged readings (no classifier),100,20.492271915764487
+"('site01', 2.0)",x2 below 6000 m,ablation: accept ALL flagged readings (no classifier),77,22.98111545789136
+"('site01', 2.0)",x2 below 6000 m,ablation: reject ALL flagged readings (no classifier),100,20.3744332355686
+"('site01', 2.0)",x4 below 6000 m,ablation: accept ALL flagged readings (no classifier),90,21.81760863684487
+"('site01', 2.0)",x4 below 6000 m,ablation: reject ALL flagged readings (no classifier),91,85.98915432771116
+"('site01', 2.0)",x8 below 6000 m (TRAINING),ablation: accept ALL flagged readings (no classifier),94,21.93904100231153
+"('site01', 2.0)",x8 below 6000 m (TRAINING),ablation: reject ALL flagged readings (no classifier),56,260.7515644493646
+"('site01', 2.0)",x16 below 6000 m,ablation: accept ALL flagged readings (no classifier),97,22.909582698400754
+"('site01', 2.0)",x16 below 6000 m,ablation: reject ALL flagged readings (no classifier),48,349.40682933971385
+"('site01', 2.0)",x8 below 2500 m,ablation: accept ALL flagged readings (no classifier),97,21.760574531647134
+"('site01', 2.0)",x8 below 2500 m,ablation: reject ALL flagged readings (no classifier),90,133.20308650553037
+"('proc', 12)",cliff + faults (nominal noise),ablation: accept ALL flagged readings (no classifier),23,34.96626297892317
+"('proc', 12)",cliff + faults (nominal noise),ablation: reject ALL flagged readings (no classifier),96,21.721015073009717
+"('proc', 12)",x2 below 6000 m,ablation: accept ALL flagged readings (no classifier),30,33.446685691803836
+"('proc', 12)",x2 below 6000 m,ablation: reject ALL flagged readings (no classifier),95,66.72665723152492
+"('proc', 12)",x4 below 6000 m,ablation: accept ALL flagged readings (no classifier),51,25.316701465166236
+"('proc', 12)",x4 below 6000 m,ablation: reject ALL flagged readings (no classifier),60,28.21512075502278
+"('proc', 12)",x8 below 6000 m (TRAINING),ablation: accept ALL flagged readings (no classifier),68,23.832965927734808
+"('proc', 12)",x8 below 6000 m (TRAINING),ablation: reject ALL flagged readings (no classifier),39,189.8995373000562
+"('proc', 12)",x16 below 6000 m,ablation: accept ALL flagged readings (no classifier),82,25.17790473736417
+"('proc', 12)",x16 below 6000 m,ablation: reject ALL flagged readings (no classifier),32,190.55320412135998
+"('proc', 12)",x8 below 2500 m,ablation: accept ALL flagged readings (no classifier),54,23.96404391101694
+"('proc', 12)",x8 below 2500 m,ablation: reject ALL flagged readings (no classifier),80,137.91244205172288
+"('proc', 13)",cliff + faults (nominal noise),ablation: accept ALL flagged readings (no classifier),23,38.38497222130728
+"('proc', 13)",cliff + faults (nominal noise),ablation: reject ALL flagged readings (no classifier),90,21.797803258446077
+"('proc', 13)",x2 below 6000 m,ablation: accept ALL flagged readings (no classifier),35,28.253818327390448
+"('proc', 13)",x2 below 6000 m,ablation: reject ALL flagged readings (no classifier),81,54.365076882560246
+"('proc', 13)",x4 below 6000 m,ablation: accept ALL flagged readings (no classifier),54,27.145725846617594
+"('proc', 13)",x4 below 6000 m,ablation: reject ALL flagged readings (no classifier),51,160.78170401931825
+"('proc', 13)",x8 below 6000 m (TRAINING),ablation: accept ALL flagged readings (no classifier),60,27.23679690839534
+"('proc', 13)",x8 below 6000 m (TRAINING),ablation: reject ALL flagged readings (no classifier),40,284.2237266521683
+"('proc', 13)",x16 below 6000 m,ablation: accept ALL flagged readings (no classifier),61,28.156407378181683
+"('proc', 13)",x16 below 6000 m,ablation: reject ALL flagged readings (no classifier),29,270.6521302290966
+"('proc', 13)",x8 below 2500 m,ablation: accept ALL flagged readings (no classifier),63,26.768130311498073
+"('proc', 13)",x8 below 2500 m,ablation: reject ALL flagged readings (no classifier),82,147.7195884121052

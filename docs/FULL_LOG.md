@@ -226,3 +226,360 @@ Written 19 Oct 2026. Short versions: `PROGRESS.md` (status), `Progress_Report.pd
 | `data/` | NASA GeoTIFFs (not in git) |
 
 Git tags: `round1` (6bbda5c), `prereg-round2` (ca61ea6). Reproduce round 2: `python sim/pipeline.py ml tune` then `main policies sweeps explore replay`, `python sim/plots.py`, `python tools/make_report_pdfs.py`.
+
+## 17. Short-descent terrain matching and lander art (21 Oct)
+
+The user's original emphasis was clarified: turn the stored elevation map into
+a terrain surface and test whether live scans help navigation. The old long
+Unity descent and Python sensor-trust bench did not directly establish that.
+An editable Blender lander concept and a separate Unity art preview were built.
+
+The new short-descent experiment connects scan-derived position corrections to
+an estimator consumed by horizontal guidance. The matcher/guidance code has no
+access to physical truth. Independent terrain/map grids allow aligned, changed
+relief and coordinate-shift cases. Both comparison arms receive the same sensor
+models and map, with paired seeds; only applying the correction differs.
+
+The first editor-only physics-scene initialization failed before producing
+measurements. It was corrected to enter Play mode and manually advance a local
+PhysX scene. Known-offset/sign, ambiguous-flat-map, empty-scan and out-of-bounds
+checks passed, followed by one stationary scan and a paired 500 m smoke descent.
+No algorithm tuning was performed after inspecting these results.
+
+Protocol v1 then completed 27 stationary scans and 54 descents: 500/1000/2000 m,
+three environments, three seeds, correction OFF/ON. All descents reached contact
+below 2 m/s vertically. With an aligned map the mean target miss was 70.31 m OFF
+and 0.42 m ON (target successes 0/9 and 9/9). Changed relief produced 55.30 m
+mean miss ON; a shifted map produced 45.43 m ON. Both mismatch conditions failed
+the <10 m target criterion in all nine ON runs. Shape-fit confidence could remain
+very high for incorrect corrections. Those negative outcomes are retained.
+
+The full evidence is in `out/terrain_matching/20261021_181450_v1/`, including
+source snapshots/hashes, protocol, independent map grids, scan diagnostics,
+per-run trajectories, sparse point clouds, report and plots. See
+`TERRAIN_MATCHING_RESULTS.md` for the plain-language conclusion and limitations.
+Python only summarized this experiment; no ML training ran.
+
+`TerrainMatchingExperiment.unity` displays the stored map, scan points, true and
+estimated positions and the new lander. It is explicitly a replay of the measured
+Unity runs, with condition/altitude/seed/matching selectors. The original Site04
+flight scene still uses the original true-state autopilot. The new experiment
+uses simplified 3-DOF dynamics with ideal attitude response, not a validated
+mission vehicle. Next work: map-consistency checks, influence limits for suspect
+corrections, and tests across independent terrain sites.
+
+## 18. Expanded surface-area tests (22 Oct)
+
+The user requested more testing. The expanded protocol was written before the
+new outcomes: five Site04 areas, 500/2000 m starts, three initial horizontal
+errors crossed with three noise seeds, aligned/changed/shifted maps, OFF/ON.
+Targets were selected from the generated heightmap by a deterministic local
+slope and farthest-distance rule. Southeast quadrant candidates did not meet
+the slope criterion; the full-tile selection rule and exact selected targets
+were fixed before the expanded simulations. No matcher outcome selected sites.
+
+The core matcher, navigation and guidance source is byte-identical to v1.
+The harness now supports multiple areas and errors, caches terrain buffers,
+and records actual PhysX contact/relative velocity for v2. The old proximity
+stop is retained for v1. A six-case smoke check at the original area and area01
+passed before the full batch. No thresholds or gains were tuned on the results.
+
+Full batch: 270 stationary scans and 540 descents, complete in 281.9 seconds.
+Accurate-map matching ON succeeded in 90/90 descents, 18/18 at each area; mean
+target miss 0.49 m ON versus 93.94 m OFF. Changed terrain succeeded in 3/90
+ON descents, mean miss 57.96 m; shifted maps succeeded in 0/90, mean miss
+70.81 m. All 540 contacts were below 2 m/s vertically, but erroneous corrections
+caused horizontal contact speeds up to 6.83 m/s. Matching improved terminal
+target distance in 232 pairs, worsened it in 9 and left it tied in 29.
+
+All 810 trajectory/cloud pairs, source snapshots/hashes, initial-pair sensor
+equality and success labels were verified. Evidence:
+`out/terrain_matching/20261021_183805_expanded_v2/` (UTC folder timestamp; local
+date 22 Oct). The standalone result note is `TERRAIN_MATCHING_EXPANDED_RESULTS.md`.
+Tables break results down by area, altitude and initial error; plots include
+failure cases and confidence versus absolute error. No ML training was run.
+
+The original v1 output and replay pointer remain available. Expanded data use
+`latest_expanded.txt`. Five areas in the same DEM are not five independent lunar
+datasets; ideal attitude response and synthetic sensor models remain limitations.
+
+## 19. Scan-trust ML preparation (22 Oct; no training)
+
+The user asked whether ML should decide sensor trust. Audited the existing
+120-tree, eight-input altimeter classifier: its labels concern altimeter errors,
+not wrong scan-to-map locations. Its old held-out metrics precede a final refit
+on all procedural training worlds. It cannot be directly substituted into the
+current Unity matcher. Loaded the saved model for inspection only.
+
+Prepared 10,530 valid scan proposals from the completed expanded batch, with
+4,881 labelled as leaving more than 10 m absolute horizontal error. Kept truth
+labels separate from six runtime-observable features. Area-grouped splits keep
+paired runs and correlated trajectories together; these are retrospective
+development splits because all existing area results were already inspected.
+Fresh terrain and error patterns are still required for final testing.
+
+Added an inference-only Python scan-trust gate, with strict task/feature checks,
+an optional learned veto and explicit geometric-only fallback. Eight contract
+tests passed using stubs, and no-model acceptance matched all archived scans.
+There is no live Unity ML connection or new landing result yet. No training ran,
+no historical simulation output changed, and no trained model was overwritten.
+Evidence and next protocol: `SCAN_TRUST_ML_NEXT_EXPERIMENT.md` and
+`out/scan_trust/20261022_preparation_v1/`. A globally shifted map still requires
+independent absolute registration evidence; a high local fit cannot prove it.
+
+## 20. Authorized scan-specific training and live Unity evaluation (22 Oct)
+
+The user explicitly said “DO IT” after the proposal to train, integrate and
+compare paired descents. This authorized training for this new experiment;
+the older altimeter classifier was not overwritten or retrained. Wrote the
+scan-trust protocol and froze three fresh, nonoverlapping Site04 targets before
+fitting or obtaining new outcomes. Reserved new error vectors, seeds, relief
+perturbation and map-shift direction for the fresh closed-loop evaluation.
+
+Trained logistic, full-feature random forest and residual-only random forest
+on 5522 geometrically accepted historical proposals from three training areas.
+Case/area weights balance the fit. Validation alone selected a 32-tree full
+forest,depth 6,threshold 0.18. Additional forest seeds were sensitivity checks,
+not a seed-selection opportunity. A 75-setting classical rule was also selected
+on validation. The model is 1252 nodes and 43965 bytes as portable JSON.
+
+Built a C# inference reader, strict task/feature checks and a separate four-arm
+Unity harness. Unity scores and decisions matched Python on all 10530 inputs,
+maximum score difference 3.33e-16. All eight Python contract tests passed; the
+Python inference gate also matched all fixtures. The original geometric
+navigation core is byte-identical to previous experiments.
+
+The 12-case smoke passed. Full 648-descent batch completed in 137.7 seconds, with
+all 648 physical contacts. Each arm has 162 paired cases: OFF 0 successes,
+geometric 90,rule 45,ML 18. Mean target miss 96.24 m,23.00 m,49.96 m,84.70 m respectively.
+Accurate-map geometric 54/54 versus ML 15/54; changed terrain 36/54 versus 3/54;
+shifted map 0/54 for all arms. ML applied 1wrong correction of 28 updates versus
+geometric 1077 of 2805, but rejecting useful corrections made navigation worse.
+ML had 5vertical-speed and 25horizontal-speed violations; geometric had none.
+
+The report generator initially lacked the join from scan IDs to condition
+metadata; repaired the join and regenerated summaries from unchanged raw data.
+No classifier, threshold, controller or simulation was changed after outcomes.
+Verified all case files, paired initial inputs, policy routing, outcome labels,
+source/model/protocol hashes and preservation of old pointers/model. The new
+model remains an experimental option and has not been promoted as a solution.
+
+Saved full evidence under `out/scan_trust/20261021_190929_closed_loop_v1/`, training
+under `out/scan_trust/20261022_model_v1/`, and results in `SCAN_TRUST_RESULTS.md`.
+The classifier's good rejection counts did not translate to good landings.
+Next development needs broader error families, a correction-utility/uncertainty
+objective and independent registration evidence for globally shifted maps.
+New development must reserve a new final evaluation rather than tuning on this
+batch and relabelling it as unseen. No independent lunar-dataset claim is made.
+
+## 21. Diverse utility learning and mission-based selection (22 Oct)
+
+The user authorized the proposed follow-up with “DO IT”. Wrote protocol v2 and
+froze randomized collection draws, development errors and a new reserved area
+before collecting/fitting. Only one eligible nonoverlapping crop remained after
+excluding eight previous centres; the protocol allowed scaling, so final scope
+was recorded as 270 descents before training. No v1 final-test scan rows were
+used for v2 fitting or policy selection.
+
+Collected 3840 stationary poses /7680 noisy scan proposals over five older areas,
+varied angles/magnitudes, true positions, altitudes, raised/lowered relief and
+map shifts. A gain target rewards useful local error reduction. Six observable
+features omit signed correction direction and truth. Fit a 32-tree regressor on
+4172 accepted training proposals, with 2732 accepted validation proposals and
+three predetermined sensitivity seeds. The deployed seed remained 11.
+
+An import problem initially omitted the new runner from Unity's assembly;
+reimported it under ScanUtilityRunner.cs and repaired a missing magnitude helper
+before any full data collection. Export verification then caught NumPy scalar
+promotion rounding a double tree threshold. Repaired the reader, added a
+regression test and repeated the same fixed fit. The failed export attempt is
+retained separately. C# matched Python on 7680 fixtures, max difference 2.22e-16.
+No dataset, model setting or held-out evaluation changed in these repairs.
+
+After smoke checks, ran 672 development descents. Three utility policies all
+achieved 32/96 target successes; the prewritten speed/miss criteria selected the
+hybrid policy. Utility/geometric speed violations 19/32, mean miss 28.18/30.03 m.
+The classical bounded rule had slightly lower development miss than utility;
+that tradeoff is retained. Froze the choice before final-area outcomes. A Play
+mode handoff initially reported Editor busy; completed the stop before retrying.
+
+Final 270 descents completed in 50.7 seconds, with 54 configurations per arm:
+OFF 0 successes,geometric 24,bounded 24,old ML 0,utility 24. Utility mean miss 28.92 m
+versus geometric 34.64 m and bounded 32.67 m; speed violations 7 versus 12 for both
+controls. Utility improved target distance in 41/54 pairs versus geometric,
+worsened 7,tied 6. Accurate-map 18/18 for utility/geometric, changed terrain 6/18,
+shifted map 0/18. Seven unsafe utility contacts remain, all changed terrain 500 m.
+Maximum sideways impact 3.22 m/s utility versus 6.00 geometric. No flight-safety or
+independent-site generalization claim follows from one protected Site04 area.
+
+Verified raw labels, partial-correction geometry, paired initial inputs, policy
+routing, outcome criteria, file completeness and frozen source/model/plan hashes.
+All data, old failures and code snapshots retained. Results in
+`SCAN_UTILITY_RESULTS.md`; evidence under `out/scan_utility/`. V2 recovered useful
+updates and improved error/speed outcomes, without raising the target-success
+rate above geometric matching. Independent terrain and registration evidence
+remain the next research checks.
+
+## 22. Project significance and current explanation (22 Oct)
+
+At the user's request, updated PROJECT_EXPLAINED_AND_REFOCUSED.md to describe
+the completed geometric, learned-veto and utility-policy experiments. Replaced
+outdated statements about unconnected guidance with an explicit distinction:
+the original full-height Site04 demonstration uses true-state control; the
+new experiments use corrected navigation estimates. Clarified that lifting
+a DEM into a mesh is implemented geometry, not ML discovery of missing terrain.
+
+Recorded the assessment as substantial engineering and meaningful early applied
+research. Final v2 utility/geometric success is unchanged at 24/54, mean miss
+is 28.92/34.64 m (16.5% lower), and speed violations are 7/12. Added a positive,
+evidence-based mentor summary, contribution levels and future validation goals.
+Novelty, statistical significance, independent-site generalization and physical
+mission readiness remain unestablished. Multiple v2 components changed together;
+matched ablations and baseline tuning are needed for causal attribution.
+
+Linked this assessment from README, PROGRESS and SCAN_UTILITY_RESULTS. Preserved
+the experiment snapshots and raw results; no new training or simulations were
+started for this documentation update. Existing PDFs remain historical records.
+
+## 23. Frozen-model transfer to Site01 (22 Oct)
+
+The user requested further work. Prepared an evaluation of the existing
+scan-utility model on Site01 without training or tuning. Wrote the transfer
+protocol before outcomes, selected one smoke crop and three evaluation crops
+using only terrain slope/distance, and froze the plan and runtime hashes.
+Site01 appeared in older sensor studies, but not current scan-utility fitting
+or policy selection. Georeferencing checks confirmed all four selected crops
+lie outside the entire Site04 tile despite partial overlap between the tiles.
+
+Created a separate terrain adapter from the archived utility runner. Sensor,
+matcher, inference, navigation/control step and map-perturbation logic are
+unchanged; source data and output paths differ. Existing model, policy and core
+hashes match the archived final evaluation. Unity reopened during preparation;
+the ready editor is 6000.3.24f1, matching the archived final-test environment.
+
+The separate smoke area completed 15 descents and 150 scans. Initial independent
+terrain verification assumed bilinear Unity sampling and failed by up to
+0.274 m. A direct Unity height probe confirmed triangle interpolation; corrected
+the Python verifier and allowed bounded height-quantization error. All integrity
+checks then passed. No model, policy, simulation or raw outcome changed.
+Saved the repair note with the smoke outputs. Started the planned 810 descents
+across three areas and five arms; final outcome is recorded below when verified.
+
+All 810 descents completed in 298.0 wall seconds. Near case 150, enabled
+Application.runInBackground after finding it false following the editor restart;
+this repaired inactive-window scheduling without changing the fixed physics step
+or seeded sensor noise. The execution note is retained with the results.
+
+Verified 810 unique cases and 13,011 unique scans, all paired arms, initial inputs,
+outcome labels, gain routing, partial-update geometry, frozen model/core hashes,
+terrain samples/perturbations and Python/C# inference on the new input records.
+All trajectory/cloud pairs exist. Play mode stopped after completion.
+
+Utility/geometric target successes both 54/162; mean miss 43.60/45.99 m (5.2%
+lower for utility); speed violations 47/39 (worse for utility). Bounded achieved
+54/162, 46.32 m, 39 violations. OFF and old ML each achieved 0/162. Accurate maps
+gave 54/54 successes for geometric/utility; changed terrain and shifted maps
+gave 0/54. All utility speed violations occurred with changed terrain. Area03
+regressed from 3 to 14 violations, outweighing area01's improvement from 18 to15.
+The frozen transfer criterion failed: the earlier error/speed tradeoff did not
+generalize. No retuning followed. Report, per-area tables, chart and raw evidence
+are saved under `out/scan_utility_transfer/20261022_091502_eval/`; project result
+note: `SCAN_UTILITY_TRANSFER_RESULTS.md`. Updated README, overview, progress and
+the earlier utility result with this qualification and next development goals.
+
+## 24. Original idea and literature-based novelty assessment (22 Oct)
+
+The user clarified the intended chain: lidar 3D observations matched to an
+onboard 2.5D lunar map, then camera/altimeter trust decisions. Reviewed primary
+sources: NASA/JPL ALHAT, Choe et al. ION 2022, a 2024 IEEE TAES publisher abstract,
+Adams et al. SciTech 2025/PITFAL full paper, Sheppard et al. stochastic terrain
+mapping preprint and an adjacent point-cloud navigation preprint. Recorded
+which records were abstract-only and which full text was accessible.
+
+The broad localization and terrain-informed range-rejection ideas have direct
+precedents. Joint map/registration/sensor uncertainty with measured landing
+benefit is a candidate research direction; this search does not establish its
+novelty. Clarified that the current Unity ML selects correction gain, rather
+than implementing the full proposed camera/altimeter integrity system.
+
+Saved RESEARCH_NOVELTY_REVIEW.md with references, scoped claims, baseline and
+ablation requirements, a pitch and checked conference information. IEEE SPACE
+2027 lists a 31 January 2027 deadline; IEEE Aerospace 2027 regular submission
+closed 2 October 2026. No new simulations, training or submissions in this review.
+
+Follow-up question: whether a computationally lighter map would establish
+novelty. Checked Schoppmann et al. IROS 2021 multiresolution planetary mapping,
+Jin et al. adaptive-resolution GP mapping, and the already reviewed efficient
+point-cloud measurement model. Added the distinction between routine map
+reduction and a candidate navigation-aware resource/accuracy contribution,
+including equal-budget baselines, runtime/RAM metrics and compression-induced
+uncertainty. This remains a proposal, with no new code, training or experiments.
+
+Second novelty check requested by the user: found substantially closer prior
+work, including Dymczyk et al. IROS 2015 localization-aware compression,
+Michaelson et al. TAES 2024 compact terrain encoding with covariance/rejection,
+Marcus et al. JGCD 2024 planar quadtree landing maps, and Adams et al. SciTech
+2026 resource-optimized active TRN. Also inspected JPL's 2022 informative
+topographic-landmark study. Downloaded the public NASA paper after the browser
+size limit prevented full access. Saved MAP_EFFICIENCY_RECHECK.md and qualified
+the earlier suggestion: keeping navigation-relevant information is not itself
+a new contribution. No LANTERN map-efficiency method has yet been established
+as novel. No new training or simulations.
+
+## 25. Uncertainty-aware Unity navigation v3 (4 Nov 2026)
+
+The user asked to implement the conventional navigation/landing pipeline with
+optional ML. Found an existing v3 proposal, re-scoring tool and headless entry
+in the workspace; preserved those and the archived experiment implementations.
+
+Added a new ten-state EKF (position, velocity, accelerometer bias and shared
+map-height bias), fixed-lag delayed observation replay, classical innovation
+checks, terrain-curvature covariance proxy, bounded optional frozen-ML weighting,
+terminal lateral braking and a vertical flare. The physics adapter has seeded
+sensor noise/bias, initial velocity uncertainty, scan-attitude error and explicit
+range/scan delivery delays. Added a live scene with controls and a shared batch
+simulation engine, frozen inputs/source hashes and offline record verification.
+
+Prepared one development crop and three reserved crops from Site01's surface and
+vertical-error rasters, avoiding the prior transfer crops. Ground and prior grids
+have different sampling. Ground error is a synthetic correlated proxy scaled by
+`toterr` (0.36–0.43 m generated RMS), not a PGDA clone or independent lunar truth.
+
+First smoke: `out/navigation_v3/20261104_041155_393_smoke/`. Revised development
+smoke after adding common map-height uncertainty and vertical flare:
+`20261104_041543_046_smoke/` (18 cases, 10,121 sensor receipts). Final live-scene
+check/captures: `20261104_042147_760_visual/`. Corrected the screenshot inset
+viewport during visual verification; no navigation outcome selected that change.
+
+Reserved engineering run: `20261104_042217_834_evaluation/`, 324 cases and
+315,724 sensor receipts; 318 contacts and six timeouts. New fusion with terminal
+guidance had 45/108 10 m map-target successes, 83/108 at 50 m, and 21 excess-speed
+contacts. The frozen ML arm had 37/108, 87/108, and 17 respectively. Thirteen
+contract groups and offline artifact/pairing/scoring checks passed in that source
+snapshot. Healthy-reading rejection remains substantial; this is an implemented
+testbed, not a demonstrated robust landing solution or a paper novelty result.
+
+The user then explicitly requested no further Unity execution. The last Unity
+job had already completed; a process check found no running Unity editor. All
+subsequent work stayed offline: observation-copy ownership for replay, an added
+contract group, ML fallback HUD, completion-pointer checks, results analysis and
+documentation. Current final C# edits have not been compiled/run in Unity.
+Nineteen Python tests passed. Source snapshots retain exactly what the earlier
+Unity jobs executed. See `NAVIGATION_V3.md` for the implementation, measured
+limitations and commands reserved for a later authorized Unity session.
+
+## 19-20 Nov 2026: ml-eval reproduction, engine switches, round 3 on Site04
+
+* **Reproduction.** The ml-eval branch (Rishabh's `HANDOFF.md`) was checked out in a throwaway worktree. `check_unchanged.py --quick` and `check_ml2.py` passed;
+  `ml2_noise_normal.py`, `ml2_control_noise.py`, `ml2_fresh.py`, `ml2_ablate.py`, `ml2_classifier_tests.py` and `ml2_compare.py --n 100` were rerun and matched the
+  committed CSVs row for row (96, 24, 168, 48, 150 and 72 rows). Fixed seeds, so this shows determinism, not independent confirmation. Record and copies:
+  `out/ml2_repro_2026-11-20/`. `ml2_classifier_tests.py` took 17.5 wall-clock hours against the 30-35 minute estimate; cause not investigated.
+* **Branch state.** Local `main` was fast-forwarded from `5853a84` to `0f9d8df` (origin had merged ml-eval as PR #2); uncommitted files untouched.
+* **Engine switches (default off).** `fault_label_noise_aware`, `terrain_R`, `tol_noise_floor` in `sim/engine.py`; `check_unchanged.py` (full), the 19 older tests,
+  5 switch tests and 10 runner-guard tests pass.
+* **Screening and confirmation.** Tuning worlds (`sim/round3_candidates.py`) then fresh worlds 14-16 (`sim/round3_fresh.py`, decision rules R1 and R2 written before the run, both met).
+* **Freeze and run.** `docs/PREREG_ROUND3.md`, engine, scripts and tests committed as `e63c7a6`, tagged `prereg-round3`; `sim/round3_site04.py --allow-site04` run once.
+  All of Q1-Q5 met. Results, tables and limits: `docs/ROUND3_RESULTS.md`. Not committed beyond the freeze commit: results files, this log and the other docs.
+* **Report.** A project report draft for the course was built in `report/` (Word and PDF) from the repository documents; open fields are listed in the `lantern-report` skill.
+* **Corrections to earlier statements.** The old fault label ignored the noise multiplier, so earlier missed-fault columns in noisy scenarios were overstated and false-rejection columns understated (Site04 round 3: trust v2 missed faults 52.6% old label against 6.6% noise-aware). Decisions and landing success were never affected.
+

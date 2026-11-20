@@ -1,0 +1,70 @@
+08:54:23 warm ('proc', 11)
+08:55:31 warm ('proc', 12)
+08:57:12 warm ('proc', 13)
+08:58:20 warm ('site01', 2.0, 270.0)
+C:\Users\ADMIN\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\base.py:525: InconsistentVersionWarning: Trying to unpickle estimator LabelEncoder from version 1.9.1 when using version 1.9.0. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+C:\Users\ADMIN\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\base.py:525: InconsistentVersionWarning: Trying to unpickle estimator _BinMapper from version 1.9.1 when using version 1.9.0. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+C:\Users\ADMIN\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\base.py:525: InconsistentVersionWarning: Trying to unpickle estimator HistGradientBoostingClassifier from version 1.9.1 when using version 1.9.0. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+C:\Users\ADMIN\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\base.py:525: InconsistentVersionWarning: Trying to unpickle estimator LabelEncoder from version 1.9.1 when using version 1.9.0. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+C:\Users\ADMIN\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\base.py:525: InconsistentVersionWarning: Trying to unpickle estimator _BinMapper from version 1.9.1 when using version 1.9.0. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+C:\Users\ADMIN\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\base.py:525: InconsistentVersionWarning: Trying to unpickle estimator HistGradientBoostingClassifier from version 1.9.1 when using version 1.9.0. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+C:\Users\ADMIN\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\base.py:525: InconsistentVersionWarning: Trying to unpickle estimator LabelEncoder from version 1.9.1 when using version 1.9.0. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+C:\Users\ADMIN\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\base.py:525: InconsistentVersionWarning: Trying to unpickle estimator _BinMapper from version 1.9.1 when using version 1.9.0. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+C:\Users\ADMIN\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\base.py:525: InconsistentVersionWarning: Trying to unpickle estimator HistGradientBoostingClassifier from version 1.9.1 when using version 1.9.0. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+C:\Users\ADMIN\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\base.py:525: InconsistentVersionWarning: Trying to unpickle estimator LabelEncoder from version 1.9.1 when using version 1.9.0. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+C:\Users\ADMIN\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\base.py:525: InconsistentVersionWarning: Trying to unpickle estimator _BinMapper from version 1.9.1 when using version 1.9.0. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+C:\Users\ADMIN\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\base.py:525: InconsistentVersionWarning: Trying to unpickle estimator HistGradientBoostingClassifier from version 1.9.1 when using version 1.9.0. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+  done ('proc', 11)
+  done ('site01', 2.0)
+  done ('proc', 12)
+  done ('proc', 13)
+
+Landing success % (mean of 4 tuning worlds, 100 descents each, seed 7)
+ judge                           pitfal  trust2  ml2 + running noise, classifier at 0.5 (full control)  ablation: accept ALL flagged readings (no classifier)  ablation: reject ALL flagged readings (no classifier)
+condition                                                                                                                                                                                                          
+cliff + faults (nominal noise)    89.2    96.0                                                   93.2                                                   34.0                                                   94.0
+x2 below 6000 m                   87.2    92.0                                                   93.0                                                   47.5                                                   93.2
+x4 below 6000 m                   88.2    88.8                                                   90.5                                                   64.0                                                   68.8
+x8 below 6000 m (TRAINING)        77.0    78.0                                                   91.0                                                   75.2                                                   44.5
+x16 below 6000 m                  45.2    62.8                                                   89.0                                                   80.0                                                   36.5
+x8 below 2500 m                   87.5    91.2                                                   89.5                                                   70.5                                                   82.0
+
+Ablations per world
+ world                                                                                 ('proc', 11)  ('proc', 12)  ('proc', 13)  ('site01', 2.0)
+condition                      judge                                                                                                           
+cliff + faults (nominal noise) ablation: accept ALL flagged readings (no classifier)          27.0          23.0          23.0             63.0
+                               ablation: reject ALL flagged readings (no classifier)          90.0          96.0          90.0            100.0
+x16 below 6000 m               ablation: accept ALL flagged readings (no classifier)          80.0          82.0          61.0             97.0
+                               ablation: reject ALL flagged readings (no classifier)          37.0          32.0          29.0             48.0
+x2 below 6000 m                ablation: accept ALL flagged readings (no classifier)          48.0          30.0          35.0             77.0
+                               ablation: reject ALL flagged readings (no classifier)          97.0          95.0          81.0            100.0
+x4 below 6000 m                ablation: accept ALL flagged readings (no classifier)          61.0          51.0          54.0             90.0
+                               ablation: reject ALL flagged readings (no classifier)          73.0          60.0          51.0             91.0
+x8 below 2500 m                ablation: accept ALL flagged readings (no classifier)          68.0          54.0          63.0             97.0
+                               ablation: reject ALL flagged readings (no classifier)          76.0          80.0          82.0             90.0
+x8 below 6000 m (TRAINING)     ablation: accept ALL flagged readings (no classifier)          79.0          68.0          60.0             94.0
+                               ablation: reject ALL flagged readings (no classifier)          43.0          39.0          40.0             56.0

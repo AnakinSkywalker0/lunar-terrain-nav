@@ -1,0 +1,30 @@
+13:01:08 x2 below 6000 m aware
+13:01:10 cliff + faults (nominal noise) old
+13:01:11 cliff + faults (nominal noise) aware
+13:01:18 x4 below 6000 m aware
+13:02:22 x8 below 2500 m aware
+13:02:23 x8 below 6000 m (TRAINING) aware
+13:02:24 x8 below 6000 m (TRAINING) old
+13:02:25 x16 below 6000 m aware
+13:03:03 delayed altimeter (time-stamped for every judge) aware
+13:03:20 altimeter dropout (exploratory) aware
+
+Site04 landing success % (500 runs per cell)
+ config                                              ml  ml + terrain_R  pitfal  second  second + terrain_R  tolerance  tolerance + noise floor  trust2  wait  wait + terrain_R
+condition                                                                                                                                                                     
+altimeter dropout (exploratory)                   25.2            32.2    33.6    25.6                34.2       44.6                     49.6    37.4  29.2              37.2
+cliff + faults (nominal noise)                    76.0            90.2    83.4     9.0                11.0       97.0                     97.6    95.2  83.0              96.0
+delayed altimeter (time-stamped for every judge)  72.2            92.2    70.8    63.4                82.8       96.0                     96.4    86.8  77.8              94.0
+x16 below 6000 m                                  18.0            22.6    38.6    11.2                16.6       42.8                     90.8    57.2  18.0              35.2
+x2 below 6000 m                                   61.0            73.4    81.8    36.2                42.6       91.2                     96.0    96.2  75.8              92.4
+x4 below 6000 m                                   28.6            28.4    84.8    25.4                34.6       78.0                     95.0    94.6  62.2              92.0
+x8 below 2500 m                                   45.0            48.4    76.6    30.0                36.0       88.2                     97.2    96.2  53.8              73.0
+x8 below 6000 m (TRAINING)                        24.2            32.8    65.6    17.4                29.4       61.6                     94.6    89.0  33.4              55.4
+
+Pre-registered verdicts
+Q1 MET {'x4 below 6000 m': 17.0, 'x8 below 6000 m (TRAINING)': 33.0, 'x16 below 6000 m': 48.0}
+Q2 MET {'x8 below 6000 m (TRAINING)': 29.0, 'x16 below 6000 m': 52.2, 'cliff + faults (nominal noise)': 14.2}
+Q3 MET {'cliff + faults (nominal noise)': 2.4, 'x8 below 6000 m (TRAINING)': 5.6}
+Q4 MET {'wait': {'cliff + faults (nominal noise)': 13.0, 'x8 below 6000 m (TRAINING)': 22.0}, 'ml': {'cliff + faults (nominal noise)': 14.2, 'x8 below 6000 m (TRAINING)': 8.6}}
+Q5 MET {'trust2 missed-fault % (noise-aware label), shadow + noisy x8': 6.6}
+exit=0

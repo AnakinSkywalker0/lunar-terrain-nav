@@ -1,0 +1,16 @@
+  cliff_fault  fixed      landed  0/30  identical
+  cliff_fault  pitfal     landed 28/30  identical
+  cliff_fault  tolerance  landed 23/30  identical
+  cliff_fault  wait       landed 21/30  identical
+  cliff_fault  second     landed  3/30  identical
+  cliff_fault  ml         landed  0/30  identical
+  cliff_fault  trust2     landed 24/30  identical
+  delayed      fixed      landed  0/30  identical
+  delayed      pitfal     landed  0/30  identical
+  delayed      tolerance  landed  0/30  identical
+  delayed      wait       landed  1/30  identical
+  delayed      second     landed  0/30  identical
+  delayed      ml         landed  0/30  identical
+  delayed      trust2     landed 25/30  identical
+UNCHANGED: all judges identical to the reference
+exit=0

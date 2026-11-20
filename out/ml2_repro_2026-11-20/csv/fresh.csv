@@ -1,0 +1,169 @@
+group,world,condition,judge,success,alt_rms
+A fresh worlds (seed 101),"('proc', 15)",cliff + faults (nominal noise),pitfal,81,21.91783342201049
+A fresh worlds (seed 101),"('proc', 15)",cliff + faults (nominal noise),trust2,91,21.806504801741575
+A fresh worlds (seed 101),"('proc', 15)",cliff + faults (nominal noise),ml2 + learned noise (flagged + unflagged),99,21.653844252212632
+A fresh worlds (seed 101),"('proc', 15)",cliff + faults (nominal noise),ml2 + running-innovation noise (non-ML control),88,22.059022310305043
+A fresh worlds (seed 101),"('proc', 15)",x2 below 6000 m,pitfal,84,21.894804636627736
+A fresh worlds (seed 101),"('proc', 15)",x2 below 6000 m,trust2,98,21.95467676469828
+A fresh worlds (seed 101),"('proc', 15)",x2 below 6000 m,ml2 + learned noise (flagged + unflagged),98,22.067243787791895
+A fresh worlds (seed 101),"('proc', 15)",x2 below 6000 m,ml2 + running-innovation noise (non-ML control),90,21.756864887840244
+A fresh worlds (seed 101),"('proc', 15)",x4 below 6000 m,pitfal,86,21.957665460360765
+A fresh worlds (seed 101),"('proc', 15)",x4 below 6000 m,trust2,87,22.442650157847115
+A fresh worlds (seed 101),"('proc', 15)",x4 below 6000 m,ml2 + learned noise (flagged + unflagged),98,22.025063843260543
+A fresh worlds (seed 101),"('proc', 15)",x4 below 6000 m,ml2 + running-innovation noise (non-ML control),92,21.846466987770796
+A fresh worlds (seed 101),"('proc', 15)",x8 below 6000 m (TRAINING),pitfal,77,22.595986257188894
+A fresh worlds (seed 101),"('proc', 15)",x8 below 6000 m (TRAINING),trust2,90,23.26766952417662
+A fresh worlds (seed 101),"('proc', 15)",x8 below 6000 m (TRAINING),ml2 + learned noise (flagged + unflagged),78,22.069801109657227
+A fresh worlds (seed 101),"('proc', 15)",x8 below 6000 m (TRAINING),ml2 + running-innovation noise (non-ML control),99,22.183689683607163
+A fresh worlds (seed 101),"('proc', 15)",x16 below 6000 m,pitfal,37,272.8186250534114
+A fresh worlds (seed 101),"('proc', 15)",x16 below 6000 m,trust2,78,240.29246056175728
+A fresh worlds (seed 101),"('proc', 15)",x16 below 6000 m,ml2 + learned noise (flagged + unflagged),86,22.588982423525657
+A fresh worlds (seed 101),"('proc', 15)",x16 below 6000 m,ml2 + running-innovation noise (non-ML control),98,23.79088410258996
+A fresh worlds (seed 101),"('proc', 15)",x8 below 2500 m,pitfal,75,22.11041379646954
+A fresh worlds (seed 101),"('proc', 15)",x8 below 2500 m,trust2,83,21.753556988102268
+A fresh worlds (seed 101),"('proc', 15)",x8 below 2500 m,ml2 + learned noise (flagged + unflagged),90,21.77164553328573
+A fresh worlds (seed 101),"('proc', 15)",x8 below 2500 m,ml2 + running-innovation noise (non-ML control),94,21.74991193821144
+A fresh worlds (seed 101),"('proc', 16)",cliff + faults (nominal noise),pitfal,84,25.067020481239695
+A fresh worlds (seed 101),"('proc', 16)",cliff + faults (nominal noise),trust2,86,24.70154410998065
+A fresh worlds (seed 101),"('proc', 16)",cliff + faults (nominal noise),ml2 + learned noise (flagged + unflagged),87,24.149560105745557
+A fresh worlds (seed 101),"('proc', 16)",cliff + faults (nominal noise),ml2 + running-innovation noise (non-ML control),90,25.465949108599812
+A fresh worlds (seed 101),"('proc', 16)",x2 below 6000 m,pitfal,74,24.6068861257417
+A fresh worlds (seed 101),"('proc', 16)",x2 below 6000 m,trust2,83,23.710370913707536
+A fresh worlds (seed 101),"('proc', 16)",x2 below 6000 m,ml2 + learned noise (flagged + unflagged),85,23.65140143571901
+A fresh worlds (seed 101),"('proc', 16)",x2 below 6000 m,ml2 + running-innovation noise (non-ML control),88,23.503179803933264
+A fresh worlds (seed 101),"('proc', 16)",x4 below 6000 m,pitfal,79,24.670036115407143
+A fresh worlds (seed 101),"('proc', 16)",x4 below 6000 m,trust2,74,23.616261072314632
+A fresh worlds (seed 101),"('proc', 16)",x4 below 6000 m,ml2 + learned noise (flagged + unflagged),84,23.42498513204526
+A fresh worlds (seed 101),"('proc', 16)",x4 below 6000 m,ml2 + running-innovation noise (non-ML control),83,23.681148841992872
+A fresh worlds (seed 101),"('proc', 16)",x8 below 6000 m (TRAINING),pitfal,58,25.593845199838903
+A fresh worlds (seed 101),"('proc', 16)",x8 below 6000 m (TRAINING),trust2,65,317.28630515444485
+A fresh worlds (seed 101),"('proc', 16)",x8 below 6000 m (TRAINING),ml2 + learned noise (flagged + unflagged),81,23.63615128841931
+A fresh worlds (seed 101),"('proc', 16)",x8 below 6000 m (TRAINING),ml2 + running-innovation noise (non-ML control),77,23.709748485150527
+A fresh worlds (seed 101),"('proc', 16)",x16 below 6000 m,pitfal,28,304.2132295307439
+A fresh worlds (seed 101),"('proc', 16)",x16 below 6000 m,trust2,49,675.4243680335835
+A fresh worlds (seed 101),"('proc', 16)",x16 below 6000 m,ml2 + learned noise (flagged + unflagged),83,23.870102777022378
+A fresh worlds (seed 101),"('proc', 16)",x16 below 6000 m,ml2 + running-innovation noise (non-ML control),76,24.496040962259887
+A fresh worlds (seed 101),"('proc', 16)",x8 below 2500 m,pitfal,76,24.639720715212967
+A fresh worlds (seed 101),"('proc', 16)",x8 below 2500 m,trust2,88,23.32682708103549
+A fresh worlds (seed 101),"('proc', 16)",x8 below 2500 m,ml2 + learned noise (flagged + unflagged),87,23.37469137896699
+A fresh worlds (seed 101),"('proc', 16)",x8 below 2500 m,ml2 + running-innovation noise (non-ML control),81,23.251021747403524
+"B tuning worlds, new seed 202","('proc', 11)",cliff + faults (nominal noise),pitfal,81,22.5241909366669
+"B tuning worlds, new seed 202","('proc', 11)",cliff + faults (nominal noise),trust2,90,21.940486484823076
+"B tuning worlds, new seed 202","('proc', 11)",cliff + faults (nominal noise),ml2 + learned noise (flagged + unflagged),95,22.182817118222104
+"B tuning worlds, new seed 202","('proc', 11)",cliff + faults (nominal noise),ml2 + running-innovation noise (non-ML control),88,21.751489830581892
+"B tuning worlds, new seed 202","('proc', 11)",x2 below 6000 m,pitfal,83,21.864066136348242
+"B tuning worlds, new seed 202","('proc', 11)",x2 below 6000 m,trust2,91,22.083474981140775
+"B tuning worlds, new seed 202","('proc', 11)",x2 below 6000 m,ml2 + learned noise (flagged + unflagged),96,22.301743430366344
+"B tuning worlds, new seed 202","('proc', 11)",x2 below 6000 m,ml2 + running-innovation noise (non-ML control),92,21.713126227109548
+"B tuning worlds, new seed 202","('proc', 11)",x4 below 6000 m,pitfal,90,21.94771198176649
+"B tuning worlds, new seed 202","('proc', 11)",x4 below 6000 m,trust2,88,22.338616861058714
+"B tuning worlds, new seed 202","('proc', 11)",x4 below 6000 m,ml2 + learned noise (flagged + unflagged),94,22.116447200147157
+"B tuning worlds, new seed 202","('proc', 11)",x4 below 6000 m,ml2 + running-innovation noise (non-ML control),93,21.93584765379986
+"B tuning worlds, new seed 202","('proc', 11)",x8 below 6000 m (TRAINING),pitfal,81,22.594046687801754
+"B tuning worlds, new seed 202","('proc', 11)",x8 below 6000 m (TRAINING),trust2,82,141.36995434565983
+"B tuning worlds, new seed 202","('proc', 11)",x8 below 6000 m (TRAINING),ml2 + learned noise (flagged + unflagged),83,21.97372918377875
+"B tuning worlds, new seed 202","('proc', 11)",x8 below 6000 m (TRAINING),ml2 + running-innovation noise (non-ML control),96,21.723400027949882
+"B tuning worlds, new seed 202","('proc', 11)",x16 below 6000 m,pitfal,50,271.0620363535666
+"B tuning worlds, new seed 202","('proc', 11)",x16 below 6000 m,trust2,59,490.91231360217114
+"B tuning worlds, new seed 202","('proc', 11)",x16 below 6000 m,ml2 + learned noise (flagged + unflagged),85,22.478878114461995
+"B tuning worlds, new seed 202","('proc', 11)",x16 below 6000 m,ml2 + running-innovation noise (non-ML control),95,22.263341026710094
+"B tuning worlds, new seed 202","('proc', 11)",x8 below 2500 m,pitfal,76,21.9856777363409
+"B tuning worlds, new seed 202","('proc', 11)",x8 below 2500 m,trust2,81,21.388550218189877
+"B tuning worlds, new seed 202","('proc', 11)",x8 below 2500 m,ml2 + learned noise (flagged + unflagged),95,21.87992051401243
+"B tuning worlds, new seed 202","('proc', 11)",x8 below 2500 m,ml2 + running-innovation noise (non-ML control),81,21.36053796495077
+A fresh worlds (seed 101),"('proc', 14)",cliff + faults (nominal noise),pitfal,66,124.5010678690413
+A fresh worlds (seed 101),"('proc', 14)",cliff + faults (nominal noise),trust2,88,32.01366126872814
+A fresh worlds (seed 101),"('proc', 14)",cliff + faults (nominal noise),ml2 + learned noise (flagged + unflagged),84,45.0052630495989
+A fresh worlds (seed 101),"('proc', 14)",cliff + faults (nominal noise),ml2 + running-innovation noise (non-ML control),77,39.21356331971528
+A fresh worlds (seed 101),"('proc', 14)",x2 below 6000 m,pitfal,65,38.51199132590265
+A fresh worlds (seed 101),"('proc', 14)",x2 below 6000 m,trust2,85,30.06189964765356
+A fresh worlds (seed 101),"('proc', 14)",x2 below 6000 m,ml2 + learned noise (flagged + unflagged),90,33.11007705829045
+A fresh worlds (seed 101),"('proc', 14)",x2 below 6000 m,ml2 + running-innovation noise (non-ML control),83,33.921944757925814
+A fresh worlds (seed 101),"('proc', 14)",x4 below 6000 m,pitfal,65,37.76743132600134
+A fresh worlds (seed 101),"('proc', 14)",x4 below 6000 m,trust2,81,29.97667412576497
+A fresh worlds (seed 101),"('proc', 14)",x4 below 6000 m,ml2 + learned noise (flagged + unflagged),84,32.98594141464962
+A fresh worlds (seed 101),"('proc', 14)",x4 below 6000 m,ml2 + running-innovation noise (non-ML control),85,34.012274352078826
+A fresh worlds (seed 101),"('proc', 14)",x8 below 6000 m (TRAINING),pitfal,43,39.06900106199082
+A fresh worlds (seed 101),"('proc', 14)",x8 below 6000 m (TRAINING),trust2,76,45.33301338705467
+A fresh worlds (seed 101),"('proc', 14)",x8 below 6000 m (TRAINING),ml2 + learned noise (flagged + unflagged),69,35.58230750994543
+A fresh worlds (seed 101),"('proc', 14)",x8 below 6000 m (TRAINING),ml2 + running-innovation noise (non-ML control),79,34.15865689355667
+A fresh worlds (seed 101),"('proc', 14)",x16 below 6000 m,pitfal,26,129.5670870484737
+A fresh worlds (seed 101),"('proc', 14)",x16 below 6000 m,trust2,47,539.8417653816588
+A fresh worlds (seed 101),"('proc', 14)",x16 below 6000 m,ml2 + learned noise (flagged + unflagged),70,34.3324299551941
+A fresh worlds (seed 101),"('proc', 14)",x16 below 6000 m,ml2 + running-innovation noise (non-ML control),72,34.9669856771206
+A fresh worlds (seed 101),"('proc', 14)",x8 below 2500 m,pitfal,57,38.04792120919656
+A fresh worlds (seed 101),"('proc', 14)",x8 below 2500 m,trust2,92,29.548246081064097
+A fresh worlds (seed 101),"('proc', 14)",x8 below 2500 m,ml2 + learned noise (flagged + unflagged),86,35.46300428085766
+A fresh worlds (seed 101),"('proc', 14)",x8 below 2500 m,ml2 + running-innovation noise (non-ML control),88,33.76460478142503
+"B tuning worlds, new seed 202","('proc', 12)",cliff + faults (nominal noise),pitfal,88,22.31974560200181
+"B tuning worlds, new seed 202","('proc', 12)",cliff + faults (nominal noise),trust2,92,21.85648854635668
+"B tuning worlds, new seed 202","('proc', 12)",cliff + faults (nominal noise),ml2 + learned noise (flagged + unflagged),99,22.150980201614367
+"B tuning worlds, new seed 202","('proc', 12)",cliff + faults (nominal noise),ml2 + running-innovation noise (non-ML control),90,21.791385508420813
+"B tuning worlds, new seed 202","('proc', 12)",x2 below 6000 m,pitfal,87,21.783519142103447
+"B tuning worlds, new seed 202","('proc', 12)",x2 below 6000 m,trust2,91,21.692187105787607
+"B tuning worlds, new seed 202","('proc', 12)",x2 below 6000 m,ml2 + learned noise (flagged + unflagged),99,22.54803243633955
+"B tuning worlds, new seed 202","('proc', 12)",x2 below 6000 m,ml2 + running-innovation noise (non-ML control),96,21.889445156540965
+"B tuning worlds, new seed 202","('proc', 12)",x4 below 6000 m,pitfal,87,21.77551732692063
+"B tuning worlds, new seed 202","('proc', 12)",x4 below 6000 m,trust2,89,21.88677490680688
+"B tuning worlds, new seed 202","('proc', 12)",x4 below 6000 m,ml2 + learned noise (flagged + unflagged),98,22.3947871529515
+"B tuning worlds, new seed 202","('proc', 12)",x4 below 6000 m,ml2 + running-innovation noise (non-ML control),89,22.320646766483613
+"B tuning worlds, new seed 202","('proc', 12)",x8 below 6000 m (TRAINING),pitfal,66,22.512006945402543
+"B tuning worlds, new seed 202","('proc', 12)",x8 below 6000 m (TRAINING),trust2,83,22.46535858331178
+"B tuning worlds, new seed 202","('proc', 12)",x8 below 6000 m (TRAINING),ml2 + learned noise (flagged + unflagged),76,22.104174346781605
+"B tuning worlds, new seed 202","('proc', 12)",x8 below 6000 m (TRAINING),ml2 + running-innovation noise (non-ML control),96,21.795843820631084
+"B tuning worlds, new seed 202","('proc', 12)",x16 below 6000 m,pitfal,40,290.48131846748447
+"B tuning worlds, new seed 202","('proc', 12)",x16 below 6000 m,trust2,70,207.4184016614726
+"B tuning worlds, new seed 202","('proc', 12)",x16 below 6000 m,ml2 + learned noise (flagged + unflagged),89,22.470240842340445
+"B tuning worlds, new seed 202","('proc', 12)",x16 below 6000 m,ml2 + running-innovation noise (non-ML control),90,22.576730768065005
+"B tuning worlds, new seed 202","('proc', 12)",x8 below 2500 m,pitfal,82,21.90861415688778
+"B tuning worlds, new seed 202","('proc', 12)",x8 below 2500 m,trust2,81,21.476591669172677
+"B tuning worlds, new seed 202","('proc', 12)",x8 below 2500 m,ml2 + learned noise (flagged + unflagged),96,22.093440391526723
+"B tuning worlds, new seed 202","('proc', 12)",x8 below 2500 m,ml2 + running-innovation noise (non-ML control),80,21.461772155589596
+"B tuning worlds, new seed 202","('site01', 2.0)",cliff + faults (nominal noise),pitfal,100,20.949753926215507
+"B tuning worlds, new seed 202","('site01', 2.0)",cliff + faults (nominal noise),trust2,100,20.620937440752563
+"B tuning worlds, new seed 202","('site01', 2.0)",cliff + faults (nominal noise),ml2 + learned noise (flagged + unflagged),100,20.51151709423989
+"B tuning worlds, new seed 202","('site01', 2.0)",cliff + faults (nominal noise),ml2 + running-innovation noise (non-ML control),100,20.471768806645947
+"B tuning worlds, new seed 202","('site01', 2.0)",x2 below 6000 m,pitfal,100,20.621714854073733
+"B tuning worlds, new seed 202","('site01', 2.0)",x2 below 6000 m,trust2,100,20.40076152177974
+"B tuning worlds, new seed 202","('site01', 2.0)",x2 below 6000 m,ml2 + learned noise (flagged + unflagged),100,20.769462732948384
+"B tuning worlds, new seed 202","('site01', 2.0)",x2 below 6000 m,ml2 + running-innovation noise (non-ML control),100,20.408276990994935
+"B tuning worlds, new seed 202","('site01', 2.0)",x4 below 6000 m,pitfal,100,20.62971264308644
+"B tuning worlds, new seed 202","('site01', 2.0)",x4 below 6000 m,trust2,100,20.541161836148074
+"B tuning worlds, new seed 202","('site01', 2.0)",x4 below 6000 m,ml2 + learned noise (flagged + unflagged),100,20.488753932624416
+"B tuning worlds, new seed 202","('site01', 2.0)",x4 below 6000 m,ml2 + running-innovation noise (non-ML control),100,20.326397403082826
+"B tuning worlds, new seed 202","('site01', 2.0)",x8 below 6000 m (TRAINING),pitfal,100,21.232394517959058
+"B tuning worlds, new seed 202","('site01', 2.0)",x8 below 6000 m (TRAINING),trust2,98,22.054673861835557
+"B tuning worlds, new seed 202","('site01', 2.0)",x8 below 6000 m (TRAINING),ml2 + learned noise (flagged + unflagged),100,20.674992414420323
+"B tuning worlds, new seed 202","('site01', 2.0)",x8 below 6000 m (TRAINING),ml2 + running-innovation noise (non-ML control),100,20.43830653008673
+"B tuning worlds, new seed 202","('site01', 2.0)",x16 below 6000 m,pitfal,67,353.7703831050159
+"B tuning worlds, new seed 202","('site01', 2.0)",x16 below 6000 m,trust2,78,120.14444497031093
+"B tuning worlds, new seed 202","('site01', 2.0)",x16 below 6000 m,ml2 + learned noise (flagged + unflagged),99,20.875935954969055
+"B tuning worlds, new seed 202","('site01', 2.0)",x16 below 6000 m,ml2 + running-innovation noise (non-ML control),100,20.06715017139687
+"B tuning worlds, new seed 202","('site01', 2.0)",x8 below 2500 m,pitfal,100,20.61129968007888
+"B tuning worlds, new seed 202","('site01', 2.0)",x8 below 2500 m,trust2,100,20.42824008615517
+"B tuning worlds, new seed 202","('site01', 2.0)",x8 below 2500 m,ml2 + learned noise (flagged + unflagged),100,20.582895838095386
+"B tuning worlds, new seed 202","('site01', 2.0)",x8 below 2500 m,ml2 + running-innovation noise (non-ML control),100,20.33686198156698
+"B tuning worlds, new seed 202","('proc', 13)",cliff + faults (nominal noise),pitfal,83,22.632872582175615
+"B tuning worlds, new seed 202","('proc', 13)",cliff + faults (nominal noise),trust2,94,22.504127626241054
+"B tuning worlds, new seed 202","('proc', 13)",cliff + faults (nominal noise),ml2 + learned noise (flagged + unflagged),90,22.018078127448423
+"B tuning worlds, new seed 202","('proc', 13)",cliff + faults (nominal noise),ml2 + running-innovation noise (non-ML control),89,22.435911774571817
+"B tuning worlds, new seed 202","('proc', 13)",x2 below 6000 m,pitfal,78,22.260263741364174
+"B tuning worlds, new seed 202","('proc', 13)",x2 below 6000 m,trust2,85,21.672557366130356
+"B tuning worlds, new seed 202","('proc', 13)",x2 below 6000 m,ml2 + learned noise (flagged + unflagged),83,22.15371683854378
+"B tuning worlds, new seed 202","('proc', 13)",x2 below 6000 m,ml2 + running-innovation noise (non-ML control),85,21.739011768989958
+"B tuning worlds, new seed 202","('proc', 13)",x4 below 6000 m,pitfal,74,22.263078402630644
+"B tuning worlds, new seed 202","('proc', 13)",x4 below 6000 m,trust2,71,21.77791343564425
+"B tuning worlds, new seed 202","('proc', 13)",x4 below 6000 m,ml2 + learned noise (flagged + unflagged),84,22.009884603030706
+"B tuning worlds, new seed 202","('proc', 13)",x4 below 6000 m,ml2 + running-innovation noise (non-ML control),72,22.07163004406875
+"B tuning worlds, new seed 202","('proc', 13)",x8 below 6000 m (TRAINING),pitfal,66,23.010443568040994
+"B tuning worlds, new seed 202","('proc', 13)",x8 below 6000 m (TRAINING),trust2,73,22.442917513422458
+"B tuning worlds, new seed 202","('proc', 13)",x8 below 6000 m (TRAINING),ml2 + learned noise (flagged + unflagged),65,22.014109784438094
+"B tuning worlds, new seed 202","('proc', 13)",x8 below 6000 m (TRAINING),ml2 + running-innovation noise (non-ML control),76,21.850606370360534
+"B tuning worlds, new seed 202","('proc', 13)",x16 below 6000 m,pitfal,32,238.8391014068044
+"B tuning worlds, new seed 202","('proc', 13)",x16 below 6000 m,trust2,64,25.17490748269259
+"B tuning worlds, new seed 202","('proc', 13)",x16 below 6000 m,ml2 + learned noise (flagged + unflagged),75,22.67704747198826
+"B tuning worlds, new seed 202","('proc', 13)",x16 below 6000 m,ml2 + running-innovation noise (non-ML control),65,22.717707665112155
+"B tuning worlds, new seed 202","('proc', 13)",x8 below 2500 m,pitfal,85,22.080607929019955
+"B tuning worlds, new seed 202","('proc', 13)",x8 below 2500 m,trust2,97,21.614975942489767
+"B tuning worlds, new seed 202","('proc', 13)",x8 below 2500 m,ml2 + learned noise (flagged + unflagged),73,21.752075285884107
+"B tuning worlds, new seed 202","('proc', 13)",x8 below 2500 m,ml2 + running-innovation noise (non-ML control),95,21.380253404739378

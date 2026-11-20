@@ -1,0 +1,95 @@
+08:04:09 warm ('proc', 11)
+08:04:35 warm ('proc', 12)
+08:05:48 warm ('proc', 13)
+08:07:35 warm ('site01', 2.0, 270.0)
+C:\Users\ADMIN\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\base.py:525: InconsistentVersionWarning: Trying to unpickle estimator LabelEncoder from version 1.9.1 when using version 1.9.0. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+C:\Users\ADMIN\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\base.py:525: InconsistentVersionWarning: Trying to unpickle estimator _BinMapper from version 1.9.1 when using version 1.9.0. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+C:\Users\ADMIN\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\base.py:525: InconsistentVersionWarning: Trying to unpickle estimator HistGradientBoostingClassifier from version 1.9.1 when using version 1.9.0. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+C:\Users\ADMIN\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\base.py:525: InconsistentVersionWarning: Trying to unpickle estimator HistGradientBoostingRegressor from version 1.9.1 when using version 1.9.0. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+C:\Users\ADMIN\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\base.py:525: InconsistentVersionWarning: Trying to unpickle estimator LabelEncoder from version 1.9.1 when using version 1.9.0. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+C:\Users\ADMIN\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\base.py:525: InconsistentVersionWarning: Trying to unpickle estimator _BinMapper from version 1.9.1 when using version 1.9.0. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+C:\Users\ADMIN\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\base.py:525: InconsistentVersionWarning: Trying to unpickle estimator HistGradientBoostingClassifier from version 1.9.1 when using version 1.9.0. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+C:\Users\ADMIN\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\base.py:525: InconsistentVersionWarning: Trying to unpickle estimator HistGradientBoostingRegressor from version 1.9.1 when using version 1.9.0. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+C:\Users\ADMIN\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\base.py:525: InconsistentVersionWarning: Trying to unpickle estimator LabelEncoder from version 1.9.1 when using version 1.9.0. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+C:\Users\ADMIN\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\base.py:525: InconsistentVersionWarning: Trying to unpickle estimator _BinMapper from version 1.9.1 when using version 1.9.0. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+C:\Users\ADMIN\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\base.py:525: InconsistentVersionWarning: Trying to unpickle estimator HistGradientBoostingClassifier from version 1.9.1 when using version 1.9.0. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+C:\Users\ADMIN\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\base.py:525: InconsistentVersionWarning: Trying to unpickle estimator HistGradientBoostingRegressor from version 1.9.1 when using version 1.9.0. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+C:\Users\ADMIN\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\base.py:525: InconsistentVersionWarning: Trying to unpickle estimator LabelEncoder from version 1.9.1 when using version 1.9.0. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+C:\Users\ADMIN\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\base.py:525: InconsistentVersionWarning: Trying to unpickle estimator _BinMapper from version 1.9.1 when using version 1.9.0. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+C:\Users\ADMIN\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\base.py:525: InconsistentVersionWarning: Trying to unpickle estimator HistGradientBoostingClassifier from version 1.9.1 when using version 1.9.0. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+C:\Users\ADMIN\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\base.py:525: InconsistentVersionWarning: Trying to unpickle estimator HistGradientBoostingRegressor from version 1.9.1 when using version 1.9.0. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+  done ('site01', 2.0)
+  done ('proc', 11)
+  done ('proc', 12)
+  done ('proc', 13)
+
+Landing success % (mean of 4 tuning worlds, 100 descents each)
+ judge                           pitfal  trust2  ml2 + predicted noise (flagged only)  ml2 + predicted noise (flagged + unflagged)
+condition                                                                                                                        
+cliff + faults (nominal noise)    89.2    96.0                                  93.5                                         95.0
+x2 below 6000 m                   87.2    92.0                                  88.2                                         94.0
+x4 below 6000 m                   88.2    88.8                                  73.0                                         92.0
+x8 below 6000 m (TRAINING)        77.0    78.0                                  69.8                                         84.0
+x16 below 6000 m                  45.2    62.8                                  63.5                                         87.2
+x8 below 2500 m                   87.5    91.2                                  87.5                                         90.5
+
+Per world (landings out of 100)
+ world                                                                       ('proc', 11)  ('proc', 12)  ('proc', 13)  ('site01', 2.0)
+condition                      judge                                                                                                 
+cliff + faults (nominal noise) ml2 + predicted noise (flagged + unflagged)          98.0          96.0          86.0            100.0
+                               ml2 + predicted noise (flagged only)                 89.0          92.0          93.0            100.0
+                               pitfal                                               86.0          92.0          79.0            100.0
+                               trust2                                               96.0          93.0          95.0            100.0
+x16 below 6000 m               ml2 + predicted noise (flagged + unflagged)          85.0          89.0          78.0             97.0
+                               ml2 + predicted noise (flagged only)                 68.0          51.0          52.0             83.0
+                               pitfal                                               48.0          32.0          35.0             66.0
+                               trust2                                               56.0          71.0          55.0             69.0
+x2 below 6000 m                ml2 + predicted noise (flagged + unflagged)          99.0          97.0          80.0            100.0
+                               ml2 + predicted noise (flagged only)                 89.0          86.0          78.0            100.0
+                               pitfal                                               86.0          86.0          77.0            100.0
+                               trust2                                               97.0          88.0          83.0            100.0
+x4 below 6000 m                ml2 + predicted noise (flagged + unflagged)          98.0          94.0          76.0            100.0
+                               ml2 + predicted noise (flagged only)                 73.0          51.0          68.0            100.0
+                               pitfal                                               93.0          86.0          74.0            100.0
+                               trust2                                               95.0          89.0          71.0            100.0
+x8 below 2500 m                ml2 + predicted noise (flagged + unflagged)          96.0          90.0          76.0            100.0
+                               ml2 + predicted noise (flagged only)                 79.0          78.0          93.0            100.0
+                               pitfal                                               82.0          82.0          86.0            100.0
+                               trust2                                               83.0          89.0          93.0            100.0
+x8 below 6000 m (TRAINING)     ml2 + predicted noise (flagged + unflagged)          89.0          82.0          65.0            100.0
+                               ml2 + predicted noise (flagged only)                 67.0          58.0          56.0             98.0
+                               pitfal                                               82.0          58.0          68.0            100.0
+                               trust2                                               75.0          75.0          63.0             99.0
+exit=0
