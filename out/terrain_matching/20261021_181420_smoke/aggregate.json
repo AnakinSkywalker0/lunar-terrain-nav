@@ -1,0 +1,30 @@
+[
+  {
+    "condition": "aligned",
+    "matching": "False",
+    "n": 1,
+    "touchdowns": 1,
+    "successes": 0,
+    "mean_miss_m": 67.47598,
+    "mean_final_error_m": 72.11143,
+    "mean_vertical_error_m": 2.615797,
+    "max_impact_vz": 1.821799,
+    "max_impact_vh": 0.4622175,
+    "accepted_matches": 10,
+    "wrong_matches": 0
+  },
+  {
+    "condition": "aligned",
+    "matching": "True",
+    "n": 1,
+    "touchdowns": 1,
+    "successes": 1,
+    "mean_miss_m": 0.134316,
+    "mean_final_error_m": 0.1564709,
+    "mean_vertical_error_m": 0.2305421,
+    "max_impact_vz": 1.845852,
+    "max_impact_vh": 0.00937953,
+    "accepted_matches": 10,
+    "wrong_matches": 0
+  }
+]

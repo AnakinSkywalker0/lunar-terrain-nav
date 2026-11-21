@@ -1,0 +1,1 @@
+3840 unique cases; 7680 unique scan records. Labels recomputed from archived distances; partial-correction geometry checked; feature schema finite; frozen core/source hashes checked; all trajectory/cloud pairs present. Two uncorrected scans per pose, with history reset.

@@ -1,0 +1,41 @@
+{
+  "sites": [
+    {
+      "id": "original",
+      "x": 6198.0,
+      "z": 8512.0,
+      "target_window_max_slope_deg": 3.33,
+      "surrounding_2km_relief_m": 500.05
+    },
+    {
+      "id": "area01",
+      "x": 2593.75,
+      "z": 1968.75,
+      "target_window_max_slope_deg": 4.995,
+      "surrounding_2km_relief_m": 352.44
+    },
+    {
+      "id": "area02",
+      "x": 8703.125,
+      "z": 14445.3125,
+      "target_window_max_slope_deg": 4.88,
+      "surrounding_2km_relief_m": 765.59
+    },
+    {
+      "id": "area03",
+      "x": 8851.5625,
+      "z": 2039.0625,
+      "target_window_max_slope_deg": 4.962,
+      "surrounding_2km_relief_m": 719.58
+    },
+    {
+      "id": "area04",
+      "x": 1468.75,
+      "z": 11070.3125,
+      "target_window_max_slope_deg": 4.425,
+      "surrounding_2km_relief_m": 258.65
+    }
+  ],
+  "input_raw_sha256": "f3c43f9504764ed61badba0fbd8d346793bb1ee775cb6ddbc14eb94a6eb4546d",
+  "selection": "farthest-first eligible flat targets; see protocol v2"
+}

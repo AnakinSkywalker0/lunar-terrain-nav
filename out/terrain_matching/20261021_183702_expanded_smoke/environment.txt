@@ -1,0 +1,6 @@
+UTC=2026-10-21T18:37:02.4162268Z
+Unity=6000.3.24f1
+CPU=Intel(R) Core(TM) i7-14700HX
+Platform=WindowsEditor
+DT=0.05
+3-DOF PhysX; ideal attitude; no ML training

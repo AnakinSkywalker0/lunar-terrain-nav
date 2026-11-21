@@ -1,0 +1,334 @@
+     NASA SPLICE Project:
+Developing the Next Generation
+
+    Hazard Detection System
+
+                  Carolina Restrepo (GSFC)
+                   Ronney Lovelace (JSC)
+                    Ronald Sostaric (JSC)
+
+                      John Carson (JSC)
+
+               RPI Space Imaging Workshop
+
+                October, 2019
+
+                                                                                                                                1 / 18
+Overview
+
+1 Introduction
+       Precision Landing & Hazard Avoidance
+       SPLICE Project
+
+2 Hazard Detection System
+       System Description
+       Performance Specifications
+       HD System Performance
+
+3 SPLICE Integration & Test Capabilities
+
+                                                                                                                                                                        2 / 18
+NASA's Lunar Program
+
+    PL&HA
+
+                                                                                                                                                                        3 / 18
+Precision Landing & Hazard Avoidance ConOps
+
+Powered     Terrain Relative Navigation
+Descent
+Initiation     ·Obtain real-time 2D images of surface
+               ·Compare to rendered onboard global maps
+               ·Correct lander position w.r.t. global coordinates
+               ·Small lander-sized hazards not visible
+
+                                                                                                          Hazard Detection
+
+                                                                                    · HDL Maps surface
+                                                                                    within 50m radius of
+                                                                                    target landing site
+
+                                                                                    · HD Algorithms process
+                                                                                    HDL DEM in local
+                                                                                    coordinates to determine
+                                                                                    safe landing zones
+
+            ~15 km                                                                                           12
+                          ~10 km
+                                                                       ~0.5 - 1 km                           X                                Hazard Avoidance
+
+                                                                                                          4     3
+
+                                                                                                             5
+
+                                                                                                                   · Lander's GN&C selects
+                                                                                                                   from available safe sites
+                                                                                                                   and plans divert maneuver
+
+                                                                                                                            · Lander navigates w.r.t.
+                                                                                                                            local surface features
+
+                                                                                                                X
+
+            NDL Velocity and Ranging                                                                                                                            4 / 18
+                 IMU
+SPLICE Project
+
+SPLICE: Safe & Precise Landing - Integrated Capabilities Evolution
+
+      SPLICE is GN&C technology for precision landing
+              Components can be flown as an integrated payload or separately
+              High-fidelity hardware-in-the-loop simulation environments
+              Concept of Operations studies to derive requirements for various
+              sensors during different flight phases
+              Flight tests planned for testing sub-components on various platforms
+
+      SPLICE partners
+              NASA Centers: JSC, LaRC, GSFC, JPL, AFRC - Flight Ops
+              Industry: Draper, Masten Space Systems, Blue Origin, Astrobotic
+              Academia: University of Washington, Texas A&M University, San
+              Diego State University, 4 Early Career Faculty Awards on related topics
+
+                                                                                                                                                                        5 / 18
+SPLICE Project & NASA's Lunar Programs
+
+      Commercial Lunar Payload Services (CLPS) Program:
+              SPLICE sensors are slated to fly onboard CLPS missions
+              ConOps team is evaluating robotic scale lunar missions for CLPS
+              providers
+
+      Artemis Program:
+              ConOps is evaluating sensor suites for future human lander systems
+              SPLICE team engaged with the Human Lander Systems Program and
+              multiple potential oroviders
+
+                                                                                                                                                                        6 / 18
+SPLICE PL&HA Technologies
+
+      Sensors
+              Navigation Doppler LIDAR (NDL) for velocity and ranging
+              Hazard Detection LIDAR (HDL) for terrain mapping
+              TRN Camera
+
+      Algorithms
+              Terrain Relative Navigation
+              Hazard detection and safe site selection
+              Trajectory & Navigation filter design to support precision landing
+
+      Avionics
+              Descent and Landing Computer based on the High Performance Space
+              Computing platform
+
+      High-fidelity simulation environments
+              Concept of Operations studies for lander missions
+              Hardware-in-the-loop testbed
+
+      Lab-scale test environment for research-level PL&HA algorithms
+      (under development at JSC)
+
+                                                                                                                                                                        7 / 18
+SPLICE Technologies Onboard a Host Vehicle
+
+                                                                                                                                                                        8 / 18
+SPLICE Hazard Detection System
+
+                                                                                                                                                                                                      Descent & Landing Computer
+
+                                                                                                                       HDL                                           Digital Elevation Map in   Cmds  Hazard Detection           Flight software:
+                                                                                                                                                                          local coordinates               Algorithms             Guidance plans
+                                                                                                                   LIDAR Ranges                                                                1 sec                             divert maneuver
+                                                                                                                                                       2 sec                                                                     to safe site and
+             Trajectory                                                                                                                                                                                                 <5 sec  Navigation is now
+            information                                                                                                                                                                                                          relative to DEM
+            (Nav & IMU)
+
+Powered     Terrain Relative Navigation
+Descent
+Initiation     ·Obtain real-time 2D images of surface
+               ·Compare to rendered onboard global maps
+               ·Correct lander position w.r.t. global coordinates
+               ·Small lander-sized hazards not visible
+
+                                                                                                          Hazard Detection
+
+                                                                                    · HDL Maps surface
+                                                                                    within 50m radius of
+                                                                                    target landing site
+
+                                                                                    · HD Algorithms process
+                                                                                    HDL DEM in local
+                                                                                    coordinates to determine
+                                                                                    safe landing zones
+
+            ~15 km                                                                                           12
+                          ~10 km
+                                                                       ~0.5 - 1 km                           X                                Hazard Avoidance
+
+                                                                                                          4     3
+
+                                                                                                             5
+
+                                                                                                                   · Lander's GN&C selects
+                                                                                                                   from available safe sites
+                                                                                                                   and plans divert maneuver
+
+                                                                                                                            · Lander navigates w.r.t.
+                                                                                                                            local surface features
+
+                                                                                                                X
+
+            NDL Velocity and Ranging
+                 IMU
+
+                                                                                                                                                                                                                                  9 / 18
+SPLICE Hazard Detection System
+
+ Trajectory                       Computing
+information                     constraints and
+
+    Time                          capabilities
+Constraints
+                 DEM quality   HD LIDAR DEM             HD     Safe Landing Sites
+  for data       requirements                      Algorithms
+processing
+
+   Lander
+geometry &
+tolerances
+
+     Hazard                      Flight software
+   definition                       Nav & IMU
+
+     Terrain                     (knowledge of
+characteristics                 vehicle's motion)
+
+                                                               10 / 18
+SPLICE Hazard Detection System
+
+        ConOps Studies
+
+ Trajectory                    Descent & Landing Computer
+information
+                                                        Computing
+    Time                                             constraints and
+Constraints
+                                                        capabilities
+  for data
+processing
+
+   Lander        DEM quality   HD LIDAR DEM       HD                        Safe Landing Sites
+geometry &       requirements                Algorithms
+tolerances
+
+     Hazard                                               Flight software
+   definition                                                Nav & IMU
+
+     Terrain                                               (knowledge of
+characteristics                                          vehicle's motion)
+
+                               HWIL Simulation / Flight Software
+
+                                                                            11 / 18
+HDL Performance Specifications - ConOps
+
+Derived from ConOps Studies from simulation data for several types of
+landers and trajectories:
+
+      Slant range to landing target: 500m
+      Slant range angle: 10 off vertical
+      Look angle from sensor to landing site: near 10 off vertical
+      Vertical velocity: 20m/s
+      Assume HDL is fixed on vehicle and can point to target landing site
+      at the start of the scan
+
+                                                                                                                                                                       12 / 18
+HDL Performance Specifications - DEM
+
+Derived from previous work on Europa Lander sensor:
+      Map is 100 m diameter circle centered at landing target
+      Ground sample distance (resolution): 5cm
+      DEM elevation errors: 5cm, 3
+      DEM generation in approximately 2 seconds
+
+                                                                                                                                                                       13 / 18
+HDL Performance Specifications - Hazards
+
+Hazards definitions derived from previous ALHAT experience and notional
+lander geometry and sizes:
+
+5 slopes  Terrain roughness of 20 cm
+
+Hazard sizes  requirements for DEM resolution
+
+                                               14 / 18
+Hazard Detection System Overall Performance
+
+Vehicle state knowledge           Vehicle state  Host Vehicle - HDL
+(Nav errors, IMU)                    estimate         Mechanical
+                                     errors @
+Host Lander to HDL                     DEM         Misaligments /
+calibration, misalignments          generation        calibration
+                                                                     HDL ranging and
+HDL (sensor errors)         Inertial                                 pointing precision
+
+DEM generation (vehicle                                                                     System Timing
+motion and error
+propagation during map                                                              HDL DEM
+assembly)                                                                          generation
+
+System timing (latencies,                                                                                                                    Surface-fixed F
+offsets)
+                                                             Inertial Frame / Surface-fixed frame / Map frame errors
+
+                                                 15 / 18
+SPLICE Integration & Test Environments
+
+High fidelity I & T Environments for near  Sub-orbital           Cooperative        Accelerating research and new
+   term technology infusion                 Flight tests      agreements with    technology development
+                                                               Universities for
+                                           Concept of     algorithm development
+                                            Operations
+                                                            Precision Landing
+                                              Studies            GN&C Lab
+
+                                           Harware-in-       (in-development
+                                             the-loop              at JSC)
+                                            Simulation
+
+                                           Environment
+
+                                           High-fidelity
+                                            processor
+                                           and sensor
+                                            emulators
+
+                                                                                                                   16 / 18
+In-development Lab for Testing Emerging Technologies
+
+Through a research collaboration with Texas A&M University, JSC is
+building a lab for developing and testing future landing GN&C
+technologies
+
+      Lab-scale sensor package for testing research-level algorithms
+      Payload is 100% portable and can be used over any terrain
+
+      Lab has a motion capture system and mock terrain (external truth)
+
+                                                                                                                                                                       17 / 18
+References
+
+      John M. Carson et al., "The SPLICE Project: Continuing NASA
+      Development of GN&C Technologies for Safe and Precise Landing",
+      AIAA Scitech Forum 2019, San Diego, CA, January 2019.
+      D. Rutishauser et al., "High-Performance Computing for Precision
+      Landing and Hazard Avoidance and Co-design Approach" IEEE
+      Aerospace Conference, Big Sky, MT, March 2019.
+      A. Dwyer Cianciolo et al., "Defining Navigation Requirements for
+      Future Precision Lander Missions", AIAA Scitech Forum 2019, San
+      Diego, CA, January 2019.
+      Tonislav Ivanov, Andres Huertas, and John M. Carson. "Probabilistic
+      Hazard Detection for Autonomous Safe Landing", AIAA Guidance,
+      Navigation, and Control Conference. 2013
+
+                                                                                                                                                                       18 / 18
+

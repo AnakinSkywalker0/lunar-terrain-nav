@@ -1,0 +1,78 @@
+TBD
+
+     National Aeronautics and Space Administration                                                           2023 JSC Technology Showcase
+     Johnson Space Center (JSC) / White Sands Test Facility (WSTF)
+
+Safe and Precise Landing Integrated Capabilities Evolution (SPLICE)
+         Gavin Mendeck (PM), John Carson (PI), Sam Pedrotty (CE), James Berck (FSW), David Rutishauser (Avionics), Kyle Smith (GNC), Teming Tse (Sim/HWIL)
+
+EXECUTIVE SUMMARY                                                                         6DOF lander simulation illustrating that SPLICE guidance                Example of a lidar-generated digital elevation map (DEM)
+                                                                                            successfully points the HDL sensor field-of-view (green)         Example of a digital elevation map (DEM) for hazard detection
+NASA needs for entry, descent, and landing call for improved Precision                           within 50m of the site (red circle) and diverts to an
+Landing and Hazard Avoidance (PL&HA) technologies. SPLICE continues                                                         identified safe site (red dot).
+to develop, mature, demonstrate, and infuse these technologies as a
+portfolio. SPLICE will achieve TRL 5 on a hazard detection lidar mapping
+sensor and TRL 6 on two key flight software libraries for advanced
+guidance and hazard detection. A High-Performance Space Computing
+surrogate multiprocessor (ARM A53) integrates sensors and FSW. This
+portfolio of technologies may be infused separately or fully integrated.
+
+INNOVATION                                                                       Hazard detection algorithm example for a generic lunar lander with a generic lunar landing digital elevation map
+
+Autonomous PL&HA builds upon core GN&C capabilities to enable soft                Slope
+controlled landings on the Moon, Mars, and other solar system bodies.            Hazards
+PL&HA significantly improves the probability of mission success and
+enhances access to sites of scientific interest located in challenging terrain.                              Combined Hazards
+Through the addition of Terrain Relative Navigation (TRN), precision
+landing within tens of meters of a map-based target is possible. A 3-D                    Roughness Hazards                                                  Combined Hazards w/
+terrain mapping lidar sensor improves the probability of a safe landing via                                                                                    Landing Accuracy
+autonomous, real-time Hazard Detection and Avoidance (HDA). This same                                                                                         & Marked Safe Sites
+lidar includes a long-range altimeter beam that can accomplish Active TRN
+for any lighting condition at the Moon. A novel trajectory guidance              Advanced Powered Descent Guidance with University of Washington
+methodology is used to maximize the performance advantages of the                The project evaluated two implementations of an advanced guidance
+accurate sensing and navigation techniques being employed. A multi-beam          algorithm that find trajectory solutions with a variety of vehicle and
+commercial Navigation Doppler Lidar is used to provide extremely precise         trajectory constraints, such as pointing of a hazard detection lidar at the
+range and velocity measurements during the descent, which limits state           intended landing site. After evaluating both implementations against
+error growth and supports autonomous safe landing.                               project requirements, the project has down-selected and will be
+                                                                                 implementing it into flight software.
+Sensing Function           SPLICE Hardware Components  Descent &
+                                                        Landing
+Inertial Sensing &         IMU + Camera                Computer
+2D Imaging                    (both COTS)
+
+Precise         Doppler                                                          Hazard Detection with NASA/CalTech Jet Propulsion Laboratory
+Velocity &          Lidar                                                        The algorithm was originally developed during ALHAT and Morpheus.
+Range                                                                            Under SPLICE, the algorithm has been re-developed applying several
+            (electronics                                                         lessons learned from the Morpheus experience. This resulted in
+              chassis &                                                          improvements in processing time, allowing the algorithm to meet the
+                                                                                 project requirements without requiring parallel processing on multiple
+            telescopes)                                                          cores. Remaining work focuses on verification and validation with different
+                                                                                 algorithm parameters, synthetic DEMs, and field-generated DEMs.
+Landing Zone            Scan-array
+Hazard               Lidar & Lidar
+Mapping
+Generation              Electronics
+                    (scanner head
+                     & electronics                                               OUTCOMES & INFUSION
+
+                           chassis)                                              Hazard Detection Lidar to TRL 5
+                                                                                 Hazard Detection FSW to SRL 6 & Class C FSW
+                                                                                 Guidance FSW SRL to SRL 6 & Class C FSW                                     Xogdor, 2025
+
+COLLABORATION                                                                    Interest by HLS and CLPS partners in Hazard
+                                                                                 Detection Lidar and Guidance FSW. Interest by
+SPLICE has a partner for each of its three key PL&HA technologies in             Europa Lander for Hazard Detection FSW.
+development.
+                                                                                 FUTURE WORK
+Hazard Detection Lidar with NASA Goddard Spaceflight Center
+Design based on a scanning-array lidar capability that leverages multiple        SPLICE will conduct 6DOF flight mechanics
+flight-heritage technologies with design elements in common with several         simulations, hardware-in-the-loop simulation & testing,
+prospective SMD missions. The design is a hybrid scanning-imaging lidar          and environmental hardware testing prior to validation
+consisting of an optical head with focal plane imaging and a Risley-prism        via a closed-loop flight demonstration with Astrobotic's
+scanner mechanism. The Risley-prisms within the optical head scanner             new Xogdor suborbital flight test vehicle in 2025.
+provide the precise and rapid pointing of the lidar beam to achieve millions     Flight testing funded via Flight Opportunities
+of measurements per second. A chassis contains the laser, detectors, and         Tipping Point.
+electronics that process the lidar measurements into a digital elevation map
+that is then provided to the DLC. An ETU for terrestrial use is completing       DAA# 20230015493
+assembly, integration, and testing prior to field testing on a helicopter.
+

@@ -1,0 +1,9 @@
+{
+  "policy": "utility_hybrid",
+  "selection_source": "D:\\newprj\\out\\scan_utility\\20261021_203615_dev",
+  "source_sha256": "f766b45dc5ff80a267bb379e1d452b38f29803f5ddb64e411fd0f8b714f96ace",
+  "model_sha256": "eda1c7830f69b76cffd6ded430a5e6ddcd70210ed411fcf4f902c62e46f0dece",
+  "protocol_sha256": "d5a27475d878136120003d5b2aed687234d90baea9d0a3a891a9cf076df3daa6",
+  "criterion": "max target success, min speed violations, min mean miss, fixed policy order",
+  "final_evaluation_used": false
+}

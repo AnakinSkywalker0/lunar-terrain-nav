@@ -1,0 +1,22 @@
+{
+  "resolution": 2049,
+  "side_m": 16000.0,
+  "min_m": -523.1834106445312,
+  "max_m": 1959.4962158203125,
+  "source": "data\\Site01_final_adj_5mpp_surf.tif",
+  "source_sha256": "3ba7b97cb00a2bcf21189c3aeb535f65afc21207154ab9f0d43c5bdc1f7e747e",
+  "pixel_scale": [
+    5.0,
+    5.0,
+    0.0
+  ],
+  "tiepoint": [
+    0.0,
+    0.0,
+    0.0,
+    -19000.0,
+    -4000.0,
+    0.0
+  ],
+  "bad_px": 0
+}

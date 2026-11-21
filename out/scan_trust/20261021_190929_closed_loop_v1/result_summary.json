@@ -1,0 +1,43 @@
+{
+  "cases": 648,
+  "configurations": 162,
+  "comparisons": {
+    "off": {
+      "mean_miss_reduction_m": 11.546200375555557,
+      "improved": 28,
+      "worsened": 0,
+      "tied": 134,
+      "conditional_95_interval_m": [
+        7.6326585252746915,
+        15.768837164858024
+      ],
+      "caveat": "Paired configuration bootstrap conditional on these three areas; not cross-site generalization uncertainty"
+    },
+    "geometric": {
+      "mean_miss_reduction_m": -61.69417283351852,
+      "improved": 4,
+      "worsened": 143,
+      "tied": 15,
+      "conditional_95_interval_m": [
+        -67.83233352472993,
+        -55.46779713494444
+      ],
+      "caveat": "Paired configuration bootstrap conditional on these three areas; not cross-site generalization uncertainty"
+    },
+    "rule": {
+      "mean_miss_reduction_m": -34.73850037790124,
+      "improved": 18,
+      "worsened": 84,
+      "tied": 60,
+      "conditional_95_interval_m": [
+        -41.34291813631173,
+        -28.431301977765436
+      ],
+      "caveat": "Paired configuration bootstrap conditional on these three areas; not cross-site generalization uncertainty"
+    }
+  },
+  "model_sha256": "74ed4350c35c30c4f8eba80f2413f61551fb6ee1b9f9e402cf991880c5f4a466",
+  "status": "Complete; 648 cases; wall_seconds=137.7; D:\\newprj\\out\\scan_trust\\20261021_190929_closed_loop_v1",
+  "inference_median_ms": 0.0079,
+  "inference_p95_ms": 0.0206
+}

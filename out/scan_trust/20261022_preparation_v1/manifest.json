@@ -1,0 +1,55 @@
+{
+  "task": "scan_absolute_error_over_10m_v1",
+  "features": [
+    "points",
+    "rms_m",
+    "confidence",
+    "dx",
+    "dz",
+    "correction_norm_m"
+  ],
+  "label": "int(proposed_horizontal_error_m > 10)",
+  "source": "D:\\newprj\\out\\terrain_matching\\20261021_183805_expanded_v2",
+  "source_sha256": {
+    "summary.csv": "28a56a2fa6b03c456b00b39e39b0d909c99101b4d2103c3f6e7e23b1a553e9ad",
+    "scans.csv": "2dfb88aa57785b51b2b0e260d4b97606b1cc528c8ae75a23c8747478e7835e3c",
+    "TerrainNavigationCore.cs": "534bde74e2936ca49ad14e25856aa9d5afcb79c5a75596e38c4b789d9771fe76",
+    "ShortDescentExperiment.cs": "2708b45e14dc66c6b00b53bc0e82276250a710585f7ad7f015488571ff5da401"
+  },
+  "training_performed": false,
+  "learned_model_loaded": false,
+  "live_unity_integration": false,
+  "feature_schema_version": 1,
+  "site_split": {
+    "original": "train",
+    "area01": "train",
+    "area02": "train",
+    "area03": "validation",
+    "area04": "retrospective_test"
+  },
+  "counts": {
+    "source_scans": 10530,
+    "valid_examples": 10530,
+    "bad_examples": 4881
+  },
+  "split_counts": {
+    "train": 6318,
+    "validation": 2106,
+    "retrospective_test": 2106
+  },
+  "split_caveat": "Retrospective development only: all five areas were already inspected. Fresh independent terrain and new offset patterns required for final evaluation.",
+  "unit_of_independence": "terrain area, not scan row; five areas in one Site04 DEM",
+  "feature_caveat": "No ground truth, condition, site, seed, mode, run ID or label is a model input. The six local-match features cannot uniquely distinguish global map registration error.",
+  "no_model_parity_passed": true,
+  "artifact_sha256": {
+    "features.csv": "e8b6b4b3e6535639cf88e7856d0fe4cc06c79fd19b1e10bc933545214c42a263",
+    "labels.csv": "3bc5519d810485cd2fecb48ac988492416e4e141eb8279198cd2fb5a32473cd4",
+    "groups.csv": "a1bc68511b9f57e11bb3d26a486afa777dd9253c2c7d607ad0816a4967c0fc0f",
+    "shadow_decisions.csv": "69df4dc212846efa64724856fa65762825c7ec8ac35030ead23ce9da70d4d891"
+  },
+  "reproduction_sha256": {
+    "sim/scan_trust.py": "97025cfbd262fed725a5309a9415bbc29b94f8c834d523d6dad8f31a31bcfbb6",
+    "tools/prepare_scan_trust_data.py": "d55faf513e7d789ff335bcd9a3586b8ea1c5bea47249138a9bd9cf800e6ab518",
+    "tests/test_scan_trust.py": "2d95955c3f9b25c1178df1650376ddf7852e5030dd906e9e99c1f6ef484a165c"
+  }
+}

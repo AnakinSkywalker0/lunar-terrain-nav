@@ -1,0 +1,93 @@
+13:59:46 A ('proc', 14) x4 common
+13:59:47 A ('proc', 14) cliff common
+13:59:51 A ('proc', 14) x4 independent
+13:59:55 A ('proc', 14) cliff independent
+14:00:53 A ('proc', 14) x8 common
+14:00:54 A ('proc', 14) x8 independent
+14:01:04 A ('proc', 14) x16 common
+14:01:15 A ('proc', 14) x16 independent
+14:02:05 A ('proc', 15) cliff common
+14:02:10 A ('proc', 15) cliff independent
+14:02:19 A ('proc', 15) x4 independent
+14:02:24 A ('proc', 15) x4 common
+14:03:28 A ('proc', 15) x8 independent
+14:03:33 A ('proc', 15) x8 common
+14:04:13 A ('proc', 15) x16 common
+14:04:16 A ('proc', 15) x16 independent
+14:04:44 A ('proc', 16) cliff independent
+14:04:46 A ('proc', 16) cliff common
+14:05:27 A ('proc', 16) x4 common
+14:05:30 A ('proc', 16) x4 independent
+14:05:50 A ('proc', 16) x8 common
+14:05:59 A ('proc', 16) x8 independent
+14:06:53 A ('proc', 16) x16 common
+14:06:54 A ('proc', 16) x16 independent
+14:07:06 B ('proc', 11) cliff independent
+14:07:09 B ('proc', 11) cliff common
+14:08:05 B ('proc', 11) x4 common
+14:08:08 B ('proc', 11) x4 independent
+14:08:30 B ('proc', 11) x8 independent
+14:08:30 B ('proc', 11) x8 common
+14:09:36 B ('proc', 11) x16 common
+14:09:42 B ('proc', 12) cliff common
+14:09:48 B ('proc', 11) x16 independent
+14:09:48 B ('proc', 12) cliff independent
+14:10:38 B ('proc', 12) x4 common
+14:10:53 B ('proc', 12) x4 independent
+14:11:15 B ('proc', 12) x8 common
+14:11:34 B ('proc', 12) x8 independent
+14:12:18 B ('proc', 12) x16 common
+14:12:32 B ('proc', 13) cliff independent
+14:12:33 B ('proc', 12) x16 independent
+14:12:44 B ('proc', 13) cliff common
+14:13:29 B ('proc', 13) x4 common
+14:13:34 B ('proc', 13) x4 independent
+14:13:54 B ('proc', 13) x8 common
+14:14:08 B ('proc', 13) x8 independent
+14:14:53 B ('site01', 2.0) cliff independent
+14:15:03 B ('site01', 2.0) cliff common
+14:15:03 B ('proc', 13) x16 common
+14:15:10 B ('proc', 13) x16 independent
+14:15:52 B ('site01', 2.0) x4 independent
+14:15:56 B ('site01', 2.0) x4 common
+14:16:25 B ('site01', 2.0) x8 independent
+14:16:29 B ('site01', 2.0) x8 common
+14:17:32 B ('site01', 2.0) x16 common
+14:18:47 B ('site01', 2.0) x16 independent
+
+A fresh worlds (seed 101) | fault mode: independent | landing success % (mean over worlds, n=100 each)
+ config                          PITFAL multi-beam  tolerance multi-beam  tolerance multi-beam + noise floor  tolerance multi-beam + noise floor + consensus  pitfal (single beam)  tolerance + noise floor (single beam)
+condition                                                                                                                                                                                                               
+cliff + faults (nominal noise)               99.0                  94.7                                96.0                                            96.7                  77.0                                   90.3
+x16 below 6000 m                             66.0                  40.0                                98.7                                            99.3                  30.3                                   76.7
+x4 below 6000 m                              99.7                  97.7                                98.7                                            98.3                  76.7                                   90.7
+x8 below 6000 m (TRAINING)                   98.3                  69.3                                99.0                                            98.7                  59.3                                   81.0
+
+A fresh worlds (seed 101) | fault mode: common | landing success % (mean over worlds, n=100 each)
+ config                          PITFAL multi-beam  tolerance multi-beam  tolerance multi-beam + noise floor  tolerance multi-beam + noise floor + consensus
+condition                                                                                                                                                  
+cliff + faults (nominal noise)               98.0                  92.7                                95.7                                            95.0
+x16 below 6000 m                             67.7                  37.7                               100.0                                            99.7
+x4 below 6000 m                              99.7                  97.3                                97.7                                            97.3
+x8 below 6000 m (TRAINING)                   98.7                  70.7                                99.7                                            99.3
+
+B tuning worlds, new seed 202 | fault mode: independent | landing success % (mean over worlds, n=100 each)
+ config                          PITFAL multi-beam  tolerance multi-beam  tolerance multi-beam + noise floor  tolerance multi-beam + noise floor + consensus  pitfal (single beam)  tolerance + noise floor (single beam)
+condition                                                                                                                                                                                                               
+cliff + faults (nominal noise)               90.0                  94.5                                85.5                                            85.8                  88.0                                   92.2
+x16 below 6000 m                             73.8                  51.0                                99.0                                            98.2                  47.2                                   85.2
+x4 below 6000 m                              95.8                  97.2                                76.0                                            75.0                  87.8                                   93.0
+x8 below 6000 m (TRAINING)                   97.0                  72.2                                90.5                                            87.5                  78.2                                   88.5
+
+B tuning worlds, new seed 202 | fault mode: common | landing success % (mean over worlds, n=100 each)
+ config                          PITFAL multi-beam  tolerance multi-beam  tolerance multi-beam + noise floor  tolerance multi-beam + noise floor + consensus
+condition                                                                                                                                                  
+cliff + faults (nominal noise)               93.0                  92.8                                81.8                                            83.2
+x16 below 6000 m                             75.5                  46.8                                99.0                                            98.2
+x4 below 6000 m                              96.5                  95.5                                77.8                                            77.0
+x8 below 6000 m (TRAINING)                   96.5                  74.5                                89.2                                            88.2
+
+M1 (consensus helps, +3 needed): NOT confirmed 0.7
+M2 (floor + consensus within 3 of PITFAL multi-beam): CONFIRMED {'cliff': np.float64(-2.3), 'x4': np.float64(-1.3), 'x8': np.float64(0.3), 'x16': np.float64(33.3)}
+M3 (common mode, floor within 3 of PITFAL multi-beam): CONFIRMED {'cliff': np.float64(-2.3), 'x4': np.float64(-2.0), 'x8': np.float64(1.0), 'x16': np.float64(32.3)}
+exit=0

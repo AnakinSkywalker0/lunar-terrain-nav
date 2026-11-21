@@ -1,0 +1,34 @@
+{
+  "cases": 810,
+  "paired_configurations": 162,
+  "areas": 3,
+  "transfer_criterion_met": false,
+  "comparisons": {
+    "off": {
+      "mean_miss_reduction_m": 20.828408225185186,
+      "improved": 95,
+      "worsened": 49,
+      "tied": 18
+    },
+    "geometric": {
+      "mean_miss_reduction_m": 2.397001152962963,
+      "improved": 105,
+      "worsened": 39,
+      "tied": 18
+    },
+    "bounded": {
+      "mean_miss_reduction_m": 2.726249362839507,
+      "improved": 103,
+      "worsened": 41,
+      "tied": 18
+    },
+    "old_ml": {
+      "mean_miss_reduction_m": 20.828408225185186,
+      "improved": 95,
+      "worsened": 49,
+      "tied": 18
+    }
+  },
+  "inference_median_ms": 0.0145,
+  "inference_p95_ms": 0.0298
+}

@@ -1,0 +1,935 @@
+    Approach-Phase Precision Landing with
+
+Hazard Relative Navigation: Terrestrial Test
+
+Campaign Results of the Morpheus/ALHAT
+
+                            Project
+
+         Timothy P. Crain. Robert H. Bishop, John M. Carson III,
+
+      Nikolas Trawny§, Chad Hanak, Jacob Sullivan¶, John Christian,
+
+                Kyle DeMars, Tom Campbell, and Joel Getchius
+
+    The Morpheus Project began in late 2009 as an ambitious effort code-named Project M
+to integrate three ongoing multi-center NASA technology developments: humanoid robotics,
+liquid oxygen/liquid methane (LOX/LCH4) propulsion and Autonomous Precision Landing
+and Hazard Avoidance Technology (ALHAT) into a single engineering demonstration mission
+to be flown to the Moon by 2013. The humanoid robot effort was redirected to a deploy-
+ment of Robonaut 2 on the International Space Station in February of 2011 while Morpheus
+continued as a terrestrial field test project integrating the existing ALHAT Project's tech-
+nologies into a sub-orbital flight system using the world's first LOX/LCH4 main propulsion
+and reaction control system fed from the same blowdown tanks. A series of 33 tethered tests
+with the Morpheus 1.0 vehicle and Morpheus 1.5 vehicle were conducted from April 2011
+- December 2013 before successful, sustained free flights with the primary Vertical Testbed
+(VTB) navigation configuration began with Free Flight 3 on December 10, 2013. Over the
+course of the following 12 free flights and 3 tethered flights, components of the ALHAT
+navigation system were integrated into the Morpheus vehicle, operations, and flight control
+loop. The ALHAT navigation system was integrated and run concurrently with the VTB
+navigation system as a reference and fail-safe option in flight (see touchdown position esti-
+mate comparisons in Fig. 1). Flight testing completed with Free Flight 15 on December 15,
+
+    VP of Research & Development, Intuitive Machines, Inc., 3700 Bay Area Blvd, Houston, TX 77058,
+tim@intuitivemachines.com
+
+    Professor, Electrical Engineering, University of South Florida, 4202 E. Fowler Ave.,Tampa, FL 33620,
+robertbishop@usf.edu
+
+    ALHAT Deputy Lead, NASA Johnson Space Center (IPA Detail from NASA JPL), Houston, TX, 77058,
+john.m.carson@nasa.gov
+
+    §NASA Jet Propulsion Laboratory, Pasadena, CA, nikolas.trawny@jpl.nasa.gov
+   ¶Aerospace Engineer, NASA Johnson Space Center, Houston, TX, 77058, jacob.j.sullivan@nasa.gov
+
+     Assistant Professor, Mechanical & Aerospace Engineering, West Virginia University, Morgantown, WV
+26506, john.christian@mail.wvu.edu
+
+  Assistant Professor, Mechanical & Aerospace Engineering, Missouri University of Science and Technol-
+ogy, 400 W. 13th Street, Rolla, MO 65409, demarsk@mst.edu
+
+   Senior Development Engineer, Intuitive Machines, Inc., 3700 Bay Area Blvd, Houston, TX 77058,
+joel.getchius@intuitivemachines.com
+2014 with a completely autonomous Hazard Detection and Avoidance (HDA), integration
+of surface relative and Hazard Relative Navigation (HRN) measurements into the onboard
+dual-state inertial estimator Kalman filter software, and landing within 2 meters of the VTB
+GPS-based navigation solution at the safe landing site target. This paper describes the Mor-
+pheus joint VTB/ALHAT navigation architecture, the sensors utilized during the terrestrial
+flight campaign, issues resolved during testing, and the navigation results from the flight
+tests.
+
+    The full ALHAT1-5 precision landing scenario considered a descent-to-landing from a
+parking orbit or a direct entry as illustrated in Fig. 2. The descent trajectory is a thrust-
+coast-thrust trajectory with high-altitude Terrain Relative Navigation (TRN) during the
+braking phase to correct for gross navigation errors relative to the planet and place the space-
+craft within vicinity of the Intended Landing Point (ILP) determined from orbital surveys.
+After the braking phase, several surface relative sensors such as velocimeters, altimeters, and
+HRN would come online during the approach phase to provide for both soft touchdown capa-
+bility as well as a locally precise landing within a small tolerance of a safe landing site. The
+safe landing site would be determined autonomously, in-flight by the ALHAT HDA system.6
+The HRN sensor was dual use in that it formed the digital elevation map (DEM) used for
+safe site identification in the vicinity of the ILP and also tracked an automatically selected,
+distinct image patch "feature" registered within the DEM to provide sensor information to
+the Kalman filter.7 The integrated approach phase autonomous site selection, HRN feature
+tracking and precision navigation were the chosen for the Morpheus terrestrial demonstration
+objectives since the TRN capability had been previously demonstrated through techniques
+such as terrain correlation matching (TERCOM) and optical feature tracking on previous
+flight tests.8 Therefore, the Morpheus terrestrial flights included a boost phase from a launch
+pad that would be used to position the vehicle within the early stages of the approach phase
+to begin a simulated lunar landing.
+
+    The sensors used during Morpheus flight testing for the terrestrial flight campaign in the
+VTB navigation system included a GPS receiver, various inertial measurement units (IMUs),
+pre-flight optical attitude alignment ground support equipment, and an industrial laser range
+finder repurposed as an altimeter. The ALHAT navigation system was synchronized to the
+VTB navigation system prior to liftoff and processed information from the NASA Langley
+Research Center developed long range laser altimeter and doppler laser velocimeter, the Jet
+Propulsion Labs HRN sensor (based on a gimbaled flash lidar camera), and the same IMUs
+that fed the VTB navigation system. The Morpheus Autonomous Flight Manager (AFM)
+monitored the difference between the VTB and ALHAT navigation solutions during flight
+and was managed which navigation system was primary for flight control. The AFM im-
+plementation allowed the ALHAT navigation solution to be tested "open-loop" during early
+flights and fully integrated into the vehicle control path as sensor and navigation solution
+
+                                                                  2 of 39
+stability were demonstrated in flight. Both the VTB and ALHAT Kalman filters were based
+on an inertial dual-state formulation that traces its heritage to the Apollo and Space Shuttle
+programs that later became the common approach for the core of both the Orion and Mor-
+pheus navigation systems. This implementation is "dual-state" in that estimates of both
+the spacecraft and landing site inertial locations are included in the implementation so that
+the precision planetary landing navigation is very similar to chaser-target relative naviga-
+tion during rendezvous. Additionally, the both of the Morpheus navigation implementations
+utilized a Markley Extended Kalman Filter (MEKF)9 approach for attitude estimation that
+was embedded within the same filter as the translation states. The care and feeding of the
+attitude state estimate within the coupled Kalman filter implementation was the source of
+significant effort during the Morpheus terrestrial flight testing campaign because the star
+trackers intended for use in the space application were not available for Earth testing. Even-
+tually, a ground support equipment optical alignment technique10 was developed that allowed
+for the precision initialization of the VTB and ALHAT navigation systems and confirmation
+of maintained attitude state estimate quality prior to launch.
+
+    The organization of this paper is as follows: A description of the joint VTB/ALHAT
+navigation architecture is given with a focus on software partitioning and data interfaces.
+A discussion of the free flight mission profiles and the moding and processing of the various
+sensors on-board is presented to give operational context. The results from the VTB-only
+navigation flight tests are discussed. Issues encountered with integrating the ALHAT sensors
+for flight and during ALHAT flight testing are presented along with the solutions for these
+issues. The ALHAT HRN system integration with the overarching navigation software is
+described. A presentation and discussion of the final and successful VTB/ALHAT navigation
+systems' performance is given. Finally, a summary of the major results, conclusions, and
+recommendations for applying the Morpheus test results to space are presented.
+
+                                                                  3 of 39
+Figure 1. Free-Flight 15 VTB and ALHAT Position Estimate Comparisons Near Touchdown
+
+Star tracker                     Altimeter                    TRN
+         IMU
+                     Transfer                Powered                         Velocimeter HR
+          De-orbit  orbit phase             descent                                             N
+          burn                              initiation
+                                                                                          phAppa rs oe ach
+                                                                    Braking  Pitch-
+                                                                   phase       mane up
+
+                                                                                  uver
+
+120 km                           20 km                                       5 km                                            minal
+                                                       15 km                            2 km                         Tde er sphac se ent
+
+                                                                                            1 km
+                                                                                                               30 m
+
+                                        Map-tie error                        -175 -130 -120 -30
+                                 -800
+                                                        -440
+
+        Figure 2. Schematic Descent-to-Landing Scenario
+
+                                 4 of 39
+          I. Navigation Architecture
+
+    The Morpheus navigation design was required to support both stand-alone lander demon-
+strations as well as integrated test flights of the ALHAT technologies and algorithms. The
+architectural level navigation requirements for the joint VTB/ALHAT system are outlined
+in Table 1. The requirements Nav-1 and Nav-2 led to a split architecture implementation
+where common inertial navigation sensor data was used by the VTB and ALHAT strings of
+navigation as illustrated in Figure 3. The circular icons in this illustration are indicative of
+individual software applications with the following functions: I/O apps handling data collec-
+tion and preliminary formatting from sensors, Kalman filter apps mechanizing an extended
+Kalman filter with specific measurement functions, fast propagation (fast prop) apps provid-
+ing dynamic state updates between Kalman filter updates, and the user parameter processor
+(UPP) serving as the final clearing house for navigation data to all other applications and
+converted the internal navigation inertial translation and attitude states into rotating frame
+or target relative values. In order to efficiently support both strings of navigation; the IMU
+processing, system dynamics, and Kalman filter mechanization code was shared between
+both VTB and ALHAT. The differences in the two strings was manifested in the code for
+the measurement residual and partial derivatives for the specific measurements in the VTB
+and ALHAT strings.
+
+Table 1. Morpheus VTB/ALHAT Navigation Architecture Requirements
+
+Reqt. ID  Requirement
+  Nav-1
+  Nav-2   Provide VTB navigation as an in-flight comparison and down-select op-
+  Nav-3   tion when ALHAT was the primary navigation source.
+  Nav-4
+          Incorporate only ALHAT technology navigation information into the
+          ALHAT Kalman filter (inertial measurements could be shared).
+
+          Provide VTB navigation sufficient for landing on a 5m prepared landing
+          pad with a known ECEF location.
+
+          Provide ALHAT navigation sufficient for landing on a prepared landing
+          pad within 3m of a target identified in-flight.
+
+    The inertial measurements were processed as delta velocity and delta attitude updates
+in an arbitrary inertial "IMU frame" established at navigation system initialization. The
+primary IMU (PIMU) used during Morpheus/ALHAT flight testing was a Honeywell Space
+Integrated GPS INS (SIGI) with an LN200 as backup IMU (BIMU) on the 1.0 and 1.5A
+vehicle through Free Flight 2 and a Systron-Donner 500 as BIMU on the 1.5B vehicle.
+The inertial book-keeping in flight software for both strings provided for an inflight switch
+from the PIMU to BIMU either from a detected fault in the PIMU or ground command.
+This capability was demonstrated both in simulation and during tethered flights (TT23
+and TT24B).11 Attitude initialization was achieved in a two step process which began with a
+
+                                                                  5 of 39
+gyro-compassing phase of up to 2 minutes which was found to converge within 0.01 degrees of
+local level (pitch and yaw of the vehicle with respect to local gravity) but was highly variable
+in the "roll" of the vehicle on the pad. The second step of attitude refinement utilized the
+Draper Labs GENIE Initial Direction Enhancer (GIDE)10 and is discussed in the ALHAT
+Integration section below. For both navigation strings, the common PIMU was used as
+the navigation base. The navigation accuracy requirements Nav-3 and Nav-4 influenced the
+type and precision of sensor measurements for the respective strings of navigation. This was
+particularly true for ALHAT navigation performance where the nature and operating range
+of each sensor was purposefully implemented after thorough analysis.12,13
+
+                                  Figure 3. Dual Navigation System Architecture
+
+A. VTB Navigation
+    The VTB navigation string incorporated Acuity laser range finder measurements as an
+
+altimeter via a slant range to a reference ellipsoid approximation and included Earth Cen-
+tered Earth Fixed (ECEF) position and velocity measurements from a Javad GPS receiver.
+A Microstrain Attitude Heading Reference Sensor (AHRS) was integrated into the data col-
+lection as an independent reference but was not incorporated into VTB state updates. Flight
+testing of the AHRS proved that it was useful as a fault detection device before and after
+flight but it did not track navigation states well during powered flight. Representative mea-
+surement errors for the Acuity slant range and JAVAD GPS receiver position and velocity
+
+                                                                  6 of 39
+are provided in Table 2. The Acuity sensor operates in the near-infrared spectrum and was
+found to demonstrate a sensitivity to Morpheus propulsion system heating of the launch and
+landing pads as demonstrated in Free Flight 14 (FF14) around 20 seconds and 90 seconds
+in Figure 4. The navigation system proved robust to significant Acuity data dropouts from
+this effect.
+
+Table 2. Morpheus VTB Observed Measurement Accuracies
+
+     Measurement     Range     Bias     Noise  Drift over 60 Seconds
+ Acuity Slant Range  2-250m   < 5cm    < 1cm                -
+JAVAD GPS Position             < 2m    < 2cm
+JAVAD GPS Velocity     n/a   < 1cm/s  < 5cm/s           < 10cm
+                       n/a                             < 1cm/s
+
+Figure 4. FF14 Acuity Altimeter Measurements, Pre-fit Residuals, and Residuals Scaled by
+Innovation Covariance (W )
+
+B. ALHAT Navigation
+    The ALHAT navigation string incorporated measurements from the long-range Laser
+
+Altimeter (LA), Doppler Lidar (DL) , and HDS/HRN sensors (see Figure 5) into its Kalman
+filter4,5 . All sensors were provided by the ALHAT NASA Langley Research Center team and
+the integration of the HRN sensor into the gimbal assembly and image processing avionics was
+performed by the ALHAT NASA Jet Propulsion Laboratory team.14 The LA measurements
+
+                                                                  7 of 39
+were functionally equivalent to the Acuity measurements and incorporated as a slant range
+to a reference ellipsoid. However, the LA produced three measurements per sample interval
+and the ALHAT filter only processed the last of the three. A sample of LA measurements
+from FF14 is provided in Figure 6. Like the Acuity sensor, the LA demonstrated a sensitivity
+to propulsion heating of the launch/landing platform. A side-by-side comparison of the third
+LA measurement per sample and the Acuity measurements for FF14 is provided in Figure 7.
+
+Figure 5. Prototype ALHAT sensors flight tested on Morpheus in 2014: LA (left), DL elec-
+tronics and two versions of Optical Head (OH) (center), and HDS gimbaled flash lidar (right).6
+
+    The DL operated with a three-beam optical head providing line-of-sight slant range,
+line-of-sight slant range-rate, vector distance to the plane of beam intersection, and vector
+velocity with respect to the plane of intersection. However, only the line-of-sight range-rate
+measurements were processed in the ALHAT Kalman filter to limit the modeling require-
+ments for measurement prediction in the flight software. The DL beams demonstrated a
+sensitivity to interaction with the heated column of air surrounding the Morpheus propul-
+sion plume and provided a serious challenge to completion of the ALHAT navigation test
+objectives through FF14 as will be discussed later in this paper.
+
+    The HRN measurements were generated as part of the HDS which also created an in-
+flight DEM of the landing area by with a gimbaled flash lidar sensor. The HDS identified
+an acceptable safe landing site within the DEM and then provided position estimates of the
+HDS sensor assembly with respect to a high-correlation feature in the DEM as a relative
+navigation cue for precision landing with respect to the safe landing site.
+
+    The ALHAT navigation string also processed a "navigation cross-feed" measurement
+prior to liftoff that fed the VTB navigation string inertial position and velocity solution
+to the ALHAT filter as a measurement. This was implemented to keep both navigation
+solutions synchronized prior to liftoff without unduly complicated initialization procedures
+prior to Morpheus launch.
+
+                                                                  8 of 39
+                 Figure 6. FF14 Laser Altimeter Measurements
+
+Figure 7. FF14 Laser Altimeter and Acuity Altimeter Measurements
+                                                9 of 39
+Table 3. Morpheus ALHAT Observed Measurement Accuracies
+
+      Measurement       Range     Bias      Noise  Drift over 60 Seconds
+Laser Alt. Slant Range  2-250m   < 5cm     < 1cm                -
+                                < 1cm/s   < 3cm/s               -
+ Doppler Velocimetry      n/a     < 2m                          -
+      HDS Position        n/a                 -
+
+                                10 of 39
+          II. Mission Profile and Sensor Processing Schedule
+
+    The Morpheus Project tested the ALHAT navigation technology for a simulated terminal
+phase of a lunar approach as illustrated in the final 1 km of Figure 2. A perspective view
+of this trajectory with the AFM soft-abort boundary prism is provided in Figure 8. The
+flight path from the launch ground point (GP) to the ILP at the center of the simulated
+landing sight followed approximately a heading of 330 degrees at the end of the Shuttle
+Landing Facility (SLF) at the NASA Kennedy Space Center. The test trajectory began
+with a maximum acceleration boost phase to an altitude of approximately 250m followed by
+a forward pitch to initiate downrange motion toward the center of the landing field at the
+ILP approximately 400m downrange. Typical trajectory position and velocity values from
+FF15 for ALHAT testing relative to the launch GP are provided in Figures 10 and 11. These
+results are presented in GP defined East-North-Up coordinates. The four vertical lines at
+approximately 12, 35, 102, and 105 seconds Mission Elapsed Time (MET) are key AFM
+mode transition markers as detailed in Table 4. MET on Morpheus flights begins with the
+initiation of Morpheus main stage ignition (with the exception of Free Flight 11).
+
+       Figure 8. ALHAT Test Trajectory Perspective View
+
+       Table 4. Morpheus ALHAT Mode Transitions (Free Flight 15)
+
+MET    Mode Transition                         Comment
+12 s   Handover to onboard GNC for liftoff     Begin mostly vertical boost phase
+35 s   Begin ALHAT HDS operations              During downrange motion to landing field
+102 s  Terminal landing guidance logic arming  Approximately 5m above landing pad
+105 s  Engine shutdown                         Mission complete
+
+       11 of 39
+Figure 9. Configuration of the SLF Test Area for the Morpheus/ALHAT Flights5
+
+         Figure 10. ALHAT Test Trajectory Position Histories (FF15 Results)
+                                                         12 of 39
+                 Figure 11. ALHAT Test Trajectory Velocity Histories (FF15 Results)
+
+    With two onboard navigation systems and a variety of sensors available, the AFM was
+required to manage the functionality of which navigation source was feeding the flight
+control loop, the sensors active to both navigation strings, navigation cross-feed activa-
+tion/deactivation, and the navigation source providing inputs to the HDS gimbal steering
+controller. The system design documentation and operator control panels used the graphical
+key in Figure 12 to indicate the state of the navigation sources and active/available sensors
+(indicated with a filled green circle) throughout each phase of the Morpheus test flight. A
+nominal ALHAT test configuration sequence is depicted in Figure 13 where the ALHAT
+navigation string provides outputs for both the flight control and HDS gimbal control loops
+from liftoff to landing. The synchronizing VTB navigation cross-feed measurements were
+deactivated at ignition. The VTB navigation string was configured to process GPS position
+and velocity as well as Acuity slant range throughout flight. Initially, the DL velocimetry
+and LA slant range were active throughout the flight, but the ground heating interference
+with the LA measurements at landing led to the LA measurements eventually not being
+processed in final descent. HRN measurements were only enabled for the ALHAT filter in
+the HDS, approach, and approach f inal phases of the Morpheus flight to align with the
+range at which the HDS laser sensor could provide meaningful measurements based on opti-
+cal focus. In the event of a vehicle or ALHAT navigation string fault, AFM would switch the
+flight control navigation source to VTB but allow the ALHAT gimbal controls to continue
+
+                                                                 13 of 39
+to be fed by the ALHAT navigation string as depicted with a mid-flight fault scenario in
+Figure 14.
+
+                              Figure 12. Navigation Source and Processing Graph
+
+                                                                 14 of 39
+  Figure 13. Nominal Sensor Processing Schedule
+
+Figure 14. Fault-Down Sensor Processing Schedule
+                                  15 of 39
+                        III. VTB-only Navigation Tests
+
+    The Morpheus navigation team utilized every test and flight opportunity15 to evaluate,
+refine, and tune the operation of the VTB navigation system over a time period covering
+April 2011 to the final VTB-only navigation flight in March 2014 as outlined in Table 5.
+The significant bias in the GPS position (see Table 2) posed an early problem in that abort
+tolerances for VTB tethered tests and landing tolerances for ALHAT tests could easily be
+violated. A UPP resynchronization (UPP resynch) procedure was developed where the
+navigation system of both strings could be commanded to reset the GP ECEF location to
+be consistent with the current vehicle navigation state. In order to maintain consistency
+with the surveyed ECEF landing site locations, the adjustment applied to the GP was also
+equally applied to the landing site.
+
+Table 5. VTB-only Navigation Test Flights
+
+             Test              Date     Vehicle  Notes
+        Hot Fire 1-2         4/2011       1.0    Environmental checkout
+       Tether Test 1         4/2011       1.0
+       Tether Test 2         4/2011       1.0    Vehicle did not achieve flight
+                                                 Throttle failure, IMU orientation
+      Tether Test 3-4        5/2011       1.0    error
+       Tether Test 5         6/2011       1.0    Initial semi-stable flight
+       Tether Test 6         8/2011       1.0    Stable flight, grass fire
+     Tether Test 7-15   3/2012-5/2012    1.5A    Engine burn-through
+    Tether Test 16-18   6/2012-7/2012    1.5A
+    Tether Test 19-20   7/2012-8/2012    1.5A    Navigation characterization
+      RCS Hot Fire 1         7/2012      1.5A    ALHAT component testing
+       Free Flight 1         8/2012      1.5A    Free-flight tuning
+       Free Flight 2         8/2012      1.5A    Fine rotation navigation demo
+        Hot Fire 7-9    4/2013-5/2013    1.5B    Successful liftoff abort
+    Tether Test 21-22   5/2013-6/2013    1.5B    Loss of vehicle
+      Tether Test 23         6/2013      1.5B
+                                                 Test on 1.5B
+   Tether Test 24A/B         6/2013      1.5B    Resume flight operations
+                                                 Full operations and flight on
+    Tether Test 25-33   7/2013-12/2013   1.5B    backup IMU
+Ground Takeoff/Landing       11/2013     1.5B    Commanded down-mode to
+                                         1.5B    backup IMU in flight
+      Free Flight 3-9   12/2013-3/2014           Guidance refinement
+                                                 Environment characterization
+                                                 Envelope expansion
+
+A. Initial Testing to Free Flight 2 Navigation Failure and Loss of Vehicle
+    Tether Test 2 (TT2) was notable in that the Morpheus main engine throttle failed fully
+
+open prior to handover to the GNC system. On the same flight, a rotation of the PIMU
+
+                                                                 16 of 39
+internal sensing frame to the sensor case frame was not applied correctly in software result-
+ing in a 90 degree rotation error of the incoming inertial data about the vehicle thrust axis.
+This orientation error did not manifest in Tether Test 1 because the vehicle did not attain
+flight and only through the navigation-to-control command chain was the error realized. In
+fact, extensive simulation of the tethered flight scenario did not reveal this error because the
+simulation was coded to the same interface control document (ICD) without the required
+addendum specifying the corrected rotation. Therefore, all simulated flights performed nom-
+inally. The rotation error proved fortuitous in TT2 in that it caused the GNC system to
+spin the vehicle and dissipated the thrust from the non-responsive throttle actuator until
+the emergency engine shut down command could be initiated remotely by the operations
+team. Both the throttle actuator and the navigation software were corrected after TT2 and
+successful, if semi-stable, flights were resumed within 5 days on TT3 and TT4. Based on the
+information gleaned from these initial tests, a full 34 second stable flight was achieved on
+Tether Test 5. However, the proximity of the Morpheus propulsion exhaust to the concrete
+test pad ejected superheated concrete fragments into the nearby grass causing a significant
+fire that led to modification of flight test procedures (raising the liftoff altitude, adding a
+burn break, etc.) and a stand-down of test operations for nearly 3 months. Other than the
+grass and some stored hay located nearby at the NASA Johnson Space Center, no damage
+was suffered to equipment or personnel by the grass fire which could only have been caused
+by a steady and well controlled hovering Morpheus.
+
+    Flight testing in the remainder of the tethered test campaign through TT20 and Free
+Flight 1 (FF1) was relatively uneventful from a navigation perspective and the data from
+these flights was used to build confidence in the VTB navigation system and characterize
+sensor performance. On Free Flight 2 (FF2), communications with the PIMU was lost
+approximately 300 ms after handover to GNC for liftoff.16 The BIMU (an LN200 on the
+1.5A vehicle) had ceased functioning towards the end of the previous tether test campaign
+but this was recognized in a Test Readiness Review (TRR) and was not a requirement for
+flight testing of the otherwise single-string Morpheus flight system. The AFM response to a
+failed PIMU was to either switch to an available BIMU or perform a soft abort and the latter
+was attempted. However, the navigation response to a loss of IMU data was to consider the
+previous acceleration and rotation as still valid until communication could be re-established
+with the IMU. In this flight, IMU communication was never re-established and the control
+system requested increasing engine gimbal to counteract a perceived persistent rotation as
+measured by the last information received from the IMU. This response effectively flipped
+the vehicle shortly after launch and resulted in a loss of vehicle.
+
+                                                                 17 of 39
+B. Return to Free Flight
+
+    A subsequent investigation into the loss of vehicle on FF2 was unable to specifically
+identify where in the chain from PIMU avionics to flight computer the failure occurred.
+Therefore, a number of robustness modifications including IMU vibe isolation, addition of
+the SDI500 BIMU as a flight requirement, and hardened redundant connectors from IMUs
+to flight computer were added to the 1.5 "Bravo" vehicle. Tethered flight testing resumed in
+May of 2013 with Tether Test 21. During the resumed tether test campaign a JAVAD GPS
+Real Time Kinematic (RTK) capability was integrated into flight operations and essentially
+eliminated the GPS position bias observed on the launch pad when in available. However,
+the navigation system proved susceptible to adjusting back to the uncompensated GPS bias
+in the event that communication with the RTK base station was lost. Communication
+robustness with the RTK base station proved variable based on test site electromagnetic
+interference and the RTK system was not used in flight operations.
+
+    No dynamic flight truth measurement source was available for Morpheus navigation, but
+the surveyed location of the landing pads were available to provide a terminal comparison to
+the navigation solution. For Free Flights 3 through 5 the navigation solution at touchdown
+reported landing within 30 cm of the target sight. Beginning with Free Flight 6, the actual
+vehicle location after landing was measured by the operations team to generate an end-of-
+flight comparison to the VTB navigation solution which was generally within 50 cm of the
+surveyed location through FF12 (see Table 6).
+
+Table 6. Landing Accuracy (ND = No Data)
+
+Flight    Nav (m)       Measured (m)       Error (m)
+        east north      east north        east north
+ FF3
+ FF4    -0.026  -0.213  ND ND             ND ND
+ FF5    0.167   0.117   ND ND             ND ND
+        -0.173  -0.128  ND ND             ND ND
+ FF6
+ FF7    -0.016  -0.235  -0.143    -0.361  0.128   0.127
+ FF8    0.020   -0.050     0         0    0.020   -0.050
+ FF9    -0.231  -0.002                    0.015   0.081
+        0.032   -0.165  -0.245    -0.083  -0.209  0.048
+FF10                    0.240     -0.213
+FF11
+FF12    0.225   -0.413  0.345     -0.446  -0.120  0.033
+        0.228   -0.421  0.287     -0.319  -0.058  -0.102
+        0.082   -0.397  -0.019    -0.258  0.100   -0.138
+
+                        18 of 39
+IV. ALHAT HRN System Description
+
+    The DL velocimetry and LA sensors were included in ALHAT to provide the necessary
+information to execute a "soft-touch" landing at any location on a planet but were not
+deemed sufficient for precision landing within 3m of a safe landing site designated in flight
+by the HDS.6,12 Therefore, considerable effort was put into coordinating the formulation of
+the ALHAT HRN measurement and its processing by the ALHAT Kalman filter. Funda-
+mentally, the HRN measurement provides information of the location of an observed unique
+feature in the DEM relative to the HDS sensor assembly. This relative information, in turn,
+allows the ALHAT Kalman filter to update its location with respect to the DEM and land
+within tolerances of the safe site (also registered by the HDS in the DEM). Initial concepts
+for the HRN formulation included angles-only measurements to multiple HRN targets, but
+the landing timeline on the Morpheus vehicle constrained the processing window to 10-12
+seconds and led to an implementation that tracked a single HRN target in flight. The final
+measurement formulation was a vector position of the HRN target with respect to the HDS
+assembly structural frame and is given by the expression17 :
+
+s                    ^s f b b  bh        s
+r^F/ILP = T f T i,mT i q^i,m T hyF/HRN,m - r^ILP/HRN,m.          (1)
+
+Where (^) represents estimated values, rILP/HRN,m s is the position of the ILP frame with
+respect to the HRN sensor, yF/HRN,m h is the measured position of the feature with respect
+to the HRN sensor, and the matrices T are rotations between frames, Note that in this
+
+formulation there is a tight coupling between estimated attitude knowledge in terms of the
+attitude of the vehicle with respect to inertial coordinates (T ib q^i,m b ) and the estimated
+position of the HRN with respect to the ILP in the DEM (r^ILP/HRN,m s ). This coupling led to
+a derived requirement that attitude knowledge of the VTB and ALHAT navigation strings
+
+remain within 0.1 degrees of each other to allow for an in-flight nav quality check on the
+
+ALHAT nav solution.
+
+Operationally, the HRN measurement was formulated by correlating a sampled image
+
+patch of the HRN feature from the initial DEM image within subsequent HDS laser camera
+
+image frames. This required steering the HDS sensor gimbal and tracking the expected
+
+location of the HRN feature during flight. Therefore, a feedback loop was required where the
+
+HDS system was fed ILP relative position and attitude information from the active navigation
+
+string. The constraints on processing time during flight were such that the expected location
+
+of the HRN feature had to be within approximately 2m of the actual feature to be within the
+
+searchable correlation window. Note that this requirement effected navigation error growth
+
+from the time the DEM was formed, not across the entire flight.
+
+                               19 of 39
+          V. ALHAT Integration
+
+    A number of challenges were encountered integrating the ALHAT navigation system into
+the VTB-capable Morpheus flight system. The most significant of these are outlined in
+Table 7 and are discussed below.
+
+          Table 7. ALHAT Integration Challenges
+
+Issue ID  Issue
+  AI-1    Translation state maintenance pre-launch
+  AI-2    Timing delay with SIGI internally filtered data
+  AI-3    Attitude initialization
+  AI-4    Time delay of HRN measurements
+  AI-5    Time delay of GPS measurements from poll-respond interface
+  AI-6    Laser sensor interaction with the atmosphere heated by Morpheus engine exhaust
+
+    The pre-launch translation state was maintained (AI-1) via the navigation cross-feed
+from VTB to ALHAT as discussed previously. By sending the pre-launch VTB navigation
+state to the ALHAT filter as a measurement prior to lift-off, the two navigation strings were
+efficiently and effectively synchronized.
+
+    The early ALHAT component testing on Tether Tests 16-18 identified up to 120 ms
+timing delay (AI-2) between the VTB primary IMU and the onboard ALHAT HDS system
+IMU (a LN200). After considerable troubleshooting, the root cause of this timing delay was
+determined to be processing inertial data from the SIGI that had a 0.2 Hz low pass filter
+applied to the data. On the 1.5A vehicle this delay was addressed by using alternate outputs
+that did not have this filtering applied. After return-to-flight with the 1.5B vehicle, the
+Morpheus navigation team worked closely with Honeywell to update the SIGI firmware with
+filtering parameters that only introduced up to 20 ms timing delay.
+
+    As mentioned previously, a gyro-compassing first stage attitude initialization was used
+for both strings to get local pitch and yaw knowledge. However, the roll estimates from this
+procedure manifested as much as 10 degrees variability from initialization to initialization.
+Given the nature of ALHAT HRN measurements which provided a location of the sensor
+frame with respect to a feature in the target DEM, any deviation in attitude of greater than
+0.1 degrees would prevent a successful ALHAT test (AI-3). Therefore, the Draper GIDE10
+optical sensor was used in a partially automated mode to refine the attitude states of both the
+VTB and ALHAT navigation strings. The GIDE optical target was mounted on a precision
+surveyed mounting fixture at a distance of 70 meters from the GP. A laptop at the vehicle
+launch pad was used to interface with the GIDE sensor and report the lateral observed offset
+of the GIDE target within the GIDE camera. This offset was verbally communicated to
+mission operations and entered into the parameter "i-loads" for both strings of navigation
+
+                                                                 20 of 39
+and GIDE measurements processed until the attitude covariance converged acceptably. The
+advantage of this approach was that, providing the vehicle was not moved during flight
+preparations, the attitude state estimates could be "topped-off" shortly before launch to
+ensure both attitude accuracy and agreement between the VTB and ALHAT nav strings.
+The GIDE sensor was not used during flight.
+
+    The processing demands of the HRN measurement formulation was such that the relative
+position of the tracked HRN feature with respect to the HDS assembly was delivered to the
+Morpheus flight computer up to 2 seconds after the laser camera image of the landing site
+was taken (AI-4). This delay exceeded the Kalman filter software validity window of 200 ms
+(the Kalman filter application ran at 5 Hz) that had been applied for all other measurements.
+An additional capability for measurements with times of validity up to 2 seconds was added
+by way of a ring buffer storing additional state and covariance data in the Kalman filter
+software.
+
+    During flight testing, a significant delay between the VTB and ALHAT navigation strings
+was observed, in particular during the boost and lateral translation phase of the flights (AI-5).
+The root cause of this delay was tracked back to the poll-response communication method
+between the Morpheus flight computer and the Javad GPS. This led to up to 200 ms of
+timing delay as the VTB navigation filter would adjust the states propagated on the IMU
+to the latent GPS position and velocity values. This timing was variable based on start-up
+synchronization of the GPS sensor and the Morpheus flight computer. Since the ALHAT
+sensors did not have this timing issue, an apparent translation state phase difference would
+manifest between the two navigation strings during dynamic flight. The modification of this
+timing delay would have required significant redesign of the Morpheus GPS sensor interface
+software and was deemed too intrusive of a change to the stable baseline VTB navigation
+platform. Therefore, the delay was left as a variable to be considered when processing flight
+data.
+
+    The most significant ALHAT sensor issue that manifested during flight testing was the
+interaction of the laser sensors with the heated column of air surrounding the Morpheus
+main engine exhaust plume (AI-6). This interaction proved to be highly dependent on
+day-of-launch wind direction and magnitude as super-heated air would translate below the
+trajectory after boost with a trailing wind. The DL proved the most sensitive to this effect
+which was mitigated by placing the DL optical head on the forward facing propellant tank
+of the Morpheus lander for Free Flight 15.
+
+                      VI. VTB-ALHAT Navigation Tests
+
+    As the VTB navigation system and Morpheus flight performance matured, ALHAT in-
+tegration was carried out incrementally with a series of tether and flight tests as outlined
+
+                                                                 21 of 39
+in Table 8. The ALHAT system components were individually tested during Tether Tests
+16-18 and later on 25-27 and 34. However, because of the limited altitude and velocity of
+the tethered test configuration, ALHAT navigation was not able to be tested until actually
+activated during free flights.
+
+Table 8. VTB-ALHAT Navigation Test Flights (all on 1.5B)
+
+        Test             Date     UPP Source  Nav Source  Notes
+Tether Test 16-18  6/2013-7/2013      VTB         VTB     ALHAT component testing
+Tether Test 25-27                     VTB         VTB     Final pre-flight checkouts
+                        7/2013        VTB         VTB     Tether test at KSC
+  Tether Test 34        3/2014        VTB         VTB
+  Free Flight 10        3/2014                    VTB     DL polarity issue
+  Free Flight 11        4/2014      ALHAT                 DL range inhibited, attitude
+                                                  VTB     error
+  Free Flight 12        4/2014      ALHAT       ALHAT     Lost HRN target track
+  Free Flight 13        5/2014      ALHAT       ALHAT
+  Free Flight 14        5/2014      ALHAT       ALHAT     First full ALHAT test
+  Free Flight 15       12/2014      ALHAT                 Night Flight
+                                                          Successful ALHAT test
+
+A. ALHAT Open Loop Flight Tests
+
+    Although the VTB and ALHAT navigation strings were developed with the capability to
+compare results and switch via AFM from ALHAT to VTB in the event of an egregious or
+persistent navigation error, it was deemed prudent to begin the ALHAT testing free-flights
+with the ALHAT navigation system running in the background with the VTB system feeding
+the flight vehicle control loops for FF10-12.
+
+1. Free Flight 10
+
+    During Free Flight 10 (FF10), several key issues were encountered including: a reverse
+polarity in the sense of the DL velocimeter beams between the navigation software and the
+sensor firmware, variable inputs from the DL slant range measurements, and the poll-response
+GPS related timing issue when compared with the HRN measurements. Nonetheless, the
+ALHAT DL and LA sensors were shown to function properly over a significant portion of the
+trajectory and a single in-flight HRN measurement tracking of an HRN target was demon-
+strated using the VTB navigation as input. The effect of the thermal plume of Morpheus
+propulsion exhaust can be seen in Figures 15 and 16 with dropouts observed in all three DL
+beams and significant early dropout of the LA slant range.
+
+                                  22 of 39
+Figure 15. FF10 Doppler Lidar Velocimetry (polarity corrected)
+
+            Figure 16. FF10 Laser Altimeter Measurements
+                                            23 of 39
+2. Free Flight 11
+    During Free Flight 11 (FF11) the VTB navigation source was used for vehicle flight
+
+control but the results of FF10 had given the navigation team confidence that the ALHAT
+navigation inputs could be used for HDS gimbal control and feature tracking. The DL
+slant range measurements were inhibited from Kalman filter processing from this flight on
+to reduce the complexity of the processing and analysis of the ALHAT flight data. LA slant
+range measurements were more persistent and consistent with the Acuity measurements in
+FF11. DL velocimetry again showed strong sensitivity to the exhaust plume with significant
+dropouts in beam 1 and 3 during alternating periods of flight. An operational error on
+FF11 led to omitting a final GIDE alignment calibration of attitude prior to launch and the
+"roll" channel covariance was larger than expected. The net result of the larger attitude
+error and partial DL velocimetry was a nav walk-off that began around MET 10950s (the
+MET reference time was not reset at ignition for this test). Figures 17 and 18 demonstrate
+a incurred North velocity bias at this time and a resulting North position error increase
+over time. However, the benefit of the fully functional DL velocimeter was observed at
+approximately MET 10967 when all three of the DL beams began reporting measurements.
+At this time, the velocity errors between navigation strings converged to nearly zero and the
+position error growth was arrested at approximately 7 meters. A set of four HRN vector
+measurements were processed on FF11 (see Figure 19) demonstrating the first closed loop
+control on HDS gimbals and processing of all three ALHAT measurement data types in the
+ALHAT Kalman filter.
+
+3. Free Flight 12
+    Free Flight 12 demonstrated much the same behavior as FF11 from the LA and DL
+
+sensors. The attitude pre-launch synchronization with the GIDE measurement was applied
+per procedure keeping the roll channel of attitude in alignment between both navigation
+strings. The HRN only returned a single measurement in FF12 as the navigation solution
+drifted out of tolerance for the correlation matching of subsequent images. Nonetheless, the
+test demonstrated sufficient agreement between ALHAT and VTB navigation that the team
+was prepared to begin closed loop flights, relying on the AFM commanded VTB navigation
+switchover to manage any HRN processing issues that might arise.
+
+                                                                 24 of 39
+Figure 17. FF11 ALHAT-VTB Position Difference, green=ALHAT filter uncertainty,
+red=VTB filter uncertainty, blue=ALHAT-VTB difference'
+
+Figure 18. FF11 ALHAT-VTB Velocity Difference, green=ALHAT filter uncertainty,
+red=VTB filter uncertainty, blue=ALHAT-VTB difference
+
+                                                                 25 of 39
+Figure 19. FF11 ALHAT HRN Residuals
+                          26 of 39
+B. ALHAT Closed Loop Flight Tests
+1. Free Flight 13 - First Closed Loop ALHAT Navigation Test
+
+    Closed loop ALHAT testing began with Free Flight 13 (FF13) and exhibited much the
+same performance as FF12. The LA and DL sensors were again influenced by the Morpheus
+exhaust plume, but the team now had enough data of which of the DL beams were effected
+that it could be correlated to wind direction blowing the heated column of air under the
+vehicle into the paths of sensing beams. Attitude error was maintained to within tolerances
+per procedure in FF13. Two sets of vector HRN measurements were processed (Figure 20)
+but showed a divergent behavior. The overall translation state performance was stable
+(Figures 21 and 22) but the divergent HRN measurement processing and partial availability
+of DL velocimetry led to a divergent state comparison outside of the AFM threshold as
+illustrated in Figure 23. It was enlightening to note that at MET 81 seconds when all
+3 beams of the DL velocimeter we available that the position estimates of the VTB and
+the ALHAT strings of navigation began to converge. A closer examination of the partial
+derivatives for planet relative velocimetry17 revealed a strong correlation between vehicle
+attitude, velocimetry measurements, and the cross product of vehicle position in the inertial
+frame when converting the rotating frame measurements into the internal Kalman filter
+inertial system. It is therefore possible to update the inertial position of the vehicle with
+sufficiently accurate attitude knowledge when processing DL velocimetry.
+
+                                     Figure 20. FF13 HRN Processing Residuals
+
+                                                                 27 of 39
+Figure 21. FF13 ALHAT-VTB Position Difference, green=ALHAT filter uncertainty,
+red=VTB filter uncertainty, blue=ALHAT-VTB difference
+
+                                                                 28 of 39
+Figure 22. FF13 ALHAT-VTB Velocity Difference, green=ALHAT filter uncertainty,
+red=VTB filter uncertainty, blue=ALHAT-VTB difference
+
+Figure 23. FF13 ALHAT-VTB Position Difference (red) and AFM Switch Threshold (green),
+downmode from ALHAT to VTB nav source at approx. MET 67s
+
+                                                                 29 of 39
+2. Free Flight 14 - Night Flight
+    Considerable effort was spent post-processing the FF13 results to determine the cause
+
+of navigation divergence when processing the HRN measurements. It was believed that a
+slight error in the partial derivative formulation in software related to attitude might be the
+cause and adjustments were made. Also, a modification was put in place to only process
+DL velocimetry when all three beams were available for processing. FF14 was therefore
+attempted with the objectives of successfully processing multiple HRN measurements while
+also demonstrating night-flight operations. The LA and DL sensors were again influenced
+by the exhaust plume and the attitude error was within tolerances. As with FF13 only two
+HRN measurements were processed and these also demonstrated divergent behavior. All
+three DL velocimeter beams came online at approximately MET 70 seconds and pulled the
+state difference between VTB and ALHAT nearly to within landing tolerances, see Figure 24.
+However, the 3-beam operations ceased at about MET 90 and the state diverged past landing
+tolerances with less than 10 seconds to go in the flight sequence.
+
+Figure 24. FF14 ALHAT-VTB Position Difference (red) and AFM Switch Threshold (green),
+downmode from ALHAT to VTB nav source at approx. MET 90s
+
+                                                                 30 of 39
+3. Free Flight 15 - Final Flight and ALHAT HRN Success
+
+    The mixed results of DL velocimetry beam availability and HRN measurement process-
+ing from FF12 and FF13 prompted the Morpheus/ALHAT project to stand down testing
+and thoroughly analyze the vast amount of available test data. The ALHAT sensors were
+inspected by the hardware team and the DL optical head moved to a position higher and on
+the "forward" propellant tank to orient its beams away from the Morpheus exhaust plume.
+During this time, two major breakthroughs were realized on the HRN processing: (1) an
+alternate formulation of the same HRN measurement resulted in less state transition matrix
+manipulation of the HRN measurement and (2) the feeback loop from the ALHAT navi-
+gation string to the HDS processor was found to have a timing issue of significance. The
+latter proved to be the root cause for measurement divergence because the HDS processor was
+steering the laser camera to a pre-updated Kalman filter state and returning a measurement.
+Unfortunately, the Kalman filter had already applied an HRN correction by the time the
+next measurement was made available and a book-keeping of correction error was realized.
+This issue was not discovered in simulation because the modeled HDS software did not have
+an actual processor delay, rather one was synthetically applied. The ALHAT/HDS interface
+was modified to ensure that measurements and updates were consistent and a simulation
+modeling both approaches was conducted to show both previous divergent HRN processing
+and convergent HRN processing with the timing modification.
+
+    With these changes in place, FF15 was executed in late 2015 with the potential for a
+follow-on flight should all ALHAT navigation objectives not be realized. The LA measure-
+ments were severely limited in this test, cutting out after 50m altitude on the ascent and not
+resuming measurements until around 100m altitude on the descent (Figure 25). However,
+the DL optical head modifications were very effective and DL velocimetry 3-beam operations
+were available throughout flight (Figure 26). Attitude errors were maintained as expected
+(Figure 27). A record 7 HRN vector measurements were processed displaying convergent
+behavior as demonstrated in Figure 28 until the HDS optics were too close to the hazard
+field to generate further measurements. The main impact of the HRN updates were on
+the North and Up channels of navigation (Figures 30 and 31). The apparent difference in
+the North channel position estimate is also attributed to the GPS timing delay manifesting
+itself during lateral flight. This hypothesis is bolstered by the convergent behavior of the
+ALHAT-VTB position difference in Figure 29 where the position differences close after 70
+seconds when the lateral translation of the vehicle begins to wind down for descent phase
+operations. Further detail on the VTB and ALHAT states is available in Figures 32 and 33.
+
+                                                                 31 of 39
+Figure 25. FF15 Laser Altimeter Measurements (red) vs. Acuity Measurements (blue)
+
+                 Figure 26. FF15 Doppler Lidar Velocimetry (polarity corrected)
+                                                             32 of 39
+Figure 27. FF15 ALHAT-VTB Euler Angle Difference, green=ALHAT filter uncertainty,
+red=VTB filter uncertainty, blue=ALHAT-VTB difference
+
+                                     Figure 28. FF15 HRN Processing Residuals
+                                                                 33 of 39
+Figure 29. FF15 ALHAT-VTB Position Difference (red) and AFM Switch Threshold (green)
+
+Figure 30. FF15 ALHAT-VTB Position Difference, green=ALHAT filter uncertainty,
+red=VTB filter uncertainty, blue=ALHAT-VTB difference
+
+                                                                 34 of 39
+Figure 31. FF15 ALHAT-VTB Velocity Difference, green=ALHAT filter uncertainty,
+red=VTB filter uncertainty, blue=ALHAT-VTB difference
+
+Figure 32. FF15 VTB-ALHAT Nav Position Difference (Zoom), green=ALHAT filter uncer-
+tainty, red=VTB filter uncertainty, blue=ALHAT-VTB difference
+
+                                                                 35 of 39
+Figure 33. FF15 VTB-ALHAT Nav Velocity Difference (Zoom), green=ALHAT filter uncer-
+tainty, red=VTB filter uncertainty, blue=ALHAT-VTB difference
+
+                                                                 36 of 39
+VII. Summary and Recommendations
+
+    The VTB and ALHAT navigation systems were designed, implemented and field tested
+over the 4 year interval from late 2010 until late 2014 in concert with the Morpheus Project's
+demonstration of lean development practices, vehicle automation, and a novel LOX/LCH4
+propulsion system11 . The culmination of this effort from a navigation point of view were
+the Free Flight tests 13-15 which demonstrated autonomous identification and tracking of an
+in situ identified target, operation and Kalman filtering of three new surface relative sensor
+systems (DL, LA, and HRN), night-time operations, and ultimately precision landing with
+respect to a safe location identified in flight. The navigation system design was derived from
+lessons learned from the Apollo and Space Shuttle programs with updates for systems such
+as modern strapdown IMUs implemented in software using a rapid prototyping approach.
+The enabling aspect of the success of the VTB/ALHAT navigation development was the
+ready availability of sensor hardware and small-scale field test data. The build-a-little-test-
+a-little paradigm allowed for incremental progress throughout the test campaign in a way
+that managed acceptable risk. The only limiting factor to this approach was in the ALHAT
+testing phase was the fact that the ALHAT sensors were typically not fully functional during
+tethered testing flight envelopes and were only able to be evaluated during full free flights.
+The VTB and ALHAT navigation systems both performed to within expectations and by
+FF15 met all requirements (see Table 9 and Figure 34).
+
+Table 9. Landing Accuracy - ALHAT Closed Loop
+
+Flight          Nav          Measured           Error
+FF13      east north      east north       east north
+FF14    0.01190 -0.3294  0.0327 -0.1342  -0.0208 -0.1951
+FF15    0.12590 -0.4114  0.2183 -0.2258  -0.0924 -0.1856
+        1.23710 -0.9533  0.4929 -1.2779  0.7442 0.3245
+
+                             VIII. Acknowledgements
+
+    The authors would like to recognize the support of the Morpheus and ALHAT teams who
+were unfailing in their efforts to put together each lab, field, and flight test. Additionally,
+the leadership of Morpheus Project Manager Jon Olansen and ALHAT Project Manager Dr.
+Chirold Epp were essential for the success of demonstrating ALHAT navigation in a flight
+test environment.
+
+                         37 of 39
+Figure 34. FF11-15 Landing Accuracies (x-nav, o-actual), ALHAT Navigation Accuracy in
+FF15
+
+                                                                 38 of 39
+                                         References
+
+       1Brady, T., Schwartz, J., and Tillier, C.,"System Architechure and Operaterational Concept for an
+Autonomous Precision Lunar Landing System, 30th Annual AAS Guidance and Control Conference, No.
+AAS 07-053, 2007.
+
+       2Epp, C.D. and Smith, T.B., "Autonomous Landing and Hazard Avoidance Technology (ALHAT), in
+Aerospace Conference, 2007 IEEE, 2007, pp. 1-7.
+
+       3Epp, C.D., Robertson, E.A., and T. Brady, "Autonomous Landing and Hazard Avoidance Technology
+(ALHAT), in Aerospace Conference, 2008 IEEE, 2008, pp. 1-7.
+
+       4Rutishauser, David, Chirold D. Epp, and Edward A. Robertson. "Free-Flight Terrestrial Rocket Lan-
+der Demonstration for NASA's Autonomous Landing and Hazard Avoidance Technology (ALHAT) System,"
+Proc. of AIAA SPACE 2012 (2012).
+
+       5Epp, Chirold D., Robertson, E., and Carson, J., "Real-Time Hazard Detection and Avoidance Demon-
+stration for a Planetary Lander," AIAA SPACE 2014, San Diego, 2014.
+
+       6Carson, J. M., Robertson, E., Trawny, N., and Amzajerdian, F., "Flight Testing ALHAT Precision
+Landing Technologies Integrated Onboard the Morpheus Rocket Vehicle", SciTech 2015; 5-9 Jan. 2015;
+Kissimmee, FL; United States.
+
+       7Rudolph E. Kalman, "A New Approach to Linear Filtering and Prediction Problems," Transactions
+of the ASME - Journal of Basic Engineering, Vol. 82, 1960, pp. 35-45.
+
+       8Epp, C. D., Robertson, E., and Rutishauser, D., "Helicopter Field Testing of NASAs Autonomous
+Landing and Hazard Avoidance Technology (ALHAT) System fully integrated with the Morpheus Vertical
+Test Bed Avionics," AIAA Space 2013 Conference; 10-12 Sep. 2013; San Diego, CA; United States.
+
+       9Markley, F. L., "Attitude Error Representations for Kalman Filtering", Journal of Guidance, Control,
+and Dynamics, Vol. 26, No. 2 (2003), pp. 311-317.
+
+      10Steiner, T., Brady, T., "Vision-based Navigation and Hazard Detection for Terrestrial Rocket Ap-
+proach and Landing, IEEE Aerospace Conference, Big Sky, Montana, 1 8 March 2014.
+
+      11Devolites, Jennifer L., and Jon B. Olansen, "Project Morpheus: Lean Development of a Terrestrial
+Flight Testbed for Maturing NASA Lander Technologies", SciTech 2015; 5-9 Jan. 2015; Kissimmee, FL;
+United States.
+
+      12Geller, D.,"Linear Covariance Analysis for Lunar Powered Descent and Landing Navigation, 30th
+Annual AAS Guidance and Control Conference, Breckenridge, CO, United States, No. AAS 07-055, 2007.
+
+      13DeMars, K. and Bishop, R.H., "Navigation Analysis to Facilitate Precision Descent Navigation for
+Landing at the Moon," Galveston, Texas, January 2008. 18th AAS/AIAA Space Flight Mechanics Meeting.
+
+      14Amzajerdian, Farzin, et al. "Lidar Sensors for Autonomous Landing and Hazard Avoidance." AIAA
+Space Conference Proceedings. 2013.
+
+      15Olansen, Jon B., S. R. Munday, and J. L. Devolites, "Project Morpheus: Lessons Learned in Lander
+Technology Development. " Proc. AIAA SPACE 2013 Conference & Exposition, San Diego, CA. 2013.
+
+      16Devolites, Jennifer L., Jon B. Olansen, and Stephen R. Munday, "Project Morpheus: Morpheus 1.5
+A Lander Failure Investigation Results." AIAA SPACE 2013 Conference and Exposition. 2013.
+
+      17Robert H. Bishop, Crain, T., Hanak, C., DeMars, K, Carson, J., Trawny, N., and Christian, J., "An
+Inertial Dual-State State Estimator for Precision Planetary Landing with Hazard Detection and Avoidance,"
+AIAA SciTech 2016, San Diego, 2016.
+
+                                                                 39 of 39
+

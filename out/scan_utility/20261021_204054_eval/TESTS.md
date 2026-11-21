@@ -1,0 +1,1 @@
+16 Python tests pass (8 scan-trust contracts, 8 utility tests). Unity prediction parity passed all7680 fixtures, max difference2.22e-16. Runtime direction-invariance, bounds and geometric-veto guards passed. Final270 cases/4320 scan rows pass archived-label, partial-geometry, paired-input, success and routing checks. No weights, policy or protocol changed after the reserved test.

@@ -1,0 +1,175 @@
+11:05:08 multi ('proc', 41) 20261221 cliff common
+11:05:08 multi ('proc', 41) 20261221 cliff independent
+11:05:08 multi ('proc', 41) 20261221 x4 common
+11:05:08 multi ('proc', 41) 20261221 x4 independent
+11:05:09 multi ('proc', 41) 20261221 x8 independent
+11:05:11 multi ('proc', 41) 20261221 x8 common
+11:06:22 multi ('proc', 41) 20261221 x16 independent
+11:06:30 multi ('proc', 41) 20261221 x16 common
+11:07:01 multi ('proc', 42) 20261221 cliff independent
+11:07:01 multi ('proc', 42) 20261221 x4 independent
+11:07:02 multi ('proc', 42) 20261221 x4 common
+11:07:02 multi ('proc', 42) 20261221 cliff common
+11:07:19 multi ('proc', 42) 20261221 x8 independent
+11:07:29 multi ('proc', 42) 20261221 x8 common
+11:08:02 multi ('proc', 42) 20261221 x16 common
+11:08:04 multi ('proc', 42) 20261221 x16 independent
+11:08:36 multi ('proc', 43) 20261221 cliff independent
+11:08:36 multi ('proc', 43) 20261221 cliff common
+11:08:37 multi ('proc', 43) 20261221 x4 independent
+11:08:43 multi ('proc', 43) 20261221 x4 common
+11:08:51 multi ('proc', 43) 20261221 x8 independent
+11:08:52 multi ('proc', 43) 20261221 x8 common
+11:09:26 multi ('proc', 43) 20261221 x16 common
+11:09:26 multi ('proc', 43) 20261221 x16 independent
+11:09:54 multi ('proc', 44) 20261221 cliff independent
+11:09:56 multi ('proc', 44) 20261221 x4 common
+11:10:00 multi ('proc', 44) 20261221 cliff common
+11:10:04 multi ('proc', 44) 20261221 x4 independent
+11:10:12 multi ('proc', 44) 20261221 x8 common
+11:10:20 multi ('proc', 44) 20261221 x8 independent
+11:10:36 multi ('proc', 44) 20261221 x16 common
+11:10:39 multi ('proc', 44) 20261221 x16 independent
+11:11:14 multi ('proc', 45) 20261221 cliff independent
+11:11:20 multi ('proc', 45) 20261221 cliff common
+11:11:23 multi ('proc', 45) 20261221 x4 common
+11:11:24 multi ('proc', 45) 20261221 x8 independent
+11:11:27 multi ('proc', 45) 20261221 x8 common
+11:11:28 multi ('proc', 45) 20261221 x4 independent
+11:11:55 multi ('proc', 45) 20261221 x16 independent
+11:12:01 multi ('proc', 45) 20261221 x16 common
+11:12:42 multi ('proc', 46) 20261221 cliff independent
+11:12:43 multi ('proc', 46) 20261221 x8 independent
+11:12:44 multi ('proc', 46) 20261221 cliff common
+11:12:46 multi ('proc', 46) 20261221 x4 independent
+11:12:47 multi ('proc', 46) 20261221 x4 common
+11:12:48 multi ('proc', 46) 20261221 x8 common
+11:13:25 multi ('proc', 46) 20261221 x16 common
+11:13:25 multi ('proc', 46) 20261221 x16 independent
+11:14:05 multi ('proc', 47) 20261221 cliff independent
+11:14:08 multi ('proc', 47) 20261221 cliff common
+11:14:09 multi ('proc', 47) 20261221 x4 independent
+11:14:10 multi ('proc', 47) 20261221 x4 common
+11:14:13 multi ('proc', 47) 20261221 x8 independent
+11:14:13 multi ('proc', 47) 20261221 x8 common
+11:14:56 multi ('proc', 47) 20261221 x16 independent
+11:14:58 multi ('proc', 47) 20261221 x16 common
+11:15:32 multi ('proc', 48) 20261221 cliff independent
+11:15:33 multi ('proc', 48) 20261221 cliff common
+11:15:36 multi ('proc', 48) 20261221 x4 common
+11:15:36 multi ('proc', 48) 20261221 x4 independent
+11:15:46 multi ('proc', 48) 20261221 x8 common
+11:15:55 multi ('proc', 48) 20261221 x8 independent
+11:16:20 multi ('proc', 48) 20261221 x16 common
+11:16:33 multi ('proc', 48) 20261221 x16 independent
+11:16:59 multi ('proc', 49) 20261221 cliff independent
+11:16:59 multi ('proc', 49) 20261221 cliff common
+11:17:03 multi ('proc', 49) 20261221 x4 common
+11:17:08 multi ('proc', 49) 20261221 x4 independent
+11:17:18 multi ('proc', 49) 20261221 x8 independent
+11:17:21 multi ('proc', 49) 20261221 x8 common
+11:17:48 multi ('proc', 49) 20261221 x16 common
+11:17:50 multi ('proc', 49) 20261221 x16 independent
+11:18:22 multi ('proc', 50) 20261221 cliff independent
+11:18:25 multi ('proc', 50) 20261221 x4 independent
+11:18:27 multi ('proc', 50) 20261221 x4 common
+11:18:29 multi ('proc', 50) 20261221 cliff common
+11:18:39 multi ('proc', 50) 20261221 x8 independent
+11:18:41 multi ('proc', 50) 20261221 x8 common
+11:18:50 single ('proc', 41) 20261221 cliff 
+11:18:51 single ('proc', 41) 20261221 x8 
+11:18:57 single ('proc', 41) 20261221 wrong100 
+11:19:01 single ('proc', 41) 20261221 x16 
+11:19:07 single ('proc', 41) 20261221 wrong2000 
+11:19:11 multi ('proc', 50) 20261221 x16 independent
+11:19:16 multi ('proc', 50) 20261221 x16 common
+11:19:17 single ('proc', 42) 20261221 cliff 
+11:19:18 single ('proc', 41) 20261221 delayed_nots 
+11:19:23 single ('proc', 42) 20261221 x8 
+11:19:31 single ('proc', 42) 20261221 x16 
+11:19:32 single ('proc', 42) 20261221 wrong2000 
+11:19:36 single ('proc', 42) 20261221 wrong100 
+11:19:40 single ('proc', 43) 20261221 cliff 
+11:19:46 single ('proc', 43) 20261221 x8 
+11:19:50 single ('proc', 42) 20261221 delayed_nots 
+11:19:55 single ('proc', 43) 20261221 x16 
+11:19:56 single ('proc', 43) 20261221 wrong2000 
+11:19:56 single ('proc', 43) 20261221 wrong100 
+11:20:12 single ('proc', 44) 20261221 cliff 
+11:20:16 single ('proc', 43) 20261221 delayed_nots 
+11:20:17 single ('proc', 44) 20261221 x8 
+11:20:20 single ('proc', 44) 20261221 x16 
+11:20:22 single ('proc', 44) 20261221 wrong100 
+11:20:27 single ('proc', 44) 20261221 wrong2000 
+11:20:38 single ('proc', 44) 20261221 delayed_nots 
+11:20:39 single ('proc', 45) 20261221 cliff 
+11:20:43 single ('proc', 45) 20261221 x8 
+11:20:46 single ('proc', 45) 20261221 x16 
+11:20:48 single ('proc', 45) 20261221 wrong100 
+11:21:02 single ('proc', 45) 20261221 delayed_nots 
+11:21:03 single ('proc', 46) 20261221 cliff 
+11:21:08 single ('proc', 45) 20261221 wrong2000 
+11:21:09 single ('proc', 46) 20261221 x8 
+11:21:13 single ('proc', 46) 20261221 x16 
+11:21:15 single ('proc', 46) 20261221 wrong2000 
+11:21:23 single ('proc', 46) 20261221 wrong100 
+11:21:28 single ('proc', 46) 20261221 delayed_nots 
+11:21:30 single ('proc', 47) 20261221 cliff 
+11:21:31 single ('proc', 47) 20261221 x8 
+11:21:36 single ('proc', 47) 20261221 x16 
+11:21:42 single ('proc', 47) 20261221 wrong100 
+11:21:51 single ('proc', 48) 20261221 cliff 
+11:21:52 single ('proc', 48) 20261221 x8 
+11:21:53 single ('proc', 47) 20261221 delayed_nots 
+11:21:54 single ('proc', 47) 20261221 wrong2000 
+11:21:57 single ('proc', 48) 20261221 wrong100 
+11:21:58 single ('proc', 48) 20261221 x16 
+11:22:06 single ('proc', 48) 20261221 wrong2000 
+11:22:13 single ('proc', 49) 20261221 cliff 
+11:22:14 single ('proc', 49) 20261221 x8 
+11:22:17 single ('proc', 48) 20261221 delayed_nots 
+11:22:20 single ('proc', 49) 20261221 x16 
+11:22:26 single ('proc', 49) 20261221 wrong100 
+11:22:26 single ('proc', 49) 20261221 wrong2000 
+11:22:31 single ('proc', 49) 20261221 delayed_nots 
+11:22:34 single ('proc', 50) 20261221 cliff 
+11:22:39 single ('proc', 50) 20261221 x8 
+11:22:42 single ('proc', 50) 20261221 x16 
+11:22:44 single ('proc', 50) 20261221 wrong100 
+11:22:54 single ('proc', 50) 20261221 wrong2000 
+11:22:58 single ('proc', 50) 20261221 delayed_nots 
+fault_mode                                          common  independent
+condition config                                                       
+cliff     A: floor both + footprint terrain           92.2         92.0
+          B2 Student-t (4 dof) + floor                90.3         87.7
+          B: floor update-only + footprint terrain    90.9         91.2
+          baseline: PITFAL-style multi-beam           85.8         89.0
+x16       A: floor both + footprint terrain           88.6         88.4
+          B2 Student-t (4 dof) + floor                88.0         87.4
+          B: floor update-only + footprint terrain    70.0         71.4
+          baseline: PITFAL-style multi-beam           67.2         68.6
+x4        A: floor both + footprint terrain           94.6         94.0
+          B2 Student-t (4 dof) + floor                91.6         91.4
+          B: floor update-only + footprint terrain    90.6         91.2
+          baseline: PITFAL-style multi-beam           89.6         89.8
+x8        A: floor both + footprint terrain           92.3         92.0
+          B2 Student-t (4 dof) + floor                90.6         89.3
+          B: floor update-only + footprint terrain    88.2         88.1
+          baseline: PITFAL-style multi-beam           89.4         89.6
+condition                         cliff  delayed_nots  wrong100  wrong2000   x16    x8
+config                                                                                
+A3 IMM-style noise modes           90.9           1.6      66.4        5.4  85.7  87.4
+A4 delay estimation (no stamps)     NaN          50.8       NaN        NaN   NaN   NaN
+A: tolerance + noise floor         88.6           1.5      63.2        4.0  77.3  81.7
+B2 Student-t (4 dof) + floor       87.7           0.8      75.4        3.6  86.0  86.5
+B4 soft camera weighting + floor   91.5           NaN       NaN        NaN   NaN  91.0
+baseline: PITFAL-style             78.8           0.2      56.2        1.4  34.6  66.9
+
+Pre-registered verdicts
+S1 MET {'independent cliff': -1.3, 'independent x4': 1.6, 'independent x8': -0.3, 'common cliff': 4.5, 'common x4': 1.9, 'common x8': 1.1}
+S2 MET {'independent': 18.8, 'common': 20.7}
+S3 NOT met {'independent cliff': -4.3, 'independent x4': -2.6, 'independent x8': -2.7, 'common cliff': -1.9, 'common x4': -3.0, 'common x8': -1.8}
+S4 MET {'lowest world score (cliff, x4)': 56.0}
+S5 MET {'delayed, no stamps: De minus A1s': 49.3}
+S6 NOT met {'cliff': 2.8, 'x8': 9.3}
+S7 MET {'x16: St minus A1s': 8.8}

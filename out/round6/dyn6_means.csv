@@ -1,0 +1,19 @@
+part,condition,config,3-DOF (point mass),6-DOF default,6-DOF sluggish,6-DOF degraded
+multi,cliff,A: floor both + footprint terrain,85.6,100.0,9.4,0.0
+multi,cliff,B2 Student-t (4 dof) + floor,99.1,99.6,7.8,0.0
+multi,cliff,baseline: PITFAL-style multi-beam,92.0,99.8,8.3,0.4
+multi,x16,A: floor both + footprint terrain,98.1,99.8,9.4,0.0
+multi,x16,B2 Student-t (4 dof) + floor,99.3,100.0,9.3,0.0
+multi,x16,baseline: PITFAL-style multi-beam,72.6,69.4,7.6,0.0
+multi,x8,A: floor both + footprint terrain,87.8,100.0,9.1,0.0
+multi,x8,B2 Student-t (4 dof) + floor,96.7,100.0,10.7,0.0
+multi,x8,baseline: PITFAL-style multi-beam,97.6,99.4,9.6,0.0
+single,cliff,A: tolerance + noise floor,93.9,81.1,5.9,0.0
+single,cliff,B2 Student-t (4 dof) + floor,95.9,76.3,7.4,0.0
+single,cliff,baseline: PITFAL-style,85.4,78.5,5.7,0.0
+single,x16,A: tolerance + noise floor,81.7,76.1,7.6,0.0
+single,x16,B2 Student-t (4 dof) + floor,92.6,75.0,5.0,0.0
+single,x16,baseline: PITFAL-style,44.3,33.5,3.1,0.0
+single,x8,A: tolerance + noise floor,86.1,83.9,8.1,0.0
+single,x8,B2 Student-t (4 dof) + floor,93.1,75.7,8.0,0.0
+single,x8,baseline: PITFAL-style,68.9,69.4,5.9,0.0

@@ -1,0 +1,46 @@
+{
+  "areas": 3,
+  "descents": 1350,
+  "g1": {
+    "relief_positive/terminal/geometric": "artifact (>=50% fewer); median per-area violation 1.00 -> 0.50 (+50%)",
+    "relief_positive/terminal/utility": "artifact (>=50% fewer); median per-area violation 0.67 -> 0.00 (+100%)",
+    "relief_positive/braking/geometric": "persists (<20% fewer); median per-area violation 1.00 -> 0.83 (+17%)",
+    "relief_positive/braking/utility": "persists (<20% fewer); median per-area violation 0.67 -> 1.00 (-50%)",
+    "map_shift/terminal/geometric": "no violations at baseline",
+    "map_shift/terminal/utility": "no violations at baseline",
+    "map_shift/braking/geometric": "no violations at baseline",
+    "map_shift/braking/utility": "no violations at baseline",
+    "tie8/terminal/geometric": "no violations at baseline",
+    "tie8/terminal/utility": "no violations at baseline",
+    "tie8/braking/geometric": "no violations at baseline",
+    "tie8/braking/utility": "no violations at baseline"
+  },
+  "g2_violation": {
+    "tie8": {
+      "authority": 0.0,
+      "geometric": 0.0,
+      "areas_authority_lower": 0,
+      "areas_authority_higher": 0,
+      "p": 1.0
+    },
+    "map_shift": {
+      "authority": 0.0,
+      "geometric": 0.0,
+      "areas_authority_lower": 0,
+      "areas_authority_higher": 0,
+      "p": 1.0
+    },
+    "relief_positive": {
+      "authority": 0.5,
+      "geometric": 0.6666666666666666,
+      "areas_authority_lower": 1,
+      "areas_authority_higher": 1,
+      "p": 1.0
+    }
+  },
+  "g2_supported": false,
+  "g2_detail": {
+    "violations_fall_in_>=10_of_12_areas_all_conditions": false,
+    "map_miss_not_worse_10pct": true
+  }
+}

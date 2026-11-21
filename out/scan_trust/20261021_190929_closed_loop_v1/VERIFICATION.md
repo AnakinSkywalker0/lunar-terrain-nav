@@ -1,0 +1,1 @@
+648 unique completed cases; four complete arms per configuration; identical initial sensor/matcher/model inputs across arms; all trajectory/cloud files present; success criteria recomputed; source and model/rule/protocol hashes verified; frozen geometric core unchanged; Python/Unity parity passed; ML and rule decision routing recomputed from logged diagnostics.

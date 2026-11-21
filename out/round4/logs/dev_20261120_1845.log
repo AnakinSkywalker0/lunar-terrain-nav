@@ -1,0 +1,172 @@
+18:45:49 single ('proc', 11) 7 cliff 
+18:45:50 single ('proc', 11) 7 x4 
+18:46:00 single ('proc', 11) 7 x16 
+18:46:01 single ('proc', 11) 7 x8 
+18:46:01 single ('proc', 11) 7 wrong100 
+18:46:14 single ('proc', 11) 7 delayed_ts 
+18:46:24 single ('proc', 11) 7 wrong2000 
+18:46:37 single ('proc', 12) 7 cliff 
+18:46:37 single ('proc', 11) 7 delayed_nots 
+18:46:42 single ('proc', 11) 7 dropout 
+18:46:50 single ('proc', 12) 7 x4 
+18:46:52 single ('proc', 12) 7 x8 
+18:47:03 single ('proc', 12) 7 wrong100 
+18:47:07 single ('proc', 12) 7 delayed_ts 
+18:47:09 single ('proc', 12) 7 x16 
+18:47:33 single ('proc', 13) 7 cliff 
+18:47:34 single ('proc', 12) 7 wrong2000 
+18:47:40 single ('proc', 12) 7 delayed_nots 
+18:47:49 single ('proc', 12) 7 dropout 
+18:47:51 single ('proc', 13) 7 x4 
+18:48:02 single ('proc', 13) 7 x8 
+18:48:13 single ('proc', 13) 7 wrong100 
+18:48:14 single ('proc', 13) 7 x16 
+18:48:17 single ('proc', 13) 7 delayed_ts 
+18:48:30 single ('site01', 2.0) 7 cliff 
+18:48:41 single ('proc', 13) 7 wrong2000 
+18:48:45 single ('site01', 2.0) 7 x4 
+18:48:49 single ('proc', 13) 7 delayed_nots 
+18:48:54 single ('proc', 13) 7 dropout 
+18:49:00 single ('site01', 2.0) 7 x8 
+18:49:10 single ('site01', 2.0) 7 x16 
+18:49:15 single ('site01', 2.0) 7 delayed_ts 
+18:49:27 single ('site01', 2.0) 7 wrong100 
+18:49:28 single ('site01', 2.0) 7 wrong2000 
+18:49:51 single ('site01', 2.0) 7 delayed_nots 
+18:49:51 single ('proc', 11) 202 cliff 
+18:49:52 single ('proc', 11) 202 x4 
+18:49:58 single ('site01', 2.0) 7 dropout 
+18:50:18 single ('proc', 11) 202 x16 
+18:50:22 single ('proc', 11) 202 wrong100 
+18:50:23 single ('proc', 11) 202 x8 
+18:50:30 single ('proc', 11) 202 wrong2000 
+18:50:34 single ('proc', 11) 202 delayed_ts 
+18:50:54 single ('proc', 12) 202 cliff 
+18:50:59 single ('proc', 12) 202 x4 
+18:51:03 single ('proc', 11) 202 delayed_nots 
+18:51:07 single ('proc', 11) 202 dropout 
+18:51:09 single ('proc', 12) 202 x8 
+18:51:22 single ('proc', 12) 202 x16 
+18:51:24 single ('proc', 12) 202 delayed_ts 
+18:51:30 single ('proc', 12) 202 wrong100 
+18:51:42 single ('proc', 12) 202 dropout 
+18:51:55 single ('proc', 12) 202 wrong2000 
+18:51:57 single ('proc', 14) 101 cliff 
+18:52:02 single ('proc', 12) 202 delayed_nots 
+18:52:07 single ('proc', 14) 101 x4 
+18:52:16 single ('proc', 14) 101 x16 
+18:52:23 single ('proc', 14) 101 x8 
+18:52:25 single ('proc', 14) 101 wrong100 
+18:52:32 single ('proc', 14) 101 delayed_ts 
+18:52:39 single ('proc', 14) 101 wrong2000 
+18:52:55 single ('proc', 15) 101 cliff 
+18:53:00 single ('proc', 14) 101 delayed_nots 
+18:53:05 single ('proc', 15) 101 x4 
+18:53:06 single ('proc', 14) 101 dropout 
+18:53:12 single ('proc', 15) 101 x8 
+18:53:27 single ('proc', 15) 101 delayed_ts 
+18:53:35 single ('proc', 15) 101 x16 
+18:53:36 single ('proc', 15) 101 wrong100 
+18:53:46 single ('proc', 15) 101 wrong2000 
+18:53:59 single ('proc', 16) 101 cliff 
+18:54:03 single ('proc', 15) 101 delayed_nots 
+18:54:04 single ('proc', 15) 101 dropout 
+18:54:09 single ('proc', 16) 101 x4 
+18:54:15 single ('proc', 16) 101 x8 
+18:54:23 single ('proc', 16) 101 wrong100 
+18:54:29 single ('proc', 16) 101 delayed_ts 
+18:54:34 single ('proc', 16) 101 x16 
+18:54:53 single ('proc', 16) 101 wrong2000 
+18:55:00 single ('proc', 16) 101 delayed_nots 
+18:55:12 single ('proc', 16) 101 dropout 
+18:55:31 multi ('proc', 11) 7 cliff independent
+18:55:50 multi ('proc', 11) 7 cliff common
+18:55:57 multi ('proc', 11) 7 x4 independent
+18:56:08 multi ('proc', 11) 7 x4 common
+18:56:35 multi ('proc', 11) 7 x8 independent
+18:56:52 multi ('proc', 11) 7 x8 common
+18:57:08 multi ('proc', 11) 7 x16 independent
+18:57:19 multi ('proc', 11) 7 x16 common
+18:58:05 multi ('proc', 12) 7 cliff independent
+18:58:16 multi ('proc', 12) 7 cliff common
+18:58:20 multi ('proc', 11) 7 wrong2000 independent
+18:58:45 multi ('proc', 11) 7 wrong2000 common
+18:58:54 multi ('proc', 12) 7 x4 independent
+18:59:06 multi ('proc', 12) 7 x4 common
+18:59:38 multi ('proc', 12) 7 x8 independent
+19:00:02 multi ('proc', 12) 7 x8 common
+19:00:15 multi ('proc', 12) 7 x16 independent
+19:00:27 multi ('proc', 12) 7 x16 common
+19:01:11 multi ('proc', 13) 7 cliff independent
+19:01:15 multi ('proc', 12) 7 wrong2000 independent
+19:01:23 multi ('proc', 13) 7 cliff common
+19:01:38 multi ('proc', 12) 7 wrong2000 common
+19:01:57 multi ('proc', 13) 7 x4 independent
+19:02:11 multi ('proc', 13) 7 x4 common
+19:02:12 multi ('proc', 13) 7 x8 independent
+19:02:43 multi ('proc', 13) 7 x8 common
+19:03:10 multi ('proc', 13) 7 x16 independent
+19:03:28 multi ('proc', 13) 7 x16 common
+19:03:44 multi ('proc', 13) 7 wrong2000 independent
+19:03:55 multi ('site01', 2.0) 7 cliff independent
+19:03:58 multi ('proc', 13) 7 wrong2000 common
+19:04:14 multi ('site01', 2.0) 7 cliff common
+19:04:30 multi ('site01', 2.0) 7 x4 independent
+19:04:40 multi ('site01', 2.0) 7 x4 common
+19:05:05 multi ('site01', 2.0) 7 x8 independent
+19:05:17 multi ('site01', 2.0) 7 x8 common
+19:05:43 multi ('site01', 2.0) 7 x16 independent
+19:05:49 multi ('site01', 2.0) 7 x16 common
+19:06:38 multi ('proc', 11) 202 cliff independent
+19:06:42 multi ('site01', 2.0) 7 wrong2000 independent
+19:06:44 multi ('proc', 11) 202 cliff common
+19:06:58 multi ('site01', 2.0) 7 wrong2000 common
+19:07:24 multi ('proc', 11) 202 x4 independent
+19:07:38 multi ('proc', 11) 202 x4 common
+19:07:58 multi ('proc', 11) 202 x8 independent
+19:08:18 multi ('proc', 11) 202 x8 common
+19:08:43 multi ('proc', 11) 202 x16 independent
+19:08:57 multi ('proc', 11) 202 x16 common
+19:09:39 multi ('proc', 12) 202 cliff independent
+19:09:51 multi ('proc', 11) 202 wrong2000 independent
+19:09:53 multi ('proc', 12) 202 cliff common
+19:10:04 multi ('proc', 11) 202 wrong2000 common
+19:10:26 multi ('proc', 12) 202 x4 independent
+19:10:49 multi ('proc', 12) 202 x4 common
+19:11:11 multi ('proc', 12) 202 x8 independent
+19:11:23 multi ('proc', 12) 202 x8 common
+19:11:54 multi ('proc', 12) 202 x16 independent
+19:12:09 multi ('proc', 12) 202 x16 common
+19:12:51 multi ('proc', 12) 202 wrong2000 independent
+19:12:52 multi ('proc', 14) 101 cliff independent
+19:13:05 multi ('proc', 12) 202 wrong2000 common
+19:13:14 multi ('proc', 14) 101 cliff common
+19:13:40 multi ('proc', 14) 101 x4 common
+19:13:49 multi ('proc', 14) 101 x4 independent
+19:14:04 multi ('proc', 14) 101 x8 independent
+19:14:05 multi ('proc', 14) 101 x8 common
+19:14:33 multi ('proc', 14) 101 x16 independent
+19:14:42 multi ('proc', 14) 101 x16 common
+19:15:28 multi ('proc', 15) 101 cliff independent
+19:15:37 multi ('proc', 15) 101 cliff common
+19:15:50 multi ('proc', 14) 101 wrong2000 independent
+19:15:50 multi ('proc', 14) 101 wrong2000 common
+19:16:13 multi ('proc', 15) 101 x4 independent
+19:16:22 multi ('proc', 15) 101 x4 common
+19:17:06 multi ('proc', 15) 101 x8 independent
+19:17:08 multi ('proc', 15) 101 x8 common
+19:17:32 multi ('proc', 15) 101 x16 independent
+19:17:42 multi ('proc', 15) 101 x16 common
+19:18:20 multi ('proc', 15) 101 wrong2000 common
+19:18:32 multi ('proc', 16) 101 cliff independent
+19:18:36 multi ('proc', 15) 101 wrong2000 independent
+19:18:38 multi ('proc', 16) 101 cliff common
+19:19:16 multi ('proc', 16) 101 x4 independent
+19:19:18 multi ('proc', 16) 101 x4 common
+19:19:30 multi ('proc', 16) 101 x8 common
+19:19:42 multi ('proc', 16) 101 x8 independent
+19:20:18 multi ('proc', 16) 101 x16 independent
+19:20:19 multi ('proc', 16) 101 x16 common
+19:21:04 multi ('proc', 16) 101 wrong2000 independent
+19:21:24 multi ('proc', 16) 101 wrong2000 common
+done {'single': 891, 'multi': 720}

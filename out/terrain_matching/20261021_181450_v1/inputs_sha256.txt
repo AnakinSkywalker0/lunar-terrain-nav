@@ -1,0 +1,3 @@
+6654b59e0158f9e60b8be53b7f22b5b68764e753761cd583fab509eff9ba629f  LANTERN/Assets/Terrain/Site04TerrainData.asset
+9b2c66178c34ccffd153f07d1a618dae56173c7fe4234004164d67b7786f768b  LANTERN/Assets/Terrain/site04_height.json
+f3c43f9504764ed61badba0fbd8d346793bb1ee775cb6ddbc14eb94a6eb4546d  LANTERN/Assets/Terrain/site04_height.raw

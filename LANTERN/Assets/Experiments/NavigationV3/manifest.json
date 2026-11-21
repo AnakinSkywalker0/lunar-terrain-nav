@@ -1,0 +1,95 @@
+{
+  "version": 3,
+  "sites": [
+    {
+      "id": "development",
+      "x": 7960.9375,
+      "z": 8023.4375,
+      "split": "development",
+      "file": "development.bytes",
+      "sha256": "fb196f198a56867394d3544f577ece8f7e833a964c82198f3d3ff422eeba8f01",
+      "vertical_error_rms_m": 0.4303851150188595,
+      "sigma_median_m": 0.36090171337127686,
+      "centre_elevation_m": 1947.018798828125
+    },
+    {
+      "id": "reserved_01",
+      "x": 9842.5,
+      "z": 13562.5,
+      "split": "reserved",
+      "file": "reserved_01.bytes",
+      "sha256": "2221939d94b9fa8402ca5b1a00cdd04be93f0a82b47d082bca4bf262d37e0ac9",
+      "vertical_error_rms_m": 0.3614881038778613,
+      "sigma_median_m": 0.3140674829483032,
+      "centre_elevation_m": 864.3289184570312
+    },
+    {
+      "id": "reserved_02",
+      "x": 3122.5,
+      "z": 8002.5,
+      "split": "reserved",
+      "file": "reserved_02.bytes",
+      "sha256": "73f6838170d26d491f3fafa8b9c976cc5762cc39e51fa9543b07218d0e0f3001",
+      "vertical_error_rms_m": 0.41815127806382274,
+      "sigma_median_m": 0.351706326007843,
+      "centre_elevation_m": 1329.6405029296875
+    },
+    {
+      "id": "reserved_03",
+      "x": 11922.5,
+      "z": 7762.5,
+      "split": "reserved",
+      "file": "reserved_03.bytes",
+      "sha256": "9257b3054f94be8fd976cc39d8e98d492c63b6ceadb36e10b011ebe9cf71d3f9",
+      "vertical_error_rms_m": 0.3673523702124685,
+      "sigma_median_m": 0.3143780529499054,
+      "centre_elevation_m": 1652.8173828125
+    }
+  ],
+  "source": "NASA PGDA product 78 Site01",
+  "raster_sha256": {
+    "Site01_final_adj_5mpp_surf.tif": "3ba7b97cb00a2bcf21189c3aeb535f65afc21207154ab9f0d43c5bdc1f7e747e",
+    "Site01_final_adj_5mpp_toterr.tif": "cf2cf52f52d2aa51e60d058010d10b0ebfb1d3e920f5a2b9a46eb6c51054ab1c"
+  },
+  "georeference": {
+    "33550": [
+      5.0,
+      5.0,
+      0.0
+    ],
+    "33922": [
+      0.0,
+      0.0,
+      0.0,
+      -19000.0,
+      -4000.0,
+      0.0
+    ]
+  },
+  "error_model": "Synthetic Gaussian-smoothed field multiplied by local toterr. NOT a PGDA clone or independent lunar truth.",
+  "assumed_smoothing_sigma_m": 50,
+  "ground_spacing_m": 4.6875,
+  "prior_spacing_m": 8.0,
+  "prior_project_exposure": "Site01 used previously; reserved crops exclude all four archived scan-utility transfer crops.",
+  "development_seeds": [
+    1201
+  ],
+  "reserved_seeds": [
+    2201,
+    2202,
+    2203
+  ],
+  "conditions": [
+    "nominal",
+    "range_spike",
+    "range_dropout",
+    "scan_dropout",
+    "gross_map_shift",
+    "gross_relief"
+  ],
+  "arms": [
+    "classical_pd",
+    "classical_terminal",
+    "ml_terminal"
+  ]
+}

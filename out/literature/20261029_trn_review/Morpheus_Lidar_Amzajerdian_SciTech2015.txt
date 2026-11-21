@@ -1,0 +1,122 @@
+ Lidar Sensor Performance in Closed-Loop Flight Testing of
+  the Morpheus Rocket-Propelled Lander to a Lunar-Like
+                              Hazard Field
+
+    Vincent E. Roback1, Diego F. Pierrottet2, Farzin Amzajerdian3, Bruce W. Barnes4, Glenn D. Hines6, Larry B.
+                                          Petway7, Paul F. Brewster8, Kevin S. Kempton9
+
+                                  NASA-Langley Research Center, Hampton, Virginia, 23681
+
+                                                        Alexander E. Bulyshev5
+                               Analytical Mechanics Associates, Inc., Hampton, Virginia, 23666
+
+               For the first time, a suite of three lidar sensors have been used in flight to scan a lunar-
+          like hazard field, identify a safe landing site, and, in concert with an experimental Guidance,
+          Navigation, and Control (GN&C) system, guide the Morpheus autonomous, rocket-
+          propelled, free-flying test bed to a safe landing on the hazard field. The lidar sensors and
+          GN&C system are part of the Autonomous Precision Landing and Hazard Detection and
+          Avoidance Technology (ALHAT) project which has been seeking to develop a system
+          capable of enabling safe, precise crewed or robotic landings in challenging terrain on
+          planetary bodies under any ambient lighting conditions. The 3-D imaging flash lidar is a
+          second generation, compact, real-time, air-cooled instrument developed from a number of
+          cutting-edge components from industry and NASA and is used as part of the ALHAT
+          Hazard Detection System (HDS) to scan the hazard field and build a 3-D Digital Elevation
+          Map (DEM) in near-real time for identifying safe sites. The flash lidar is capable of
+          identifying a 30 cm hazard from a slant range of 1 km with its 8 cm range precision at 1
+          sigma. The flash lidar is also used in Hazard Relative Navigation (HRN) to provide position
+          updates down to a 250m slant range to the ALHAT navigation filter as it guides Morpheus
+          to the safe site. The Doppler Lidar system has been developed within NASA to provide
+          velocity measurements with an accuracy of 0.2 cm/sec and range measurments with an
+          accuracy of 17 cm both from a maximum range of 2,200 m to a minimum range of several
+          meters above the ground. The Doppler Lidar's measurements are fed into the ALHAT
+          navigation filter to provide lander guidance to the safe site. The Laser Altimeter, also
+          developed within NASA, provides range measurements with an accuracy of 5 cm from a
+          maximum operational range of 30 km down to 1 m and, being a separate sensor from the
+          flash lidar, can provide range along a separate vector. The Laser Altimeter measurements
+          are also fed into the ALHAT navigation filter to provide lander guidance to the safe site.
+          The flight tests served as the culmination of the TRL 6 journey for the lidar suite and
+          included launch from a pad situated at the NASA-Kennedy Space Center Shuttle Landing
+          Facility (SLF) runway, a lunar-like descent trajectory from an altitude of 250m, and landing
+          on a lunar-like hazard field of rocks, craters, hazardous slopes, and safe sites 400m down-
+          range just off the North end of the runway. The tests both confirmed the expected
+
+1 Remote Sensing Flight Systems Branch, M/S 468, NASA-Langley, Hampton, Virginia 23681.
+2 Coherent Applications, Inc., 20 Research Drive, Suite 500, Hampton, Virginia 23666.
+3 Laser Remote Sensing Branch, M/S 468, NASA-Langley, Hampton, Virginia 23681.
+4 Laser Remote Sensing Branch, M/S 468, NASA-Langley, Hampton, Virginia 23681.
+5 Analytical Mechanics Associates, Inc., 21 Enterprise Parkway, Hampton, Virginia 23666.
+6 Management Systems Branch, M/S 131, NASA-Langley, Hampton, Virginia 23681.
+7 Laser Remote Sensing Branch, M/S 468, NASA-Langley, Hampton, Virginia 23681.
+8 Flight Software Systems Branch, M/S 472, NASA-Langley, Hampton, Virginia 23681.
+9 Flight Software Systems Branch, M/S 472, NASA-Langley, Hampton, Virginia 23681.
+
+                                                                      1
+                                       American Institute of Aeronautics and Astronautics
+          performance and also revealed several challenges present in the flight-like environment
+          which will feed into future TRL advancement of the sensors. The flash lidar identified
+          hazards as small as 30 cm from the maximum slant range of 450 m which Morpheus could
+          provide, however, it was occasionally susceptible to an increase in range noise due to heated
+          air from the Morpheus rocket plume which entered its Field-of-View (FOV). The flash lidar
+          was also susceptible to pre-triggering on dust during the HRN phase which was created
+          during launch and transported by the wind. The Doppler Lidar provided velocity and range
+          measurements to the expected accuracy levels yet it was also susceptible to signal
+          degradation due to air heated by the rocket engine. The Laser Altimeter, operating with a
+          degraded transmitter laser, also showed signal attenuation over a few seconds at a specific
+          phase of the flight due to the heat plume generated by the rocket engine.
+
+                                                    I. Introduction
+
+        Background material will be discussed on the planetary landing problem in general along with some
+examples of nearly failed landings from Apollo. The ALHAT project will be discussed in detail along with its
+concept of operations for using all three lidar sensors in concert with its GN&C system to both identify a safe
+landing site and then successfully navigate to that site for a safe, precision landing. A few basic principles will be
+discussed to give the reader an awareness of the technology behind each of the three lidar sensors. Lastly, a general
+overview of the Morpheus testing campaign will be presented.
+
+                                        II. Lidar Systems Configurations
+
+    The specs of each of the three lidar systems as flown will be presented including the flash lidar, the Doppler
+Lidar, and the Laser Altimeter. The size, weight, and power requirements will be described as well. The expected
+performance of each sensor during Morpheus testing will be described based upon laboratory (both indoor and
+outdoor) results.
+
+                                                                      2
+                                       American Institute of Aeronautics and Astronautics
+                              III. Morpheus Integration and Flight Test Plan
+
+    Details on the Morpheus vehicle will be presented along with the location details of each of the three lidar
+systems as integrated on Morpheus. The NASA-Kennedy Space Center (KSC) lunar-like hazard field will be
+described.
+
+    The flight test trajectories will be shown from the launch pad through landing on the lunar-like hazard field at
+NASA-Kennedy Space Center (KSC).
+
+                                                                      3
+                                       American Institute of Aeronautics and Astronautics
+                                              IV. Flight Test Results
+
+    Flight test results from each of the three lidar sensors will be presented. A comparison of the expected and
+actual performance given any restrictions imposed by the Morpheus vehicle and any unexpected environmental
+factors in the flight-like environment. Lessons learned from the terrestrial flight environment which will feed into
+TRL improvements for future terrestrial testing as well as those which may apply in actual space flight to planetary
+bodies will be highlighted.
+
+    A preview of flash lidar Morpheus fligh test results:
+
+    A preview of Doppler Lidar Morpheus flight test results:
+
+                                                                      4
+                                       American Institute of Aeronautics and Astronautics
+A preview of Laser Altimeter Morpheus flight test results:
+
+                                                                  5
+                                   American Institute of Aeronautics and Astronautics
+                                           V. Technology Advancement
+
+A short discussion on the assessment of the state of the technology with respect to TRL goals will be included in this
+section.
+The paper will be wrapped up with sections on concluding remarks, acknowledgements, and references.
+
+                                                                      6
+                                       American Institute of Aeronautics and Astronautics
+

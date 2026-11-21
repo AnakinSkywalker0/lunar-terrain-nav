@@ -1,0 +1,31 @@
+{
+    "utc": "2026-11-04T04:11:55.4587788Z",
+    "unity": "6000.3.24f1",
+    "cpu": "Intel(R) Core(TM) i7-14700HX",
+    "stage": "smoke",
+    "settings": {
+        "dt": 0.05000000074505806,
+        "rangePeriod": 0.10000000149011612,
+        "scanPeriod": 3.0,
+        "rangeLatency": 0.15000000596046449,
+        "scanLatency": 0.30000001192092898,
+        "rangeNoise": 0.10000000149011612,
+        "accelerationNoise": 0.009999999776482582,
+        "attitudeSigmaDegrees": 0.019999999552965165,
+        "initialVelocitySigma": 0.5,
+        "initialErrorMinimum": 25.0,
+        "initialErrorMaximum": 70.0,
+        "maximumSeconds": 300.0,
+        "minimumScanAltitude": 80.0,
+        "fusion": {
+            "positionSigma": 80.0,
+            "velocitySigma": 0.7,
+            "biasSigma": 0.01,
+            "accelerationSigma": 0.015,
+            "biasWalkSigma": 0.0001,
+            "rangeGate": 6.634896601,
+            "terrainGate": 9.210340372,
+            "historySeconds": 1.5
+        }
+    }
+}

@@ -1,0 +1,17 @@
+[ScanUtilityExperiment] known-offset/sign, flat ambiguity, empty scan and map-bound checks passed.
+[ScanUtilityExperiment] Complete; 4 cases; wall_seconds=0.4; D:\newprj\out\scan_utility\20261021_203227_collect_smoke
+[ScanUtilityExperiment] known-offset/sign, flat ambiguity, empty scan and map-bound checks passed.
+[ScanUtilityExperiment] Complete; 3840 cases; wall_seconds=70.0; D:\newprj\out\scan_utility\20261021_203240_collect
+[ScanUtility] Parity/guards passed {"passed":true,"rows":7680,"max_score_difference":2.2204460492503131E-16}
+[ScanUtilityExperiment] known-offset/sign, flat ambiguity, empty scan and map-bound checks passed.
+[ScanUtility] Parity/guards passed {"passed":true,"rows":7680,"max_score_difference":2.2204460492503131E-16}
+[ScanUtilityExperiment] Complete; 21 cases; wall_seconds=3.6; D:\newprj\out\scan_utility\20261021_203519_dev_smoke
+[ScanUtilityExperiment] known-offset/sign, flat ambiguity, empty scan and map-bound checks passed.
+[ScanUtility] Parity/guards passed {"passed":true,"rows":7680,"max_score_difference":2.2204460492503131E-16}
+[ScanUtilityExperiment] Complete; 672 cases; wall_seconds=167.4; D:\newprj\out\scan_utility\20261021_203615_dev
+[ScanUtilityExperiment] known-offset/sign, flat ambiguity, empty scan and map-bound checks passed.
+[ScanUtility] Parity/guards passed {"passed":true,"rows":7680,"max_score_difference":2.2204460492503131E-16}
+[ScanUtilityExperiment] Complete; 15 cases; wall_seconds=3.1; D:\newprj\out\scan_utility\20261021_204036_eval_smoke
+[ScanUtilityExperiment] known-offset/sign, flat ambiguity, empty scan and map-bound checks passed.
+[ScanUtility] Parity/guards passed {"passed":true,"rows":7680,"max_score_difference":2.2204460492503131E-16}
+[ScanUtilityExperiment] Complete; 270 cases; wall_seconds=50.7; D:\newprj\out\scan_utility\20261021_204054_eval

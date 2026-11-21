@@ -1,0 +1,161 @@
+world,condition,fault_mode,config,success_pct,alt_rms_m,false_rej_pct,missed_fault_pct,secs
+"('proc', 11)",cliff + faults (nominal noise),common,PITFAL multi-beam,97.0,22.054125966280573,1.1799068665117527,7.722838384213064,5.4
+"('proc', 11)",cliff + faults (nominal noise),common,tolerance multi-beam,75.0,21.654937571090777,2.014092613910654,0.6133828996282528,5.6
+"('proc', 11)",cliff + faults (nominal noise),common,tolerance multi-beam + noise floor,86.0,21.694357760473164,1.1098171492731903,1.0199910820451843,5.9
+"('proc', 11)",cliff + faults (nominal noise),common,tolerance multi-beam + noise floor + consensus,87.0,21.69630343887047,1.2180409261751195,1.0327086312895857,6.1
+"('proc', 11)",x4 below 6000 m,common,PITFAL multi-beam,99.0,21.71848687104753,11.635371841660895,6.976203395085652,5.3
+"('proc', 11)",x4 below 6000 m,common,tolerance multi-beam,100.0,21.43241951207408,17.97180405841254,0.6480981405755729,5.8
+"('proc', 11)",x4 below 6000 m,common,tolerance multi-beam + noise floor,100.0,21.28540537490021,2.3295817182708323,0.9090909090909091,5.9
+"('proc', 11)",x4 below 6000 m,common,tolerance multi-beam + noise floor + consensus,100.0,21.320804980225056,3.0016812216877597,0.9013209013209014,6.2
+"('proc', 11)",cliff + faults (nominal noise),independent,PITFAL multi-beam,99.0,21.3522781737683,3.4846136614045435,2.4293785310734464,5.3
+"('proc', 11)",cliff + faults (nominal noise),independent,tolerance multi-beam,77.0,21.900708829940527,1.9821878398282105,0.6416651994444118,5.5
+"('proc', 11)",cliff + faults (nominal noise),independent,tolerance multi-beam + noise floor,90.0,22.019905451700122,1.1434678310804922,0.8870479279420097,6.0
+"('proc', 11)",cliff + faults (nominal noise),independent,tolerance multi-beam + noise floor + consensus,91.0,21.42555592028335,3.2835738781198995,0.8356437190050373,6.2
+"('proc', 11)",cliff + faults (nominal noise),n/a,pitfal (single beam),86.0,21.62834267977642,0.5031201790107156,7.492270318021202,1.1
+"('proc', 11)",cliff + faults (nominal noise),n/a,tolerance + noise floor (single beam),93.0,21.64329266266297,0.7356731827618398,1.2052855642173936,1.3
+"('proc', 11)",x4 below 6000 m,independent,PITFAL multi-beam,100.0,21.556252892811685,11.94980042208688,1.6288175411119812,5.3
+"('proc', 11)",x4 below 6000 m,independent,tolerance multi-beam,100.0,21.689702258607458,17.91788445992165,0.5875900971482294,5.7
+"('proc', 11)",x4 below 6000 m,independent,tolerance multi-beam + noise floor,100.0,21.530612982438157,2.385054900603265,0.7214554579673776,6.0
+"('proc', 11)",x4 below 6000 m,independent,tolerance multi-beam + noise floor + consensus,100.0,21.29223498573105,3.2571744186951075,0.6351446718419196,6.2
+"('proc', 11)",x4 below 6000 m,n/a,pitfal (single beam),93.0,21.441784917176964,3.623070105881804,6.669722667889067,1.1
+"('proc', 11)",x4 below 6000 m,n/a,tolerance + noise floor (single beam),96.0,21.11845216658755,2.3799226174473107,1.070615034168565,1.3
+"('proc', 11)",x8 below 6000 m (TRAINING),common,PITFAL multi-beam,99.0,21.99277404964445,28.234033201995512,8.1008100810081,6.8
+"('proc', 11)",x8 below 6000 m (TRAINING),common,tolerance multi-beam,77.0,87.20029082364056,41.70920593368238,1.2018826693561944,25.4
+"('proc', 11)",x8 below 6000 m (TRAINING),common,tolerance multi-beam + noise floor,100.0,21.304400306286208,5.479706295166398,1.0903847886816256,8.3
+"('proc', 11)",x8 below 6000 m (TRAINING),common,tolerance multi-beam + noise floor + consensus,99.0,21.33347185377194,6.971381336258677,1.080691642651297,5.5
+"('proc', 11)",x8 below 6000 m (TRAINING),independent,PITFAL multi-beam,100.0,21.95526579338785,28.705522392075615,1.8967718402334488,6.8
+"('proc', 11)",x8 below 6000 m (TRAINING),independent,tolerance multi-beam,79.0,82.9912501824127,41.085396932958176,1.0129235068110374,28.0
+"('proc', 11)",x8 below 6000 m (TRAINING),independent,tolerance multi-beam + noise floor,100.0,21.55796367673906,5.47511242292655,0.8451221752709903,7.5
+"('proc', 11)",x8 below 6000 m (TRAINING),independent,tolerance multi-beam + noise floor + consensus,100.0,21.33793918237555,7.164174494519537,0.7435968052877995,5.6
+"('proc', 11)",x8 below 6000 m (TRAINING),n/a,pitfal (single beam),82.0,22.16851376074704,20.30315993941426,7.789079229122056,1.1
+"('proc', 11)",x8 below 6000 m (TRAINING),n/a,tolerance + noise floor (single beam),93.0,21.591184012253922,6.538314242941197,1.2595119391235896,1.1
+"('proc', 11)",x16 below 6000 m,common,PITFAL multi-beam,66.0,25.606448607741967,45.26542103522281,9.948049077042114,10.2
+"('proc', 11)",x16 below 6000 m,common,tolerance multi-beam,48.0,192.90481603963113,54.52234340832562,1.1908164237401162,29.4
+"('proc', 11)",x16 below 6000 m,common,tolerance multi-beam + noise floor,100.0,21.472930456926402,10.156057999508478,1.4504160107937936,5.6
+"('proc', 11)",x16 below 6000 m,common,tolerance multi-beam + noise floor + consensus,100.0,21.525899791294584,13.117460512473988,1.3920071845532107,5.8
+"('proc', 11)",x16 below 6000 m,independent,PITFAL multi-beam,70.0,24.26802074300814,44.67834268110256,2.31935771632471,9.2
+"('proc', 11)",x16 below 6000 m,independent,tolerance multi-beam,53.0,199.3637214483679,55.417426485486644,1.8766511797394552,30.6
+"('proc', 11)",x16 below 6000 m,independent,tolerance multi-beam + noise floor,99.0,21.797351764296362,10.141868737840234,1.0250696378830084,5.6
+"('proc', 11)",x16 below 6000 m,independent,tolerance multi-beam + noise floor + consensus,99.0,21.545618964697923,13.293969955351487,0.9055338177752935,5.7
+"('proc', 11)",x16 below 6000 m,n/a,pitfal (single beam),48.0,155.710395004872,49.41728129731842,8.555729984301413,3.4
+"('proc', 11)",x16 below 6000 m,n/a,tolerance + noise floor (single beam),85.0,22.745884757205637,14.176709608902433,1.566579634464752,1.1
+"('proc', 12)",cliff + faults (nominal noise),independent,PITFAL multi-beam,68.0,21.590219651549674,5.939566267235349,2.4145716144338576,14.6
+"('proc', 12)",cliff + faults (nominal noise),independent,tolerance multi-beam,97.0,21.856424748465106,4.121240450756378,1.208153084687634,13.8
+"('proc', 12)",cliff + faults (nominal noise),independent,tolerance multi-beam + noise floor,43.0,22.08334620266943,1.8386131603590434,1.6438036762134225,14.4
+"('proc', 12)",cliff + faults (nominal noise),independent,tolerance multi-beam + noise floor + consensus,45.0,22.12884336152651,4.2634207810944815,1.5129122588674548,14.3
+"('proc', 12)",cliff + faults (nominal noise),n/a,pitfal (single beam),92.0,22.112865923200896,0.4907891119054166,7.493173129437466,2.5
+"('proc', 12)",cliff + faults (nominal noise),n/a,tolerance + noise floor (single beam),94.0,21.71673435750801,0.6852418945084522,1.6622922134733158,2.5
+"('proc', 12)",cliff + faults (nominal noise),common,PITFAL multi-beam,83.0,22.18309895741868,3.166159269347861,7.54393405742315,15.0
+"('proc', 12)",cliff + faults (nominal noise),common,tolerance multi-beam,95.0,22.75681143101911,4.265690803510139,1.086048454469507,13.9
+"('proc', 12)",cliff + faults (nominal noise),common,tolerance multi-beam + noise floor,46.0,22.909778719925583,1.7826103036354894,1.7276704136441663,14.5
+"('proc', 12)",cliff + faults (nominal noise),common,tolerance multi-beam + noise floor + consensus,46.0,22.773940036817635,2.0167749142559073,1.7425083240843506,14.7
+"('proc', 12)",x4 below 6000 m,common,PITFAL multi-beam,87.0,21.694660007196124,13.285113463049406,6.460306460306461,14.5
+"('proc', 12)",x4 below 6000 m,common,tolerance multi-beam,97.0,21.234190137852174,19.689257339158125,1.1354675918624824,14.3
+"('proc', 12)",x4 below 6000 m,common,tolerance multi-beam + noise floor,14.000000000000002,21.408118722350906,2.360429196646568,1.4421993540148728,14.7
+"('proc', 12)",x4 below 6000 m,common,tolerance multi-beam + noise floor + consensus,11.0,21.568835336445797,3.1128597327808163,1.3262999246420497,14.6
+"('proc', 12)",x4 below 6000 m,independent,PITFAL multi-beam,81.0,21.55088747025233,13.876450312374972,1.6912669126691267,14.4
+"('proc', 12)",x4 below 6000 m,independent,tolerance multi-beam,97.0,21.11791473073282,20.01020588408471,1.2949072246348203,14.2
+"('proc', 12)",x4 below 6000 m,independent,tolerance multi-beam + noise floor,6.0,21.278531429948956,2.4030586455764036,1.5004210365153487,14.6
+"('proc', 12)",x4 below 6000 m,independent,tolerance multi-beam + noise floor + consensus,6.0,21.490384126648387,3.386200795100299,1.3922888616891065,14.8
+"('proc', 12)",x4 below 6000 m,n/a,pitfal (single beam),86.0,23.861050641808934,4.760116527834676,6.743088334457181,4.8
+"('proc', 12)",x4 below 6000 m,n/a,tolerance + noise floor (single beam),96.0,21.781787531340804,2.25845326658787,1.7198461190314551,2.5
+"('proc', 12)",x8 below 6000 m (TRAINING),common,PITFAL multi-beam,96.0,21.971918481215194,28.771596070970997,7.638383102694829,14.3
+"('proc', 12)",x8 below 6000 m (TRAINING),common,tolerance multi-beam,84.0,113.59315024589031,43.66884537692154,1.5507056120774532,35.5
+"('proc', 12)",x8 below 6000 m (TRAINING),common,tolerance multi-beam + noise floor,60.0,21.455950464600804,5.37662317538042,1.77781788647234,14.6
+"('proc', 12)",x8 below 6000 m (TRAINING),common,tolerance multi-beam + noise floor + consensus,59.0,21.5946171939372,7.055050567723522,1.6263856078502634,14.4
+"('proc', 12)",x8 below 6000 m (TRAINING),independent,PITFAL multi-beam,97.0,21.889058589374148,29.154486126801846,2.0107851201901106,14.0
+"('proc', 12)",x8 below 6000 m (TRAINING),independent,tolerance multi-beam,80.0,119.25017824467177,45.86714798985135,2.25651364764268,38.2
+"('proc', 12)",x8 below 6000 m (TRAINING),independent,tolerance multi-beam + noise floor,57.99999999999999,21.321142774858558,5.4320433262748775,1.7353182939081195,14.5
+"('proc', 12)",x8 below 6000 m (TRAINING),independent,tolerance multi-beam + noise floor + consensus,51.0,21.541844723736265,7.317271250676773,1.6243840116809636,14.4
+"('proc', 12)",x8 below 6000 m (TRAINING),n/a,pitfal (single beam),57.99999999999999,28.198978766611575,21.461171700698763,7.593965737663002,5.8
+"('proc', 12)",x8 below 6000 m (TRAINING),n/a,tolerance + noise floor (single beam),92.0,22.088511039525546,6.408570901374666,1.978369823265629,2.6
+"('proc', 12)",x16 below 6000 m,common,PITFAL multi-beam,73.0,25.19673955713413,45.16967998415914,9.21572934973638,23.4
+"('proc', 12)",x16 below 6000 m,common,tolerance multi-beam,53.0,270.0361474932042,62.58607046579311,2.553859323726637,46.1
+"('proc', 12)",x16 below 6000 m,common,tolerance multi-beam + noise floor,99.0,21.273429196185198,10.341102921463568,2.255294791070406,14.6
+"('proc', 12)",x16 below 6000 m,common,tolerance multi-beam + noise floor + consensus,98.0,21.51281598224777,13.36994558652752,2.062091877649215,14.2
+"('proc', 12)",x16 below 6000 m,independent,PITFAL multi-beam,68.0,23.915002506467623,44.8431585581336,2.437403057832927,17.7
+"('proc', 12)",x16 below 6000 m,independent,tolerance multi-beam,52.0,273.3646588413782,62.05008122307279,3.5751914026831497,45.7
+"('proc', 12)",x16 below 6000 m,independent,tolerance multi-beam + noise floor,99.0,21.234515025125788,10.212238201321094,2.1267069621670025,14.1
+"('proc', 12)",x16 below 6000 m,independent,tolerance multi-beam + noise floor + consensus,97.0,21.422639934230915,13.63507405550568,1.9957394326718243,14.6
+"('proc', 12)",x16 below 6000 m,n/a,pitfal (single beam),32.0,93.82652906972895,44.053592398847016,9.141681363903587,8.1
+"('proc', 12)",x16 below 6000 m,n/a,tolerance + noise floor (single beam),83.0,22.937198429795025,13.52073424922556,2.4278215223097113,2.7
+"('proc', 13)",cliff + faults (nominal noise),independent,PITFAL multi-beam,100.0,22.807860016689464,3.712483444451927,3.056877018016469,14.5
+"('proc', 13)",cliff + faults (nominal noise),independent,tolerance multi-beam,100.0,23.294610883787044,1.8786939032337806,1.1694899033400326,14.8
+"('proc', 13)",cliff + faults (nominal noise),independent,tolerance multi-beam + noise floor,100.0,23.354737847659457,1.246713556998719,1.6340744709349049,11.4
+"('proc', 13)",cliff + faults (nominal noise),independent,tolerance multi-beam + noise floor + consensus,95.0,24.56806302466645,3.730296388922503,1.616103796985308,11.3
+"('proc', 13)",cliff + faults (nominal noise),n/a,pitfal (single beam),79.0,22.426357067189528,0.7575138287146789,7.6305220883534135,2.7
+"('proc', 13)",cliff + faults (nominal noise),n/a,tolerance + noise floor (single beam),92.0,21.810041144805833,0.541875955448788,2.2925764192139737,2.6
+"('proc', 13)",cliff + faults (nominal noise),common,PITFAL multi-beam,100.0,22.90913738862388,1.5708398387858102,7.472893163408971,14.6
+"('proc', 13)",cliff + faults (nominal noise),common,tolerance multi-beam,100.0,22.64743088933585,1.8824042444945126,1.1339942202875224,14.3
+"('proc', 13)",cliff + faults (nominal noise),common,tolerance multi-beam + noise floor,100.0,22.682811295924083,1.175835001747863,1.8308392260044948,7.0
+"('proc', 13)",cliff + faults (nominal noise),common,tolerance multi-beam + noise floor + consensus,96.0,24.458258123062436,1.7959675701641884,2.0587698485125023,15.4
+"('proc', 13)",x4 below 6000 m,common,PITFAL multi-beam,100.0,22.534803028626534,11.992383365514504,6.690570643881599,8.1
+"('proc', 13)",x4 below 6000 m,common,tolerance multi-beam,95.0,22.43222870208942,18.2478136425679,1.0353688029020556,13.7
+"('proc', 13)",x4 below 6000 m,common,tolerance multi-beam + noise floor,100.0,22.19950950228668,2.179165664685607,1.43139942134917,14.1
+"('proc', 13)",x4 below 6000 m,common,tolerance multi-beam + noise floor + consensus,95.0,23.75131740548806,3.163170864549253,1.7153312495235191,15.4
+"('proc', 13)",x4 below 6000 m,independent,PITFAL multi-beam,100.0,22.479452034140976,12.299610093318174,2.365278628291488,9.8
+"('proc', 13)",x4 below 6000 m,independent,tolerance multi-beam,94.0,22.562274133376313,18.330414697845747,1.3232087812946396,11.7
+"('proc', 13)",x4 below 6000 m,independent,tolerance multi-beam + noise floor,100.0,22.251093132925483,2.1828228631614297,1.6163628006741229,14.1
+"('proc', 13)",x4 below 6000 m,independent,tolerance multi-beam + noise floor + consensus,95.0,23.93857450536505,3.3762694316295923,1.6299357208448118,15.5
+"('proc', 13)",x4 below 6000 m,n/a,pitfal (single beam),74.0,22.996759237518468,3.835297075528839,6.609903652251848,2.4
+"('proc', 13)",x4 below 6000 m,n/a,tolerance + noise floor (single beam),77.0,21.594256971959204,1.6781411359724612,2.622805067792843,2.5
+"('proc', 13)",x8 below 6000 m (TRAINING),independent,PITFAL multi-beam,95.0,22.843364418456442,28.901979495001484,2.6734729191901714,15.2
+"('proc', 13)",x8 below 6000 m (TRAINING),independent,tolerance multi-beam,72.0,25.408299306570022,37.75478506973872,1.6289592760180995,18.3
+"('proc', 13)",x8 below 6000 m (TRAINING),independent,tolerance multi-beam + noise floor,99.0,22.360918912148556,4.795271914274977,1.8768902330546167,13.7
+"('proc', 13)",x8 below 6000 m (TRAINING),independent,tolerance multi-beam + noise floor + consensus,95.0,24.14763814224494,6.750295282692826,1.8953550453817405,13.9
+"('proc', 13)",x8 below 6000 m (TRAINING),n/a,pitfal (single beam),68.0,23.53544033536513,21.30048339310775,7.375,2.7
+"('proc', 13)",x8 below 6000 m (TRAINING),n/a,tolerance + noise floor (single beam),75.0,21.998207142350726,5.037568689020971,2.7372729598362753,2.7
+"('proc', 13)",x8 below 6000 m (TRAINING),common,PITFAL multi-beam,97.0,22.797828023926144,28.55619366313949,7.713280562884784,14.6
+"('proc', 13)",x8 below 6000 m (TRAINING),common,tolerance multi-beam,64.0,29.302523480568706,38.92355899623456,1.3227513227513228,24.6
+"('proc', 13)",x8 below 6000 m (TRAINING),common,tolerance multi-beam + noise floor,99.0,22.299197151047455,4.803636046065696,1.6850463167181298,13.7
+"('proc', 13)",x8 below 6000 m (TRAINING),common,tolerance multi-beam + noise floor + consensus,95.0,23.915849760212524,6.598788062990331,1.9994691674776608,13.8
+"('site01', 2.0)",cliff + faults (nominal noise),common,PITFAL multi-beam,100.0,21.469950044549318,0.7880721168322794,7.6419998109819485,13.2
+"('site01', 2.0)",cliff + faults (nominal noise),common,tolerance multi-beam,100.0,21.22391619157992,1.9104053316264096,0.13428403911259054,13.1
+"('site01', 2.0)",cliff + faults (nominal noise),common,tolerance multi-beam + noise floor,100.0,21.225678558359,1.0984720183658876,0.3723866772522778,13.2
+"('site01', 2.0)",cliff + faults (nominal noise),common,tolerance multi-beam + noise floor + consensus,100.0,21.198423125449,1.1309481805565356,0.36482552644512495,13.3
+"('site01', 2.0)",cliff + faults (nominal noise),independent,PITFAL multi-beam,100.0,20.459236158787643,3.019829843845213,2.1988452107885785,13.3
+"('site01', 2.0)",cliff + faults (nominal noise),independent,tolerance multi-beam,100.0,20.45072213420096,1.7494367167569782,0.04550490661601773,13.2
+"('site01', 2.0)",cliff + faults (nominal noise),independent,tolerance multi-beam + noise floor,100.0,20.477025084547044,1.0595212602530562,0.1661490990367308,13.2
+"('site01', 2.0)",cliff + faults (nominal noise),independent,tolerance multi-beam + noise floor + consensus,100.0,20.438260249847236,3.0761282394995533,0.1661523854735343,13.3
+"('site01', 2.0)",cliff + faults (nominal noise),n/a,pitfal (single beam),100.0,20.8728665970294,0.44590871652134395,6.788702341512718,2.3
+"('site01', 2.0)",cliff + faults (nominal noise),n/a,tolerance + noise floor (single beam),100.0,20.4865593904722,0.5950943771392861,0.38764044943820225,2.4
+"('proc', 13)",x16 below 6000 m,independent,PITFAL multi-beam,65.0,30.327036494725508,46.12085884394293,3.1989302612631145,26.7
+"('proc', 13)",x16 below 6000 m,independent,tolerance multi-beam,46.0,110.00591656061157,52.62295688561923,3.2639076728879273,39.6
+"('proc', 13)",x16 below 6000 m,independent,tolerance multi-beam + noise floor,98.0,22.526023000251847,8.914886709400742,2.2622493835102393,13.9
+"('proc', 13)",x16 below 6000 m,independent,tolerance multi-beam + noise floor + consensus,96.0,24.18945123337964,12.219153654638806,2.286879965643118,14.2
+"('proc', 13)",x16 below 6000 m,n/a,pitfal (single beam),35.0,169.06173994045025,51.78871331828442,8.571428571428571,7.8
+"('proc', 13)",x16 below 6000 m,n/a,tolerance + noise floor (single beam),75.0,22.784764719539293,11.6192103686278,3.1279033756580983,2.8
+"('proc', 13)",x16 below 6000 m,common,PITFAL multi-beam,67.0,43.159641948427954,45.89542675112592,9.804791481810115,33.2
+"('proc', 13)",x16 below 6000 m,common,tolerance multi-beam,44.0,149.11414313632068,55.145529147436676,3.6207507082152977,43.1
+"('proc', 13)",x16 below 6000 m,common,tolerance multi-beam + noise floor,99.0,22.484729213426263,9.083596732714769,2.175346077785102,13.8
+"('proc', 13)",x16 below 6000 m,common,tolerance multi-beam + noise floor + consensus,95.0,23.983334322413526,12.169597705487206,2.5206384149697305,14.5
+"('site01', 2.0)",x4 below 6000 m,common,PITFAL multi-beam,100.0,20.514324917557115,14.09435704757319,7.130351742798027,13.5
+"('site01', 2.0)",x4 below 6000 m,common,tolerance multi-beam,98.0,20.5096028900818,23.990267831482306,0.031819266565905654,13.8
+"('site01', 2.0)",x4 below 6000 m,common,tolerance multi-beam + noise floor,100.0,20.358196051044576,1.2926628064400263,0.06384167265182347,13.1
+"('site01', 2.0)",x4 below 6000 m,common,tolerance multi-beam + noise floor + consensus,100.0,20.335065924837693,1.5108101067986455,0.06384167265182347,13.4
+"('site01', 2.0)",x4 below 6000 m,independent,PITFAL multi-beam,100.0,20.277521797948058,14.487391378092989,0.8743783090004813,13.5
+"('site01', 2.0)",x4 below 6000 m,independent,tolerance multi-beam,97.0,20.488269928320324,24.007289694665484,0.00796812749003984,14.0
+"('site01', 2.0)",x4 below 6000 m,independent,tolerance multi-beam + noise floor,100.0,20.331473115707304,1.3806192465977738,0.016079755587715065,13.0
+"('site01', 2.0)",x4 below 6000 m,independent,tolerance multi-beam + noise floor + consensus,100.0,20.293449883634654,1.8131239395493826,0.008041170794467674,13.2
+"('site01', 2.0)",x4 below 6000 m,n/a,pitfal (single beam),100.0,20.588663785255708,3.7100456621004567,5.595879185202529,2.3
+"('site01', 2.0)",x4 below 6000 m,n/a,tolerance + noise floor (single beam),100.0,20.486020889466953,1.1505740972098282,0.11706860220088972,2.5
+"('site01', 2.0)",x8 below 6000 m (TRAINING),common,PITFAL multi-beam,100.0,20.767576178899503,31.610979032717704,8.368357149528347,13.8
+"('site01', 2.0)",x8 below 6000 m (TRAINING),common,tolerance multi-beam,81.0,68.92314763384717,47.66020011952907,0.2691110924228408,37.1
+"('site01', 2.0)",x8 below 6000 m (TRAINING),common,tolerance multi-beam + noise floor,100.0,20.411576743163675,3.35698251579768,0.10332519256058613,13.3
+"('site01', 2.0)",x8 below 6000 m (TRAINING),common,tolerance multi-beam + noise floor + consensus,100.0,20.436396770738575,4.074223477208552,0.10329608413935581,13.2
+"('site01', 2.0)",x8 below 6000 m (TRAINING),independent,PITFAL multi-beam,100.0,20.633440271000676,31.906827046340997,1.0348428747745182,13.7
+"('site01', 2.0)",x8 below 6000 m (TRAINING),independent,tolerance multi-beam,77.0,85.10587884158456,48.64875543263532,0.4066418163334463,39.4
+"('site01', 2.0)",x8 below 6000 m (TRAINING),independent,tolerance multi-beam + noise floor,100.0,20.389247860509094,3.500745547263,0.019203072491598656,13.4
+"('site01', 2.0)",x8 below 6000 m (TRAINING),independent,tolerance multi-beam + noise floor + consensus,100.0,20.392481601990756,4.418025858560561,0.009604302727621975,13.2
+"('site01', 2.0)",x8 below 6000 m (TRAINING),n/a,pitfal (single beam),100.0,21.160234104782397,21.45835523318967,6.424731182795699,2.5
+"('site01', 2.0)",x8 below 6000 m (TRAINING),n/a,tolerance + noise floor (single beam),100.0,20.708253964852567,3.94040985928794,0.1362397820163488,2.4
+"('site01', 2.0)",x16 below 6000 m,common,PITFAL multi-beam,86.0,24.691101257073576,48.75185025286789,9.971066102826619,23.4
+"('site01', 2.0)",x16 below 6000 m,common,tolerance multi-beam,48.0,204.03172806914287,64.53164210164294,0.5957953868414333,41.7
+"('site01', 2.0)",x16 below 6000 m,common,tolerance multi-beam + noise floor,100.0,20.606748222147253,6.9691913704795905,0.28619127116622944,13.8
+"('site01', 2.0)",x16 below 6000 m,common,tolerance multi-beam + noise floor + consensus,100.0,20.588430302306627,9.060814219738425,0.22683858643744031,14.1
+"('site01', 2.0)",x16 below 6000 m,independent,PITFAL multi-beam,85.0,23.38527937797465,48.48722266398491,1.3221737020863658,18.5
+"('site01', 2.0)",x16 below 6000 m,independent,tolerance multi-beam,49.0,175.4028975131258,62.7387214951448,0.693421166681113,41.1
+"('site01', 2.0)",x16 below 6000 m,independent,tolerance multi-beam + noise floor,100.0,20.645216988993685,7.136237256719184,0.024000960038401537,13.7
+"('site01', 2.0)",x16 below 6000 m,independent,tolerance multi-beam + noise floor + consensus,100.0,20.6470788747497,9.424386234277828,0.011990407673860911,13.8
+"('site01', 2.0)",x16 below 6000 m,n/a,pitfal (single beam),66.0,81.53678242099818,46.71888711931615,7.387862796833773,8.6
+"('site01', 2.0)",x16 below 6000 m,n/a,tolerance + noise floor (single beam),100.0,21.527455937138665,9.966901746137562,0.2734107997265892,7.1

@@ -1,0 +1,12 @@
+{
+  "python": "3.13.15",
+  "numpy": "2.5.2",
+  "sklearn": "1.9.0",
+  "policy_selection": "Completed on development missions only; frozen before evaluation",
+  "task": "Predict clipped local least-squares correction gain, not a calibrated correctness probability",
+  "retained_older_evaluation": "out/scan_trust/20261021_190929_closed_loop_v1",
+  "portable_bytes": 230940,
+  "model_sha256": "eda1c7830f69b76cffd6ded430a5e6ddcd70210ed411fcf4f902c62e46f0dece",
+  "selected_policy_sha256": "d23bcba2308299dea5d10b000edd10f4e7e6643c99107dbf06404bde5dadfdb7",
+  "selected_policy": "utility_hybrid"
+}

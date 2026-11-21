@@ -1,0 +1,20 @@
+{
+  "python": "3.13.15",
+  "numpy": "2.5.2",
+  "sklearn": "1.9.0",
+  "trees": 32,
+  "nodes": 1252,
+  "portable_bytes": 43965,
+  "python_gate_parity_rows": 10530,
+  "protocol_sha256": "19015ca79f26bacb11b84f6be7637c140d1a0373ceb6bacedd00efb8505030d6",
+  "feature_importances": {
+    "points": 0.0009182778529656367,
+    "rms_m": 0.12062490022987833,
+    "confidence": 0.20140862809872392,
+    "dx": 0.2104793372381961,
+    "dz": 0.294145118941946,
+    "correction_norm_m": 0.1724237376382899
+  },
+  "training_authorization": "User DO IT after explicit proposal to train, integrate and run paired descents",
+  "deployment": "isolated estimated-state Unity experiment; original full-height scene unchanged"
+}

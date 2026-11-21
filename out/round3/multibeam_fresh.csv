@@ -1,0 +1,281 @@
+group,world,condition,fault_mode,config,success_pct,false_rej_pct,missed_fault_pct
+A fresh worlds (seed 101),"('proc', 14)",x4 below 6000 m,common,PITFAL multi-beam,100.0,11.806167076257603,7.345904869124683
+A fresh worlds (seed 101),"('proc', 14)",x4 below 6000 m,common,tolerance multi-beam,99.0,16.267977478922955,12.577999018439318
+A fresh worlds (seed 101),"('proc', 14)",x4 below 6000 m,common,tolerance multi-beam + noise floor,100.0,1.9669342993141683,13.396424815983176
+A fresh worlds (seed 101),"('proc', 14)",x4 below 6000 m,common,tolerance multi-beam + noise floor + consensus,100.0,2.780856163500941,13.396927824928106
+A fresh worlds (seed 101),"('proc', 14)",cliff + faults (nominal noise),common,PITFAL multi-beam,100.0,2.989526313520969,7.4022997074116175
+A fresh worlds (seed 101),"('proc', 14)",cliff + faults (nominal noise),common,tolerance multi-beam,98.0,2.931244440222132,11.218463838534854
+A fresh worlds (seed 101),"('proc', 14)",cliff + faults (nominal noise),common,tolerance multi-beam + noise floor,100.0,0.77613691762767,13.519605103846512
+A fresh worlds (seed 101),"('proc', 14)",cliff + faults (nominal noise),common,tolerance multi-beam + noise floor + consensus,100.0,0.9028361910924189,13.489801620564403
+A fresh worlds (seed 101),"('proc', 14)",x4 below 6000 m,independent,PITFAL multi-beam,100.0,12.043055846788285,3.154619781491933
+A fresh worlds (seed 101),"('proc', 14)",x4 below 6000 m,independent,tolerance multi-beam,100.0,15.925119118739891,9.943848176842703
+A fresh worlds (seed 101),"('proc', 14)",x4 below 6000 m,independent,tolerance multi-beam + noise floor,100.0,1.97418486752374,10.370636919755308
+A fresh worlds (seed 101),"('proc', 14)",x4 below 6000 m,independent,tolerance multi-beam + noise floor + consensus,100.0,2.9751573807142435,10.263423060313805
+A fresh worlds (seed 101),"('proc', 14)",x4 below 6000 m,n/a,pitfal (single beam),65.0,5.62370918776169,9.433962264150944
+A fresh worlds (seed 101),"('proc', 14)",x4 below 6000 m,n/a,tolerance + noise floor (single beam),90.0,1.8147705571624806,14.793650793650794
+A fresh worlds (seed 101),"('proc', 14)",cliff + faults (nominal noise),independent,PITFAL multi-beam,100.0,5.184043336076674,3.9123126989235777
+A fresh worlds (seed 101),"('proc', 14)",cliff + faults (nominal noise),independent,tolerance multi-beam,100.0,2.3131657101052943,9.75308862705834
+A fresh worlds (seed 101),"('proc', 14)",cliff + faults (nominal noise),independent,tolerance multi-beam + noise floor,100.0,0.8108426224219782,11.485531237137387
+A fresh worlds (seed 101),"('proc', 14)",cliff + faults (nominal noise),independent,tolerance multi-beam + noise floor + consensus,100.0,2.805848860832338,11.238347438673085
+A fresh worlds (seed 101),"('proc', 14)",cliff + faults (nominal noise),n/a,pitfal (single beam),66.0,5.295934122490993,9.34589800443459
+A fresh worlds (seed 101),"('proc', 14)",cliff + faults (nominal noise),n/a,tolerance + noise floor (single beam),92.0,0.36376483519359354,14.877014418999153
+A fresh worlds (seed 101),"('proc', 14)",x8 below 6000 m (TRAINING),common,PITFAL multi-beam,99.0,28.19835275473783,8.354673495518567
+A fresh worlds (seed 101),"('proc', 14)",x8 below 6000 m (TRAINING),common,tolerance multi-beam,65.0,35.4482154877201,14.7725419859775
+A fresh worlds (seed 101),"('proc', 14)",x8 below 6000 m (TRAINING),common,tolerance multi-beam + noise floor,100.0,4.35031336539863,15.153675538656527
+A fresh worlds (seed 101),"('proc', 14)",x8 below 6000 m (TRAINING),common,tolerance multi-beam + noise floor + consensus,100.0,5.808192208833877,15.135434817044194
+A fresh worlds (seed 101),"('proc', 14)",x8 below 6000 m (TRAINING),independent,PITFAL multi-beam,100.0,28.428063265521164,3.5562805872756935
+A fresh worlds (seed 101),"('proc', 14)",x8 below 6000 m (TRAINING),independent,tolerance multi-beam,69.0,34.10617081570619,11.835218639203106
+A fresh worlds (seed 101),"('proc', 14)",x8 below 6000 m (TRAINING),independent,tolerance multi-beam + noise floor,100.0,4.333096810581664,11.781538713106041
+A fresh worlds (seed 101),"('proc', 14)",x8 below 6000 m (TRAINING),independent,tolerance multi-beam + noise floor + consensus,100.0,5.992013076130601,11.665575916230367
+A fresh worlds (seed 101),"('proc', 14)",x8 below 6000 m (TRAINING),n/a,pitfal (single beam),43.0,20.973957326846346,10.927731932983246
+A fresh worlds (seed 101),"('proc', 14)",x8 below 6000 m (TRAINING),n/a,tolerance + noise floor (single beam),83.0,5.15418061316401,16.209055876685934
+A fresh worlds (seed 101),"('proc', 14)",x16 below 6000 m,common,PITFAL multi-beam,65.0,43.65871202662562,10.443132939881965
+A fresh worlds (seed 101),"('proc', 14)",x16 below 6000 m,common,tolerance multi-beam,32.0,44.89824087848719,18.997717368748702
+A fresh worlds (seed 101),"('proc', 14)",x16 below 6000 m,common,tolerance multi-beam + noise floor,100.0,8.21492103045711,18.163691606532474
+A fresh worlds (seed 101),"('proc', 14)",x16 below 6000 m,common,tolerance multi-beam + noise floor + consensus,100.0,10.794965518483174,18.161094224924014
+A fresh worlds (seed 101),"('proc', 14)",x16 below 6000 m,independent,PITFAL multi-beam,61.0,44.555270863836014,4.443991438181633
+A fresh worlds (seed 101),"('proc', 14)",x16 below 6000 m,independent,tolerance multi-beam,30.0,43.422859403728445,15.54519209415945
+A fresh worlds (seed 101),"('proc', 14)",x16 below 6000 m,independent,tolerance multi-beam + noise floor,100.0,8.25580683385738,14.227883096366508
+A fresh worlds (seed 101),"('proc', 14)",x16 below 6000 m,independent,tolerance multi-beam + noise floor + consensus,100.0,11.008701976216278,14.093694406009092
+A fresh worlds (seed 101),"('proc', 14)",x16 below 6000 m,n/a,pitfal (single beam),26.0,40.72224479757042,12.344312205923055
+A fresh worlds (seed 101),"('proc', 14)",x16 below 6000 m,n/a,tolerance + noise floor (single beam),74.0,11.34496179904858,19.06422551583842
+A fresh worlds (seed 101),"('proc', 15)",cliff + faults (nominal noise),common,PITFAL multi-beam,95.0,1.4381070754499838,7.618210238374365
+A fresh worlds (seed 101),"('proc', 15)",cliff + faults (nominal noise),common,tolerance multi-beam,83.0,2.0098575869698774,0.8418002779898592
+A fresh worlds (seed 101),"('proc', 15)",cliff + faults (nominal noise),common,tolerance multi-beam + noise floor,90.0,1.0681259916825876,1.6840243662802121
+A fresh worlds (seed 101),"('proc', 15)",cliff + faults (nominal noise),common,tolerance multi-beam + noise floor + consensus,90.0,1.256209355892066,1.4882588549438467
+A fresh worlds (seed 101),"('proc', 15)",cliff + faults (nominal noise),independent,PITFAL multi-beam,98.0,3.899524754131108,2.504038772213247
+A fresh worlds (seed 101),"('proc', 15)",cliff + faults (nominal noise),independent,tolerance multi-beam,90.0,2.0007092066217504,0.8303296786246721
+A fresh worlds (seed 101),"('proc', 15)",cliff + faults (nominal noise),independent,tolerance multi-beam + noise floor,92.0,1.122866926040996,1.4563474050537146
+A fresh worlds (seed 101),"('proc', 15)",cliff + faults (nominal noise),independent,tolerance multi-beam + noise floor + consensus,93.0,3.4736709463338142,1.2055489316603267
+A fresh worlds (seed 101),"('proc', 15)",cliff + faults (nominal noise),n/a,pitfal (single beam),81.0,0.574728409963788,7.53765932792584
+A fresh worlds (seed 101),"('proc', 15)",cliff + faults (nominal noise),n/a,tolerance + noise floor (single beam),90.0,0.6875309388922501,1.6198578254282718
+A fresh worlds (seed 101),"('proc', 15)",x4 below 6000 m,independent,PITFAL multi-beam,99.0,12.60138561978875,1.727447216890595
+A fresh worlds (seed 101),"('proc', 15)",x4 below 6000 m,independent,tolerance multi-beam,94.0,18.72444583692332,0.8121360711002146
+A fresh worlds (seed 101),"('proc', 15)",x4 below 6000 m,independent,tolerance multi-beam + noise floor,96.0,2.357403401037352,1.1238549765222077
+A fresh worlds (seed 101),"('proc', 15)",x4 below 6000 m,independent,tolerance multi-beam + noise floor + consensus,96.0,3.3340006044691464,1.046717463249442
+A fresh worlds (seed 101),"('proc', 15)",x4 below 6000 m,n/a,pitfal (single beam),86.0,3.890125336769357,7.056229327453142
+A fresh worlds (seed 101),"('proc', 15)",x4 below 6000 m,n/a,tolerance + noise floor (single beam),95.0,2.509552945589235,1.6444444444444444
+A fresh worlds (seed 101),"('proc', 15)",x4 below 6000 m,common,PITFAL multi-beam,100.0,12.29970023698542,7.456140350877193
+A fresh worlds (seed 101),"('proc', 15)",x4 below 6000 m,common,tolerance multi-beam,94.0,18.752697792322966,0.9547436475717938
+A fresh worlds (seed 101),"('proc', 15)",x4 below 6000 m,common,tolerance multi-beam + noise floor,93.0,2.420809766566176,1.412344940965476
+A fresh worlds (seed 101),"('proc', 15)",x4 below 6000 m,common,tolerance multi-beam + noise floor + consensus,93.0,3.1463845074463777,1.441912588718715
+A fresh worlds (seed 101),"('proc', 15)",x8 below 6000 m (TRAINING),independent,PITFAL multi-beam,98.0,29.022519933210546,2.015045674368619
+A fresh worlds (seed 101),"('proc', 15)",x8 below 6000 m (TRAINING),independent,tolerance multi-beam,66.0,46.73447044498788,2.399752283635238
+A fresh worlds (seed 101),"('proc', 15)",x8 below 6000 m (TRAINING),independent,tolerance multi-beam + noise floor,98.0,5.470896827379465,1.2975471027372911
+A fresh worlds (seed 101),"('proc', 15)",x8 below 6000 m (TRAINING),independent,tolerance multi-beam + noise floor + consensus,98.0,7.311141214177243,1.2084592145015105
+A fresh worlds (seed 101),"('proc', 15)",x8 below 6000 m (TRAINING),n/a,pitfal (single beam),77.0,20.72531025739442,8.121827411167512
+A fresh worlds (seed 101),"('proc', 15)",x8 below 6000 m (TRAINING),n/a,tolerance + noise floor (single beam),89.0,6.672949827794843,1.8796037592075183
+A fresh worlds (seed 101),"('proc', 15)",x8 below 6000 m (TRAINING),common,PITFAL multi-beam,99.0,28.78126100739697,8.6235061473648
+A fresh worlds (seed 101),"('proc', 15)",x8 below 6000 m (TRAINING),common,tolerance multi-beam,67.0,46.72894325481068,1.8496149781065983
+A fresh worlds (seed 101),"('proc', 15)",x8 below 6000 m (TRAINING),common,tolerance multi-beam + noise floor,100.0,5.436132569928841,1.6294508147254074
+A fresh worlds (seed 101),"('proc', 15)",x8 below 6000 m (TRAINING),common,tolerance multi-beam + noise floor + consensus,99.0,6.950401149937113,1.6585030506144196
+A fresh worlds (seed 101),"('proc', 15)",x16 below 6000 m,common,PITFAL multi-beam,74.0,49.621199840050146,9.662664379645511
+A fresh worlds (seed 101),"('proc', 15)",x16 below 6000 m,common,tolerance multi-beam,35.0,60.578672072924945,2.2479886417415997
+A fresh worlds (seed 101),"('proc', 15)",x16 below 6000 m,common,tolerance multi-beam + noise floor,100.0,10.013716889598413,2.0993775714737843
+A fresh worlds (seed 101),"('proc', 15)",x16 below 6000 m,common,tolerance multi-beam + noise floor + consensus,100.0,12.918652875824334,2.0718816067653276
+A fresh worlds (seed 101),"('proc', 15)",x16 below 6000 m,independent,PITFAL multi-beam,72.0,51.51513051913184,2.221144519883608
+A fresh worlds (seed 101),"('proc', 15)",x16 below 6000 m,independent,tolerance multi-beam,44.0,59.8686336388482,3.240440699935191
+A fresh worlds (seed 101),"('proc', 15)",x16 below 6000 m,independent,tolerance multi-beam + noise floor,98.0,10.00453324964257,1.5904139433551199
+A fresh worlds (seed 101),"('proc', 15)",x16 below 6000 m,independent,tolerance multi-beam + noise floor + consensus,99.0,13.292323425618537,1.4891054418044454
+A fresh worlds (seed 101),"('proc', 15)",x16 below 6000 m,n/a,pitfal (single beam),37.0,53.9277147841256,8.323672617667517
+A fresh worlds (seed 101),"('proc', 15)",x16 below 6000 m,n/a,tolerance + noise floor (single beam),92.0,13.43083260054612,2.4009978172747117
+A fresh worlds (seed 101),"('proc', 16)",cliff + faults (nominal noise),independent,PITFAL multi-beam,99.0,5.406761049630135,2.586238565813159
+A fresh worlds (seed 101),"('proc', 16)",cliff + faults (nominal noise),independent,tolerance multi-beam,94.0,3.355166180574025,1.4642896364900977
+A fresh worlds (seed 101),"('proc', 16)",cliff + faults (nominal noise),independent,tolerance multi-beam + noise floor,96.0,1.5151856880584964,2.1085828489704617
+A fresh worlds (seed 101),"('proc', 16)",cliff + faults (nominal noise),independent,tolerance multi-beam + noise floor + consensus,97.0,4.233040543893603,1.8044258811460394
+A fresh worlds (seed 101),"('proc', 16)",cliff + faults (nominal noise),n/a,pitfal (single beam),84.0,0.7065994228539065,8.06784322713729
+A fresh worlds (seed 101),"('proc', 16)",cliff + faults (nominal noise),n/a,tolerance + noise floor (single beam),89.0,0.6345469551217005,3.3826396055498225
+A fresh worlds (seed 101),"('proc', 16)",cliff + faults (nominal noise),common,PITFAL multi-beam,99.0,3.0568292344032235,7.163433106316412
+A fresh worlds (seed 101),"('proc', 16)",cliff + faults (nominal noise),common,tolerance multi-beam,97.0,3.037211880621569,1.4570595965944804
+A fresh worlds (seed 101),"('proc', 16)",cliff + faults (nominal noise),common,tolerance multi-beam + noise floor,97.0,1.4620275236741154,2.606842485824105
+A fresh worlds (seed 101),"('proc', 16)",cliff + faults (nominal noise),common,tolerance multi-beam + noise floor + consensus,95.0,1.9043276516421472,2.5331885797002074
+A fresh worlds (seed 101),"('proc', 16)",x4 below 6000 m,common,PITFAL multi-beam,99.0,12.828280518847075,7.05865335936935
+A fresh worlds (seed 101),"('proc', 16)",x4 below 6000 m,common,tolerance multi-beam,99.0,17.285185213350875,1.9273965654662706
+A fresh worlds (seed 101),"('proc', 16)",x4 below 6000 m,common,tolerance multi-beam + noise floor,100.0,2.394761744864007,2.6165522226237803
+A fresh worlds (seed 101),"('proc', 16)",x4 below 6000 m,common,tolerance multi-beam + noise floor + consensus,99.0,3.369320566131309,2.538400519218288
+A fresh worlds (seed 101),"('proc', 16)",x4 below 6000 m,independent,PITFAL multi-beam,100.0,13.109235386529019,1.8069601427721593
+A fresh worlds (seed 101),"('proc', 16)",x4 below 6000 m,independent,tolerance multi-beam,99.0,17.272312777841105,1.4557008793320032
+A fresh worlds (seed 101),"('proc', 16)",x4 below 6000 m,independent,tolerance multi-beam + noise floor,100.0,2.3433690882496343,1.7227235438884332
+A fresh worlds (seed 101),"('proc', 16)",x4 below 6000 m,independent,tolerance multi-beam + noise floor + consensus,99.0,3.728865194211729,1.6399552739470742
+A fresh worlds (seed 101),"('proc', 16)",x4 below 6000 m,n/a,pitfal (single beam),79.0,3.892994451734696,7.91602886507763
+A fresh worlds (seed 101),"('proc', 16)",x4 below 6000 m,n/a,tolerance + noise floor (single beam),87.0,2.2912880443534474,3.619419159081058
+A fresh worlds (seed 101),"('proc', 16)",x8 below 6000 m (TRAINING),common,PITFAL multi-beam,98.0,28.874844436447603,8.003280032800328
+A fresh worlds (seed 101),"('proc', 16)",x8 below 6000 m (TRAINING),common,tolerance multi-beam,80.0,35.30487415656928,2.260897852960312
+A fresh worlds (seed 101),"('proc', 16)",x8 below 6000 m (TRAINING),common,tolerance multi-beam + noise floor,99.0,5.210561990919384,2.9707044107965768
+A fresh worlds (seed 101),"('proc', 16)",x8 below 6000 m (TRAINING),common,tolerance multi-beam + noise floor + consensus,99.0,6.95873164967352,2.8959276018099547
+A fresh worlds (seed 101),"('proc', 16)",x8 below 6000 m (TRAINING),independent,PITFAL multi-beam,97.0,29.22154478391215,2.0310932798395185
+A fresh worlds (seed 101),"('proc', 16)",x8 below 6000 m (TRAINING),independent,tolerance multi-beam,73.0,37.353221661680024,2.308066083576288
+A fresh worlds (seed 101),"('proc', 16)",x8 below 6000 m (TRAINING),independent,tolerance multi-beam + noise floor,99.0,5.137619535583696,1.964133219470538
+A fresh worlds (seed 101),"('proc', 16)",x8 below 6000 m (TRAINING),independent,tolerance multi-beam + noise floor + consensus,98.0,7.284064123373552,1.8722749422928957
+A fresh worlds (seed 101),"('proc', 16)",x8 below 6000 m (TRAINING),n/a,pitfal (single beam),57.99999999999999,20.65170083610125,9.131961866532865
+A fresh worlds (seed 101),"('proc', 16)",x8 below 6000 m (TRAINING),n/a,tolerance + noise floor (single beam),71.0,6.162906152634642,3.7092731829573933
+A fresh worlds (seed 101),"('proc', 16)",x16 below 6000 m,common,PITFAL multi-beam,64.0,45.45083990247259,9.950045876236109
+A fresh worlds (seed 101),"('proc', 16)",x16 below 6000 m,common,tolerance multi-beam,46.0,47.56276773183832,3.4625372703664516
+A fresh worlds (seed 101),"('proc', 16)",x16 below 6000 m,common,tolerance multi-beam + noise floor,100.0,9.175927316413876,3.621750347291129
+A fresh worlds (seed 101),"('proc', 16)",x16 below 6000 m,common,tolerance multi-beam + noise floor + consensus,99.0,12.204581035369557,3.50233158051394
+A fresh worlds (seed 101),"('proc', 16)",x16 below 6000 m,independent,PITFAL multi-beam,65.0,44.81058600554008,2.559241706161137
+A fresh worlds (seed 101),"('proc', 16)",x16 below 6000 m,independent,tolerance multi-beam,46.0,48.75344685447878,3.0588463779374635
+A fresh worlds (seed 101),"('proc', 16)",x16 below 6000 m,independent,tolerance multi-beam + noise floor,98.0,9.183440116067645,2.3896103896103895
+A fresh worlds (seed 101),"('proc', 16)",x16 below 6000 m,independent,tolerance multi-beam + noise floor + consensus,99.0,12.550560239315342,2.2750883025140247
+A fresh worlds (seed 101),"('proc', 16)",x16 below 6000 m,n/a,pitfal (single beam),28.000000000000004,50.779844310819,9.671317096240246
+A fresh worlds (seed 101),"('proc', 16)",x16 below 6000 m,n/a,tolerance + noise floor (single beam),64.0,12.83392065476867,4.087277197295636
+"B tuning worlds, new seed 202","('proc', 11)",cliff + faults (nominal noise),independent,PITFAL multi-beam,95.0,3.3932484140801207,2.575777782011469
+"B tuning worlds, new seed 202","('proc', 11)",cliff + faults (nominal noise),independent,tolerance multi-beam,79.0,1.8890102747777024,0.6498843588126231
+"B tuning worlds, new seed 202","('proc', 11)",cliff + faults (nominal noise),independent,tolerance multi-beam + noise floor,94.0,1.0951242323303525,0.882774433935225
+"B tuning worlds, new seed 202","('proc', 11)",cliff + faults (nominal noise),independent,tolerance multi-beam + noise floor + consensus,96.0,3.223785148565031,0.8292571079180678
+"B tuning worlds, new seed 202","('proc', 11)",cliff + faults (nominal noise),n/a,pitfal (single beam),81.0,0.5819952945061295,8.066374740723669
+"B tuning worlds, new seed 202","('proc', 11)",cliff + faults (nominal noise),n/a,tolerance + noise floor (single beam),91.0,0.7246776909698258,2.1114132006710244
+"B tuning worlds, new seed 202","('proc', 11)",cliff + faults (nominal noise),common,PITFAL multi-beam,94.0,1.2176790313562662,7.920330790285948
+"B tuning worlds, new seed 202","('proc', 11)",cliff + faults (nominal noise),common,tolerance multi-beam,80.0,2.21895664952241,0.931471686372122
+"B tuning worlds, new seed 202","('proc', 11)",cliff + faults (nominal noise),common,tolerance multi-beam + noise floor,85.0,1.239519611577416,2.1374848992634736
+"B tuning worlds, new seed 202","('proc', 11)",cliff + faults (nominal noise),common,tolerance multi-beam + noise floor + consensus,87.0,1.2970983904417568,1.9440927242621993
+"B tuning worlds, new seed 202","('proc', 11)",x4 below 6000 m,common,PITFAL multi-beam,100.0,11.49003965440678,6.640741848638947
+"B tuning worlds, new seed 202","('proc', 11)",x4 below 6000 m,common,tolerance multi-beam,98.0,18.24857411665502,0.8353584447144593
+"B tuning worlds, new seed 202","('proc', 11)",x4 below 6000 m,common,tolerance multi-beam + noise floor,99.0,2.486634873718566,1.4641838113830905
+"B tuning worlds, new seed 202","('proc', 11)",x4 below 6000 m,common,tolerance multi-beam + noise floor + consensus,99.0,3.099342705433791,1.4649537976109985
+"B tuning worlds, new seed 202","('proc', 11)",x4 below 6000 m,independent,PITFAL multi-beam,100.0,11.812089939059982,1.7404464623533864
+"B tuning worlds, new seed 202","('proc', 11)",x4 below 6000 m,independent,tolerance multi-beam,100.0,17.985888989749842,0.7107750472589792
+"B tuning worlds, new seed 202","('proc', 11)",x4 below 6000 m,independent,tolerance multi-beam + noise floor,98.0,2.402819141471629,0.78077622801698
+"B tuning worlds, new seed 202","('proc', 11)",x4 below 6000 m,independent,tolerance multi-beam + noise floor + consensus,99.0,3.284382711477212,0.765267464767389
+"B tuning worlds, new seed 202","('proc', 11)",x4 below 6000 m,n/a,pitfal (single beam),90.0,3.660090976063239,6.92871419053964
+"B tuning worlds, new seed 202","('proc', 11)",x4 below 6000 m,n/a,tolerance + noise floor (single beam),95.0,2.6197955738934735,1.3842375530252289
+"B tuning worlds, new seed 202","('proc', 11)",x8 below 6000 m (TRAINING),independent,PITFAL multi-beam,97.0,28.495760664065973,2.019847194168789
+"B tuning worlds, new seed 202","('proc', 11)",x8 below 6000 m (TRAINING),independent,tolerance multi-beam,74.0,41.08696760287489,1.4844695441710367
+"B tuning worlds, new seed 202","('proc', 11)",x8 below 6000 m (TRAINING),independent,tolerance multi-beam + noise floor,100.0,5.565154062492737,0.9110206969750575
+"B tuning worlds, new seed 202","('proc', 11)",x8 below 6000 m (TRAINING),independent,tolerance multi-beam + noise floor + consensus,100.0,7.20804438817193,0.8932519678075529
+"B tuning worlds, new seed 202","('proc', 11)",x8 below 6000 m (TRAINING),n/a,pitfal (single beam),81.0,20.34006351561232,7.91476407914764
+"B tuning worlds, new seed 202","('proc', 11)",x8 below 6000 m (TRAINING),n/a,tolerance + noise floor (single beam),91.0,6.868384053171588,1.5792154865002548
+"B tuning worlds, new seed 202","('proc', 11)",x8 below 6000 m (TRAINING),common,PITFAL multi-beam,94.0,28.098730377954638,7.624280930711771
+"B tuning worlds, new seed 202","('proc', 11)",x8 below 6000 m (TRAINING),common,tolerance multi-beam,75.0,44.226536339074286,1.7732935870977604
+"B tuning worlds, new seed 202","('proc', 11)",x8 below 6000 m (TRAINING),common,tolerance multi-beam + noise floor,100.0,5.5681100210475725,1.7241379310344827
+"B tuning worlds, new seed 202","('proc', 11)",x8 below 6000 m (TRAINING),common,tolerance multi-beam + noise floor + consensus,100.0,6.93835969305738,1.6878732796676188
+"B tuning worlds, new seed 202","('proc', 11)",x16 below 6000 m,common,PITFAL multi-beam,73.0,45.059683985372246,9.381933438985737
+"B tuning worlds, new seed 202","('proc', 11)",x16 below 6000 m,common,tolerance multi-beam,42.0,57.947622264465146,1.8334475668265935
+"B tuning worlds, new seed 202","('proc', 11)",x16 below 6000 m,common,tolerance multi-beam + noise floor,100.0,10.190471417722593,2.153389201230508
+"B tuning worlds, new seed 202","('proc', 11)",x16 below 6000 m,common,tolerance multi-beam + noise floor + consensus,100.0,12.993586410123072,2.148479047011274
+"B tuning worlds, new seed 202","('proc', 12)",cliff + faults (nominal noise),common,PITFAL multi-beam,80.0,3.256828321665639,7.916195007770381
+"B tuning worlds, new seed 202","('proc', 12)",cliff + faults (nominal noise),common,tolerance multi-beam,93.0,4.372761502433649,1.4574252801992529
+"B tuning worlds, new seed 202","('proc', 12)",cliff + faults (nominal noise),common,tolerance multi-beam + noise floor,44.0,1.870954232180413,3.2669630775178815
+"B tuning worlds, new seed 202","('proc', 12)",cliff + faults (nominal noise),common,tolerance multi-beam + noise floor + consensus,46.0,2.1190380688448074,3.2962370050340426
+"B tuning worlds, new seed 202","('proc', 11)",x16 below 6000 m,independent,PITFAL multi-beam,68.0,45.23201029887299,2.4704618689581097
+"B tuning worlds, new seed 202","('proc', 11)",x16 below 6000 m,independent,tolerance multi-beam,38.0,58.35499823164792,2.304071351887026
+"B tuning worlds, new seed 202","('proc', 11)",x16 below 6000 m,independent,tolerance multi-beam + noise floor,100.0,10.193855030486043,1.125437062937063
+"B tuning worlds, new seed 202","('proc', 11)",x16 below 6000 m,independent,tolerance multi-beam + noise floor + consensus,99.0,13.27026257245568,1.1058797766341837
+"B tuning worlds, new seed 202","('proc', 11)",x16 below 6000 m,n/a,pitfal (single beam),50.0,48.855601320421655,8.952431854623196
+"B tuning worlds, new seed 202","('proc', 11)",x16 below 6000 m,n/a,tolerance + noise floor (single beam),85.0,14.409627978424828,1.9088669950738917
+"B tuning worlds, new seed 202","('proc', 12)",cliff + faults (nominal noise),independent,PITFAL multi-beam,65.0,5.993659375099214,2.4639850327408794
+"B tuning worlds, new seed 202","('proc', 12)",cliff + faults (nominal noise),independent,tolerance multi-beam,99.0,4.153571066481101,1.2314095343553715
+"B tuning worlds, new seed 202","('proc', 12)",cliff + faults (nominal noise),independent,tolerance multi-beam + noise floor,48.0,1.8721324326193716,1.7110012030477209
+"B tuning worlds, new seed 202","('proc', 12)",cliff + faults (nominal noise),independent,tolerance multi-beam + noise floor + consensus,50.0,4.256104538491353,1.5110074020236024
+"B tuning worlds, new seed 202","('proc', 12)",cliff + faults (nominal noise),n/a,pitfal (single beam),88.0,0.561805394964156,8.108108108108109
+"B tuning worlds, new seed 202","('proc', 12)",cliff + faults (nominal noise),n/a,tolerance + noise floor (single beam),90.0,0.7315318738887908,2.6520792759766296
+"B tuning worlds, new seed 202","('proc', 12)",x4 below 6000 m,common,PITFAL multi-beam,88.0,13.362793880557199,6.71597191095174
+"B tuning worlds, new seed 202","('proc', 12)",x4 below 6000 m,common,tolerance multi-beam,96.0,20.184783336418306,1.2940275650842266
+"B tuning worlds, new seed 202","('proc', 12)",x4 below 6000 m,common,tolerance multi-beam + noise floor,13.0,2.5180062062726867,1.9651464590285503
+"B tuning worlds, new seed 202","('proc', 12)",x4 below 6000 m,common,tolerance multi-beam + noise floor + consensus,13.0,3.2736527997191502,1.8729096989966556
+"B tuning worlds, new seed 202","('proc', 12)",x4 below 6000 m,independent,PITFAL multi-beam,84.0,13.750453727516353,1.6632951224994381
+"B tuning worlds, new seed 202","('proc', 12)",x4 below 6000 m,independent,tolerance multi-beam,100.0,20.079870505807154,1.3161922252831344
+"B tuning worlds, new seed 202","('proc', 12)",x4 below 6000 m,independent,tolerance multi-beam + noise floor,6.0,2.4728630097250424,1.53102336825141
+"B tuning worlds, new seed 202","('proc', 12)",x4 below 6000 m,independent,tolerance multi-beam + noise floor + consensus,5.0,3.4928592380393666,1.5215801024140454
+"B tuning worlds, new seed 202","('proc', 12)",x4 below 6000 m,n/a,pitfal (single beam),87.0,3.627997317733022,7.164971251658558
+"B tuning worlds, new seed 202","('proc', 12)",x4 below 6000 m,n/a,tolerance + noise floor (single beam),97.0,2.465050392457387,2.0588886429045825
+"B tuning worlds, new seed 202","('proc', 12)",x8 below 6000 m (TRAINING),common,PITFAL multi-beam,98.0,28.625601292119708,7.840572126286412
+"B tuning worlds, new seed 202","('proc', 12)",x8 below 6000 m (TRAINING),common,tolerance multi-beam,72.0,49.30635726929885,2.7536830510808206
+"B tuning worlds, new seed 202","('proc', 12)",x8 below 6000 m (TRAINING),common,tolerance multi-beam + noise floor,57.99999999999999,5.458085880414166,2.2755013077593724
+"B tuning worlds, new seed 202","('proc', 12)",x8 below 6000 m (TRAINING),common,tolerance multi-beam + noise floor + consensus,56.00000000000001,6.9325348743281445,2.161785216178522
+"B tuning worlds, new seed 202","('proc', 12)",x8 below 6000 m (TRAINING),independent,PITFAL multi-beam,96.0,29.128103694647454,1.97245668591737
+"B tuning worlds, new seed 202","('proc', 12)",x8 below 6000 m (TRAINING),independent,tolerance multi-beam,67.0,51.84099923941929,3.082059843328625
+"B tuning worlds, new seed 202","('proc', 12)",x8 below 6000 m (TRAINING),independent,tolerance multi-beam + noise floor,62.0,5.479100578466132,1.8008474576271187
+"B tuning worlds, new seed 202","('proc', 12)",x8 below 6000 m (TRAINING),independent,tolerance multi-beam + noise floor + consensus,53.0,7.231585360647912,1.788388688221302
+"B tuning worlds, new seed 202","('proc', 12)",x8 below 6000 m (TRAINING),n/a,pitfal (single beam),66.0,20.22960794443488,8.049689440993788
+"B tuning worlds, new seed 202","('proc', 12)",x8 below 6000 m (TRAINING),n/a,tolerance + noise floor (single beam),86.0,6.538056741033737,2.2807906741003547
+"B tuning worlds, new seed 202","('proc', 12)",x16 below 6000 m,common,PITFAL multi-beam,78.0,44.80761945992749,9.614973262032086
+"B tuning worlds, new seed 202","('proc', 12)",x16 below 6000 m,common,tolerance multi-beam,49.0,64.07566615739182,2.664966100557159
+"B tuning worlds, new seed 202","('proc', 12)",x16 below 6000 m,common,tolerance multi-beam + noise floor,97.0,10.280938044066728,2.8255264288783843
+"B tuning worlds, new seed 202","('proc', 12)",x16 below 6000 m,common,tolerance multi-beam + noise floor + consensus,97.0,13.378544285296696,2.723276509059719
+"B tuning worlds, new seed 202","('proc', 13)",cliff + faults (nominal noise),independent,PITFAL multi-beam,100.0,3.6518527882114995,3.0507967941412746
+"B tuning worlds, new seed 202","('proc', 13)",cliff + faults (nominal noise),independent,tolerance multi-beam,100.0,1.7594817772798728,1.125738649113621
+"B tuning worlds, new seed 202","('proc', 13)",cliff + faults (nominal noise),independent,tolerance multi-beam + noise floor,100.0,1.1605538144739576,1.5908920960143573
+"B tuning worlds, new seed 202","('proc', 13)",cliff + faults (nominal noise),independent,tolerance multi-beam + noise floor + consensus,97.0,3.712871287128713,1.56801913768292
+"B tuning worlds, new seed 202","('proc', 13)",cliff + faults (nominal noise),n/a,pitfal (single beam),83.0,0.6426039665575367,8.463035019455253
+"B tuning worlds, new seed 202","('proc', 13)",cliff + faults (nominal noise),n/a,tolerance + noise floor (single beam),88.0,0.5582363515942852,3.916195695609979
+"B tuning worlds, new seed 202","('proc', 12)",x16 below 6000 m,independent,PITFAL multi-beam,71.0,46.242875267473345,2.4268146697137882
+"B tuning worlds, new seed 202","('proc', 12)",x16 below 6000 m,independent,tolerance multi-beam,50.0,66.46277945457945,3.2492518170158187
+"B tuning worlds, new seed 202","('proc', 12)",x16 below 6000 m,independent,tolerance multi-beam + noise floor,97.0,10.294884466616338,2.247686205376818
+"B tuning worlds, new seed 202","('proc', 12)",x16 below 6000 m,independent,tolerance multi-beam + noise floor + consensus,96.0,13.43993270687379,2.241855328547764
+"B tuning worlds, new seed 202","('proc', 12)",x16 below 6000 m,n/a,pitfal (single beam),40.0,47.131925375545144,9.297912713472487
+"B tuning worlds, new seed 202","('proc', 12)",x16 below 6000 m,n/a,tolerance + noise floor (single beam),82.0,13.903854362547733,2.8107432854465957
+"B tuning worlds, new seed 202","('proc', 13)",cliff + faults (nominal noise),common,PITFAL multi-beam,98.0,1.6590743685813634,7.823479987778796
+"B tuning worlds, new seed 202","('proc', 13)",cliff + faults (nominal noise),common,tolerance multi-beam,98.0,2.0851140402177335,1.5777093572507697
+"B tuning worlds, new seed 202","('proc', 13)",cliff + faults (nominal noise),common,tolerance multi-beam + noise floor,98.0,1.3211838958516893,3.5921736472026904
+"B tuning worlds, new seed 202","('proc', 13)",cliff + faults (nominal noise),common,tolerance multi-beam + noise floor + consensus,100.0,1.776437597742266,3.62910161102299
+"B tuning worlds, new seed 202","('proc', 13)",x4 below 6000 m,common,PITFAL multi-beam,98.0,12.082858693740874,6.878971479237476
+"B tuning worlds, new seed 202","('proc', 13)",x4 below 6000 m,common,tolerance multi-beam,91.0,18.055102644411246,1.4462961603406506
+"B tuning worlds, new seed 202","('proc', 13)",x4 below 6000 m,common,tolerance multi-beam + noise floor,99.0,2.2647976984758524,2.3218102749318197
+"B tuning worlds, new seed 202","('proc', 13)",x4 below 6000 m,common,tolerance multi-beam + noise floor + consensus,96.0,3.1898249976092568,2.3691785371614142
+"B tuning worlds, new seed 202","('proc', 13)",x4 below 6000 m,independent,PITFAL multi-beam,99.0,12.340614258787005,2.314439448662195
+"B tuning worlds, new seed 202","('proc', 13)",x4 below 6000 m,independent,tolerance multi-beam,93.0,18.08024031131238,1.1642290620679618
+"B tuning worlds, new seed 202","('proc', 13)",x4 below 6000 m,independent,tolerance multi-beam + noise floor,100.0,2.246322755876896,1.3203511101276093
+"B tuning worlds, new seed 202","('proc', 13)",x4 below 6000 m,independent,tolerance multi-beam + noise floor + consensus,96.0,3.446283584716515,1.3719849524231025
+"B tuning worlds, new seed 202","('proc', 13)",x4 below 6000 m,n/a,pitfal (single beam),74.0,3.7133572929464584,7.310133508426351
+"B tuning worlds, new seed 202","('proc', 13)",x4 below 6000 m,n/a,tolerance + noise floor (single beam),80.0,1.7889454098528559,2.69389528568325
+"B tuning worlds, new seed 202","('proc', 13)",x8 below 6000 m (TRAINING),common,PITFAL multi-beam,94.0,28.35754189944134,7.8117133747273035
+"B tuning worlds, new seed 202","('proc', 13)",x8 below 6000 m (TRAINING),common,tolerance multi-beam,71.0,38.911330104280296,2.166152847639137
+"B tuning worlds, new seed 202","('proc', 13)",x8 below 6000 m (TRAINING),common,tolerance multi-beam + noise floor,99.0,4.856200085350241,2.6600236446546193
+"B tuning worlds, new seed 202","('proc', 13)",x8 below 6000 m (TRAINING),common,tolerance multi-beam + noise floor + consensus,97.0,6.362229220199925,2.7148173207036534
+"B tuning worlds, new seed 202","('proc', 13)",x8 below 6000 m (TRAINING),independent,PITFAL multi-beam,95.0,28.697616079244238,2.6553911205073994
+"B tuning worlds, new seed 202","('proc', 13)",x8 below 6000 m (TRAINING),independent,tolerance multi-beam,65.0,39.19035314384151,1.8326501085121776
+"B tuning worlds, new seed 202","('proc', 13)",x8 below 6000 m (TRAINING),independent,tolerance multi-beam + noise floor,100.0,4.847762512565875,1.5333219119410657
+"B tuning worlds, new seed 202","('proc', 13)",x8 below 6000 m (TRAINING),independent,tolerance multi-beam + noise floor + consensus,97.0,6.721498203816366,1.5935572309801234
+"B tuning worlds, new seed 202","('proc', 13)",x8 below 6000 m (TRAINING),n/a,pitfal (single beam),66.0,21.12581522043113,8.118619348565872
+"B tuning worlds, new seed 202","('proc', 13)",x8 below 6000 m (TRAINING),n/a,tolerance + noise floor (single beam),77.0,5.049335820727788,2.728613569321534
+"B tuning worlds, new seed 202","('site01', 2.0)",cliff + faults (nominal noise),independent,PITFAL multi-beam,100.0,3.0328957211250747,2.1899506244554168
+"B tuning worlds, new seed 202","('site01', 2.0)",cliff + faults (nominal noise),independent,tolerance multi-beam,100.0,1.8336258336258335,0.04462813124551293
+"B tuning worlds, new seed 202","('site01', 2.0)",cliff + faults (nominal noise),independent,tolerance multi-beam + noise floor,100.0,1.1345931606256403,0.159010258100797
+"B tuning worlds, new seed 202","('site01', 2.0)",cliff + faults (nominal noise),independent,tolerance multi-beam + noise floor + consensus,100.0,3.13792458126696,0.1493174061433447
+"B tuning worlds, new seed 202","('site01', 2.0)",cliff + faults (nominal noise),n/a,pitfal (single beam),100.0,0.5047877501089723,7.349757153724618
+"B tuning worlds, new seed 202","('site01', 2.0)",cliff + faults (nominal noise),n/a,tolerance + noise floor (single beam),100.0,0.6104937403291603,0.5095168374816984
+"B tuning worlds, new seed 202","('site01', 2.0)",cliff + faults (nominal noise),common,PITFAL multi-beam,100.0,0.8628561844238618,8.083897318521734
+"B tuning worlds, new seed 202","('site01', 2.0)",cliff + faults (nominal noise),common,tolerance multi-beam,100.0,1.9666705512178069,0.14223346042156418
+"B tuning worlds, new seed 202","('site01', 2.0)",cliff + faults (nominal noise),common,tolerance multi-beam + noise floor,100.0,1.1087042601262431,0.526970217301202
+"B tuning worlds, new seed 202","('site01', 2.0)",cliff + faults (nominal noise),common,tolerance multi-beam + noise floor + consensus,100.0,1.1254903056898753,0.501371863958469
+"B tuning worlds, new seed 202","('proc', 13)",x16 below 6000 m,common,PITFAL multi-beam,64.0,45.29037446894071,9.314657328664332
+"B tuning worlds, new seed 202","('proc', 13)",x16 below 6000 m,common,tolerance multi-beam,45.0,55.13983904711787,3.298363407469576
+"B tuning worlds, new seed 202","('proc', 13)",x16 below 6000 m,common,tolerance multi-beam + noise floor,99.0,8.868349779351881,3.2954545454545454
+"B tuning worlds, new seed 202","('proc', 13)",x16 below 6000 m,common,tolerance multi-beam + noise floor + consensus,96.0,12.144121873447862,3.3501700855581897
+"B tuning worlds, new seed 202","('proc', 13)",x16 below 6000 m,independent,PITFAL multi-beam,70.0,45.61293571308678,3.2314500360193477
+"B tuning worlds, new seed 202","('proc', 13)",x16 below 6000 m,independent,tolerance multi-beam,54.0,55.557870019693986,3.467728554836569
+"B tuning worlds, new seed 202","('proc', 13)",x16 below 6000 m,independent,tolerance multi-beam + noise floor,99.0,8.918504495977283,1.893378464142162
+"B tuning worlds, new seed 202","('proc', 13)",x16 below 6000 m,independent,tolerance multi-beam + noise floor + consensus,98.0,12.24867253618547,1.9699216267739885
+"B tuning worlds, new seed 202","('proc', 13)",x16 below 6000 m,n/a,pitfal (single beam),32.0,50.961761297798375,9.090909090909092
+"B tuning worlds, new seed 202","('proc', 13)",x16 below 6000 m,n/a,tolerance + noise floor (single beam),74.0,11.911007803420222,3.2142857142857144
+"B tuning worlds, new seed 202","('site01', 2.0)",x4 below 6000 m,independent,PITFAL multi-beam,100.0,14.309791618036297,0.9524547003252284
+"B tuning worlds, new seed 202","('site01', 2.0)",x4 below 6000 m,independent,tolerance multi-beam,96.0,24.024154227581068,0.0
+"B tuning worlds, new seed 202","('site01', 2.0)",x4 below 6000 m,independent,tolerance multi-beam + noise floor,100.0,1.2955878804182277,0.007752538956508256
+"B tuning worlds, new seed 202","('site01', 2.0)",x4 below 6000 m,independent,tolerance multi-beam + noise floor + consensus,100.0,1.7263341113176944,0.007752538956508256
+"B tuning worlds, new seed 202","('site01', 2.0)",x4 below 6000 m,n/a,pitfal (single beam),100.0,3.7083834976338346,5.859641153758801
+"B tuning worlds, new seed 202","('site01', 2.0)",x4 below 6000 m,n/a,tolerance + noise floor (single beam),100.0,1.138544808593331,0.25074082516526097
+"B tuning worlds, new seed 202","('site01', 2.0)",x4 below 6000 m,common,PITFAL multi-beam,100.0,13.93043884405144,6.686158344233284
+"B tuning worlds, new seed 202","('site01', 2.0)",x4 below 6000 m,common,tolerance multi-beam,97.0,23.962076400022113,0.10748560460652591
+"B tuning worlds, new seed 202","('site01', 2.0)",x4 below 6000 m,common,tolerance multi-beam + noise floor,100.0,1.2671853604869285,0.177168386997381
+"B tuning worlds, new seed 202","('site01', 2.0)",x4 below 6000 m,common,tolerance multi-beam + noise floor + consensus,100.0,1.4936419296238983,0.17720933816164575
+"B tuning worlds, new seed 202","('site01', 2.0)",x8 below 6000 m (TRAINING),independent,PITFAL multi-beam,100.0,31.798204380934475,1.1232876712328768
+"B tuning worlds, new seed 202","('site01', 2.0)",x8 below 6000 m (TRAINING),independent,tolerance multi-beam,83.0,49.86266232404702,0.3184713375796178
+"B tuning worlds, new seed 202","('site01', 2.0)",x8 below 6000 m (TRAINING),independent,tolerance multi-beam + noise floor,100.0,3.50608619193977,0.009170105456212746
+"B tuning worlds, new seed 202","('site01', 2.0)",x8 below 6000 m (TRAINING),independent,tolerance multi-beam + noise floor + consensus,100.0,4.442979409721813,0.009170105456212746
+"B tuning worlds, new seed 202","('site01', 2.0)",x8 below 6000 m (TRAINING),n/a,pitfal (single beam),100.0,21.685549592526336,6.661502711076685
+"B tuning worlds, new seed 202","('site01', 2.0)",x8 below 6000 m (TRAINING),n/a,tolerance + noise floor (single beam),100.0,4.1894890924544335,0.2916224814422057
+"B tuning worlds, new seed 202","('site01', 2.0)",x8 below 6000 m (TRAINING),common,PITFAL multi-beam,100.0,31.445431198415967,7.797218483624944
+"B tuning worlds, new seed 202","('site01', 2.0)",x8 below 6000 m (TRAINING),common,tolerance multi-beam,80.0,51.75955740493012,0.8446433727981519
+"B tuning worlds, new seed 202","('site01', 2.0)",x8 below 6000 m (TRAINING),common,tolerance multi-beam + noise floor,100.0,3.4102157210866184,0.2424351261560564
+"B tuning worlds, new seed 202","('site01', 2.0)",x8 below 6000 m (TRAINING),common,tolerance multi-beam + noise floor + consensus,100.0,4.169219891586142,0.2244971264367816
+"B tuning worlds, new seed 202","('site01', 2.0)",x16 below 6000 m,common,PITFAL multi-beam,87.0,48.799811765431954,9.512862616310892
+"B tuning worlds, new seed 202","('site01', 2.0)",x16 below 6000 m,common,tolerance multi-beam,51.0,66.98030014750839,0.7695658487004501
+"B tuning worlds, new seed 202","('site01', 2.0)",x16 below 6000 m,common,tolerance multi-beam + noise floor,100.0,6.990636288182552,0.335345405767941
+"B tuning worlds, new seed 202","('site01', 2.0)",x16 below 6000 m,common,tolerance multi-beam + noise floor + consensus,100.0,8.963221911743501,0.31236055332440876
+"B tuning worlds, new seed 202","('site01', 2.0)",x16 below 6000 m,independent,PITFAL multi-beam,86.0,51.034776416347924,1.3610545493516235
+"B tuning worlds, new seed 202","('site01', 2.0)",x16 below 6000 m,independent,tolerance multi-beam,62.0,65.88704731890694,0.4915514592933948
+"B tuning worlds, new seed 202","('site01', 2.0)",x16 below 6000 m,independent,tolerance multi-beam + noise floor,100.0,7.231827043180837,0.011598237067965669
+"B tuning worlds, new seed 202","('site01', 2.0)",x16 below 6000 m,independent,tolerance multi-beam + noise floor + consensus,100.0,9.371010928111087,0.011588828369451848
+"B tuning worlds, new seed 202","('site01', 2.0)",x16 below 6000 m,n/a,pitfal (single beam),67.0,54.064783062472046,7.014925373134329
+"B tuning worlds, new seed 202","('site01', 2.0)",x16 below 6000 m,n/a,tolerance + noise floor (single beam),100.0,10.49689585959016,0.35924232527759636

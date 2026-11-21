@@ -1,0 +1,7025 @@
+{
+  "selected": "forest_full",
+  "selection": {
+    "name": "forest_full",
+    "threshold": 0.18,
+    "n": 2106,
+    "bad": 1076,
+    "geometric_accepted": 1835,
+    "accepted": 559,
+    "accepted_bad": 2,
+    "rejected_safe": 473,
+    "bad_accept_rate": 0.002484472049689441,
+    "safe_reject_rate": 0.45922330097087377,
+    "objective": 0.4691611891696315,
+    "auc": 0.9277926155845093,
+    "average_precision": 0.9259701373932884,
+    "brier_uncalibrated": 0.14187043191070356,
+    "calibration_bins": [
+      {
+        "n": 525,
+        "mean_score": 0.041766942920107145,
+        "bad_fraction": 0.0
+      },
+      {
+        "n": 39,
+        "mean_score": 0.13318648107256756,
+        "bad_fraction": 0.05128205128205128
+      },
+      {
+        "n": 64,
+        "mean_score": 0.27732241696109766,
+        "bad_fraction": 0.28125
+      },
+      {
+        "n": 604,
+        "mean_score": 0.3565680395150527,
+        "bad_fraction": 0.40066225165562913
+      },
+      {
+        "n": 313,
+        "mean_score": 0.4525235678883912,
+        "bad_fraction": 0.952076677316294
+      },
+      {
+        "n": 56,
+        "mean_score": 0.5526278557041016,
+        "bad_fraction": 0.7857142857142857
+      },
+      {
+        "n": 83,
+        "mean_score": 0.6514748502262044,
+        "bad_fraction": 0.891566265060241
+      },
+      {
+        "n": 67,
+        "mean_score": 0.7602907182593027,
+        "bad_fraction": 0.7761194029850746
+      },
+      {
+        "n": 64,
+        "mean_score": 0.8344439117093718,
+        "bad_fraction": 0.859375
+      },
+      {
+        "n": 291,
+        "mean_score": 0.9494553865634983,
+        "bad_fraction": 1.0
+      }
+    ]
+  },
+  "rule": {
+    "name": "rule",
+    "max_rms_m": 0.5,
+    "min_confidence": 0.99,
+    "n": 2106,
+    "bad": 1076,
+    "geometric_accepted": 1835,
+    "accepted": 536,
+    "accepted_bad": 200,
+    "rejected_safe": 694,
+    "bad_accept_rate": 0.2484472049689441,
+    "safe_reject_rate": 0.6737864077669903,
+    "objective": 1.6675752276427667
+  },
+  "validation_trials": [
+    {
+      "name": "logistic",
+      "threshold": 0.02,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 0,
+      "accepted_bad": 0,
+      "rejected_safe": 1030,
+      "bad_accept_rate": 0.0,
+      "safe_reject_rate": 1.0,
+      "objective": 1.0,
+      "auc": 0.5993007182300502,
+      "average_precision": 0.7048911216403974,
+      "brier_uncalibrated": 0.24992920458316803,
+      "calibration_bins": [
+        {
+          "n": 2,
+          "mean_score": 0.09405669569969177,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 348,
+          "mean_score": 0.15342341363430023,
+          "bad_fraction": 0.45689655172413796
+        },
+        {
+          "n": 260,
+          "mean_score": 0.25315481424331665,
+          "bad_fraction": 0.5692307692307692
+        },
+        {
+          "n": 804,
+          "mean_score": 0.34381648898124695,
+          "bad_fraction": 0.4116915422885572
+        },
+        {
+          "n": 111,
+          "mean_score": 0.4543497562408447,
+          "bad_fraction": 0.14414414414414414
+        },
+        {
+          "n": 232,
+          "mean_score": 0.5500009059906006,
+          "bad_fraction": 0.375
+        },
+        {
+          "n": 146,
+          "mean_score": 0.6409227848052979,
+          "bad_fraction": 0.9246575342465754
+        },
+        {
+          "n": 85,
+          "mean_score": 0.74400794506073,
+          "bad_fraction": 0.9529411764705882
+        },
+        {
+          "n": 109,
+          "mean_score": 0.8472213745117188,
+          "bad_fraction": 0.9908256880733946
+        },
+        {
+          "n": 9,
+          "mean_score": 0.9034335017204285,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "logistic",
+      "threshold": 0.06,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 0,
+      "accepted_bad": 0,
+      "rejected_safe": 1030,
+      "bad_accept_rate": 0.0,
+      "safe_reject_rate": 1.0,
+      "objective": 1.0,
+      "auc": 0.5993007182300502,
+      "average_precision": 0.7048911216403974,
+      "brier_uncalibrated": 0.24992920458316803,
+      "calibration_bins": [
+        {
+          "n": 2,
+          "mean_score": 0.09405669569969177,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 348,
+          "mean_score": 0.15342341363430023,
+          "bad_fraction": 0.45689655172413796
+        },
+        {
+          "n": 260,
+          "mean_score": 0.25315481424331665,
+          "bad_fraction": 0.5692307692307692
+        },
+        {
+          "n": 804,
+          "mean_score": 0.34381648898124695,
+          "bad_fraction": 0.4116915422885572
+        },
+        {
+          "n": 111,
+          "mean_score": 0.4543497562408447,
+          "bad_fraction": 0.14414414414414414
+        },
+        {
+          "n": 232,
+          "mean_score": 0.5500009059906006,
+          "bad_fraction": 0.375
+        },
+        {
+          "n": 146,
+          "mean_score": 0.6409227848052979,
+          "bad_fraction": 0.9246575342465754
+        },
+        {
+          "n": 85,
+          "mean_score": 0.74400794506073,
+          "bad_fraction": 0.9529411764705882
+        },
+        {
+          "n": 109,
+          "mean_score": 0.8472213745117188,
+          "bad_fraction": 0.9908256880733946
+        },
+        {
+          "n": 9,
+          "mean_score": 0.9034335017204285,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "logistic",
+      "threshold": 0.1,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 0,
+      "accepted_bad": 0,
+      "rejected_safe": 1030,
+      "bad_accept_rate": 0.0,
+      "safe_reject_rate": 1.0,
+      "objective": 1.0,
+      "auc": 0.5993007182300502,
+      "average_precision": 0.7048911216403974,
+      "brier_uncalibrated": 0.24992920458316803,
+      "calibration_bins": [
+        {
+          "n": 2,
+          "mean_score": 0.09405669569969177,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 348,
+          "mean_score": 0.15342341363430023,
+          "bad_fraction": 0.45689655172413796
+        },
+        {
+          "n": 260,
+          "mean_score": 0.25315481424331665,
+          "bad_fraction": 0.5692307692307692
+        },
+        {
+          "n": 804,
+          "mean_score": 0.34381648898124695,
+          "bad_fraction": 0.4116915422885572
+        },
+        {
+          "n": 111,
+          "mean_score": 0.4543497562408447,
+          "bad_fraction": 0.14414414414414414
+        },
+        {
+          "n": 232,
+          "mean_score": 0.5500009059906006,
+          "bad_fraction": 0.375
+        },
+        {
+          "n": 146,
+          "mean_score": 0.6409227848052979,
+          "bad_fraction": 0.9246575342465754
+        },
+        {
+          "n": 85,
+          "mean_score": 0.74400794506073,
+          "bad_fraction": 0.9529411764705882
+        },
+        {
+          "n": 109,
+          "mean_score": 0.8472213745117188,
+          "bad_fraction": 0.9908256880733946
+        },
+        {
+          "n": 9,
+          "mean_score": 0.9034335017204285,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "logistic",
+      "threshold": 0.13999999999999999,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 100,
+      "accepted_bad": 12,
+      "rejected_safe": 942,
+      "bad_accept_rate": 0.014906832298136646,
+      "safe_reject_rate": 0.9145631067961165,
+      "objective": 0.9741904359886631,
+      "auc": 0.5993007182300502,
+      "average_precision": 0.7048911216403974,
+      "brier_uncalibrated": 0.24992920458316803,
+      "calibration_bins": [
+        {
+          "n": 2,
+          "mean_score": 0.09405669569969177,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 348,
+          "mean_score": 0.15342341363430023,
+          "bad_fraction": 0.45689655172413796
+        },
+        {
+          "n": 260,
+          "mean_score": 0.25315481424331665,
+          "bad_fraction": 0.5692307692307692
+        },
+        {
+          "n": 804,
+          "mean_score": 0.34381648898124695,
+          "bad_fraction": 0.4116915422885572
+        },
+        {
+          "n": 111,
+          "mean_score": 0.4543497562408447,
+          "bad_fraction": 0.14414414414414414
+        },
+        {
+          "n": 232,
+          "mean_score": 0.5500009059906006,
+          "bad_fraction": 0.375
+        },
+        {
+          "n": 146,
+          "mean_score": 0.6409227848052979,
+          "bad_fraction": 0.9246575342465754
+        },
+        {
+          "n": 85,
+          "mean_score": 0.74400794506073,
+          "bad_fraction": 0.9529411764705882
+        },
+        {
+          "n": 109,
+          "mean_score": 0.8472213745117188,
+          "bad_fraction": 0.9908256880733946
+        },
+        {
+          "n": 9,
+          "mean_score": 0.9034335017204285,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "logistic",
+      "threshold": 0.18,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 196,
+      "accepted_bad": 31,
+      "rejected_safe": 865,
+      "bad_accept_rate": 0.03850931677018633,
+      "safe_reject_rate": 0.8398058252427184,
+      "objective": 0.9938430923234638,
+      "auc": 0.5993007182300502,
+      "average_precision": 0.7048911216403974,
+      "brier_uncalibrated": 0.24992920458316803,
+      "calibration_bins": [
+        {
+          "n": 2,
+          "mean_score": 0.09405669569969177,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 348,
+          "mean_score": 0.15342341363430023,
+          "bad_fraction": 0.45689655172413796
+        },
+        {
+          "n": 260,
+          "mean_score": 0.25315481424331665,
+          "bad_fraction": 0.5692307692307692
+        },
+        {
+          "n": 804,
+          "mean_score": 0.34381648898124695,
+          "bad_fraction": 0.4116915422885572
+        },
+        {
+          "n": 111,
+          "mean_score": 0.4543497562408447,
+          "bad_fraction": 0.14414414414414414
+        },
+        {
+          "n": 232,
+          "mean_score": 0.5500009059906006,
+          "bad_fraction": 0.375
+        },
+        {
+          "n": 146,
+          "mean_score": 0.6409227848052979,
+          "bad_fraction": 0.9246575342465754
+        },
+        {
+          "n": 85,
+          "mean_score": 0.74400794506073,
+          "bad_fraction": 0.9529411764705882
+        },
+        {
+          "n": 109,
+          "mean_score": 0.8472213745117188,
+          "bad_fraction": 0.9908256880733946
+        },
+        {
+          "n": 9,
+          "mean_score": 0.9034335017204285,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "logistic",
+      "threshold": 0.22,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 237,
+      "accepted_bad": 33,
+      "rejected_safe": 826,
+      "bad_accept_rate": 0.040993788819875775,
+      "safe_reject_rate": 0.8019417475728156,
+      "objective": 0.9659169028523187,
+      "auc": 0.5993007182300502,
+      "average_precision": 0.7048911216403974,
+      "brier_uncalibrated": 0.24992920458316803,
+      "calibration_bins": [
+        {
+          "n": 2,
+          "mean_score": 0.09405669569969177,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 348,
+          "mean_score": 0.15342341363430023,
+          "bad_fraction": 0.45689655172413796
+        },
+        {
+          "n": 260,
+          "mean_score": 0.25315481424331665,
+          "bad_fraction": 0.5692307692307692
+        },
+        {
+          "n": 804,
+          "mean_score": 0.34381648898124695,
+          "bad_fraction": 0.4116915422885572
+        },
+        {
+          "n": 111,
+          "mean_score": 0.4543497562408447,
+          "bad_fraction": 0.14414414414414414
+        },
+        {
+          "n": 232,
+          "mean_score": 0.5500009059906006,
+          "bad_fraction": 0.375
+        },
+        {
+          "n": 146,
+          "mean_score": 0.6409227848052979,
+          "bad_fraction": 0.9246575342465754
+        },
+        {
+          "n": 85,
+          "mean_score": 0.74400794506073,
+          "bad_fraction": 0.9529411764705882
+        },
+        {
+          "n": 109,
+          "mean_score": 0.8472213745117188,
+          "bad_fraction": 0.9908256880733946
+        },
+        {
+          "n": 9,
+          "mean_score": 0.9034335017204285,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "logistic",
+      "threshold": 0.26,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 248,
+      "accepted_bad": 33,
+      "rejected_safe": 815,
+      "bad_accept_rate": 0.040993788819875775,
+      "safe_reject_rate": 0.7912621359223301,
+      "objective": 0.9552372912018332,
+      "auc": 0.5993007182300502,
+      "average_precision": 0.7048911216403974,
+      "brier_uncalibrated": 0.24992920458316803,
+      "calibration_bins": [
+        {
+          "n": 2,
+          "mean_score": 0.09405669569969177,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 348,
+          "mean_score": 0.15342341363430023,
+          "bad_fraction": 0.45689655172413796
+        },
+        {
+          "n": 260,
+          "mean_score": 0.25315481424331665,
+          "bad_fraction": 0.5692307692307692
+        },
+        {
+          "n": 804,
+          "mean_score": 0.34381648898124695,
+          "bad_fraction": 0.4116915422885572
+        },
+        {
+          "n": 111,
+          "mean_score": 0.4543497562408447,
+          "bad_fraction": 0.14414414414414414
+        },
+        {
+          "n": 232,
+          "mean_score": 0.5500009059906006,
+          "bad_fraction": 0.375
+        },
+        {
+          "n": 146,
+          "mean_score": 0.6409227848052979,
+          "bad_fraction": 0.9246575342465754
+        },
+        {
+          "n": 85,
+          "mean_score": 0.74400794506073,
+          "bad_fraction": 0.9529411764705882
+        },
+        {
+          "n": 109,
+          "mean_score": 0.8472213745117188,
+          "bad_fraction": 0.9908256880733946
+        },
+        {
+          "n": 9,
+          "mean_score": 0.9034335017204285,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "logistic",
+      "threshold": 0.30000000000000004,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 358,
+      "accepted_bad": 57,
+      "rejected_safe": 729,
+      "bad_accept_rate": 0.07080745341614907,
+      "safe_reject_rate": 0.7077669902912621,
+      "objective": 0.9909968039558583,
+      "auc": 0.5993007182300502,
+      "average_precision": 0.7048911216403974,
+      "brier_uncalibrated": 0.24992920458316803,
+      "calibration_bins": [
+        {
+          "n": 2,
+          "mean_score": 0.09405669569969177,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 348,
+          "mean_score": 0.15342341363430023,
+          "bad_fraction": 0.45689655172413796
+        },
+        {
+          "n": 260,
+          "mean_score": 0.25315481424331665,
+          "bad_fraction": 0.5692307692307692
+        },
+        {
+          "n": 804,
+          "mean_score": 0.34381648898124695,
+          "bad_fraction": 0.4116915422885572
+        },
+        {
+          "n": 111,
+          "mean_score": 0.4543497562408447,
+          "bad_fraction": 0.14414414414414414
+        },
+        {
+          "n": 232,
+          "mean_score": 0.5500009059906006,
+          "bad_fraction": 0.375
+        },
+        {
+          "n": 146,
+          "mean_score": 0.6409227848052979,
+          "bad_fraction": 0.9246575342465754
+        },
+        {
+          "n": 85,
+          "mean_score": 0.74400794506073,
+          "bad_fraction": 0.9529411764705882
+        },
+        {
+          "n": 109,
+          "mean_score": 0.8472213745117188,
+          "bad_fraction": 0.9908256880733946
+        },
+        {
+          "n": 9,
+          "mean_score": 0.9034335017204285,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "logistic",
+      "threshold": 0.34,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 738,
+      "accepted_bad": 233,
+      "rejected_safe": 525,
+      "bad_accept_rate": 0.2894409937888199,
+      "safe_reject_rate": 0.5097087378640777,
+      "objective": 1.6674727130193572,
+      "auc": 0.5993007182300502,
+      "average_precision": 0.7048911216403974,
+      "brier_uncalibrated": 0.24992920458316803,
+      "calibration_bins": [
+        {
+          "n": 2,
+          "mean_score": 0.09405669569969177,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 348,
+          "mean_score": 0.15342341363430023,
+          "bad_fraction": 0.45689655172413796
+        },
+        {
+          "n": 260,
+          "mean_score": 0.25315481424331665,
+          "bad_fraction": 0.5692307692307692
+        },
+        {
+          "n": 804,
+          "mean_score": 0.34381648898124695,
+          "bad_fraction": 0.4116915422885572
+        },
+        {
+          "n": 111,
+          "mean_score": 0.4543497562408447,
+          "bad_fraction": 0.14414414414414414
+        },
+        {
+          "n": 232,
+          "mean_score": 0.5500009059906006,
+          "bad_fraction": 0.375
+        },
+        {
+          "n": 146,
+          "mean_score": 0.6409227848052979,
+          "bad_fraction": 0.9246575342465754
+        },
+        {
+          "n": 85,
+          "mean_score": 0.74400794506073,
+          "bad_fraction": 0.9529411764705882
+        },
+        {
+          "n": 109,
+          "mean_score": 0.8472213745117188,
+          "bad_fraction": 0.9908256880733946
+        },
+        {
+          "n": 9,
+          "mean_score": 0.9034335017204285,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "logistic",
+      "threshold": 0.38,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1088,
+      "accepted_bad": 363,
+      "rejected_safe": 305,
+      "bad_accept_rate": 0.4509316770186335,
+      "safe_reject_rate": 0.2961165048543689,
+      "objective": 2.099843212928903,
+      "auc": 0.5993007182300502,
+      "average_precision": 0.7048911216403974,
+      "brier_uncalibrated": 0.24992920458316803,
+      "calibration_bins": [
+        {
+          "n": 2,
+          "mean_score": 0.09405669569969177,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 348,
+          "mean_score": 0.15342341363430023,
+          "bad_fraction": 0.45689655172413796
+        },
+        {
+          "n": 260,
+          "mean_score": 0.25315481424331665,
+          "bad_fraction": 0.5692307692307692
+        },
+        {
+          "n": 804,
+          "mean_score": 0.34381648898124695,
+          "bad_fraction": 0.4116915422885572
+        },
+        {
+          "n": 111,
+          "mean_score": 0.4543497562408447,
+          "bad_fraction": 0.14414414414414414
+        },
+        {
+          "n": 232,
+          "mean_score": 0.5500009059906006,
+          "bad_fraction": 0.375
+        },
+        {
+          "n": 146,
+          "mean_score": 0.6409227848052979,
+          "bad_fraction": 0.9246575342465754
+        },
+        {
+          "n": 85,
+          "mean_score": 0.74400794506073,
+          "bad_fraction": 0.9529411764705882
+        },
+        {
+          "n": 109,
+          "mean_score": 0.8472213745117188,
+          "bad_fraction": 0.9908256880733946
+        },
+        {
+          "n": 9,
+          "mean_score": 0.9034335017204285,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "logistic",
+      "threshold": 0.42000000000000004,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1189,
+      "accepted_bad": 387,
+      "rejected_safe": 228,
+      "bad_accept_rate": 0.48074534161490684,
+      "safe_reject_rate": 0.22135922330097088,
+      "objective": 2.1443405897605983,
+      "auc": 0.5993007182300502,
+      "average_precision": 0.7048911216403974,
+      "brier_uncalibrated": 0.24992920458316803,
+      "calibration_bins": [
+        {
+          "n": 2,
+          "mean_score": 0.09405669569969177,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 348,
+          "mean_score": 0.15342341363430023,
+          "bad_fraction": 0.45689655172413796
+        },
+        {
+          "n": 260,
+          "mean_score": 0.25315481424331665,
+          "bad_fraction": 0.5692307692307692
+        },
+        {
+          "n": 804,
+          "mean_score": 0.34381648898124695,
+          "bad_fraction": 0.4116915422885572
+        },
+        {
+          "n": 111,
+          "mean_score": 0.4543497562408447,
+          "bad_fraction": 0.14414414414414414
+        },
+        {
+          "n": 232,
+          "mean_score": 0.5500009059906006,
+          "bad_fraction": 0.375
+        },
+        {
+          "n": 146,
+          "mean_score": 0.6409227848052979,
+          "bad_fraction": 0.9246575342465754
+        },
+        {
+          "n": 85,
+          "mean_score": 0.74400794506073,
+          "bad_fraction": 0.9529411764705882
+        },
+        {
+          "n": 109,
+          "mean_score": 0.8472213745117188,
+          "bad_fraction": 0.9908256880733946
+        },
+        {
+          "n": 9,
+          "mean_score": 0.9034335017204285,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "logistic",
+      "threshold": 0.46,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1210,
+      "accepted_bad": 396,
+      "rejected_safe": 216,
+      "bad_accept_rate": 0.4919254658385093,
+      "safe_reject_rate": 0.20970873786407768,
+      "objective": 2.177410601218115,
+      "auc": 0.5993007182300502,
+      "average_precision": 0.7048911216403974,
+      "brier_uncalibrated": 0.24992920458316803,
+      "calibration_bins": [
+        {
+          "n": 2,
+          "mean_score": 0.09405669569969177,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 348,
+          "mean_score": 0.15342341363430023,
+          "bad_fraction": 0.45689655172413796
+        },
+        {
+          "n": 260,
+          "mean_score": 0.25315481424331665,
+          "bad_fraction": 0.5692307692307692
+        },
+        {
+          "n": 804,
+          "mean_score": 0.34381648898124695,
+          "bad_fraction": 0.4116915422885572
+        },
+        {
+          "n": 111,
+          "mean_score": 0.4543497562408447,
+          "bad_fraction": 0.14414414414414414
+        },
+        {
+          "n": 232,
+          "mean_score": 0.5500009059906006,
+          "bad_fraction": 0.375
+        },
+        {
+          "n": 146,
+          "mean_score": 0.6409227848052979,
+          "bad_fraction": 0.9246575342465754
+        },
+        {
+          "n": 85,
+          "mean_score": 0.74400794506073,
+          "bad_fraction": 0.9529411764705882
+        },
+        {
+          "n": 109,
+          "mean_score": 0.8472213745117188,
+          "bad_fraction": 0.9908256880733946
+        },
+        {
+          "n": 9,
+          "mean_score": 0.9034335017204285,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "logistic",
+      "threshold": 0.5,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1266,
+      "accepted_bad": 397,
+      "rejected_safe": 161,
+      "bad_accept_rate": 0.493167701863354,
+      "safe_reject_rate": 0.1563106796116505,
+      "objective": 2.1289814870650665,
+      "auc": 0.5993007182300502,
+      "average_precision": 0.7048911216403974,
+      "brier_uncalibrated": 0.24992920458316803,
+      "calibration_bins": [
+        {
+          "n": 2,
+          "mean_score": 0.09405669569969177,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 348,
+          "mean_score": 0.15342341363430023,
+          "bad_fraction": 0.45689655172413796
+        },
+        {
+          "n": 260,
+          "mean_score": 0.25315481424331665,
+          "bad_fraction": 0.5692307692307692
+        },
+        {
+          "n": 804,
+          "mean_score": 0.34381648898124695,
+          "bad_fraction": 0.4116915422885572
+        },
+        {
+          "n": 111,
+          "mean_score": 0.4543497562408447,
+          "bad_fraction": 0.14414414414414414
+        },
+        {
+          "n": 232,
+          "mean_score": 0.5500009059906006,
+          "bad_fraction": 0.375
+        },
+        {
+          "n": 146,
+          "mean_score": 0.6409227848052979,
+          "bad_fraction": 0.9246575342465754
+        },
+        {
+          "n": 85,
+          "mean_score": 0.74400794506073,
+          "bad_fraction": 0.9529411764705882
+        },
+        {
+          "n": 109,
+          "mean_score": 0.8472213745117188,
+          "bad_fraction": 0.9908256880733946
+        },
+        {
+          "n": 9,
+          "mean_score": 0.9034335017204285,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "logistic",
+      "threshold": 0.54,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1367,
+      "accepted_bad": 401,
+      "rejected_safe": 64,
+      "bad_accept_rate": 0.49813664596273294,
+      "safe_reject_rate": 0.062135922330097085,
+      "objective": 2.0546825061810288,
+      "auc": 0.5993007182300502,
+      "average_precision": 0.7048911216403974,
+      "brier_uncalibrated": 0.24992920458316803,
+      "calibration_bins": [
+        {
+          "n": 2,
+          "mean_score": 0.09405669569969177,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 348,
+          "mean_score": 0.15342341363430023,
+          "bad_fraction": 0.45689655172413796
+        },
+        {
+          "n": 260,
+          "mean_score": 0.25315481424331665,
+          "bad_fraction": 0.5692307692307692
+        },
+        {
+          "n": 804,
+          "mean_score": 0.34381648898124695,
+          "bad_fraction": 0.4116915422885572
+        },
+        {
+          "n": 111,
+          "mean_score": 0.4543497562408447,
+          "bad_fraction": 0.14414414414414414
+        },
+        {
+          "n": 232,
+          "mean_score": 0.5500009059906006,
+          "bad_fraction": 0.375
+        },
+        {
+          "n": 146,
+          "mean_score": 0.6409227848052979,
+          "bad_fraction": 0.9246575342465754
+        },
+        {
+          "n": 85,
+          "mean_score": 0.74400794506073,
+          "bad_fraction": 0.9529411764705882
+        },
+        {
+          "n": 109,
+          "mean_score": 0.8472213745117188,
+          "bad_fraction": 0.9908256880733946
+        },
+        {
+          "n": 9,
+          "mean_score": 0.9034335017204285,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "logistic",
+      "threshold": 0.5800000000000001,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1436,
+      "accepted_bad": 426,
+      "rejected_safe": 20,
+      "bad_accept_rate": 0.529192546583851,
+      "safe_reject_rate": 0.019417475728155338,
+      "objective": 2.136187662063559,
+      "auc": 0.5993007182300502,
+      "average_precision": 0.7048911216403974,
+      "brier_uncalibrated": 0.24992920458316803,
+      "calibration_bins": [
+        {
+          "n": 2,
+          "mean_score": 0.09405669569969177,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 348,
+          "mean_score": 0.15342341363430023,
+          "bad_fraction": 0.45689655172413796
+        },
+        {
+          "n": 260,
+          "mean_score": 0.25315481424331665,
+          "bad_fraction": 0.5692307692307692
+        },
+        {
+          "n": 804,
+          "mean_score": 0.34381648898124695,
+          "bad_fraction": 0.4116915422885572
+        },
+        {
+          "n": 111,
+          "mean_score": 0.4543497562408447,
+          "bad_fraction": 0.14414414414414414
+        },
+        {
+          "n": 232,
+          "mean_score": 0.5500009059906006,
+          "bad_fraction": 0.375
+        },
+        {
+          "n": 146,
+          "mean_score": 0.6409227848052979,
+          "bad_fraction": 0.9246575342465754
+        },
+        {
+          "n": 85,
+          "mean_score": 0.74400794506073,
+          "bad_fraction": 0.9529411764705882
+        },
+        {
+          "n": 109,
+          "mean_score": 0.8472213745117188,
+          "bad_fraction": 0.9908256880733946
+        },
+        {
+          "n": 9,
+          "mean_score": 0.9034335017204285,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "logistic",
+      "threshold": 0.62,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1545,
+      "accepted_bad": 527,
+      "rejected_safe": 12,
+      "bad_accept_rate": 0.6546583850931676,
+      "safe_reject_rate": 0.011650485436893204,
+      "objective": 2.630284025809564,
+      "auc": 0.5993007182300502,
+      "average_precision": 0.7048911216403974,
+      "brier_uncalibrated": 0.24992920458316803,
+      "calibration_bins": [
+        {
+          "n": 2,
+          "mean_score": 0.09405669569969177,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 348,
+          "mean_score": 0.15342341363430023,
+          "bad_fraction": 0.45689655172413796
+        },
+        {
+          "n": 260,
+          "mean_score": 0.25315481424331665,
+          "bad_fraction": 0.5692307692307692
+        },
+        {
+          "n": 804,
+          "mean_score": 0.34381648898124695,
+          "bad_fraction": 0.4116915422885572
+        },
+        {
+          "n": 111,
+          "mean_score": 0.4543497562408447,
+          "bad_fraction": 0.14414414414414414
+        },
+        {
+          "n": 232,
+          "mean_score": 0.5500009059906006,
+          "bad_fraction": 0.375
+        },
+        {
+          "n": 146,
+          "mean_score": 0.6409227848052979,
+          "bad_fraction": 0.9246575342465754
+        },
+        {
+          "n": 85,
+          "mean_score": 0.74400794506073,
+          "bad_fraction": 0.9529411764705882
+        },
+        {
+          "n": 109,
+          "mean_score": 0.8472213745117188,
+          "bad_fraction": 0.9908256880733946
+        },
+        {
+          "n": 9,
+          "mean_score": 0.9034335017204285,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "logistic",
+      "threshold": 0.66,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1594,
+      "accepted_bad": 572,
+      "rejected_safe": 8,
+      "bad_accept_rate": 0.7105590062111802,
+      "safe_reject_rate": 0.007766990291262136,
+      "objective": 2.8500030151359828,
+      "auc": 0.5993007182300502,
+      "average_precision": 0.7048911216403974,
+      "brier_uncalibrated": 0.24992920458316803,
+      "calibration_bins": [
+        {
+          "n": 2,
+          "mean_score": 0.09405669569969177,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 348,
+          "mean_score": 0.15342341363430023,
+          "bad_fraction": 0.45689655172413796
+        },
+        {
+          "n": 260,
+          "mean_score": 0.25315481424331665,
+          "bad_fraction": 0.5692307692307692
+        },
+        {
+          "n": 804,
+          "mean_score": 0.34381648898124695,
+          "bad_fraction": 0.4116915422885572
+        },
+        {
+          "n": 111,
+          "mean_score": 0.4543497562408447,
+          "bad_fraction": 0.14414414414414414
+        },
+        {
+          "n": 232,
+          "mean_score": 0.5500009059906006,
+          "bad_fraction": 0.375
+        },
+        {
+          "n": 146,
+          "mean_score": 0.6409227848052979,
+          "bad_fraction": 0.9246575342465754
+        },
+        {
+          "n": 85,
+          "mean_score": 0.74400794506073,
+          "bad_fraction": 0.9529411764705882
+        },
+        {
+          "n": 109,
+          "mean_score": 0.8472213745117188,
+          "bad_fraction": 0.9908256880733946
+        },
+        {
+          "n": 9,
+          "mean_score": 0.9034335017204285,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "logistic",
+      "threshold": 0.7000000000000001,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1635,
+      "accepted_bad": 610,
+      "rejected_safe": 5,
+      "bad_accept_rate": 0.7577639751552795,
+      "safe_reject_rate": 0.0048543689320388345,
+      "objective": 3.035910269553157,
+      "auc": 0.5993007182300502,
+      "average_precision": 0.7048911216403974,
+      "brier_uncalibrated": 0.24992920458316803,
+      "calibration_bins": [
+        {
+          "n": 2,
+          "mean_score": 0.09405669569969177,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 348,
+          "mean_score": 0.15342341363430023,
+          "bad_fraction": 0.45689655172413796
+        },
+        {
+          "n": 260,
+          "mean_score": 0.25315481424331665,
+          "bad_fraction": 0.5692307692307692
+        },
+        {
+          "n": 804,
+          "mean_score": 0.34381648898124695,
+          "bad_fraction": 0.4116915422885572
+        },
+        {
+          "n": 111,
+          "mean_score": 0.4543497562408447,
+          "bad_fraction": 0.14414414414414414
+        },
+        {
+          "n": 232,
+          "mean_score": 0.5500009059906006,
+          "bad_fraction": 0.375
+        },
+        {
+          "n": 146,
+          "mean_score": 0.6409227848052979,
+          "bad_fraction": 0.9246575342465754
+        },
+        {
+          "n": 85,
+          "mean_score": 0.74400794506073,
+          "bad_fraction": 0.9529411764705882
+        },
+        {
+          "n": 109,
+          "mean_score": 0.8472213745117188,
+          "bad_fraction": 0.9908256880733946
+        },
+        {
+          "n": 9,
+          "mean_score": 0.9034335017204285,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "logistic",
+      "threshold": 0.74,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1677,
+      "accepted_bad": 650,
+      "rejected_safe": 3,
+      "bad_accept_rate": 0.8074534161490683,
+      "safe_reject_rate": 0.002912621359223301,
+      "objective": 3.2327262859554966,
+      "auc": 0.5993007182300502,
+      "average_precision": 0.7048911216403974,
+      "brier_uncalibrated": 0.24992920458316803,
+      "calibration_bins": [
+        {
+          "n": 2,
+          "mean_score": 0.09405669569969177,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 348,
+          "mean_score": 0.15342341363430023,
+          "bad_fraction": 0.45689655172413796
+        },
+        {
+          "n": 260,
+          "mean_score": 0.25315481424331665,
+          "bad_fraction": 0.5692307692307692
+        },
+        {
+          "n": 804,
+          "mean_score": 0.34381648898124695,
+          "bad_fraction": 0.4116915422885572
+        },
+        {
+          "n": 111,
+          "mean_score": 0.4543497562408447,
+          "bad_fraction": 0.14414414414414414
+        },
+        {
+          "n": 232,
+          "mean_score": 0.5500009059906006,
+          "bad_fraction": 0.375
+        },
+        {
+          "n": 146,
+          "mean_score": 0.6409227848052979,
+          "bad_fraction": 0.9246575342465754
+        },
+        {
+          "n": 85,
+          "mean_score": 0.74400794506073,
+          "bad_fraction": 0.9529411764705882
+        },
+        {
+          "n": 109,
+          "mean_score": 0.8472213745117188,
+          "bad_fraction": 0.9908256880733946
+        },
+        {
+          "n": 9,
+          "mean_score": 0.9034335017204285,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "logistic",
+      "threshold": 0.78,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1705,
+      "accepted_bad": 677,
+      "rejected_safe": 2,
+      "bad_accept_rate": 0.8409937888198757,
+      "safe_reject_rate": 0.001941747572815534,
+      "objective": 3.3659169028523186,
+      "auc": 0.5993007182300502,
+      "average_precision": 0.7048911216403974,
+      "brier_uncalibrated": 0.24992920458316803,
+      "calibration_bins": [
+        {
+          "n": 2,
+          "mean_score": 0.09405669569969177,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 348,
+          "mean_score": 0.15342341363430023,
+          "bad_fraction": 0.45689655172413796
+        },
+        {
+          "n": 260,
+          "mean_score": 0.25315481424331665,
+          "bad_fraction": 0.5692307692307692
+        },
+        {
+          "n": 804,
+          "mean_score": 0.34381648898124695,
+          "bad_fraction": 0.4116915422885572
+        },
+        {
+          "n": 111,
+          "mean_score": 0.4543497562408447,
+          "bad_fraction": 0.14414414414414414
+        },
+        {
+          "n": 232,
+          "mean_score": 0.5500009059906006,
+          "bad_fraction": 0.375
+        },
+        {
+          "n": 146,
+          "mean_score": 0.6409227848052979,
+          "bad_fraction": 0.9246575342465754
+        },
+        {
+          "n": 85,
+          "mean_score": 0.74400794506073,
+          "bad_fraction": 0.9529411764705882
+        },
+        {
+          "n": 109,
+          "mean_score": 0.8472213745117188,
+          "bad_fraction": 0.9908256880733946
+        },
+        {
+          "n": 9,
+          "mean_score": 0.9034335017204285,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "logistic",
+      "threshold": 0.8200000000000001,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1733,
+      "accepted_bad": 704,
+      "rejected_safe": 1,
+      "bad_accept_rate": 0.8745341614906832,
+      "safe_reject_rate": 0.000970873786407767,
+      "objective": 3.4991075197491406,
+      "auc": 0.5993007182300502,
+      "average_precision": 0.7048911216403974,
+      "brier_uncalibrated": 0.24992920458316803,
+      "calibration_bins": [
+        {
+          "n": 2,
+          "mean_score": 0.09405669569969177,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 348,
+          "mean_score": 0.15342341363430023,
+          "bad_fraction": 0.45689655172413796
+        },
+        {
+          "n": 260,
+          "mean_score": 0.25315481424331665,
+          "bad_fraction": 0.5692307692307692
+        },
+        {
+          "n": 804,
+          "mean_score": 0.34381648898124695,
+          "bad_fraction": 0.4116915422885572
+        },
+        {
+          "n": 111,
+          "mean_score": 0.4543497562408447,
+          "bad_fraction": 0.14414414414414414
+        },
+        {
+          "n": 232,
+          "mean_score": 0.5500009059906006,
+          "bad_fraction": 0.375
+        },
+        {
+          "n": 146,
+          "mean_score": 0.6409227848052979,
+          "bad_fraction": 0.9246575342465754
+        },
+        {
+          "n": 85,
+          "mean_score": 0.74400794506073,
+          "bad_fraction": 0.9529411764705882
+        },
+        {
+          "n": 109,
+          "mean_score": 0.8472213745117188,
+          "bad_fraction": 0.9908256880733946
+        },
+        {
+          "n": 9,
+          "mean_score": 0.9034335017204285,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "logistic",
+      "threshold": 0.86,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1798,
+      "accepted_bad": 768,
+      "rejected_safe": 0,
+      "bad_accept_rate": 0.9540372670807453,
+      "safe_reject_rate": 0.0,
+      "objective": 3.8161490683229813,
+      "auc": 0.5993007182300502,
+      "average_precision": 0.7048911216403974,
+      "brier_uncalibrated": 0.24992920458316803,
+      "calibration_bins": [
+        {
+          "n": 2,
+          "mean_score": 0.09405669569969177,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 348,
+          "mean_score": 0.15342341363430023,
+          "bad_fraction": 0.45689655172413796
+        },
+        {
+          "n": 260,
+          "mean_score": 0.25315481424331665,
+          "bad_fraction": 0.5692307692307692
+        },
+        {
+          "n": 804,
+          "mean_score": 0.34381648898124695,
+          "bad_fraction": 0.4116915422885572
+        },
+        {
+          "n": 111,
+          "mean_score": 0.4543497562408447,
+          "bad_fraction": 0.14414414414414414
+        },
+        {
+          "n": 232,
+          "mean_score": 0.5500009059906006,
+          "bad_fraction": 0.375
+        },
+        {
+          "n": 146,
+          "mean_score": 0.6409227848052979,
+          "bad_fraction": 0.9246575342465754
+        },
+        {
+          "n": 85,
+          "mean_score": 0.74400794506073,
+          "bad_fraction": 0.9529411764705882
+        },
+        {
+          "n": 109,
+          "mean_score": 0.8472213745117188,
+          "bad_fraction": 0.9908256880733946
+        },
+        {
+          "n": 9,
+          "mean_score": 0.9034335017204285,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "logistic",
+      "threshold": 0.9,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1826,
+      "accepted_bad": 796,
+      "rejected_safe": 0,
+      "bad_accept_rate": 0.9888198757763975,
+      "safe_reject_rate": 0.0,
+      "objective": 3.95527950310559,
+      "auc": 0.5993007182300502,
+      "average_precision": 0.7048911216403974,
+      "brier_uncalibrated": 0.24992920458316803,
+      "calibration_bins": [
+        {
+          "n": 2,
+          "mean_score": 0.09405669569969177,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 348,
+          "mean_score": 0.15342341363430023,
+          "bad_fraction": 0.45689655172413796
+        },
+        {
+          "n": 260,
+          "mean_score": 0.25315481424331665,
+          "bad_fraction": 0.5692307692307692
+        },
+        {
+          "n": 804,
+          "mean_score": 0.34381648898124695,
+          "bad_fraction": 0.4116915422885572
+        },
+        {
+          "n": 111,
+          "mean_score": 0.4543497562408447,
+          "bad_fraction": 0.14414414414414414
+        },
+        {
+          "n": 232,
+          "mean_score": 0.5500009059906006,
+          "bad_fraction": 0.375
+        },
+        {
+          "n": 146,
+          "mean_score": 0.6409227848052979,
+          "bad_fraction": 0.9246575342465754
+        },
+        {
+          "n": 85,
+          "mean_score": 0.74400794506073,
+          "bad_fraction": 0.9529411764705882
+        },
+        {
+          "n": 109,
+          "mean_score": 0.8472213745117188,
+          "bad_fraction": 0.9908256880733946
+        },
+        {
+          "n": 9,
+          "mean_score": 0.9034335017204285,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "logistic",
+      "threshold": 0.9400000000000001,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1835,
+      "accepted_bad": 805,
+      "rejected_safe": 0,
+      "bad_accept_rate": 1.0,
+      "safe_reject_rate": 0.0,
+      "objective": 4.0,
+      "auc": 0.5993007182300502,
+      "average_precision": 0.7048911216403974,
+      "brier_uncalibrated": 0.24992920458316803,
+      "calibration_bins": [
+        {
+          "n": 2,
+          "mean_score": 0.09405669569969177,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 348,
+          "mean_score": 0.15342341363430023,
+          "bad_fraction": 0.45689655172413796
+        },
+        {
+          "n": 260,
+          "mean_score": 0.25315481424331665,
+          "bad_fraction": 0.5692307692307692
+        },
+        {
+          "n": 804,
+          "mean_score": 0.34381648898124695,
+          "bad_fraction": 0.4116915422885572
+        },
+        {
+          "n": 111,
+          "mean_score": 0.4543497562408447,
+          "bad_fraction": 0.14414414414414414
+        },
+        {
+          "n": 232,
+          "mean_score": 0.5500009059906006,
+          "bad_fraction": 0.375
+        },
+        {
+          "n": 146,
+          "mean_score": 0.6409227848052979,
+          "bad_fraction": 0.9246575342465754
+        },
+        {
+          "n": 85,
+          "mean_score": 0.74400794506073,
+          "bad_fraction": 0.9529411764705882
+        },
+        {
+          "n": 109,
+          "mean_score": 0.8472213745117188,
+          "bad_fraction": 0.9908256880733946
+        },
+        {
+          "n": 9,
+          "mean_score": 0.9034335017204285,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "logistic",
+      "threshold": 0.98,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1835,
+      "accepted_bad": 805,
+      "rejected_safe": 0,
+      "bad_accept_rate": 1.0,
+      "safe_reject_rate": 0.0,
+      "objective": 4.0,
+      "auc": 0.5993007182300502,
+      "average_precision": 0.7048911216403974,
+      "brier_uncalibrated": 0.24992920458316803,
+      "calibration_bins": [
+        {
+          "n": 2,
+          "mean_score": 0.09405669569969177,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 348,
+          "mean_score": 0.15342341363430023,
+          "bad_fraction": 0.45689655172413796
+        },
+        {
+          "n": 260,
+          "mean_score": 0.25315481424331665,
+          "bad_fraction": 0.5692307692307692
+        },
+        {
+          "n": 804,
+          "mean_score": 0.34381648898124695,
+          "bad_fraction": 0.4116915422885572
+        },
+        {
+          "n": 111,
+          "mean_score": 0.4543497562408447,
+          "bad_fraction": 0.14414414414414414
+        },
+        {
+          "n": 232,
+          "mean_score": 0.5500009059906006,
+          "bad_fraction": 0.375
+        },
+        {
+          "n": 146,
+          "mean_score": 0.6409227848052979,
+          "bad_fraction": 0.9246575342465754
+        },
+        {
+          "n": 85,
+          "mean_score": 0.74400794506073,
+          "bad_fraction": 0.9529411764705882
+        },
+        {
+          "n": 109,
+          "mean_score": 0.8472213745117188,
+          "bad_fraction": 0.9908256880733946
+        },
+        {
+          "n": 9,
+          "mean_score": 0.9034335017204285,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "forest_full",
+      "threshold": 0.02,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 152,
+      "accepted_bad": 0,
+      "rejected_safe": 878,
+      "bad_accept_rate": 0.0,
+      "safe_reject_rate": 0.8524271844660194,
+      "objective": 0.8524271844660194,
+      "auc": 0.9277926155845093,
+      "average_precision": 0.9259701373932884,
+      "brier_uncalibrated": 0.14187043191070356,
+      "calibration_bins": [
+        {
+          "n": 525,
+          "mean_score": 0.041766942920107145,
+          "bad_fraction": 0.0
+        },
+        {
+          "n": 39,
+          "mean_score": 0.13318648107256756,
+          "bad_fraction": 0.05128205128205128
+        },
+        {
+          "n": 64,
+          "mean_score": 0.27732241696109766,
+          "bad_fraction": 0.28125
+        },
+        {
+          "n": 604,
+          "mean_score": 0.3565680395150527,
+          "bad_fraction": 0.40066225165562913
+        },
+        {
+          "n": 313,
+          "mean_score": 0.4525235678883912,
+          "bad_fraction": 0.952076677316294
+        },
+        {
+          "n": 56,
+          "mean_score": 0.5526278557041016,
+          "bad_fraction": 0.7857142857142857
+        },
+        {
+          "n": 83,
+          "mean_score": 0.6514748502262044,
+          "bad_fraction": 0.891566265060241
+        },
+        {
+          "n": 67,
+          "mean_score": 0.7602907182593027,
+          "bad_fraction": 0.7761194029850746
+        },
+        {
+          "n": 64,
+          "mean_score": 0.8344439117093718,
+          "bad_fraction": 0.859375
+        },
+        {
+          "n": 291,
+          "mean_score": 0.9494553865634983,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "forest_full",
+      "threshold": 0.06,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 341,
+      "accepted_bad": 0,
+      "rejected_safe": 689,
+      "bad_accept_rate": 0.0,
+      "safe_reject_rate": 0.6689320388349514,
+      "objective": 0.6689320388349514,
+      "auc": 0.9277926155845093,
+      "average_precision": 0.9259701373932884,
+      "brier_uncalibrated": 0.14187043191070356,
+      "calibration_bins": [
+        {
+          "n": 525,
+          "mean_score": 0.041766942920107145,
+          "bad_fraction": 0.0
+        },
+        {
+          "n": 39,
+          "mean_score": 0.13318648107256756,
+          "bad_fraction": 0.05128205128205128
+        },
+        {
+          "n": 64,
+          "mean_score": 0.27732241696109766,
+          "bad_fraction": 0.28125
+        },
+        {
+          "n": 604,
+          "mean_score": 0.3565680395150527,
+          "bad_fraction": 0.40066225165562913
+        },
+        {
+          "n": 313,
+          "mean_score": 0.4525235678883912,
+          "bad_fraction": 0.952076677316294
+        },
+        {
+          "n": 56,
+          "mean_score": 0.5526278557041016,
+          "bad_fraction": 0.7857142857142857
+        },
+        {
+          "n": 83,
+          "mean_score": 0.6514748502262044,
+          "bad_fraction": 0.891566265060241
+        },
+        {
+          "n": 67,
+          "mean_score": 0.7602907182593027,
+          "bad_fraction": 0.7761194029850746
+        },
+        {
+          "n": 64,
+          "mean_score": 0.8344439117093718,
+          "bad_fraction": 0.859375
+        },
+        {
+          "n": 291,
+          "mean_score": 0.9494553865634983,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "forest_full",
+      "threshold": 0.1,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 525,
+      "accepted_bad": 0,
+      "rejected_safe": 505,
+      "bad_accept_rate": 0.0,
+      "safe_reject_rate": 0.49029126213592233,
+      "objective": 0.49029126213592233,
+      "auc": 0.9277926155845093,
+      "average_precision": 0.9259701373932884,
+      "brier_uncalibrated": 0.14187043191070356,
+      "calibration_bins": [
+        {
+          "n": 525,
+          "mean_score": 0.041766942920107145,
+          "bad_fraction": 0.0
+        },
+        {
+          "n": 39,
+          "mean_score": 0.13318648107256756,
+          "bad_fraction": 0.05128205128205128
+        },
+        {
+          "n": 64,
+          "mean_score": 0.27732241696109766,
+          "bad_fraction": 0.28125
+        },
+        {
+          "n": 604,
+          "mean_score": 0.3565680395150527,
+          "bad_fraction": 0.40066225165562913
+        },
+        {
+          "n": 313,
+          "mean_score": 0.4525235678883912,
+          "bad_fraction": 0.952076677316294
+        },
+        {
+          "n": 56,
+          "mean_score": 0.5526278557041016,
+          "bad_fraction": 0.7857142857142857
+        },
+        {
+          "n": 83,
+          "mean_score": 0.6514748502262044,
+          "bad_fraction": 0.891566265060241
+        },
+        {
+          "n": 67,
+          "mean_score": 0.7602907182593027,
+          "bad_fraction": 0.7761194029850746
+        },
+        {
+          "n": 64,
+          "mean_score": 0.8344439117093718,
+          "bad_fraction": 0.859375
+        },
+        {
+          "n": 291,
+          "mean_score": 0.9494553865634983,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "forest_full",
+      "threshold": 0.13999999999999999,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 548,
+      "accepted_bad": 1,
+      "rejected_safe": 483,
+      "bad_accept_rate": 0.0012422360248447205,
+      "safe_reject_rate": 0.46893203883495144,
+      "objective": 0.4739009829343303,
+      "auc": 0.9277926155845093,
+      "average_precision": 0.9259701373932884,
+      "brier_uncalibrated": 0.14187043191070356,
+      "calibration_bins": [
+        {
+          "n": 525,
+          "mean_score": 0.041766942920107145,
+          "bad_fraction": 0.0
+        },
+        {
+          "n": 39,
+          "mean_score": 0.13318648107256756,
+          "bad_fraction": 0.05128205128205128
+        },
+        {
+          "n": 64,
+          "mean_score": 0.27732241696109766,
+          "bad_fraction": 0.28125
+        },
+        {
+          "n": 604,
+          "mean_score": 0.3565680395150527,
+          "bad_fraction": 0.40066225165562913
+        },
+        {
+          "n": 313,
+          "mean_score": 0.4525235678883912,
+          "bad_fraction": 0.952076677316294
+        },
+        {
+          "n": 56,
+          "mean_score": 0.5526278557041016,
+          "bad_fraction": 0.7857142857142857
+        },
+        {
+          "n": 83,
+          "mean_score": 0.6514748502262044,
+          "bad_fraction": 0.891566265060241
+        },
+        {
+          "n": 67,
+          "mean_score": 0.7602907182593027,
+          "bad_fraction": 0.7761194029850746
+        },
+        {
+          "n": 64,
+          "mean_score": 0.8344439117093718,
+          "bad_fraction": 0.859375
+        },
+        {
+          "n": 291,
+          "mean_score": 0.9494553865634983,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "forest_full",
+      "threshold": 0.18,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 559,
+      "accepted_bad": 2,
+      "rejected_safe": 473,
+      "bad_accept_rate": 0.002484472049689441,
+      "safe_reject_rate": 0.45922330097087377,
+      "objective": 0.4691611891696315,
+      "auc": 0.9277926155845093,
+      "average_precision": 0.9259701373932884,
+      "brier_uncalibrated": 0.14187043191070356,
+      "calibration_bins": [
+        {
+          "n": 525,
+          "mean_score": 0.041766942920107145,
+          "bad_fraction": 0.0
+        },
+        {
+          "n": 39,
+          "mean_score": 0.13318648107256756,
+          "bad_fraction": 0.05128205128205128
+        },
+        {
+          "n": 64,
+          "mean_score": 0.27732241696109766,
+          "bad_fraction": 0.28125
+        },
+        {
+          "n": 604,
+          "mean_score": 0.3565680395150527,
+          "bad_fraction": 0.40066225165562913
+        },
+        {
+          "n": 313,
+          "mean_score": 0.4525235678883912,
+          "bad_fraction": 0.952076677316294
+        },
+        {
+          "n": 56,
+          "mean_score": 0.5526278557041016,
+          "bad_fraction": 0.7857142857142857
+        },
+        {
+          "n": 83,
+          "mean_score": 0.6514748502262044,
+          "bad_fraction": 0.891566265060241
+        },
+        {
+          "n": 67,
+          "mean_score": 0.7602907182593027,
+          "bad_fraction": 0.7761194029850746
+        },
+        {
+          "n": 64,
+          "mean_score": 0.8344439117093718,
+          "bad_fraction": 0.859375
+        },
+        {
+          "n": 291,
+          "mean_score": 0.9494553865634983,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "forest_full",
+      "threshold": 0.22,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 572,
+      "accepted_bad": 5,
+      "rejected_safe": 463,
+      "bad_accept_rate": 0.006211180124223602,
+      "safe_reject_rate": 0.4495145631067961,
+      "objective": 0.4743592836036905,
+      "auc": 0.9277926155845093,
+      "average_precision": 0.9259701373932884,
+      "brier_uncalibrated": 0.14187043191070356,
+      "calibration_bins": [
+        {
+          "n": 525,
+          "mean_score": 0.041766942920107145,
+          "bad_fraction": 0.0
+        },
+        {
+          "n": 39,
+          "mean_score": 0.13318648107256756,
+          "bad_fraction": 0.05128205128205128
+        },
+        {
+          "n": 64,
+          "mean_score": 0.27732241696109766,
+          "bad_fraction": 0.28125
+        },
+        {
+          "n": 604,
+          "mean_score": 0.3565680395150527,
+          "bad_fraction": 0.40066225165562913
+        },
+        {
+          "n": 313,
+          "mean_score": 0.4525235678883912,
+          "bad_fraction": 0.952076677316294
+        },
+        {
+          "n": 56,
+          "mean_score": 0.5526278557041016,
+          "bad_fraction": 0.7857142857142857
+        },
+        {
+          "n": 83,
+          "mean_score": 0.6514748502262044,
+          "bad_fraction": 0.891566265060241
+        },
+        {
+          "n": 67,
+          "mean_score": 0.7602907182593027,
+          "bad_fraction": 0.7761194029850746
+        },
+        {
+          "n": 64,
+          "mean_score": 0.8344439117093718,
+          "bad_fraction": 0.859375
+        },
+        {
+          "n": 291,
+          "mean_score": 0.9494553865634983,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "forest_full",
+      "threshold": 0.26,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 576,
+      "accepted_bad": 6,
+      "rejected_safe": 460,
+      "bad_accept_rate": 0.007453416149068323,
+      "safe_reject_rate": 0.44660194174757284,
+      "objective": 0.4764156063438461,
+      "auc": 0.9277926155845093,
+      "average_precision": 0.9259701373932884,
+      "brier_uncalibrated": 0.14187043191070356,
+      "calibration_bins": [
+        {
+          "n": 525,
+          "mean_score": 0.041766942920107145,
+          "bad_fraction": 0.0
+        },
+        {
+          "n": 39,
+          "mean_score": 0.13318648107256756,
+          "bad_fraction": 0.05128205128205128
+        },
+        {
+          "n": 64,
+          "mean_score": 0.27732241696109766,
+          "bad_fraction": 0.28125
+        },
+        {
+          "n": 604,
+          "mean_score": 0.3565680395150527,
+          "bad_fraction": 0.40066225165562913
+        },
+        {
+          "n": 313,
+          "mean_score": 0.4525235678883912,
+          "bad_fraction": 0.952076677316294
+        },
+        {
+          "n": 56,
+          "mean_score": 0.5526278557041016,
+          "bad_fraction": 0.7857142857142857
+        },
+        {
+          "n": 83,
+          "mean_score": 0.6514748502262044,
+          "bad_fraction": 0.891566265060241
+        },
+        {
+          "n": 67,
+          "mean_score": 0.7602907182593027,
+          "bad_fraction": 0.7761194029850746
+        },
+        {
+          "n": 64,
+          "mean_score": 0.8344439117093718,
+          "bad_fraction": 0.859375
+        },
+        {
+          "n": 291,
+          "mean_score": 0.9494553865634983,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "forest_full",
+      "threshold": 0.30000000000000004,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 628,
+      "accepted_bad": 20,
+      "rejected_safe": 422,
+      "bad_accept_rate": 0.024844720496894408,
+      "safe_reject_rate": 0.4097087378640777,
+      "objective": 0.5090876198516553,
+      "auc": 0.9277926155845093,
+      "average_precision": 0.9259701373932884,
+      "brier_uncalibrated": 0.14187043191070356,
+      "calibration_bins": [
+        {
+          "n": 525,
+          "mean_score": 0.041766942920107145,
+          "bad_fraction": 0.0
+        },
+        {
+          "n": 39,
+          "mean_score": 0.13318648107256756,
+          "bad_fraction": 0.05128205128205128
+        },
+        {
+          "n": 64,
+          "mean_score": 0.27732241696109766,
+          "bad_fraction": 0.28125
+        },
+        {
+          "n": 604,
+          "mean_score": 0.3565680395150527,
+          "bad_fraction": 0.40066225165562913
+        },
+        {
+          "n": 313,
+          "mean_score": 0.4525235678883912,
+          "bad_fraction": 0.952076677316294
+        },
+        {
+          "n": 56,
+          "mean_score": 0.5526278557041016,
+          "bad_fraction": 0.7857142857142857
+        },
+        {
+          "n": 83,
+          "mean_score": 0.6514748502262044,
+          "bad_fraction": 0.891566265060241
+        },
+        {
+          "n": 67,
+          "mean_score": 0.7602907182593027,
+          "bad_fraction": 0.7761194029850746
+        },
+        {
+          "n": 64,
+          "mean_score": 0.8344439117093718,
+          "bad_fraction": 0.859375
+        },
+        {
+          "n": 291,
+          "mean_score": 0.9494553865634983,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "forest_full",
+      "threshold": 0.34,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 741,
+      "accepted_bad": 42,
+      "rejected_safe": 331,
+      "bad_accept_rate": 0.05217391304347826,
+      "safe_reject_rate": 0.3213592233009709,
+      "objective": 0.530054875474884,
+      "auc": 0.9277926155845093,
+      "average_precision": 0.9259701373932884,
+      "brier_uncalibrated": 0.14187043191070356,
+      "calibration_bins": [
+        {
+          "n": 525,
+          "mean_score": 0.041766942920107145,
+          "bad_fraction": 0.0
+        },
+        {
+          "n": 39,
+          "mean_score": 0.13318648107256756,
+          "bad_fraction": 0.05128205128205128
+        },
+        {
+          "n": 64,
+          "mean_score": 0.27732241696109766,
+          "bad_fraction": 0.28125
+        },
+        {
+          "n": 604,
+          "mean_score": 0.3565680395150527,
+          "bad_fraction": 0.40066225165562913
+        },
+        {
+          "n": 313,
+          "mean_score": 0.4525235678883912,
+          "bad_fraction": 0.952076677316294
+        },
+        {
+          "n": 56,
+          "mean_score": 0.5526278557041016,
+          "bad_fraction": 0.7857142857142857
+        },
+        {
+          "n": 83,
+          "mean_score": 0.6514748502262044,
+          "bad_fraction": 0.891566265060241
+        },
+        {
+          "n": 67,
+          "mean_score": 0.7602907182593027,
+          "bad_fraction": 0.7761194029850746
+        },
+        {
+          "n": 64,
+          "mean_score": 0.8344439117093718,
+          "bad_fraction": 0.859375
+        },
+        {
+          "n": 291,
+          "mean_score": 0.9494553865634983,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "forest_full",
+      "threshold": 0.38,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1167,
+      "accepted_bad": 224,
+      "rejected_safe": 87,
+      "bad_accept_rate": 0.2782608695652174,
+      "safe_reject_rate": 0.08446601941747572,
+      "objective": 1.1975094976783454,
+      "auc": 0.9277926155845093,
+      "average_precision": 0.9259701373932884,
+      "brier_uncalibrated": 0.14187043191070356,
+      "calibration_bins": [
+        {
+          "n": 525,
+          "mean_score": 0.041766942920107145,
+          "bad_fraction": 0.0
+        },
+        {
+          "n": 39,
+          "mean_score": 0.13318648107256756,
+          "bad_fraction": 0.05128205128205128
+        },
+        {
+          "n": 64,
+          "mean_score": 0.27732241696109766,
+          "bad_fraction": 0.28125
+        },
+        {
+          "n": 604,
+          "mean_score": 0.3565680395150527,
+          "bad_fraction": 0.40066225165562913
+        },
+        {
+          "n": 313,
+          "mean_score": 0.4525235678883912,
+          "bad_fraction": 0.952076677316294
+        },
+        {
+          "n": 56,
+          "mean_score": 0.5526278557041016,
+          "bad_fraction": 0.7857142857142857
+        },
+        {
+          "n": 83,
+          "mean_score": 0.6514748502262044,
+          "bad_fraction": 0.891566265060241
+        },
+        {
+          "n": 67,
+          "mean_score": 0.7602907182593027,
+          "bad_fraction": 0.7761194029850746
+        },
+        {
+          "n": 64,
+          "mean_score": 0.8344439117093718,
+          "bad_fraction": 0.859375
+        },
+        {
+          "n": 291,
+          "mean_score": 0.9494553865634983,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "forest_full",
+      "threshold": 0.42000000000000004,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1247,
+      "accepted_bad": 268,
+      "rejected_safe": 51,
+      "bad_accept_rate": 0.33291925465838507,
+      "safe_reject_rate": 0.04951456310679612,
+      "objective": 1.3811915817403364,
+      "auc": 0.9277926155845093,
+      "average_precision": 0.9259701373932884,
+      "brier_uncalibrated": 0.14187043191070356,
+      "calibration_bins": [
+        {
+          "n": 525,
+          "mean_score": 0.041766942920107145,
+          "bad_fraction": 0.0
+        },
+        {
+          "n": 39,
+          "mean_score": 0.13318648107256756,
+          "bad_fraction": 0.05128205128205128
+        },
+        {
+          "n": 64,
+          "mean_score": 0.27732241696109766,
+          "bad_fraction": 0.28125
+        },
+        {
+          "n": 604,
+          "mean_score": 0.3565680395150527,
+          "bad_fraction": 0.40066225165562913
+        },
+        {
+          "n": 313,
+          "mean_score": 0.4525235678883912,
+          "bad_fraction": 0.952076677316294
+        },
+        {
+          "n": 56,
+          "mean_score": 0.5526278557041016,
+          "bad_fraction": 0.7857142857142857
+        },
+        {
+          "n": 83,
+          "mean_score": 0.6514748502262044,
+          "bad_fraction": 0.891566265060241
+        },
+        {
+          "n": 67,
+          "mean_score": 0.7602907182593027,
+          "bad_fraction": 0.7761194029850746
+        },
+        {
+          "n": 64,
+          "mean_score": 0.8344439117093718,
+          "bad_fraction": 0.859375
+        },
+        {
+          "n": 291,
+          "mean_score": 0.9494553865634983,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "forest_full",
+      "threshold": 0.46,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1265,
+      "accepted_bad": 280,
+      "rejected_safe": 45,
+      "bad_accept_rate": 0.34782608695652173,
+      "safe_reject_rate": 0.043689320388349516,
+      "objective": 1.4349936682144364,
+      "auc": 0.9277926155845093,
+      "average_precision": 0.9259701373932884,
+      "brier_uncalibrated": 0.14187043191070356,
+      "calibration_bins": [
+        {
+          "n": 525,
+          "mean_score": 0.041766942920107145,
+          "bad_fraction": 0.0
+        },
+        {
+          "n": 39,
+          "mean_score": 0.13318648107256756,
+          "bad_fraction": 0.05128205128205128
+        },
+        {
+          "n": 64,
+          "mean_score": 0.27732241696109766,
+          "bad_fraction": 0.28125
+        },
+        {
+          "n": 604,
+          "mean_score": 0.3565680395150527,
+          "bad_fraction": 0.40066225165562913
+        },
+        {
+          "n": 313,
+          "mean_score": 0.4525235678883912,
+          "bad_fraction": 0.952076677316294
+        },
+        {
+          "n": 56,
+          "mean_score": 0.5526278557041016,
+          "bad_fraction": 0.7857142857142857
+        },
+        {
+          "n": 83,
+          "mean_score": 0.6514748502262044,
+          "bad_fraction": 0.891566265060241
+        },
+        {
+          "n": 67,
+          "mean_score": 0.7602907182593027,
+          "bad_fraction": 0.7761194029850746
+        },
+        {
+          "n": 64,
+          "mean_score": 0.8344439117093718,
+          "bad_fraction": 0.859375
+        },
+        {
+          "n": 291,
+          "mean_score": 0.9494553865634983,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "forest_full",
+      "threshold": 0.5,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1290,
+      "accepted_bad": 305,
+      "rejected_safe": 45,
+      "bad_accept_rate": 0.37888198757763975,
+      "safe_reject_rate": 0.043689320388349516,
+      "objective": 1.5592172706989085,
+      "auc": 0.9277926155845093,
+      "average_precision": 0.9259701373932884,
+      "brier_uncalibrated": 0.14187043191070356,
+      "calibration_bins": [
+        {
+          "n": 525,
+          "mean_score": 0.041766942920107145,
+          "bad_fraction": 0.0
+        },
+        {
+          "n": 39,
+          "mean_score": 0.13318648107256756,
+          "bad_fraction": 0.05128205128205128
+        },
+        {
+          "n": 64,
+          "mean_score": 0.27732241696109766,
+          "bad_fraction": 0.28125
+        },
+        {
+          "n": 604,
+          "mean_score": 0.3565680395150527,
+          "bad_fraction": 0.40066225165562913
+        },
+        {
+          "n": 313,
+          "mean_score": 0.4525235678883912,
+          "bad_fraction": 0.952076677316294
+        },
+        {
+          "n": 56,
+          "mean_score": 0.5526278557041016,
+          "bad_fraction": 0.7857142857142857
+        },
+        {
+          "n": 83,
+          "mean_score": 0.6514748502262044,
+          "bad_fraction": 0.891566265060241
+        },
+        {
+          "n": 67,
+          "mean_score": 0.7602907182593027,
+          "bad_fraction": 0.7761194029850746
+        },
+        {
+          "n": 64,
+          "mean_score": 0.8344439117093718,
+          "bad_fraction": 0.859375
+        },
+        {
+          "n": 291,
+          "mean_score": 0.9494553865634983,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "forest_full",
+      "threshold": 0.54,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1309,
+      "accepted_bad": 324,
+      "rejected_safe": 45,
+      "bad_accept_rate": 0.40248447204968946,
+      "safe_reject_rate": 0.043689320388349516,
+      "objective": 1.6536272085871073,
+      "auc": 0.9277926155845093,
+      "average_precision": 0.9259701373932884,
+      "brier_uncalibrated": 0.14187043191070356,
+      "calibration_bins": [
+        {
+          "n": 525,
+          "mean_score": 0.041766942920107145,
+          "bad_fraction": 0.0
+        },
+        {
+          "n": 39,
+          "mean_score": 0.13318648107256756,
+          "bad_fraction": 0.05128205128205128
+        },
+        {
+          "n": 64,
+          "mean_score": 0.27732241696109766,
+          "bad_fraction": 0.28125
+        },
+        {
+          "n": 604,
+          "mean_score": 0.3565680395150527,
+          "bad_fraction": 0.40066225165562913
+        },
+        {
+          "n": 313,
+          "mean_score": 0.4525235678883912,
+          "bad_fraction": 0.952076677316294
+        },
+        {
+          "n": 56,
+          "mean_score": 0.5526278557041016,
+          "bad_fraction": 0.7857142857142857
+        },
+        {
+          "n": 83,
+          "mean_score": 0.6514748502262044,
+          "bad_fraction": 0.891566265060241
+        },
+        {
+          "n": 67,
+          "mean_score": 0.7602907182593027,
+          "bad_fraction": 0.7761194029850746
+        },
+        {
+          "n": 64,
+          "mean_score": 0.8344439117093718,
+          "bad_fraction": 0.859375
+        },
+        {
+          "n": 291,
+          "mean_score": 0.9494553865634983,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "forest_full",
+      "threshold": 0.5800000000000001,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1324,
+      "accepted_bad": 339,
+      "rejected_safe": 45,
+      "bad_accept_rate": 0.42111801242236024,
+      "safe_reject_rate": 0.043689320388349516,
+      "objective": 1.7281613700777905,
+      "auc": 0.9277926155845093,
+      "average_precision": 0.9259701373932884,
+      "brier_uncalibrated": 0.14187043191070356,
+      "calibration_bins": [
+        {
+          "n": 525,
+          "mean_score": 0.041766942920107145,
+          "bad_fraction": 0.0
+        },
+        {
+          "n": 39,
+          "mean_score": 0.13318648107256756,
+          "bad_fraction": 0.05128205128205128
+        },
+        {
+          "n": 64,
+          "mean_score": 0.27732241696109766,
+          "bad_fraction": 0.28125
+        },
+        {
+          "n": 604,
+          "mean_score": 0.3565680395150527,
+          "bad_fraction": 0.40066225165562913
+        },
+        {
+          "n": 313,
+          "mean_score": 0.4525235678883912,
+          "bad_fraction": 0.952076677316294
+        },
+        {
+          "n": 56,
+          "mean_score": 0.5526278557041016,
+          "bad_fraction": 0.7857142857142857
+        },
+        {
+          "n": 83,
+          "mean_score": 0.6514748502262044,
+          "bad_fraction": 0.891566265060241
+        },
+        {
+          "n": 67,
+          "mean_score": 0.7602907182593027,
+          "bad_fraction": 0.7761194029850746
+        },
+        {
+          "n": 64,
+          "mean_score": 0.8344439117093718,
+          "bad_fraction": 0.859375
+        },
+        {
+          "n": 291,
+          "mean_score": 0.9494553865634983,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "forest_full",
+      "threshold": 0.62,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1369,
+      "accepted_bad": 372,
+      "rejected_safe": 33,
+      "bad_accept_rate": 0.462111801242236,
+      "safe_reject_rate": 0.03203883495145631,
+      "objective": 1.8804860399204002,
+      "auc": 0.9277926155845093,
+      "average_precision": 0.9259701373932884,
+      "brier_uncalibrated": 0.14187043191070356,
+      "calibration_bins": [
+        {
+          "n": 525,
+          "mean_score": 0.041766942920107145,
+          "bad_fraction": 0.0
+        },
+        {
+          "n": 39,
+          "mean_score": 0.13318648107256756,
+          "bad_fraction": 0.05128205128205128
+        },
+        {
+          "n": 64,
+          "mean_score": 0.27732241696109766,
+          "bad_fraction": 0.28125
+        },
+        {
+          "n": 604,
+          "mean_score": 0.3565680395150527,
+          "bad_fraction": 0.40066225165562913
+        },
+        {
+          "n": 313,
+          "mean_score": 0.4525235678883912,
+          "bad_fraction": 0.952076677316294
+        },
+        {
+          "n": 56,
+          "mean_score": 0.5526278557041016,
+          "bad_fraction": 0.7857142857142857
+        },
+        {
+          "n": 83,
+          "mean_score": 0.6514748502262044,
+          "bad_fraction": 0.891566265060241
+        },
+        {
+          "n": 67,
+          "mean_score": 0.7602907182593027,
+          "bad_fraction": 0.7761194029850746
+        },
+        {
+          "n": 64,
+          "mean_score": 0.8344439117093718,
+          "bad_fraction": 0.859375
+        },
+        {
+          "n": 291,
+          "mean_score": 0.9494553865634983,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "forest_full",
+      "threshold": 0.66,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1384,
+      "accepted_bad": 384,
+      "rejected_safe": 30,
+      "bad_accept_rate": 0.47701863354037266,
+      "safe_reject_rate": 0.02912621359223301,
+      "objective": 1.9372007477537236,
+      "auc": 0.9277926155845093,
+      "average_precision": 0.9259701373932884,
+      "brier_uncalibrated": 0.14187043191070356,
+      "calibration_bins": [
+        {
+          "n": 525,
+          "mean_score": 0.041766942920107145,
+          "bad_fraction": 0.0
+        },
+        {
+          "n": 39,
+          "mean_score": 0.13318648107256756,
+          "bad_fraction": 0.05128205128205128
+        },
+        {
+          "n": 64,
+          "mean_score": 0.27732241696109766,
+          "bad_fraction": 0.28125
+        },
+        {
+          "n": 604,
+          "mean_score": 0.3565680395150527,
+          "bad_fraction": 0.40066225165562913
+        },
+        {
+          "n": 313,
+          "mean_score": 0.4525235678883912,
+          "bad_fraction": 0.952076677316294
+        },
+        {
+          "n": 56,
+          "mean_score": 0.5526278557041016,
+          "bad_fraction": 0.7857142857142857
+        },
+        {
+          "n": 83,
+          "mean_score": 0.6514748502262044,
+          "bad_fraction": 0.891566265060241
+        },
+        {
+          "n": 67,
+          "mean_score": 0.7602907182593027,
+          "bad_fraction": 0.7761194029850746
+        },
+        {
+          "n": 64,
+          "mean_score": 0.8344439117093718,
+          "bad_fraction": 0.859375
+        },
+        {
+          "n": 291,
+          "mean_score": 0.9494553865634983,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "forest_full",
+      "threshold": 0.7000000000000001,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1422,
+      "accepted_bad": 416,
+      "rejected_safe": 24,
+      "bad_accept_rate": 0.5167701863354037,
+      "safe_reject_rate": 0.02330097087378641,
+      "objective": 2.0903817162154015,
+      "auc": 0.9277926155845093,
+      "average_precision": 0.9259701373932884,
+      "brier_uncalibrated": 0.14187043191070356,
+      "calibration_bins": [
+        {
+          "n": 525,
+          "mean_score": 0.041766942920107145,
+          "bad_fraction": 0.0
+        },
+        {
+          "n": 39,
+          "mean_score": 0.13318648107256756,
+          "bad_fraction": 0.05128205128205128
+        },
+        {
+          "n": 64,
+          "mean_score": 0.27732241696109766,
+          "bad_fraction": 0.28125
+        },
+        {
+          "n": 604,
+          "mean_score": 0.3565680395150527,
+          "bad_fraction": 0.40066225165562913
+        },
+        {
+          "n": 313,
+          "mean_score": 0.4525235678883912,
+          "bad_fraction": 0.952076677316294
+        },
+        {
+          "n": 56,
+          "mean_score": 0.5526278557041016,
+          "bad_fraction": 0.7857142857142857
+        },
+        {
+          "n": 83,
+          "mean_score": 0.6514748502262044,
+          "bad_fraction": 0.891566265060241
+        },
+        {
+          "n": 67,
+          "mean_score": 0.7602907182593027,
+          "bad_fraction": 0.7761194029850746
+        },
+        {
+          "n": 64,
+          "mean_score": 0.8344439117093718,
+          "bad_fraction": 0.859375
+        },
+        {
+          "n": 291,
+          "mean_score": 0.9494553865634983,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "forest_full",
+      "threshold": 0.74,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1441,
+      "accepted_bad": 429,
+      "rejected_safe": 18,
+      "bad_accept_rate": 0.5329192546583851,
+      "safe_reject_rate": 0.017475728155339806,
+      "objective": 2.14915274678888,
+      "auc": 0.9277926155845093,
+      "average_precision": 0.9259701373932884,
+      "brier_uncalibrated": 0.14187043191070356,
+      "calibration_bins": [
+        {
+          "n": 525,
+          "mean_score": 0.041766942920107145,
+          "bad_fraction": 0.0
+        },
+        {
+          "n": 39,
+          "mean_score": 0.13318648107256756,
+          "bad_fraction": 0.05128205128205128
+        },
+        {
+          "n": 64,
+          "mean_score": 0.27732241696109766,
+          "bad_fraction": 0.28125
+        },
+        {
+          "n": 604,
+          "mean_score": 0.3565680395150527,
+          "bad_fraction": 0.40066225165562913
+        },
+        {
+          "n": 313,
+          "mean_score": 0.4525235678883912,
+          "bad_fraction": 0.952076677316294
+        },
+        {
+          "n": 56,
+          "mean_score": 0.5526278557041016,
+          "bad_fraction": 0.7857142857142857
+        },
+        {
+          "n": 83,
+          "mean_score": 0.6514748502262044,
+          "bad_fraction": 0.891566265060241
+        },
+        {
+          "n": 67,
+          "mean_score": 0.7602907182593027,
+          "bad_fraction": 0.7761194029850746
+        },
+        {
+          "n": 64,
+          "mean_score": 0.8344439117093718,
+          "bad_fraction": 0.859375
+        },
+        {
+          "n": 291,
+          "mean_score": 0.9494553865634983,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "forest_full",
+      "threshold": 0.78,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1466,
+      "accepted_bad": 451,
+      "rejected_safe": 15,
+      "bad_accept_rate": 0.5602484472049689,
+      "safe_reject_rate": 0.014563106796116505,
+      "objective": 2.2555568956159924,
+      "auc": 0.9277926155845093,
+      "average_precision": 0.9259701373932884,
+      "brier_uncalibrated": 0.14187043191070356,
+      "calibration_bins": [
+        {
+          "n": 525,
+          "mean_score": 0.041766942920107145,
+          "bad_fraction": 0.0
+        },
+        {
+          "n": 39,
+          "mean_score": 0.13318648107256756,
+          "bad_fraction": 0.05128205128205128
+        },
+        {
+          "n": 64,
+          "mean_score": 0.27732241696109766,
+          "bad_fraction": 0.28125
+        },
+        {
+          "n": 604,
+          "mean_score": 0.3565680395150527,
+          "bad_fraction": 0.40066225165562913
+        },
+        {
+          "n": 313,
+          "mean_score": 0.4525235678883912,
+          "bad_fraction": 0.952076677316294
+        },
+        {
+          "n": 56,
+          "mean_score": 0.5526278557041016,
+          "bad_fraction": 0.7857142857142857
+        },
+        {
+          "n": 83,
+          "mean_score": 0.6514748502262044,
+          "bad_fraction": 0.891566265060241
+        },
+        {
+          "n": 67,
+          "mean_score": 0.7602907182593027,
+          "bad_fraction": 0.7761194029850746
+        },
+        {
+          "n": 64,
+          "mean_score": 0.8344439117093718,
+          "bad_fraction": 0.859375
+        },
+        {
+          "n": 291,
+          "mean_score": 0.9494553865634983,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "forest_full",
+      "threshold": 0.8200000000000001,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1505,
+      "accepted_bad": 478,
+      "rejected_safe": 3,
+      "bad_accept_rate": 0.5937888198757764,
+      "safe_reject_rate": 0.002912621359223301,
+      "objective": 2.378067900862329,
+      "auc": 0.9277926155845093,
+      "average_precision": 0.9259701373932884,
+      "brier_uncalibrated": 0.14187043191070356,
+      "calibration_bins": [
+        {
+          "n": 525,
+          "mean_score": 0.041766942920107145,
+          "bad_fraction": 0.0
+        },
+        {
+          "n": 39,
+          "mean_score": 0.13318648107256756,
+          "bad_fraction": 0.05128205128205128
+        },
+        {
+          "n": 64,
+          "mean_score": 0.27732241696109766,
+          "bad_fraction": 0.28125
+        },
+        {
+          "n": 604,
+          "mean_score": 0.3565680395150527,
+          "bad_fraction": 0.40066225165562913
+        },
+        {
+          "n": 313,
+          "mean_score": 0.4525235678883912,
+          "bad_fraction": 0.952076677316294
+        },
+        {
+          "n": 56,
+          "mean_score": 0.5526278557041016,
+          "bad_fraction": 0.7857142857142857
+        },
+        {
+          "n": 83,
+          "mean_score": 0.6514748502262044,
+          "bad_fraction": 0.891566265060241
+        },
+        {
+          "n": 67,
+          "mean_score": 0.7602907182593027,
+          "bad_fraction": 0.7761194029850746
+        },
+        {
+          "n": 64,
+          "mean_score": 0.8344439117093718,
+          "bad_fraction": 0.859375
+        },
+        {
+          "n": 291,
+          "mean_score": 0.9494553865634983,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "forest_full",
+      "threshold": 0.86,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1532,
+      "accepted_bad": 502,
+      "rejected_safe": 0,
+      "bad_accept_rate": 0.6236024844720497,
+      "safe_reject_rate": 0.0,
+      "objective": 2.4944099378881988,
+      "auc": 0.9277926155845093,
+      "average_precision": 0.9259701373932884,
+      "brier_uncalibrated": 0.14187043191070356,
+      "calibration_bins": [
+        {
+          "n": 525,
+          "mean_score": 0.041766942920107145,
+          "bad_fraction": 0.0
+        },
+        {
+          "n": 39,
+          "mean_score": 0.13318648107256756,
+          "bad_fraction": 0.05128205128205128
+        },
+        {
+          "n": 64,
+          "mean_score": 0.27732241696109766,
+          "bad_fraction": 0.28125
+        },
+        {
+          "n": 604,
+          "mean_score": 0.3565680395150527,
+          "bad_fraction": 0.40066225165562913
+        },
+        {
+          "n": 313,
+          "mean_score": 0.4525235678883912,
+          "bad_fraction": 0.952076677316294
+        },
+        {
+          "n": 56,
+          "mean_score": 0.5526278557041016,
+          "bad_fraction": 0.7857142857142857
+        },
+        {
+          "n": 83,
+          "mean_score": 0.6514748502262044,
+          "bad_fraction": 0.891566265060241
+        },
+        {
+          "n": 67,
+          "mean_score": 0.7602907182593027,
+          "bad_fraction": 0.7761194029850746
+        },
+        {
+          "n": 64,
+          "mean_score": 0.8344439117093718,
+          "bad_fraction": 0.859375
+        },
+        {
+          "n": 291,
+          "mean_score": 0.9494553865634983,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "forest_full",
+      "threshold": 0.9,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1544,
+      "accepted_bad": 514,
+      "rejected_safe": 0,
+      "bad_accept_rate": 0.6385093167701863,
+      "safe_reject_rate": 0.0,
+      "objective": 2.554037267080745,
+      "auc": 0.9277926155845093,
+      "average_precision": 0.9259701373932884,
+      "brier_uncalibrated": 0.14187043191070356,
+      "calibration_bins": [
+        {
+          "n": 525,
+          "mean_score": 0.041766942920107145,
+          "bad_fraction": 0.0
+        },
+        {
+          "n": 39,
+          "mean_score": 0.13318648107256756,
+          "bad_fraction": 0.05128205128205128
+        },
+        {
+          "n": 64,
+          "mean_score": 0.27732241696109766,
+          "bad_fraction": 0.28125
+        },
+        {
+          "n": 604,
+          "mean_score": 0.3565680395150527,
+          "bad_fraction": 0.40066225165562913
+        },
+        {
+          "n": 313,
+          "mean_score": 0.4525235678883912,
+          "bad_fraction": 0.952076677316294
+        },
+        {
+          "n": 56,
+          "mean_score": 0.5526278557041016,
+          "bad_fraction": 0.7857142857142857
+        },
+        {
+          "n": 83,
+          "mean_score": 0.6514748502262044,
+          "bad_fraction": 0.891566265060241
+        },
+        {
+          "n": 67,
+          "mean_score": 0.7602907182593027,
+          "bad_fraction": 0.7761194029850746
+        },
+        {
+          "n": 64,
+          "mean_score": 0.8344439117093718,
+          "bad_fraction": 0.859375
+        },
+        {
+          "n": 291,
+          "mean_score": 0.9494553865634983,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "forest_full",
+      "threshold": 0.9400000000000001,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1599,
+      "accepted_bad": 569,
+      "rejected_safe": 0,
+      "bad_accept_rate": 0.7068322981366459,
+      "safe_reject_rate": 0.0,
+      "objective": 2.8273291925465838,
+      "auc": 0.9277926155845093,
+      "average_precision": 0.9259701373932884,
+      "brier_uncalibrated": 0.14187043191070356,
+      "calibration_bins": [
+        {
+          "n": 525,
+          "mean_score": 0.041766942920107145,
+          "bad_fraction": 0.0
+        },
+        {
+          "n": 39,
+          "mean_score": 0.13318648107256756,
+          "bad_fraction": 0.05128205128205128
+        },
+        {
+          "n": 64,
+          "mean_score": 0.27732241696109766,
+          "bad_fraction": 0.28125
+        },
+        {
+          "n": 604,
+          "mean_score": 0.3565680395150527,
+          "bad_fraction": 0.40066225165562913
+        },
+        {
+          "n": 313,
+          "mean_score": 0.4525235678883912,
+          "bad_fraction": 0.952076677316294
+        },
+        {
+          "n": 56,
+          "mean_score": 0.5526278557041016,
+          "bad_fraction": 0.7857142857142857
+        },
+        {
+          "n": 83,
+          "mean_score": 0.6514748502262044,
+          "bad_fraction": 0.891566265060241
+        },
+        {
+          "n": 67,
+          "mean_score": 0.7602907182593027,
+          "bad_fraction": 0.7761194029850746
+        },
+        {
+          "n": 64,
+          "mean_score": 0.8344439117093718,
+          "bad_fraction": 0.859375
+        },
+        {
+          "n": 291,
+          "mean_score": 0.9494553865634983,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "forest_full",
+      "threshold": 0.98,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1835,
+      "accepted_bad": 805,
+      "rejected_safe": 0,
+      "bad_accept_rate": 1.0,
+      "safe_reject_rate": 0.0,
+      "objective": 4.0,
+      "auc": 0.9277926155845093,
+      "average_precision": 0.9259701373932884,
+      "brier_uncalibrated": 0.14187043191070356,
+      "calibration_bins": [
+        {
+          "n": 525,
+          "mean_score": 0.041766942920107145,
+          "bad_fraction": 0.0
+        },
+        {
+          "n": 39,
+          "mean_score": 0.13318648107256756,
+          "bad_fraction": 0.05128205128205128
+        },
+        {
+          "n": 64,
+          "mean_score": 0.27732241696109766,
+          "bad_fraction": 0.28125
+        },
+        {
+          "n": 604,
+          "mean_score": 0.3565680395150527,
+          "bad_fraction": 0.40066225165562913
+        },
+        {
+          "n": 313,
+          "mean_score": 0.4525235678883912,
+          "bad_fraction": 0.952076677316294
+        },
+        {
+          "n": 56,
+          "mean_score": 0.5526278557041016,
+          "bad_fraction": 0.7857142857142857
+        },
+        {
+          "n": 83,
+          "mean_score": 0.6514748502262044,
+          "bad_fraction": 0.891566265060241
+        },
+        {
+          "n": 67,
+          "mean_score": 0.7602907182593027,
+          "bad_fraction": 0.7761194029850746
+        },
+        {
+          "n": 64,
+          "mean_score": 0.8344439117093718,
+          "bad_fraction": 0.859375
+        },
+        {
+          "n": 291,
+          "mean_score": 0.9494553865634983,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "forest_residual",
+      "threshold": 0.02,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 0,
+      "accepted_bad": 0,
+      "rejected_safe": 1030,
+      "bad_accept_rate": 0.0,
+      "safe_reject_rate": 1.0,
+      "objective": 1.0,
+      "auc": 0.6774984660916015,
+      "average_precision": 0.7306122868084894,
+      "brier_uncalibrated": 0.23779401200253072,
+      "calibration_bins": [
+        {
+          "n": 32,
+          "mean_score": 0.18572097529862241,
+          "bad_fraction": 0.125
+        },
+        {
+          "n": 324,
+          "mean_score": 0.25983328080639134,
+          "bad_fraction": 0.3549382716049383
+        },
+        {
+          "n": 1339,
+          "mean_score": 0.36267169184151427,
+          "bad_fraction": 0.45780433159073936
+        },
+        {
+          "n": 138,
+          "mean_score": 0.4338737561036106,
+          "bad_fraction": 0.5797101449275363
+        },
+        {
+          "n": 144,
+          "mean_score": 0.5352999042702038,
+          "bad_fraction": 0.9861111111111112
+        },
+        {
+          "n": 44,
+          "mean_score": 0.6527516170049483,
+          "bad_fraction": 0.8409090909090909
+        },
+        {
+          "n": 44,
+          "mean_score": 0.7634793805115456,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 40,
+          "mean_score": 0.8285823936377167,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 1,
+          "mean_score": 0.9345295451779706,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "forest_residual",
+      "threshold": 0.06,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 0,
+      "accepted_bad": 0,
+      "rejected_safe": 1030,
+      "bad_accept_rate": 0.0,
+      "safe_reject_rate": 1.0,
+      "objective": 1.0,
+      "auc": 0.6774984660916015,
+      "average_precision": 0.7306122868084894,
+      "brier_uncalibrated": 0.23779401200253072,
+      "calibration_bins": [
+        {
+          "n": 32,
+          "mean_score": 0.18572097529862241,
+          "bad_fraction": 0.125
+        },
+        {
+          "n": 324,
+          "mean_score": 0.25983328080639134,
+          "bad_fraction": 0.3549382716049383
+        },
+        {
+          "n": 1339,
+          "mean_score": 0.36267169184151427,
+          "bad_fraction": 0.45780433159073936
+        },
+        {
+          "n": 138,
+          "mean_score": 0.4338737561036106,
+          "bad_fraction": 0.5797101449275363
+        },
+        {
+          "n": 144,
+          "mean_score": 0.5352999042702038,
+          "bad_fraction": 0.9861111111111112
+        },
+        {
+          "n": 44,
+          "mean_score": 0.6527516170049483,
+          "bad_fraction": 0.8409090909090909
+        },
+        {
+          "n": 44,
+          "mean_score": 0.7634793805115456,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 40,
+          "mean_score": 0.8285823936377167,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 1,
+          "mean_score": 0.9345295451779706,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "forest_residual",
+      "threshold": 0.1,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 0,
+      "accepted_bad": 0,
+      "rejected_safe": 1030,
+      "bad_accept_rate": 0.0,
+      "safe_reject_rate": 1.0,
+      "objective": 1.0,
+      "auc": 0.6774984660916015,
+      "average_precision": 0.7306122868084894,
+      "brier_uncalibrated": 0.23779401200253072,
+      "calibration_bins": [
+        {
+          "n": 32,
+          "mean_score": 0.18572097529862241,
+          "bad_fraction": 0.125
+        },
+        {
+          "n": 324,
+          "mean_score": 0.25983328080639134,
+          "bad_fraction": 0.3549382716049383
+        },
+        {
+          "n": 1339,
+          "mean_score": 0.36267169184151427,
+          "bad_fraction": 0.45780433159073936
+        },
+        {
+          "n": 138,
+          "mean_score": 0.4338737561036106,
+          "bad_fraction": 0.5797101449275363
+        },
+        {
+          "n": 144,
+          "mean_score": 0.5352999042702038,
+          "bad_fraction": 0.9861111111111112
+        },
+        {
+          "n": 44,
+          "mean_score": 0.6527516170049483,
+          "bad_fraction": 0.8409090909090909
+        },
+        {
+          "n": 44,
+          "mean_score": 0.7634793805115456,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 40,
+          "mean_score": 0.8285823936377167,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 1,
+          "mean_score": 0.9345295451779706,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "forest_residual",
+      "threshold": 0.13999999999999999,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 0,
+      "accepted_bad": 0,
+      "rejected_safe": 1030,
+      "bad_accept_rate": 0.0,
+      "safe_reject_rate": 1.0,
+      "objective": 1.0,
+      "auc": 0.6774984660916015,
+      "average_precision": 0.7306122868084894,
+      "brier_uncalibrated": 0.23779401200253072,
+      "calibration_bins": [
+        {
+          "n": 32,
+          "mean_score": 0.18572097529862241,
+          "bad_fraction": 0.125
+        },
+        {
+          "n": 324,
+          "mean_score": 0.25983328080639134,
+          "bad_fraction": 0.3549382716049383
+        },
+        {
+          "n": 1339,
+          "mean_score": 0.36267169184151427,
+          "bad_fraction": 0.45780433159073936
+        },
+        {
+          "n": 138,
+          "mean_score": 0.4338737561036106,
+          "bad_fraction": 0.5797101449275363
+        },
+        {
+          "n": 144,
+          "mean_score": 0.5352999042702038,
+          "bad_fraction": 0.9861111111111112
+        },
+        {
+          "n": 44,
+          "mean_score": 0.6527516170049483,
+          "bad_fraction": 0.8409090909090909
+        },
+        {
+          "n": 44,
+          "mean_score": 0.7634793805115456,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 40,
+          "mean_score": 0.8285823936377167,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 1,
+          "mean_score": 0.9345295451779706,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "forest_residual",
+      "threshold": 0.18,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 11,
+      "accepted_bad": 0,
+      "rejected_safe": 1019,
+      "bad_accept_rate": 0.0,
+      "safe_reject_rate": 0.9893203883495145,
+      "objective": 0.9893203883495145,
+      "auc": 0.6774984660916015,
+      "average_precision": 0.7306122868084894,
+      "brier_uncalibrated": 0.23779401200253072,
+      "calibration_bins": [
+        {
+          "n": 32,
+          "mean_score": 0.18572097529862241,
+          "bad_fraction": 0.125
+        },
+        {
+          "n": 324,
+          "mean_score": 0.25983328080639134,
+          "bad_fraction": 0.3549382716049383
+        },
+        {
+          "n": 1339,
+          "mean_score": 0.36267169184151427,
+          "bad_fraction": 0.45780433159073936
+        },
+        {
+          "n": 138,
+          "mean_score": 0.4338737561036106,
+          "bad_fraction": 0.5797101449275363
+        },
+        {
+          "n": 144,
+          "mean_score": 0.5352999042702038,
+          "bad_fraction": 0.9861111111111112
+        },
+        {
+          "n": 44,
+          "mean_score": 0.6527516170049483,
+          "bad_fraction": 0.8409090909090909
+        },
+        {
+          "n": 44,
+          "mean_score": 0.7634793805115456,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 40,
+          "mean_score": 0.8285823936377167,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 1,
+          "mean_score": 0.9345295451779706,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "forest_residual",
+      "threshold": 0.22,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 57,
+      "accepted_bad": 9,
+      "rejected_safe": 982,
+      "bad_accept_rate": 0.011180124223602485,
+      "safe_reject_rate": 0.9533980582524272,
+      "objective": 0.9981185551468371,
+      "auc": 0.6774984660916015,
+      "average_precision": 0.7306122868084894,
+      "brier_uncalibrated": 0.23779401200253072,
+      "calibration_bins": [
+        {
+          "n": 32,
+          "mean_score": 0.18572097529862241,
+          "bad_fraction": 0.125
+        },
+        {
+          "n": 324,
+          "mean_score": 0.25983328080639134,
+          "bad_fraction": 0.3549382716049383
+        },
+        {
+          "n": 1339,
+          "mean_score": 0.36267169184151427,
+          "bad_fraction": 0.45780433159073936
+        },
+        {
+          "n": 138,
+          "mean_score": 0.4338737561036106,
+          "bad_fraction": 0.5797101449275363
+        },
+        {
+          "n": 144,
+          "mean_score": 0.5352999042702038,
+          "bad_fraction": 0.9861111111111112
+        },
+        {
+          "n": 44,
+          "mean_score": 0.6527516170049483,
+          "bad_fraction": 0.8409090909090909
+        },
+        {
+          "n": 44,
+          "mean_score": 0.7634793805115456,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 40,
+          "mean_score": 0.8285823936377167,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 1,
+          "mean_score": 0.9345295451779706,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "forest_residual",
+      "threshold": 0.26,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 174,
+      "accepted_bad": 42,
+      "rejected_safe": 898,
+      "bad_accept_rate": 0.05217391304347826,
+      "safe_reject_rate": 0.8718446601941747,
+      "objective": 1.0805403123680877,
+      "auc": 0.6774984660916015,
+      "average_precision": 0.7306122868084894,
+      "brier_uncalibrated": 0.23779401200253072,
+      "calibration_bins": [
+        {
+          "n": 32,
+          "mean_score": 0.18572097529862241,
+          "bad_fraction": 0.125
+        },
+        {
+          "n": 324,
+          "mean_score": 0.25983328080639134,
+          "bad_fraction": 0.3549382716049383
+        },
+        {
+          "n": 1339,
+          "mean_score": 0.36267169184151427,
+          "bad_fraction": 0.45780433159073936
+        },
+        {
+          "n": 138,
+          "mean_score": 0.4338737561036106,
+          "bad_fraction": 0.5797101449275363
+        },
+        {
+          "n": 144,
+          "mean_score": 0.5352999042702038,
+          "bad_fraction": 0.9861111111111112
+        },
+        {
+          "n": 44,
+          "mean_score": 0.6527516170049483,
+          "bad_fraction": 0.8409090909090909
+        },
+        {
+          "n": 44,
+          "mean_score": 0.7634793805115456,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 40,
+          "mean_score": 0.8285823936377167,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 1,
+          "mean_score": 0.9345295451779706,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "forest_residual",
+      "threshold": 0.30000000000000004,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 323,
+      "accepted_bad": 86,
+      "rejected_safe": 793,
+      "bad_accept_rate": 0.10683229813664596,
+      "safe_reject_rate": 0.7699029126213592,
+      "objective": 1.197232105167943,
+      "auc": 0.6774984660916015,
+      "average_precision": 0.7306122868084894,
+      "brier_uncalibrated": 0.23779401200253072,
+      "calibration_bins": [
+        {
+          "n": 32,
+          "mean_score": 0.18572097529862241,
+          "bad_fraction": 0.125
+        },
+        {
+          "n": 324,
+          "mean_score": 0.25983328080639134,
+          "bad_fraction": 0.3549382716049383
+        },
+        {
+          "n": 1339,
+          "mean_score": 0.36267169184151427,
+          "bad_fraction": 0.45780433159073936
+        },
+        {
+          "n": 138,
+          "mean_score": 0.4338737561036106,
+          "bad_fraction": 0.5797101449275363
+        },
+        {
+          "n": 144,
+          "mean_score": 0.5352999042702038,
+          "bad_fraction": 0.9861111111111112
+        },
+        {
+          "n": 44,
+          "mean_score": 0.6527516170049483,
+          "bad_fraction": 0.8409090909090909
+        },
+        {
+          "n": 44,
+          "mean_score": 0.7634793805115456,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 40,
+          "mean_score": 0.8285823936377167,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 1,
+          "mean_score": 0.9345295451779706,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "forest_residual",
+      "threshold": 0.34,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 424,
+      "accepted_bad": 116,
+      "rejected_safe": 722,
+      "bad_accept_rate": 0.14409937888198757,
+      "safe_reject_rate": 0.7009708737864078,
+      "objective": 1.2773683893143581,
+      "auc": 0.6774984660916015,
+      "average_precision": 0.7306122868084894,
+      "brier_uncalibrated": 0.23779401200253072,
+      "calibration_bins": [
+        {
+          "n": 32,
+          "mean_score": 0.18572097529862241,
+          "bad_fraction": 0.125
+        },
+        {
+          "n": 324,
+          "mean_score": 0.25983328080639134,
+          "bad_fraction": 0.3549382716049383
+        },
+        {
+          "n": 1339,
+          "mean_score": 0.36267169184151427,
+          "bad_fraction": 0.45780433159073936
+        },
+        {
+          "n": 138,
+          "mean_score": 0.4338737561036106,
+          "bad_fraction": 0.5797101449275363
+        },
+        {
+          "n": 144,
+          "mean_score": 0.5352999042702038,
+          "bad_fraction": 0.9861111111111112
+        },
+        {
+          "n": 44,
+          "mean_score": 0.6527516170049483,
+          "bad_fraction": 0.8409090909090909
+        },
+        {
+          "n": 44,
+          "mean_score": 0.7634793805115456,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 40,
+          "mean_score": 0.8285823936377167,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 1,
+          "mean_score": 0.9345295451779706,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "forest_residual",
+      "threshold": 0.38,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1291,
+      "accepted_bad": 441,
+      "rejected_safe": 180,
+      "bad_accept_rate": 0.5478260869565217,
+      "safe_reject_rate": 0.17475728155339806,
+      "objective": 2.3660616293794847,
+      "auc": 0.6774984660916015,
+      "average_precision": 0.7306122868084894,
+      "brier_uncalibrated": 0.23779401200253072,
+      "calibration_bins": [
+        {
+          "n": 32,
+          "mean_score": 0.18572097529862241,
+          "bad_fraction": 0.125
+        },
+        {
+          "n": 324,
+          "mean_score": 0.25983328080639134,
+          "bad_fraction": 0.3549382716049383
+        },
+        {
+          "n": 1339,
+          "mean_score": 0.36267169184151427,
+          "bad_fraction": 0.45780433159073936
+        },
+        {
+          "n": 138,
+          "mean_score": 0.4338737561036106,
+          "bad_fraction": 0.5797101449275363
+        },
+        {
+          "n": 144,
+          "mean_score": 0.5352999042702038,
+          "bad_fraction": 0.9861111111111112
+        },
+        {
+          "n": 44,
+          "mean_score": 0.6527516170049483,
+          "bad_fraction": 0.8409090909090909
+        },
+        {
+          "n": 44,
+          "mean_score": 0.7634793805115456,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 40,
+          "mean_score": 0.8285823936377167,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 1,
+          "mean_score": 0.9345295451779706,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "forest_residual",
+      "threshold": 0.42000000000000004,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1516,
+      "accepted_bad": 520,
+      "rejected_safe": 34,
+      "bad_accept_rate": 0.6459627329192547,
+      "safe_reject_rate": 0.03300970873786408,
+      "objective": 2.616860640414883,
+      "auc": 0.6774984660916015,
+      "average_precision": 0.7306122868084894,
+      "brier_uncalibrated": 0.23779401200253072,
+      "calibration_bins": [
+        {
+          "n": 32,
+          "mean_score": 0.18572097529862241,
+          "bad_fraction": 0.125
+        },
+        {
+          "n": 324,
+          "mean_score": 0.25983328080639134,
+          "bad_fraction": 0.3549382716049383
+        },
+        {
+          "n": 1339,
+          "mean_score": 0.36267169184151427,
+          "bad_fraction": 0.45780433159073936
+        },
+        {
+          "n": 138,
+          "mean_score": 0.4338737561036106,
+          "bad_fraction": 0.5797101449275363
+        },
+        {
+          "n": 144,
+          "mean_score": 0.5352999042702038,
+          "bad_fraction": 0.9861111111111112
+        },
+        {
+          "n": 44,
+          "mean_score": 0.6527516170049483,
+          "bad_fraction": 0.8409090909090909
+        },
+        {
+          "n": 44,
+          "mean_score": 0.7634793805115456,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 40,
+          "mean_score": 0.8285823936377167,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 1,
+          "mean_score": 0.9345295451779706,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "forest_residual",
+      "threshold": 0.46,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1558,
+      "accepted_bad": 540,
+      "rejected_safe": 12,
+      "bad_accept_rate": 0.6708074534161491,
+      "safe_reject_rate": 0.011650485436893204,
+      "objective": 2.6948802991014897,
+      "auc": 0.6774984660916015,
+      "average_precision": 0.7306122868084894,
+      "brier_uncalibrated": 0.23779401200253072,
+      "calibration_bins": [
+        {
+          "n": 32,
+          "mean_score": 0.18572097529862241,
+          "bad_fraction": 0.125
+        },
+        {
+          "n": 324,
+          "mean_score": 0.25983328080639134,
+          "bad_fraction": 0.3549382716049383
+        },
+        {
+          "n": 1339,
+          "mean_score": 0.36267169184151427,
+          "bad_fraction": 0.45780433159073936
+        },
+        {
+          "n": 138,
+          "mean_score": 0.4338737561036106,
+          "bad_fraction": 0.5797101449275363
+        },
+        {
+          "n": 144,
+          "mean_score": 0.5352999042702038,
+          "bad_fraction": 0.9861111111111112
+        },
+        {
+          "n": 44,
+          "mean_score": 0.6527516170049483,
+          "bad_fraction": 0.8409090909090909
+        },
+        {
+          "n": 44,
+          "mean_score": 0.7634793805115456,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 40,
+          "mean_score": 0.8285823936377167,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 1,
+          "mean_score": 0.9345295451779706,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "forest_residual",
+      "threshold": 0.5,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1587,
+      "accepted_bad": 566,
+      "rejected_safe": 9,
+      "bad_accept_rate": 0.7031055900621118,
+      "safe_reject_rate": 0.008737864077669903,
+      "objective": 2.821160224326117,
+      "auc": 0.6774984660916015,
+      "average_precision": 0.7306122868084894,
+      "brier_uncalibrated": 0.23779401200253072,
+      "calibration_bins": [
+        {
+          "n": 32,
+          "mean_score": 0.18572097529862241,
+          "bad_fraction": 0.125
+        },
+        {
+          "n": 324,
+          "mean_score": 0.25983328080639134,
+          "bad_fraction": 0.3549382716049383
+        },
+        {
+          "n": 1339,
+          "mean_score": 0.36267169184151427,
+          "bad_fraction": 0.45780433159073936
+        },
+        {
+          "n": 138,
+          "mean_score": 0.4338737561036106,
+          "bad_fraction": 0.5797101449275363
+        },
+        {
+          "n": 144,
+          "mean_score": 0.5352999042702038,
+          "bad_fraction": 0.9861111111111112
+        },
+        {
+          "n": 44,
+          "mean_score": 0.6527516170049483,
+          "bad_fraction": 0.8409090909090909
+        },
+        {
+          "n": 44,
+          "mean_score": 0.7634793805115456,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 40,
+          "mean_score": 0.8285823936377167,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 1,
+          "mean_score": 0.9345295451779706,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "forest_residual",
+      "threshold": 0.54,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1670,
+      "accepted_bad": 648,
+      "rejected_safe": 8,
+      "bad_accept_rate": 0.8049689440993789,
+      "safe_reject_rate": 0.007766990291262136,
+      "objective": 3.2276427666887777,
+      "auc": 0.6774984660916015,
+      "average_precision": 0.7306122868084894,
+      "brier_uncalibrated": 0.23779401200253072,
+      "calibration_bins": [
+        {
+          "n": 32,
+          "mean_score": 0.18572097529862241,
+          "bad_fraction": 0.125
+        },
+        {
+          "n": 324,
+          "mean_score": 0.25983328080639134,
+          "bad_fraction": 0.3549382716049383
+        },
+        {
+          "n": 1339,
+          "mean_score": 0.36267169184151427,
+          "bad_fraction": 0.45780433159073936
+        },
+        {
+          "n": 138,
+          "mean_score": 0.4338737561036106,
+          "bad_fraction": 0.5797101449275363
+        },
+        {
+          "n": 144,
+          "mean_score": 0.5352999042702038,
+          "bad_fraction": 0.9861111111111112
+        },
+        {
+          "n": 44,
+          "mean_score": 0.6527516170049483,
+          "bad_fraction": 0.8409090909090909
+        },
+        {
+          "n": 44,
+          "mean_score": 0.7634793805115456,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 40,
+          "mean_score": 0.8285823936377167,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 1,
+          "mean_score": 0.9345295451779706,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "forest_residual",
+      "threshold": 0.5800000000000001,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1707,
+      "accepted_bad": 684,
+      "rejected_safe": 7,
+      "bad_accept_rate": 0.8496894409937888,
+      "safe_reject_rate": 0.006796116504854369,
+      "objective": 3.4055538804800096,
+      "auc": 0.6774984660916015,
+      "average_precision": 0.7306122868084894,
+      "brier_uncalibrated": 0.23779401200253072,
+      "calibration_bins": [
+        {
+          "n": 32,
+          "mean_score": 0.18572097529862241,
+          "bad_fraction": 0.125
+        },
+        {
+          "n": 324,
+          "mean_score": 0.25983328080639134,
+          "bad_fraction": 0.3549382716049383
+        },
+        {
+          "n": 1339,
+          "mean_score": 0.36267169184151427,
+          "bad_fraction": 0.45780433159073936
+        },
+        {
+          "n": 138,
+          "mean_score": 0.4338737561036106,
+          "bad_fraction": 0.5797101449275363
+        },
+        {
+          "n": 144,
+          "mean_score": 0.5352999042702038,
+          "bad_fraction": 0.9861111111111112
+        },
+        {
+          "n": 44,
+          "mean_score": 0.6527516170049483,
+          "bad_fraction": 0.8409090909090909
+        },
+        {
+          "n": 44,
+          "mean_score": 0.7634793805115456,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 40,
+          "mean_score": 0.8285823936377167,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 1,
+          "mean_score": 0.9345295451779706,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "forest_residual",
+      "threshold": 0.62,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1724,
+      "accepted_bad": 701,
+      "rejected_safe": 7,
+      "bad_accept_rate": 0.8708074534161491,
+      "safe_reject_rate": 0.006796116504854369,
+      "objective": 3.4900259301694505,
+      "auc": 0.6774984660916015,
+      "average_precision": 0.7306122868084894,
+      "brier_uncalibrated": 0.23779401200253072,
+      "calibration_bins": [
+        {
+          "n": 32,
+          "mean_score": 0.18572097529862241,
+          "bad_fraction": 0.125
+        },
+        {
+          "n": 324,
+          "mean_score": 0.25983328080639134,
+          "bad_fraction": 0.3549382716049383
+        },
+        {
+          "n": 1339,
+          "mean_score": 0.36267169184151427,
+          "bad_fraction": 0.45780433159073936
+        },
+        {
+          "n": 138,
+          "mean_score": 0.4338737561036106,
+          "bad_fraction": 0.5797101449275363
+        },
+        {
+          "n": 144,
+          "mean_score": 0.5352999042702038,
+          "bad_fraction": 0.9861111111111112
+        },
+        {
+          "n": 44,
+          "mean_score": 0.6527516170049483,
+          "bad_fraction": 0.8409090909090909
+        },
+        {
+          "n": 44,
+          "mean_score": 0.7634793805115456,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 40,
+          "mean_score": 0.8285823936377167,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 1,
+          "mean_score": 0.9345295451779706,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "forest_residual",
+      "threshold": 0.66,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1740,
+      "accepted_bad": 710,
+      "rejected_safe": 0,
+      "bad_accept_rate": 0.8819875776397516,
+      "safe_reject_rate": 0.0,
+      "objective": 3.527950310559006,
+      "auc": 0.6774984660916015,
+      "average_precision": 0.7306122868084894,
+      "brier_uncalibrated": 0.23779401200253072,
+      "calibration_bins": [
+        {
+          "n": 32,
+          "mean_score": 0.18572097529862241,
+          "bad_fraction": 0.125
+        },
+        {
+          "n": 324,
+          "mean_score": 0.25983328080639134,
+          "bad_fraction": 0.3549382716049383
+        },
+        {
+          "n": 1339,
+          "mean_score": 0.36267169184151427,
+          "bad_fraction": 0.45780433159073936
+        },
+        {
+          "n": 138,
+          "mean_score": 0.4338737561036106,
+          "bad_fraction": 0.5797101449275363
+        },
+        {
+          "n": 144,
+          "mean_score": 0.5352999042702038,
+          "bad_fraction": 0.9861111111111112
+        },
+        {
+          "n": 44,
+          "mean_score": 0.6527516170049483,
+          "bad_fraction": 0.8409090909090909
+        },
+        {
+          "n": 44,
+          "mean_score": 0.7634793805115456,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 40,
+          "mean_score": 0.8285823936377167,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 1,
+          "mean_score": 0.9345295451779706,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "forest_residual",
+      "threshold": 0.7000000000000001,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1759,
+      "accepted_bad": 729,
+      "rejected_safe": 0,
+      "bad_accept_rate": 0.9055900621118013,
+      "safe_reject_rate": 0.0,
+      "objective": 3.622360248447205,
+      "auc": 0.6774984660916015,
+      "average_precision": 0.7306122868084894,
+      "brier_uncalibrated": 0.23779401200253072,
+      "calibration_bins": [
+        {
+          "n": 32,
+          "mean_score": 0.18572097529862241,
+          "bad_fraction": 0.125
+        },
+        {
+          "n": 324,
+          "mean_score": 0.25983328080639134,
+          "bad_fraction": 0.3549382716049383
+        },
+        {
+          "n": 1339,
+          "mean_score": 0.36267169184151427,
+          "bad_fraction": 0.45780433159073936
+        },
+        {
+          "n": 138,
+          "mean_score": 0.4338737561036106,
+          "bad_fraction": 0.5797101449275363
+        },
+        {
+          "n": 144,
+          "mean_score": 0.5352999042702038,
+          "bad_fraction": 0.9861111111111112
+        },
+        {
+          "n": 44,
+          "mean_score": 0.6527516170049483,
+          "bad_fraction": 0.8409090909090909
+        },
+        {
+          "n": 44,
+          "mean_score": 0.7634793805115456,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 40,
+          "mean_score": 0.8285823936377167,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 1,
+          "mean_score": 0.9345295451779706,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "forest_residual",
+      "threshold": 0.74,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1768,
+      "accepted_bad": 738,
+      "rejected_safe": 0,
+      "bad_accept_rate": 0.9167701863354037,
+      "safe_reject_rate": 0.0,
+      "objective": 3.667080745341615,
+      "auc": 0.6774984660916015,
+      "average_precision": 0.7306122868084894,
+      "brier_uncalibrated": 0.23779401200253072,
+      "calibration_bins": [
+        {
+          "n": 32,
+          "mean_score": 0.18572097529862241,
+          "bad_fraction": 0.125
+        },
+        {
+          "n": 324,
+          "mean_score": 0.25983328080639134,
+          "bad_fraction": 0.3549382716049383
+        },
+        {
+          "n": 1339,
+          "mean_score": 0.36267169184151427,
+          "bad_fraction": 0.45780433159073936
+        },
+        {
+          "n": 138,
+          "mean_score": 0.4338737561036106,
+          "bad_fraction": 0.5797101449275363
+        },
+        {
+          "n": 144,
+          "mean_score": 0.5352999042702038,
+          "bad_fraction": 0.9861111111111112
+        },
+        {
+          "n": 44,
+          "mean_score": 0.6527516170049483,
+          "bad_fraction": 0.8409090909090909
+        },
+        {
+          "n": 44,
+          "mean_score": 0.7634793805115456,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 40,
+          "mean_score": 0.8285823936377167,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 1,
+          "mean_score": 0.9345295451779706,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "forest_residual",
+      "threshold": 0.78,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1786,
+      "accepted_bad": 756,
+      "rejected_safe": 0,
+      "bad_accept_rate": 0.9391304347826087,
+      "safe_reject_rate": 0.0,
+      "objective": 3.756521739130435,
+      "auc": 0.6774984660916015,
+      "average_precision": 0.7306122868084894,
+      "brier_uncalibrated": 0.23779401200253072,
+      "calibration_bins": [
+        {
+          "n": 32,
+          "mean_score": 0.18572097529862241,
+          "bad_fraction": 0.125
+        },
+        {
+          "n": 324,
+          "mean_score": 0.25983328080639134,
+          "bad_fraction": 0.3549382716049383
+        },
+        {
+          "n": 1339,
+          "mean_score": 0.36267169184151427,
+          "bad_fraction": 0.45780433159073936
+        },
+        {
+          "n": 138,
+          "mean_score": 0.4338737561036106,
+          "bad_fraction": 0.5797101449275363
+        },
+        {
+          "n": 144,
+          "mean_score": 0.5352999042702038,
+          "bad_fraction": 0.9861111111111112
+        },
+        {
+          "n": 44,
+          "mean_score": 0.6527516170049483,
+          "bad_fraction": 0.8409090909090909
+        },
+        {
+          "n": 44,
+          "mean_score": 0.7634793805115456,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 40,
+          "mean_score": 0.8285823936377167,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 1,
+          "mean_score": 0.9345295451779706,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "forest_residual",
+      "threshold": 0.8200000000000001,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1809,
+      "accepted_bad": 779,
+      "rejected_safe": 0,
+      "bad_accept_rate": 0.9677018633540373,
+      "safe_reject_rate": 0.0,
+      "objective": 3.870807453416149,
+      "auc": 0.6774984660916015,
+      "average_precision": 0.7306122868084894,
+      "brier_uncalibrated": 0.23779401200253072,
+      "calibration_bins": [
+        {
+          "n": 32,
+          "mean_score": 0.18572097529862241,
+          "bad_fraction": 0.125
+        },
+        {
+          "n": 324,
+          "mean_score": 0.25983328080639134,
+          "bad_fraction": 0.3549382716049383
+        },
+        {
+          "n": 1339,
+          "mean_score": 0.36267169184151427,
+          "bad_fraction": 0.45780433159073936
+        },
+        {
+          "n": 138,
+          "mean_score": 0.4338737561036106,
+          "bad_fraction": 0.5797101449275363
+        },
+        {
+          "n": 144,
+          "mean_score": 0.5352999042702038,
+          "bad_fraction": 0.9861111111111112
+        },
+        {
+          "n": 44,
+          "mean_score": 0.6527516170049483,
+          "bad_fraction": 0.8409090909090909
+        },
+        {
+          "n": 44,
+          "mean_score": 0.7634793805115456,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 40,
+          "mean_score": 0.8285823936377167,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 1,
+          "mean_score": 0.9345295451779706,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "forest_residual",
+      "threshold": 0.86,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1834,
+      "accepted_bad": 804,
+      "rejected_safe": 0,
+      "bad_accept_rate": 0.9987577639751553,
+      "safe_reject_rate": 0.0,
+      "objective": 3.995031055900621,
+      "auc": 0.6774984660916015,
+      "average_precision": 0.7306122868084894,
+      "brier_uncalibrated": 0.23779401200253072,
+      "calibration_bins": [
+        {
+          "n": 32,
+          "mean_score": 0.18572097529862241,
+          "bad_fraction": 0.125
+        },
+        {
+          "n": 324,
+          "mean_score": 0.25983328080639134,
+          "bad_fraction": 0.3549382716049383
+        },
+        {
+          "n": 1339,
+          "mean_score": 0.36267169184151427,
+          "bad_fraction": 0.45780433159073936
+        },
+        {
+          "n": 138,
+          "mean_score": 0.4338737561036106,
+          "bad_fraction": 0.5797101449275363
+        },
+        {
+          "n": 144,
+          "mean_score": 0.5352999042702038,
+          "bad_fraction": 0.9861111111111112
+        },
+        {
+          "n": 44,
+          "mean_score": 0.6527516170049483,
+          "bad_fraction": 0.8409090909090909
+        },
+        {
+          "n": 44,
+          "mean_score": 0.7634793805115456,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 40,
+          "mean_score": 0.8285823936377167,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 1,
+          "mean_score": 0.9345295451779706,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "forest_residual",
+      "threshold": 0.9,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1834,
+      "accepted_bad": 804,
+      "rejected_safe": 0,
+      "bad_accept_rate": 0.9987577639751553,
+      "safe_reject_rate": 0.0,
+      "objective": 3.995031055900621,
+      "auc": 0.6774984660916015,
+      "average_precision": 0.7306122868084894,
+      "brier_uncalibrated": 0.23779401200253072,
+      "calibration_bins": [
+        {
+          "n": 32,
+          "mean_score": 0.18572097529862241,
+          "bad_fraction": 0.125
+        },
+        {
+          "n": 324,
+          "mean_score": 0.25983328080639134,
+          "bad_fraction": 0.3549382716049383
+        },
+        {
+          "n": 1339,
+          "mean_score": 0.36267169184151427,
+          "bad_fraction": 0.45780433159073936
+        },
+        {
+          "n": 138,
+          "mean_score": 0.4338737561036106,
+          "bad_fraction": 0.5797101449275363
+        },
+        {
+          "n": 144,
+          "mean_score": 0.5352999042702038,
+          "bad_fraction": 0.9861111111111112
+        },
+        {
+          "n": 44,
+          "mean_score": 0.6527516170049483,
+          "bad_fraction": 0.8409090909090909
+        },
+        {
+          "n": 44,
+          "mean_score": 0.7634793805115456,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 40,
+          "mean_score": 0.8285823936377167,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 1,
+          "mean_score": 0.9345295451779706,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "forest_residual",
+      "threshold": 0.9400000000000001,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1835,
+      "accepted_bad": 805,
+      "rejected_safe": 0,
+      "bad_accept_rate": 1.0,
+      "safe_reject_rate": 0.0,
+      "objective": 4.0,
+      "auc": 0.6774984660916015,
+      "average_precision": 0.7306122868084894,
+      "brier_uncalibrated": 0.23779401200253072,
+      "calibration_bins": [
+        {
+          "n": 32,
+          "mean_score": 0.18572097529862241,
+          "bad_fraction": 0.125
+        },
+        {
+          "n": 324,
+          "mean_score": 0.25983328080639134,
+          "bad_fraction": 0.3549382716049383
+        },
+        {
+          "n": 1339,
+          "mean_score": 0.36267169184151427,
+          "bad_fraction": 0.45780433159073936
+        },
+        {
+          "n": 138,
+          "mean_score": 0.4338737561036106,
+          "bad_fraction": 0.5797101449275363
+        },
+        {
+          "n": 144,
+          "mean_score": 0.5352999042702038,
+          "bad_fraction": 0.9861111111111112
+        },
+        {
+          "n": 44,
+          "mean_score": 0.6527516170049483,
+          "bad_fraction": 0.8409090909090909
+        },
+        {
+          "n": 44,
+          "mean_score": 0.7634793805115456,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 40,
+          "mean_score": 0.8285823936377167,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 1,
+          "mean_score": 0.9345295451779706,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "forest_residual",
+      "threshold": 0.98,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1835,
+      "accepted_bad": 805,
+      "rejected_safe": 0,
+      "bad_accept_rate": 1.0,
+      "safe_reject_rate": 0.0,
+      "objective": 4.0,
+      "auc": 0.6774984660916015,
+      "average_precision": 0.7306122868084894,
+      "brier_uncalibrated": 0.23779401200253072,
+      "calibration_bins": [
+        {
+          "n": 32,
+          "mean_score": 0.18572097529862241,
+          "bad_fraction": 0.125
+        },
+        {
+          "n": 324,
+          "mean_score": 0.25983328080639134,
+          "bad_fraction": 0.3549382716049383
+        },
+        {
+          "n": 1339,
+          "mean_score": 0.36267169184151427,
+          "bad_fraction": 0.45780433159073936
+        },
+        {
+          "n": 138,
+          "mean_score": 0.4338737561036106,
+          "bad_fraction": 0.5797101449275363
+        },
+        {
+          "n": 144,
+          "mean_score": 0.5352999042702038,
+          "bad_fraction": 0.9861111111111112
+        },
+        {
+          "n": 44,
+          "mean_score": 0.6527516170049483,
+          "bad_fraction": 0.8409090909090909
+        },
+        {
+          "n": 44,
+          "mean_score": 0.7634793805115456,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 40,
+          "mean_score": 0.8285823936377167,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 1,
+          "mean_score": 0.9345295451779706,
+          "bad_fraction": 1.0
+        }
+      ]
+    }
+  ],
+  "rule_trials": [
+    {
+      "name": "rule",
+      "max_rms_m": 0.5,
+      "min_confidence": 0.35,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 554,
+      "accepted_bad": 218,
+      "rejected_safe": 694,
+      "bad_accept_rate": 0.2708074534161491,
+      "safe_reject_rate": 0.6737864077669903,
+      "objective": 1.7570162214315865
+    },
+    {
+      "name": "rule",
+      "max_rms_m": 0.5,
+      "min_confidence": 0.51,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 554,
+      "accepted_bad": 218,
+      "rejected_safe": 694,
+      "bad_accept_rate": 0.2708074534161491,
+      "safe_reject_rate": 0.6737864077669903,
+      "objective": 1.7570162214315865
+    },
+    {
+      "name": "rule",
+      "max_rms_m": 0.5,
+      "min_confidence": 0.6699999999999999,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 554,
+      "accepted_bad": 218,
+      "rejected_safe": 694,
+      "bad_accept_rate": 0.2708074534161491,
+      "safe_reject_rate": 0.6737864077669903,
+      "objective": 1.7570162214315865
+    },
+    {
+      "name": "rule",
+      "max_rms_m": 0.5,
+      "min_confidence": 0.83,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 554,
+      "accepted_bad": 218,
+      "rejected_safe": 694,
+      "bad_accept_rate": 0.2708074534161491,
+      "safe_reject_rate": 0.6737864077669903,
+      "objective": 1.7570162214315865
+    },
+    {
+      "name": "rule",
+      "max_rms_m": 0.5,
+      "min_confidence": 0.99,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 536,
+      "accepted_bad": 200,
+      "rejected_safe": 694,
+      "bad_accept_rate": 0.2484472049689441,
+      "safe_reject_rate": 0.6737864077669903,
+      "objective": 1.6675752276427667
+    },
+    {
+      "name": "rule",
+      "max_rms_m": 1.0357142857142856,
+      "min_confidence": 0.35,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 889,
+      "accepted_bad": 379,
+      "rejected_safe": 520,
+      "bad_accept_rate": 0.47080745341614905,
+      "safe_reject_rate": 0.5048543689320388,
+      "objective": 2.388084182596635
+    },
+    {
+      "name": "rule",
+      "max_rms_m": 1.0357142857142856,
+      "min_confidence": 0.51,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 889,
+      "accepted_bad": 379,
+      "rejected_safe": 520,
+      "bad_accept_rate": 0.47080745341614905,
+      "safe_reject_rate": 0.5048543689320388,
+      "objective": 2.388084182596635
+    },
+    {
+      "name": "rule",
+      "max_rms_m": 1.0357142857142856,
+      "min_confidence": 0.6699999999999999,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 889,
+      "accepted_bad": 379,
+      "rejected_safe": 520,
+      "bad_accept_rate": 0.47080745341614905,
+      "safe_reject_rate": 0.5048543689320388,
+      "objective": 2.388084182596635
+    },
+    {
+      "name": "rule",
+      "max_rms_m": 1.0357142857142856,
+      "min_confidence": 0.83,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 889,
+      "accepted_bad": 379,
+      "rejected_safe": 520,
+      "bad_accept_rate": 0.47080745341614905,
+      "safe_reject_rate": 0.5048543689320388,
+      "objective": 2.388084182596635
+    },
+    {
+      "name": "rule",
+      "max_rms_m": 1.0357142857142856,
+      "min_confidence": 0.99,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 817,
+      "accepted_bad": 308,
+      "rejected_safe": 521,
+      "bad_accept_rate": 0.3826086956521739,
+      "safe_reject_rate": 0.5058252427184466,
+      "objective": 2.0362600253271426
+    },
+    {
+      "name": "rule",
+      "max_rms_m": 1.5714285714285714,
+      "min_confidence": 0.35,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1127,
+      "accepted_bad": 510,
+      "rejected_safe": 413,
+      "bad_accept_rate": 0.6335403726708074,
+      "safe_reject_rate": 0.4009708737864078,
+      "objective": 2.9351323644696374
+    },
+    {
+      "name": "rule",
+      "max_rms_m": 1.5714285714285714,
+      "min_confidence": 0.51,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1127,
+      "accepted_bad": 510,
+      "rejected_safe": 413,
+      "bad_accept_rate": 0.6335403726708074,
+      "safe_reject_rate": 0.4009708737864078,
+      "objective": 2.9351323644696374
+    },
+    {
+      "name": "rule",
+      "max_rms_m": 1.5714285714285714,
+      "min_confidence": 0.6699999999999999,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1127,
+      "accepted_bad": 510,
+      "rejected_safe": 413,
+      "bad_accept_rate": 0.6335403726708074,
+      "safe_reject_rate": 0.4009708737864078,
+      "objective": 2.9351323644696374
+    },
+    {
+      "name": "rule",
+      "max_rms_m": 1.5714285714285714,
+      "min_confidence": 0.83,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1127,
+      "accepted_bad": 510,
+      "rejected_safe": 413,
+      "bad_accept_rate": 0.6335403726708074,
+      "safe_reject_rate": 0.4009708737864078,
+      "objective": 2.9351323644696374
+    },
+    {
+      "name": "rule",
+      "max_rms_m": 1.5714285714285714,
+      "min_confidence": 0.99,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 996,
+      "accepted_bad": 384,
+      "rejected_safe": 418,
+      "bad_accept_rate": 0.47701863354037266,
+      "safe_reject_rate": 0.4058252427184466,
+      "objective": 2.3138997768799374
+    },
+    {
+      "name": "rule",
+      "max_rms_m": 2.107142857142857,
+      "min_confidence": 0.35,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1778,
+      "accepted_bad": 799,
+      "rejected_safe": 51,
+      "bad_accept_rate": 0.9925465838509316,
+      "safe_reject_rate": 0.04951456310679612,
+      "objective": 4.019700898510522
+    },
+    {
+      "name": "rule",
+      "max_rms_m": 2.107142857142857,
+      "min_confidence": 0.51,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1778,
+      "accepted_bad": 799,
+      "rejected_safe": 51,
+      "bad_accept_rate": 0.9925465838509316,
+      "safe_reject_rate": 0.04951456310679612,
+      "objective": 4.019700898510522
+    },
+    {
+      "name": "rule",
+      "max_rms_m": 2.107142857142857,
+      "min_confidence": 0.6699999999999999,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1778,
+      "accepted_bad": 799,
+      "rejected_safe": 51,
+      "bad_accept_rate": 0.9925465838509316,
+      "safe_reject_rate": 0.04951456310679612,
+      "objective": 4.019700898510522
+    },
+    {
+      "name": "rule",
+      "max_rms_m": 2.107142857142857,
+      "min_confidence": 0.83,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1778,
+      "accepted_bad": 799,
+      "rejected_safe": 51,
+      "bad_accept_rate": 0.9925465838509316,
+      "safe_reject_rate": 0.04951456310679612,
+      "objective": 4.019700898510522
+    },
+    {
+      "name": "rule",
+      "max_rms_m": 2.107142857142857,
+      "min_confidence": 0.99,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1230,
+      "accepted_bad": 460,
+      "rejected_safe": 260,
+      "bad_accept_rate": 0.5714285714285714,
+      "safe_reject_rate": 0.2524271844660194,
+      "objective": 2.538141470180305
+    },
+    {
+      "name": "rule",
+      "max_rms_m": 2.642857142857143,
+      "min_confidence": 0.35,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1835,
+      "accepted_bad": 805,
+      "rejected_safe": 0,
+      "bad_accept_rate": 1.0,
+      "safe_reject_rate": 0.0,
+      "objective": 4.0
+    },
+    {
+      "name": "rule",
+      "max_rms_m": 2.642857142857143,
+      "min_confidence": 0.51,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1835,
+      "accepted_bad": 805,
+      "rejected_safe": 0,
+      "bad_accept_rate": 1.0,
+      "safe_reject_rate": 0.0,
+      "objective": 4.0
+    },
+    {
+      "name": "rule",
+      "max_rms_m": 2.642857142857143,
+      "min_confidence": 0.6699999999999999,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1835,
+      "accepted_bad": 805,
+      "rejected_safe": 0,
+      "bad_accept_rate": 1.0,
+      "safe_reject_rate": 0.0,
+      "objective": 4.0
+    },
+    {
+      "name": "rule",
+      "max_rms_m": 2.642857142857143,
+      "min_confidence": 0.83,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1835,
+      "accepted_bad": 805,
+      "rejected_safe": 0,
+      "bad_accept_rate": 1.0,
+      "safe_reject_rate": 0.0,
+      "objective": 4.0
+    },
+    {
+      "name": "rule",
+      "max_rms_m": 2.642857142857143,
+      "min_confidence": 0.99,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1241,
+      "accepted_bad": 460,
+      "rejected_safe": 249,
+      "bad_accept_rate": 0.5714285714285714,
+      "safe_reject_rate": 0.24174757281553397,
+      "objective": 2.5274618585298194
+    },
+    {
+      "name": "rule",
+      "max_rms_m": 3.1785714285714284,
+      "min_confidence": 0.35,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1835,
+      "accepted_bad": 805,
+      "rejected_safe": 0,
+      "bad_accept_rate": 1.0,
+      "safe_reject_rate": 0.0,
+      "objective": 4.0
+    },
+    {
+      "name": "rule",
+      "max_rms_m": 3.1785714285714284,
+      "min_confidence": 0.51,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1835,
+      "accepted_bad": 805,
+      "rejected_safe": 0,
+      "bad_accept_rate": 1.0,
+      "safe_reject_rate": 0.0,
+      "objective": 4.0
+    },
+    {
+      "name": "rule",
+      "max_rms_m": 3.1785714285714284,
+      "min_confidence": 0.6699999999999999,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1835,
+      "accepted_bad": 805,
+      "rejected_safe": 0,
+      "bad_accept_rate": 1.0,
+      "safe_reject_rate": 0.0,
+      "objective": 4.0
+    },
+    {
+      "name": "rule",
+      "max_rms_m": 3.1785714285714284,
+      "min_confidence": 0.83,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1835,
+      "accepted_bad": 805,
+      "rejected_safe": 0,
+      "bad_accept_rate": 1.0,
+      "safe_reject_rate": 0.0,
+      "objective": 4.0
+    },
+    {
+      "name": "rule",
+      "max_rms_m": 3.1785714285714284,
+      "min_confidence": 0.99,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1241,
+      "accepted_bad": 460,
+      "rejected_safe": 249,
+      "bad_accept_rate": 0.5714285714285714,
+      "safe_reject_rate": 0.24174757281553397,
+      "objective": 2.5274618585298194
+    },
+    {
+      "name": "rule",
+      "max_rms_m": 3.7142857142857144,
+      "min_confidence": 0.35,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1835,
+      "accepted_bad": 805,
+      "rejected_safe": 0,
+      "bad_accept_rate": 1.0,
+      "safe_reject_rate": 0.0,
+      "objective": 4.0
+    },
+    {
+      "name": "rule",
+      "max_rms_m": 3.7142857142857144,
+      "min_confidence": 0.51,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1835,
+      "accepted_bad": 805,
+      "rejected_safe": 0,
+      "bad_accept_rate": 1.0,
+      "safe_reject_rate": 0.0,
+      "objective": 4.0
+    },
+    {
+      "name": "rule",
+      "max_rms_m": 3.7142857142857144,
+      "min_confidence": 0.6699999999999999,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1835,
+      "accepted_bad": 805,
+      "rejected_safe": 0,
+      "bad_accept_rate": 1.0,
+      "safe_reject_rate": 0.0,
+      "objective": 4.0
+    },
+    {
+      "name": "rule",
+      "max_rms_m": 3.7142857142857144,
+      "min_confidence": 0.83,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1835,
+      "accepted_bad": 805,
+      "rejected_safe": 0,
+      "bad_accept_rate": 1.0,
+      "safe_reject_rate": 0.0,
+      "objective": 4.0
+    },
+    {
+      "name": "rule",
+      "max_rms_m": 3.7142857142857144,
+      "min_confidence": 0.99,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1241,
+      "accepted_bad": 460,
+      "rejected_safe": 249,
+      "bad_accept_rate": 0.5714285714285714,
+      "safe_reject_rate": 0.24174757281553397,
+      "objective": 2.5274618585298194
+    },
+    {
+      "name": "rule",
+      "max_rms_m": 4.25,
+      "min_confidence": 0.35,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1835,
+      "accepted_bad": 805,
+      "rejected_safe": 0,
+      "bad_accept_rate": 1.0,
+      "safe_reject_rate": 0.0,
+      "objective": 4.0
+    },
+    {
+      "name": "rule",
+      "max_rms_m": 4.25,
+      "min_confidence": 0.51,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1835,
+      "accepted_bad": 805,
+      "rejected_safe": 0,
+      "bad_accept_rate": 1.0,
+      "safe_reject_rate": 0.0,
+      "objective": 4.0
+    },
+    {
+      "name": "rule",
+      "max_rms_m": 4.25,
+      "min_confidence": 0.6699999999999999,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1835,
+      "accepted_bad": 805,
+      "rejected_safe": 0,
+      "bad_accept_rate": 1.0,
+      "safe_reject_rate": 0.0,
+      "objective": 4.0
+    },
+    {
+      "name": "rule",
+      "max_rms_m": 4.25,
+      "min_confidence": 0.83,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1835,
+      "accepted_bad": 805,
+      "rejected_safe": 0,
+      "bad_accept_rate": 1.0,
+      "safe_reject_rate": 0.0,
+      "objective": 4.0
+    },
+    {
+      "name": "rule",
+      "max_rms_m": 4.25,
+      "min_confidence": 0.99,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1241,
+      "accepted_bad": 460,
+      "rejected_safe": 249,
+      "bad_accept_rate": 0.5714285714285714,
+      "safe_reject_rate": 0.24174757281553397,
+      "objective": 2.5274618585298194
+    },
+    {
+      "name": "rule",
+      "max_rms_m": 4.785714285714286,
+      "min_confidence": 0.35,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1835,
+      "accepted_bad": 805,
+      "rejected_safe": 0,
+      "bad_accept_rate": 1.0,
+      "safe_reject_rate": 0.0,
+      "objective": 4.0
+    },
+    {
+      "name": "rule",
+      "max_rms_m": 4.785714285714286,
+      "min_confidence": 0.51,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1835,
+      "accepted_bad": 805,
+      "rejected_safe": 0,
+      "bad_accept_rate": 1.0,
+      "safe_reject_rate": 0.0,
+      "objective": 4.0
+    },
+    {
+      "name": "rule",
+      "max_rms_m": 4.785714285714286,
+      "min_confidence": 0.6699999999999999,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1835,
+      "accepted_bad": 805,
+      "rejected_safe": 0,
+      "bad_accept_rate": 1.0,
+      "safe_reject_rate": 0.0,
+      "objective": 4.0
+    },
+    {
+      "name": "rule",
+      "max_rms_m": 4.785714285714286,
+      "min_confidence": 0.83,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1835,
+      "accepted_bad": 805,
+      "rejected_safe": 0,
+      "bad_accept_rate": 1.0,
+      "safe_reject_rate": 0.0,
+      "objective": 4.0
+    },
+    {
+      "name": "rule",
+      "max_rms_m": 4.785714285714286,
+      "min_confidence": 0.99,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1241,
+      "accepted_bad": 460,
+      "rejected_safe": 249,
+      "bad_accept_rate": 0.5714285714285714,
+      "safe_reject_rate": 0.24174757281553397,
+      "objective": 2.5274618585298194
+    },
+    {
+      "name": "rule",
+      "max_rms_m": 5.321428571428571,
+      "min_confidence": 0.35,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1835,
+      "accepted_bad": 805,
+      "rejected_safe": 0,
+      "bad_accept_rate": 1.0,
+      "safe_reject_rate": 0.0,
+      "objective": 4.0
+    },
+    {
+      "name": "rule",
+      "max_rms_m": 5.321428571428571,
+      "min_confidence": 0.51,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1835,
+      "accepted_bad": 805,
+      "rejected_safe": 0,
+      "bad_accept_rate": 1.0,
+      "safe_reject_rate": 0.0,
+      "objective": 4.0
+    },
+    {
+      "name": "rule",
+      "max_rms_m": 5.321428571428571,
+      "min_confidence": 0.6699999999999999,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1835,
+      "accepted_bad": 805,
+      "rejected_safe": 0,
+      "bad_accept_rate": 1.0,
+      "safe_reject_rate": 0.0,
+      "objective": 4.0
+    },
+    {
+      "name": "rule",
+      "max_rms_m": 5.321428571428571,
+      "min_confidence": 0.83,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1835,
+      "accepted_bad": 805,
+      "rejected_safe": 0,
+      "bad_accept_rate": 1.0,
+      "safe_reject_rate": 0.0,
+      "objective": 4.0
+    },
+    {
+      "name": "rule",
+      "max_rms_m": 5.321428571428571,
+      "min_confidence": 0.99,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1241,
+      "accepted_bad": 460,
+      "rejected_safe": 249,
+      "bad_accept_rate": 0.5714285714285714,
+      "safe_reject_rate": 0.24174757281553397,
+      "objective": 2.5274618585298194
+    },
+    {
+      "name": "rule",
+      "max_rms_m": 5.857142857142857,
+      "min_confidence": 0.35,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1835,
+      "accepted_bad": 805,
+      "rejected_safe": 0,
+      "bad_accept_rate": 1.0,
+      "safe_reject_rate": 0.0,
+      "objective": 4.0
+    },
+    {
+      "name": "rule",
+      "max_rms_m": 5.857142857142857,
+      "min_confidence": 0.51,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1835,
+      "accepted_bad": 805,
+      "rejected_safe": 0,
+      "bad_accept_rate": 1.0,
+      "safe_reject_rate": 0.0,
+      "objective": 4.0
+    },
+    {
+      "name": "rule",
+      "max_rms_m": 5.857142857142857,
+      "min_confidence": 0.6699999999999999,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1835,
+      "accepted_bad": 805,
+      "rejected_safe": 0,
+      "bad_accept_rate": 1.0,
+      "safe_reject_rate": 0.0,
+      "objective": 4.0
+    },
+    {
+      "name": "rule",
+      "max_rms_m": 5.857142857142857,
+      "min_confidence": 0.83,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1835,
+      "accepted_bad": 805,
+      "rejected_safe": 0,
+      "bad_accept_rate": 1.0,
+      "safe_reject_rate": 0.0,
+      "objective": 4.0
+    },
+    {
+      "name": "rule",
+      "max_rms_m": 5.857142857142857,
+      "min_confidence": 0.99,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1241,
+      "accepted_bad": 460,
+      "rejected_safe": 249,
+      "bad_accept_rate": 0.5714285714285714,
+      "safe_reject_rate": 0.24174757281553397,
+      "objective": 2.5274618585298194
+    },
+    {
+      "name": "rule",
+      "max_rms_m": 6.392857142857142,
+      "min_confidence": 0.35,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1835,
+      "accepted_bad": 805,
+      "rejected_safe": 0,
+      "bad_accept_rate": 1.0,
+      "safe_reject_rate": 0.0,
+      "objective": 4.0
+    },
+    {
+      "name": "rule",
+      "max_rms_m": 6.392857142857142,
+      "min_confidence": 0.51,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1835,
+      "accepted_bad": 805,
+      "rejected_safe": 0,
+      "bad_accept_rate": 1.0,
+      "safe_reject_rate": 0.0,
+      "objective": 4.0
+    },
+    {
+      "name": "rule",
+      "max_rms_m": 6.392857142857142,
+      "min_confidence": 0.6699999999999999,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1835,
+      "accepted_bad": 805,
+      "rejected_safe": 0,
+      "bad_accept_rate": 1.0,
+      "safe_reject_rate": 0.0,
+      "objective": 4.0
+    },
+    {
+      "name": "rule",
+      "max_rms_m": 6.392857142857142,
+      "min_confidence": 0.83,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1835,
+      "accepted_bad": 805,
+      "rejected_safe": 0,
+      "bad_accept_rate": 1.0,
+      "safe_reject_rate": 0.0,
+      "objective": 4.0
+    },
+    {
+      "name": "rule",
+      "max_rms_m": 6.392857142857142,
+      "min_confidence": 0.99,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1241,
+      "accepted_bad": 460,
+      "rejected_safe": 249,
+      "bad_accept_rate": 0.5714285714285714,
+      "safe_reject_rate": 0.24174757281553397,
+      "objective": 2.5274618585298194
+    },
+    {
+      "name": "rule",
+      "max_rms_m": 6.928571428571429,
+      "min_confidence": 0.35,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1835,
+      "accepted_bad": 805,
+      "rejected_safe": 0,
+      "bad_accept_rate": 1.0,
+      "safe_reject_rate": 0.0,
+      "objective": 4.0
+    },
+    {
+      "name": "rule",
+      "max_rms_m": 6.928571428571429,
+      "min_confidence": 0.51,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1835,
+      "accepted_bad": 805,
+      "rejected_safe": 0,
+      "bad_accept_rate": 1.0,
+      "safe_reject_rate": 0.0,
+      "objective": 4.0
+    },
+    {
+      "name": "rule",
+      "max_rms_m": 6.928571428571429,
+      "min_confidence": 0.6699999999999999,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1835,
+      "accepted_bad": 805,
+      "rejected_safe": 0,
+      "bad_accept_rate": 1.0,
+      "safe_reject_rate": 0.0,
+      "objective": 4.0
+    },
+    {
+      "name": "rule",
+      "max_rms_m": 6.928571428571429,
+      "min_confidence": 0.83,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1835,
+      "accepted_bad": 805,
+      "rejected_safe": 0,
+      "bad_accept_rate": 1.0,
+      "safe_reject_rate": 0.0,
+      "objective": 4.0
+    },
+    {
+      "name": "rule",
+      "max_rms_m": 6.928571428571429,
+      "min_confidence": 0.99,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1241,
+      "accepted_bad": 460,
+      "rejected_safe": 249,
+      "bad_accept_rate": 0.5714285714285714,
+      "safe_reject_rate": 0.24174757281553397,
+      "objective": 2.5274618585298194
+    },
+    {
+      "name": "rule",
+      "max_rms_m": 7.464285714285714,
+      "min_confidence": 0.35,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1835,
+      "accepted_bad": 805,
+      "rejected_safe": 0,
+      "bad_accept_rate": 1.0,
+      "safe_reject_rate": 0.0,
+      "objective": 4.0
+    },
+    {
+      "name": "rule",
+      "max_rms_m": 7.464285714285714,
+      "min_confidence": 0.51,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1835,
+      "accepted_bad": 805,
+      "rejected_safe": 0,
+      "bad_accept_rate": 1.0,
+      "safe_reject_rate": 0.0,
+      "objective": 4.0
+    },
+    {
+      "name": "rule",
+      "max_rms_m": 7.464285714285714,
+      "min_confidence": 0.6699999999999999,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1835,
+      "accepted_bad": 805,
+      "rejected_safe": 0,
+      "bad_accept_rate": 1.0,
+      "safe_reject_rate": 0.0,
+      "objective": 4.0
+    },
+    {
+      "name": "rule",
+      "max_rms_m": 7.464285714285714,
+      "min_confidence": 0.83,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1835,
+      "accepted_bad": 805,
+      "rejected_safe": 0,
+      "bad_accept_rate": 1.0,
+      "safe_reject_rate": 0.0,
+      "objective": 4.0
+    },
+    {
+      "name": "rule",
+      "max_rms_m": 7.464285714285714,
+      "min_confidence": 0.99,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1241,
+      "accepted_bad": 460,
+      "rejected_safe": 249,
+      "bad_accept_rate": 0.5714285714285714,
+      "safe_reject_rate": 0.24174757281553397,
+      "objective": 2.5274618585298194
+    },
+    {
+      "name": "rule",
+      "max_rms_m": 8.0,
+      "min_confidence": 0.35,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1835,
+      "accepted_bad": 805,
+      "rejected_safe": 0,
+      "bad_accept_rate": 1.0,
+      "safe_reject_rate": 0.0,
+      "objective": 4.0
+    },
+    {
+      "name": "rule",
+      "max_rms_m": 8.0,
+      "min_confidence": 0.51,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1835,
+      "accepted_bad": 805,
+      "rejected_safe": 0,
+      "bad_accept_rate": 1.0,
+      "safe_reject_rate": 0.0,
+      "objective": 4.0
+    },
+    {
+      "name": "rule",
+      "max_rms_m": 8.0,
+      "min_confidence": 0.6699999999999999,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1835,
+      "accepted_bad": 805,
+      "rejected_safe": 0,
+      "bad_accept_rate": 1.0,
+      "safe_reject_rate": 0.0,
+      "objective": 4.0
+    },
+    {
+      "name": "rule",
+      "max_rms_m": 8.0,
+      "min_confidence": 0.83,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1835,
+      "accepted_bad": 805,
+      "rejected_safe": 0,
+      "bad_accept_rate": 1.0,
+      "safe_reject_rate": 0.0,
+      "objective": 4.0
+    },
+    {
+      "name": "rule",
+      "max_rms_m": 8.0,
+      "min_confidence": 0.99,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 1241,
+      "accepted_bad": 460,
+      "rejected_safe": 249,
+      "bad_accept_rate": 0.5714285714285714,
+      "safe_reject_rate": 0.24174757281553397,
+      "objective": 2.5274618585298194
+    }
+  ],
+  "forest_seed_sensitivity": [
+    {
+      "name": "forest_full",
+      "seed": 22,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 562,
+      "accepted_bad": 0,
+      "rejected_safe": 468,
+      "bad_accept_rate": 0.0,
+      "safe_reject_rate": 0.45436893203883494,
+      "objective": 0.45436893203883494,
+      "auc": 0.933376493304941,
+      "average_precision": 0.9313967490404915,
+      "brier_uncalibrated": 0.1377916227681504,
+      "calibration_bins": [
+        {
+          "n": 520,
+          "mean_score": 0.035306933730501096,
+          "bad_fraction": 0.0
+        },
+        {
+          "n": 43,
+          "mean_score": 0.12427221376687919,
+          "bad_fraction": 0.023255813953488372
+        },
+        {
+          "n": 128,
+          "mean_score": 0.27423292017041856,
+          "bad_fraction": 0.1953125
+        },
+        {
+          "n": 513,
+          "mean_score": 0.36992924748532147,
+          "bad_fraction": 0.4191033138401559
+        },
+        {
+          "n": 317,
+          "mean_score": 0.44170746718829074,
+          "bad_fraction": 0.9022082018927445
+        },
+        {
+          "n": 76,
+          "mean_score": 0.5546837158521116,
+          "bad_fraction": 0.8421052631578947
+        },
+        {
+          "n": 84,
+          "mean_score": 0.6490494958986811,
+          "bad_fraction": 0.9285714285714286
+        },
+        {
+          "n": 91,
+          "mean_score": 0.7512488040909835,
+          "bad_fraction": 0.8351648351648352
+        },
+        {
+          "n": 58,
+          "mean_score": 0.8423037457299138,
+          "bad_fraction": 0.9482758620689655
+        },
+        {
+          "n": 276,
+          "mean_score": 0.9673684572867791,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "forest_full",
+      "seed": 33,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 564,
+      "accepted_bad": 4,
+      "rejected_safe": 470,
+      "bad_accept_rate": 0.004968944099378882,
+      "safe_reject_rate": 0.4563106796116505,
+      "objective": 0.47618645600916604,
+      "auc": 0.9196980907351933,
+      "average_precision": 0.9211826171162532,
+      "brier_uncalibrated": 0.14176856996664067,
+      "calibration_bins": [
+        {
+          "n": 537,
+          "mean_score": 0.04135278387146509,
+          "bad_fraction": 0.0
+        },
+        {
+          "n": 61,
+          "mean_score": 0.16065887047819724,
+          "bad_fraction": 0.5081967213114754
+        },
+        {
+          "n": 108,
+          "mean_score": 0.280289076647857,
+          "bad_fraction": 0.23148148148148148
+        },
+        {
+          "n": 541,
+          "mean_score": 0.3563188128027418,
+          "bad_fraction": 0.4121996303142329
+        },
+        {
+          "n": 273,
+          "mean_score": 0.4601325077670098,
+          "bad_fraction": 0.9487179487179487
+        },
+        {
+          "n": 82,
+          "mean_score": 0.5411268191013661,
+          "bad_fraction": 0.7073170731707317
+        },
+        {
+          "n": 37,
+          "mean_score": 0.6644854564235353,
+          "bad_fraction": 0.8378378378378378
+        },
+        {
+          "n": 95,
+          "mean_score": 0.7598793953539799,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 84,
+          "mean_score": 0.8509293057276476,
+          "bad_fraction": 0.7857142857142857
+        },
+        {
+          "n": 288,
+          "mean_score": 0.9581835263431446,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "forest_residual",
+      "seed": 22,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 12,
+      "accepted_bad": 1,
+      "rejected_safe": 1019,
+      "bad_accept_rate": 0.0012422360248447205,
+      "safe_reject_rate": 0.9893203883495145,
+      "objective": 0.9942893324488934,
+      "auc": 0.6982725484534594,
+      "average_precision": 0.7479338721266495,
+      "brier_uncalibrated": 0.23459419657993577,
+      "calibration_bins": [
+        {
+          "n": 27,
+          "mean_score": 0.18214308725971196,
+          "bad_fraction": 0.18518518518518517
+        },
+        {
+          "n": 351,
+          "mean_score": 0.25934284237442234,
+          "bad_fraction": 0.33903133903133903
+        },
+        {
+          "n": 1323,
+          "mean_score": 0.365471763623864,
+          "bad_fraction": 0.4580498866213152
+        },
+        {
+          "n": 129,
+          "mean_score": 0.4399913272987241,
+          "bad_fraction": 0.6356589147286822
+        },
+        {
+          "n": 116,
+          "mean_score": 0.5357839736170662,
+          "bad_fraction": 0.9482758620689655
+        },
+        {
+          "n": 56,
+          "mean_score": 0.6365587425162359,
+          "bad_fraction": 0.8928571428571429
+        },
+        {
+          "n": 57,
+          "mean_score": 0.7569163140070592,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 47,
+          "mean_score": 0.8497391412274149,
+          "bad_fraction": 1.0
+        }
+      ]
+    },
+    {
+      "name": "forest_residual",
+      "seed": 33,
+      "n": 2106,
+      "bad": 1076,
+      "geometric_accepted": 1835,
+      "accepted": 21,
+      "accepted_bad": 0,
+      "rejected_safe": 1009,
+      "bad_accept_rate": 0.0,
+      "safe_reject_rate": 0.9796116504854369,
+      "objective": 0.9796116504854369,
+      "auc": 0.6869924567798751,
+      "average_precision": 0.74088182764612,
+      "brier_uncalibrated": 0.23127136777069926,
+      "calibration_bins": [
+        {
+          "n": 60,
+          "mean_score": 0.18173404309902327,
+          "bad_fraction": 0.16666666666666666
+        },
+        {
+          "n": 334,
+          "mean_score": 0.2565120241516328,
+          "bad_fraction": 0.3203592814371258
+        },
+        {
+          "n": 1302,
+          "mean_score": 0.367270630415242,
+          "bad_fraction": 0.4700460829493088
+        },
+        {
+          "n": 149,
+          "mean_score": 0.4308630390323747,
+          "bad_fraction": 0.6241610738255033
+        },
+        {
+          "n": 58,
+          "mean_score": 0.5352157544311502,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 62,
+          "mean_score": 0.6752461215846685,
+          "bad_fraction": 0.9193548387096774
+        },
+        {
+          "n": 52,
+          "mean_score": 0.748726654419086,
+          "bad_fraction": 0.9615384615384616
+        },
+        {
+          "n": 82,
+          "mean_score": 0.8310865092423095,
+          "bad_fraction": 1.0
+        },
+        {
+          "n": 7,
+          "mean_score": 0.9096638115869187,
+          "bad_fraction": 1.0
+        }
+      ]
+    }
+  ],
+  "splits": {
+    "train": {
+      "geometric": {
+        "n": 6318,
+        "bad": 3024,
+        "geometric_accepted": 5522,
+        "accepted": 5522,
+        "accepted_bad": 2228,
+        "rejected_safe": 0,
+        "bad_accept_rate": 1.0,
+        "safe_reject_rate": 0.0,
+        "objective": 4.0
+      },
+      "rule": {
+        "n": 6318,
+        "bad": 3024,
+        "geometric_accepted": 5522,
+        "accepted": 1548,
+        "accepted_bad": 573,
+        "rejected_safe": 2319,
+        "bad_accept_rate": 0.25718132854578096,
+        "safe_reject_rate": 0.7040072859744991,
+        "objective": 1.732732600157623
+      },
+      "logistic": {
+        "n": 6318,
+        "bad": 3024,
+        "geometric_accepted": 5522,
+        "accepted": 1047,
+        "accepted_bad": 112,
+        "rejected_safe": 2359,
+        "bad_accept_rate": 0.05026929982046679,
+        "safe_reject_rate": 0.7161505768063146,
+        "objective": 0.9172277760881817,
+        "auc": 0.6228068088363322,
+        "average_precision": 0.6719992621132085,
+        "brier_uncalibrated": 0.24005796015262604,
+        "calibration_bins": [
+          {
+            "n": 4,
+            "mean_score": 0.09615948051214218,
+            "bad_fraction": 0.0
+          },
+          {
+            "n": 909,
+            "mean_score": 0.1639600545167923,
+            "bad_fraction": 0.29812981298129815
+          },
+          {
+            "n": 1423,
+            "mean_score": 0.25370529294013977,
+            "bad_fraction": 0.5108924806746311
+          },
+          {
+            "n": 1382,
+            "mean_score": 0.34425413608551025,
+            "bad_fraction": 0.3842257597684515
+          },
+          {
+            "n": 764,
+            "mean_score": 0.4462881088256836,
+            "bad_fraction": 0.33507853403141363
+          },
+          {
+            "n": 598,
+            "mean_score": 0.552165687084198,
+            "bad_fraction": 0.5066889632107023
+          },
+          {
+            "n": 382,
+            "mean_score": 0.6457636952400208,
+            "bad_fraction": 0.5392670157068062
+          },
+          {
+            "n": 157,
+            "mean_score": 0.7456232309341431,
+            "bad_fraction": 0.5796178343949044
+          },
+          {
+            "n": 117,
+            "mean_score": 0.845668375492096,
+            "bad_fraction": 0.6923076923076923
+          },
+          {
+            "n": 582,
+            "mean_score": 0.9759026765823364,
+            "bad_fraction": 0.9587628865979382
+          }
+        ]
+      },
+      "forest_full": {
+        "n": 6318,
+        "bad": 3024,
+        "geometric_accepted": 5522,
+        "accepted": 1696,
+        "accepted_bad": 0,
+        "rejected_safe": 1598,
+        "bad_accept_rate": 0.0,
+        "safe_reject_rate": 0.4851244687310261,
+        "objective": 0.4851244687310261,
+        "auc": 0.9538026891927924,
+        "average_precision": 0.9512638039218676,
+        "brier_uncalibrated": 0.11360342636593958,
+        "calibration_bins": [
+          {
+            "n": 1593,
+            "mean_score": 0.04009280528562629,
+            "bad_fraction": 0.0
+          },
+          {
+            "n": 121,
+            "mean_score": 0.13844931416115477,
+            "bad_fraction": 0.0
+          },
+          {
+            "n": 345,
+            "mean_score": 0.28064926688624686,
+            "bad_fraction": 0.0782608695652174
+          },
+          {
+            "n": 1674,
+            "mean_score": 0.35672782954261556,
+            "bad_fraction": 0.34109916367980886
+          },
+          {
+            "n": 842,
+            "mean_score": 0.45631401279792516,
+            "bad_fraction": 0.9216152019002375
+          },
+          {
+            "n": 77,
+            "mean_score": 0.5520925974715393,
+            "bad_fraction": 0.45454545454545453
+          },
+          {
+            "n": 84,
+            "mean_score": 0.6525751088847906,
+            "bad_fraction": 0.5
+          },
+          {
+            "n": 103,
+            "mean_score": 0.7611400475055559,
+            "bad_fraction": 0.970873786407767
+          },
+          {
+            "n": 209,
+            "mean_score": 0.855087260858446,
+            "bad_fraction": 0.9856459330143541
+          },
+          {
+            "n": 1270,
+            "mean_score": 0.9561372621602122,
+            "bad_fraction": 0.9976377952755906
+          }
+        ]
+      },
+      "forest_residual": {
+        "n": 6318,
+        "bad": 3024,
+        "geometric_accepted": 5522,
+        "accepted": 91,
+        "accepted_bad": 1,
+        "rejected_safe": 3204,
+        "bad_accept_rate": 0.0004488330341113106,
+        "safe_reject_rate": 0.9726775956284153,
+        "objective": 0.9744729277648605,
+        "auc": 0.7298143891571336,
+        "average_precision": 0.7477194622689475,
+        "brier_uncalibrated": 0.20743467445006936,
+        "calibration_bins": [
+          {
+            "n": 168,
+            "mean_score": 0.17805031902965648,
+            "bad_fraction": 0.023809523809523808
+          },
+          {
+            "n": 862,
+            "mean_score": 0.2518181792047691,
+            "bad_fraction": 0.21809744779582366
+          },
+          {
+            "n": 3602,
+            "mean_score": 0.36236067023152213,
+            "bad_fraction": 0.4317046085508051
+          },
+          {
+            "n": 582,
+            "mean_score": 0.43514366495405205,
+            "bad_fraction": 0.5584192439862543
+          },
+          {
+            "n": 236,
+            "mean_score": 0.5304318595223971,
+            "bad_fraction": 0.597457627118644
+          },
+          {
+            "n": 49,
+            "mean_score": 0.6532274516473715,
+            "bad_fraction": 0.7755102040816326
+          },
+          {
+            "n": 101,
+            "mean_score": 0.762436621397875,
+            "bad_fraction": 0.8316831683168316
+          },
+          {
+            "n": 117,
+            "mean_score": 0.8532081373855711,
+            "bad_fraction": 0.8376068376068376
+          },
+          {
+            "n": 601,
+            "mean_score": 0.9599863849061328,
+            "bad_fraction": 0.9833610648918469
+          }
+        ]
+      }
+    },
+    "validation": {
+      "geometric": {
+        "n": 2106,
+        "bad": 1076,
+        "geometric_accepted": 1835,
+        "accepted": 1835,
+        "accepted_bad": 805,
+        "rejected_safe": 0,
+        "bad_accept_rate": 1.0,
+        "safe_reject_rate": 0.0,
+        "objective": 4.0
+      },
+      "rule": {
+        "n": 2106,
+        "bad": 1076,
+        "geometric_accepted": 1835,
+        "accepted": 536,
+        "accepted_bad": 200,
+        "rejected_safe": 694,
+        "bad_accept_rate": 0.2484472049689441,
+        "safe_reject_rate": 0.6737864077669903,
+        "objective": 1.6675752276427667
+      },
+      "logistic": {
+        "n": 2106,
+        "bad": 1076,
+        "geometric_accepted": 1835,
+        "accepted": 248,
+        "accepted_bad": 33,
+        "rejected_safe": 815,
+        "bad_accept_rate": 0.040993788819875775,
+        "safe_reject_rate": 0.7912621359223301,
+        "objective": 0.9552372912018332,
+        "auc": 0.5993007182300502,
+        "average_precision": 0.7048911216403974,
+        "brier_uncalibrated": 0.24992920458316803,
+        "calibration_bins": [
+          {
+            "n": 2,
+            "mean_score": 0.09405669569969177,
+            "bad_fraction": 1.0
+          },
+          {
+            "n": 348,
+            "mean_score": 0.15342341363430023,
+            "bad_fraction": 0.45689655172413796
+          },
+          {
+            "n": 260,
+            "mean_score": 0.25315481424331665,
+            "bad_fraction": 0.5692307692307692
+          },
+          {
+            "n": 804,
+            "mean_score": 0.34381648898124695,
+            "bad_fraction": 0.4116915422885572
+          },
+          {
+            "n": 111,
+            "mean_score": 0.4543497562408447,
+            "bad_fraction": 0.14414414414414414
+          },
+          {
+            "n": 232,
+            "mean_score": 0.5500009059906006,
+            "bad_fraction": 0.375
+          },
+          {
+            "n": 146,
+            "mean_score": 0.6409227848052979,
+            "bad_fraction": 0.9246575342465754
+          },
+          {
+            "n": 85,
+            "mean_score": 0.74400794506073,
+            "bad_fraction": 0.9529411764705882
+          },
+          {
+            "n": 109,
+            "mean_score": 0.8472213745117188,
+            "bad_fraction": 0.9908256880733946
+          },
+          {
+            "n": 9,
+            "mean_score": 0.9034335017204285,
+            "bad_fraction": 1.0
+          }
+        ]
+      },
+      "forest_full": {
+        "n": 2106,
+        "bad": 1076,
+        "geometric_accepted": 1835,
+        "accepted": 559,
+        "accepted_bad": 2,
+        "rejected_safe": 473,
+        "bad_accept_rate": 0.002484472049689441,
+        "safe_reject_rate": 0.45922330097087377,
+        "objective": 0.4691611891696315,
+        "auc": 0.9277926155845093,
+        "average_precision": 0.9259701373932884,
+        "brier_uncalibrated": 0.14187043191070356,
+        "calibration_bins": [
+          {
+            "n": 525,
+            "mean_score": 0.041766942920107145,
+            "bad_fraction": 0.0
+          },
+          {
+            "n": 39,
+            "mean_score": 0.13318648107256756,
+            "bad_fraction": 0.05128205128205128
+          },
+          {
+            "n": 64,
+            "mean_score": 0.27732241696109766,
+            "bad_fraction": 0.28125
+          },
+          {
+            "n": 604,
+            "mean_score": 0.3565680395150527,
+            "bad_fraction": 0.40066225165562913
+          },
+          {
+            "n": 313,
+            "mean_score": 0.4525235678883912,
+            "bad_fraction": 0.952076677316294
+          },
+          {
+            "n": 56,
+            "mean_score": 0.5526278557041016,
+            "bad_fraction": 0.7857142857142857
+          },
+          {
+            "n": 83,
+            "mean_score": 0.6514748502262044,
+            "bad_fraction": 0.891566265060241
+          },
+          {
+            "n": 67,
+            "mean_score": 0.7602907182593027,
+            "bad_fraction": 0.7761194029850746
+          },
+          {
+            "n": 64,
+            "mean_score": 0.8344439117093718,
+            "bad_fraction": 0.859375
+          },
+          {
+            "n": 291,
+            "mean_score": 0.9494553865634983,
+            "bad_fraction": 1.0
+          }
+        ]
+      },
+      "forest_residual": {
+        "n": 2106,
+        "bad": 1076,
+        "geometric_accepted": 1835,
+        "accepted": 11,
+        "accepted_bad": 0,
+        "rejected_safe": 1019,
+        "bad_accept_rate": 0.0,
+        "safe_reject_rate": 0.9893203883495145,
+        "objective": 0.9893203883495145,
+        "auc": 0.6774984660916015,
+        "average_precision": 0.7306122868084894,
+        "brier_uncalibrated": 0.23779401200253072,
+        "calibration_bins": [
+          {
+            "n": 32,
+            "mean_score": 0.18572097529862241,
+            "bad_fraction": 0.125
+          },
+          {
+            "n": 324,
+            "mean_score": 0.25983328080639134,
+            "bad_fraction": 0.3549382716049383
+          },
+          {
+            "n": 1339,
+            "mean_score": 0.36267169184151427,
+            "bad_fraction": 0.45780433159073936
+          },
+          {
+            "n": 138,
+            "mean_score": 0.4338737561036106,
+            "bad_fraction": 0.5797101449275363
+          },
+          {
+            "n": 144,
+            "mean_score": 0.5352999042702038,
+            "bad_fraction": 0.9861111111111112
+          },
+          {
+            "n": 44,
+            "mean_score": 0.6527516170049483,
+            "bad_fraction": 0.8409090909090909
+          },
+          {
+            "n": 44,
+            "mean_score": 0.7634793805115456,
+            "bad_fraction": 1.0
+          },
+          {
+            "n": 40,
+            "mean_score": 0.8285823936377167,
+            "bad_fraction": 1.0
+          },
+          {
+            "n": 1,
+            "mean_score": 0.9345295451779706,
+            "bad_fraction": 1.0
+          }
+        ]
+      }
+    },
+    "retrospective_test": {
+      "geometric": {
+        "n": 2106,
+        "bad": 781,
+        "geometric_accepted": 1839,
+        "accepted": 1839,
+        "accepted_bad": 514,
+        "rejected_safe": 0,
+        "bad_accept_rate": 1.0,
+        "safe_reject_rate": 0.0,
+        "objective": 4.0
+      },
+      "rule": {
+        "n": 2106,
+        "bad": 781,
+        "geometric_accepted": 1839,
+        "accepted": 364,
+        "accepted_bad": 123,
+        "rejected_safe": 1084,
+        "bad_accept_rate": 0.23929961089494164,
+        "safe_reject_rate": 0.8181132075471698,
+        "objective": 1.7753116511269362
+      },
+      "logistic": {
+        "n": 2106,
+        "bad": 781,
+        "geometric_accepted": 1839,
+        "accepted": 36,
+        "accepted_bad": 0,
+        "rejected_safe": 1289,
+        "bad_accept_rate": 0.0,
+        "safe_reject_rate": 0.9728301886792453,
+        "objective": 0.9728301886792453,
+        "auc": 0.33135264416688814,
+        "average_precision": 0.2734006166972489,
+        "brier_uncalibrated": 0.5156190991401672,
+        "calibration_bins": [
+          {
+            "n": 67,
+            "mean_score": 0.2569414973258972,
+            "bad_fraction": 0.11940298507462686
+          },
+          {
+            "n": 148,
+            "mean_score": 0.3566161096096039,
+            "bad_fraction": 0.5743243243243243
+          },
+          {
+            "n": 250,
+            "mean_score": 0.44386380910873413,
+            "bad_fraction": 0.48
+          },
+          {
+            "n": 122,
+            "mean_score": 0.5452882051467896,
+            "bad_fraction": 0.4016393442622951
+          },
+          {
+            "n": 109,
+            "mean_score": 0.6455576419830322,
+            "bad_fraction": 0.5871559633027523
+          },
+          {
+            "n": 106,
+            "mean_score": 0.7512739896774292,
+            "bad_fraction": 0.5660377358490566
+          },
+          {
+            "n": 154,
+            "mean_score": 0.8493094444274902,
+            "bad_fraction": 0.577922077922078
+          },
+          {
+            "n": 1150,
+            "mean_score": 0.9913008213043213,
+            "bad_fraction": 0.26608695652173914
+          }
+        ]
+      },
+      "forest_full": {
+        "n": 2106,
+        "bad": 781,
+        "geometric_accepted": 1839,
+        "accepted": 206,
+        "accepted_bad": 0,
+        "rejected_safe": 1119,
+        "bad_accept_rate": 0.0,
+        "safe_reject_rate": 0.8445283018867924,
+        "objective": 0.8445283018867924,
+        "auc": 0.6796443843161887,
+        "average_precision": 0.5972935245813751,
+        "brier_uncalibrated": 0.3295962767349712,
+        "calibration_bins": [
+          {
+            "n": 169,
+            "mean_score": 0.049968944832992954,
+            "bad_fraction": 0.0
+          },
+          {
+            "n": 42,
+            "mean_score": 0.13169548317061425,
+            "bad_fraction": 0.0
+          },
+          {
+            "n": 28,
+            "mean_score": 0.22294631090190692,
+            "bad_fraction": 0.0
+          },
+          {
+            "n": 287,
+            "mean_score": 0.35650968633091046,
+            "bad_fraction": 0.397212543554007
+          },
+          {
+            "n": 80,
+            "mean_score": 0.4805211256653944,
+            "bad_fraction": 0.9
+          },
+          {
+            "n": 21,
+            "mean_score": 0.5557994495261348,
+            "bad_fraction": 0.7619047619047619
+          },
+          {
+            "n": 218,
+            "mean_score": 0.6531918849666257,
+            "bad_fraction": 0.21559633027522937
+          },
+          {
+            "n": 343,
+            "mean_score": 0.7446846505125877,
+            "bad_fraction": 0.1661807580174927
+          },
+          {
+            "n": 413,
+            "mean_score": 0.8464687317808097,
+            "bad_fraction": 0.387409200968523
+          },
+          {
+            "n": 505,
+            "mean_score": 0.9556460155797755,
+            "bad_fraction": 0.6237623762376238
+          }
+        ]
+      },
+      "forest_residual": {
+        "n": 2106,
+        "bad": 781,
+        "geometric_accepted": 1839,
+        "accepted": 0,
+        "accepted_bad": 0,
+        "rejected_safe": 1325,
+        "bad_accept_rate": 0.0,
+        "safe_reject_rate": 1.0,
+        "objective": 1.0,
+        "auc": 0.3944029183678399,
+        "average_precision": 0.30107107433553504,
+        "brier_uncalibrated": 0.4709088751380413,
+        "calibration_bins": [
+          {
+            "n": 299,
+            "mean_score": 0.35998969727443586,
+            "bad_fraction": 0.391304347826087
+          },
+          {
+            "n": 289,
+            "mean_score": 0.4440716462392429,
+            "bad_fraction": 0.5086505190311419
+          },
+          {
+            "n": 198,
+            "mean_score": 0.5255642692080866,
+            "bad_fraction": 0.5555555555555556
+          },
+          {
+            "n": 2,
+            "mean_score": 0.6224793657289855,
+            "bad_fraction": 1.0
+          },
+          {
+            "n": 70,
+            "mean_score": 0.7741245377703673,
+            "bad_fraction": 0.5857142857142857
+          },
+          {
+            "n": 256,
+            "mean_score": 0.8620898293664236,
+            "bad_fraction": 0.38671875
+          },
+          {
+            "n": 992,
+            "mean_score": 0.9496949747185591,
+            "bad_fraction": 0.26713709677419356
+          }
+        ]
+      }
+    }
+  },
+  "data_manifest_sha256": "7e7d750e5080d7435179e346d50f6f32b0acac66131b574dac3aafb6b66747f4",
+  "protocol_sha256": "19015ca79f26bacb11b84f6be7637c140d1a0373ceb6bacedd00efb8505030d6",
+  "portable_max_score_difference": 0.0,
+  "fit_rows": 5522,
+  "train_sites": [
+    "original",
+    "area01",
+    "area02"
+  ],
+  "refit_on_validation_or_test": false,
+  "elapsed_seconds": 1.2930400371551514,
+  "model_sha256": "74ed4350c35c30c4f8eba80f2413f61551fb6ee1b9f9e402cf991880c5f4a466",
+  "artifacts_sha256": {
+    "model.json": "74ed4350c35c30c4f8eba80f2413f61551fb6ee1b9f9e402cf991880c5f4a466",
+    "model.pkl": "8cd62c3ae8e6bde2d3a7c5c18122d2e463acf7a952fd035afb0c06ba2ce984b5",
+    "parity.csv": "e01149e8fa601101164eba422b73ba39af2cfeed84b1d51e3f9d746317a3a09e",
+    "predictions.csv": "a9f4823f828866890c592cef3431a30607b5a1c311359b6ea6e5208707e614be",
+    "rule.json": "a3a17b025fdc7da4216eb0c8a09dfa3e2870e6615891321961549cf9934ffe7f"
+  }
+}

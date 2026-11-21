@@ -1,0 +1,18 @@
+{
+  "model.json": "74ed4350c35c30c4f8eba80f2413f61551fb6ee1b9f9e402cf991880c5f4a466",
+  "model.pkl": "8cd62c3ae8e6bde2d3a7c5c18122d2e463acf7a952fd035afb0c06ba2ce984b5",
+  "model_card.json": "8d180dd156c458e11d208a4e4772828583aab5241b32f383a36e8443ba32119d",
+  "parity.csv": "e01149e8fa601101164eba422b73ba39af2cfeed84b1d51e3f9d746317a3a09e",
+  "predictions.csv": "a9f4823f828866890c592cef3431a30607b5a1c311359b6ea6e5208707e614be",
+  "protocol.md": "19015ca79f26bacb11b84f6be7637c140d1a0373ceb6bacedd00efb8505030d6",
+  "REPORT.md": "6127f55e3b6d1e902bc728d578da010b0bb2a61bf18616f58634289fb672b981",
+  "reproduction_sources\\build_scan_trust_runner.py": "a02cf251a090a1bbc1a018ebc07212c8a57a5552c0eb8b32c8c014c093392aa4",
+  "reproduction_sources\\plan_scan_trust_tests.py": "a96f203b9042aa71c15712e8b7006a5a138113120dcdf0d1ffb1fb1ec2ba6735",
+  "reproduction_sources\\scan_trust.py": "97025cfbd262fed725a5309a9415bbc29b94f8c834d523d6dad8f31a31bcfbb6",
+  "reproduction_sources\\summarize_scan_trust.py": "0d07d34c39f60c9666c0667c05fe62848a7d5fa77720a7b0a527f836fbe5b27b",
+  "reproduction_sources\\test_scan_trust.py": "2d95955c3f9b25c1178df1650376ddf7852e5030dd906e9e99c1f6ef484a165c",
+  "reproduction_sources\\train_scan_trust.py": "7a7289e2507ed2cfc0d1d5cd30b4e8235f607ae1a6eb1ff3f1dd9c4fa7b954c2",
+  "rule.json": "a3a17b025fdc7da4216eb0c8a09dfa3e2870e6615891321961549cf9934ffe7f",
+  "train_scan_trust.py": "7a7289e2507ed2cfc0d1d5cd30b4e8235f607ae1a6eb1ff3f1dd9c4fa7b954c2",
+  "training_report.json": "19985d438b98ac6b0894976ead310908bde122c44214ae798fc0239f5e396530"
+}

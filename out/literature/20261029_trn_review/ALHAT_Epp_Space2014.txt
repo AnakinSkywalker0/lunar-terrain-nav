@@ -1,0 +1,1127 @@
+Real-Time Hazard Detection and Avoidance Demonstration
+                       for a Planetary Lander
+
+                              Dr. Chirold D. Epp1, Edward A. Robertson2, John M. Carson III3
+                                      NASA, Johnson Space Center, Houston,Texas,77058
+
+                                                         ABSTRACT
+
+The Autonomous Landing Hazard Avoidance Technology (ALHAT) Project is chartered to develop and
+mature to a Technology Readiness Level (TRL) of six an autonomous system combining guidance, navigation
+and control with terrain sensing and recognition functions for crewed, cargo, and robotic planetary landing
+vehicles. In addition to precision landing close to a pre-mission defined landing location, the ALHAT System
+must be capable of autonomously identifying and avoiding surface hazards in real-time to enable a safe
+landing under any lighting conditions. This paper provides an overview of the recent results of the ALHAT
+closed loop hazard detection and avoidance flight demonstrations on the Morpheus Vertical Testbed (VTB) at
+the Kennedy Space Center, including results and lessons learned. This effort is also described in the context
+of a technology path in support of future crewed and robotic planetary exploration missions based upon the
+core sensing functions of the ALHAT system: Terrain Relative Navigation (TRN), Hazard Detection and
+Avoidance (HDA), and Hazard Relative Navigation (HRN).
+
+AES                                                Nomenclature
+AFM
+ALHAT  = Advanced Exploration Systems
+APL    = Autonomous Flight Manager (Morpheus flight software)
+APU    = Autonomous Landing and Hazard Avoidance Technology
+DEM    = Johns Hopkins University Applied Physics Laboratory
+EDL    = Avionics Power Unit (Morpheus flight computer and power supply/distribution)
+FOV    = Digitial Elevation Model (or Map)
+FSW    = Entry, Descent, and Landing
+GNC    = Field Of View
+GPS    = Flight Software
+HD     = Guidance, Navigation, and Control
+HDA    = Global Positioning System
+HDS    = Hazard Detection
+HRN    = Hazard Detection and Avoidance
+HDP    = Hazard Detection System
+ILP    = Hazard Relative Navigation
+IMU    = Hazard Detection Phase
+JSC    = Intended Landing Point (map-based landing target selected during pre-mission planning)
+JPL    = Inertial Measurement Unit
+KSC    = Johnson Space Center
+LaRC   = Jet Propulsion Laboratory
+LAlt   = Kennedy Space Center
+LOS    = Langley Research Center
+LOX    = Laser Altimeter
+LS1    = Line of Sight
+MET    = Liquid Oxygen
+NDL    = Landing Site 1
+NIR    = Mission Elapsed Time
+SE&I   = Navigation Doppler Lidar (also commonly referred to as Doppler lidar, or DL)
+SLF    = Near Infrared
+TRL    = Systems Engineering and Integration
+TRN    = Shuttle Landing Facility
+       = Technology Readiness Level
+       = Terrain Relative Navigation
+
+1 ALHAT Project Manager, Aerospace and Flight Mechanics Division, 2101 NASA Parkway, Houston, TX
+  77058/EG1, AIAA Senior Member.
+
+2 Deputy ALHAT Project Manager, Aerospace and Flight Mechanics Division, 2101 NASA Parkway, Houston, TX
+  77058/EG5.
+
+3 ALHAT SE&I Lead, IPA Detail to JSC from JPL, Detailed to Aerospace and Flight Mechanics Division, 2101
+  NASA Parkway, Houston, TX 77058/EG1, AIAA Associate Fellow.
+                                                                       1
+
+                                        American Institute of Aeronautics and Astronautics
+                                                  I. ALHAT Overview
+
+Autonomous precision landing enhanced by real-time hazard detection and avoidance has emerged as a technology
+of considerable interest in the U.S. and international aerospace communities over the past decade. Since the
+Autonomous Landing and Hazard Avoidance Technology Project (commonly known as ALHAT1,2) was chartered
+by NASA in 2006, the ALHAT team has focused on developing and maturing to a Technology Readiness Level of
+six a highly capable autonomous system combining guidance, navigation, and control (GNC) with terrain sensing
+and recognition functions for crewed, cargo, and robotic planetary landing vehicles. The ALHAT team evolved an
+entry, descent, and landing (EDL) approach that combines three techniques: Terrain Relative Navigation (TRN),
+Hazard Detection and Avoidance (HDA), and Hazard Relative Navigation (HRN). This general EDL strategy is
+designed to support a broad range of mission requirements and planetary landing destinations and can be tailored to
+meet the scope and scale of a particular mission.
+
+The TRN function compares terrain data collected by onboard sensors with stored orbital reconnaissance maps to
+support accurate global navigation. TRN has long been employed in terrestrial military applications and, in 2009, the
+ALHAT Project successfully demonstrated several TRN techniques tailored for planetary spaceflight applications.3
+TRN supports the ALHAT global landing accuracy requirement, which serves two primary functions. First, it
+facilitates scientific and engineering mission objectives involving precision landings near areas of interest defined
+by natural resources or other observable factors. Second, from a safe landing perspective, TRN positions a landing
+vehicle in close proximity to an area deemed favorable for finding one or more safe landing sites based upon pre-
+mission analysis of available reconnaissance data. Although TRN is not strictly required for safe landing, the
+technique can significantly increase the probability of actively locating a suitable landing site, particularly within
+rugged planetary terrain. Even in the case of a "blind" landing, the probability of mission success is enhanced by the
+reduced landing dispersions provided by TRN. In addition, TRN can be accomplished with very modest lander
+resources. For all of these reasons, the ALHAT team views TRN as a critical navigation technique for future
+autonomous landers.
+
+The HDA and HRN functions are the most challenging aspects of an autonomous safe landing system. The
+configuration chosen by ALHAT to demonstrate hazard detection (HD) uses an onboard linear mode flash lidar
+sensor mounted in a two-axis gimbal to generate a 3-D local terrain map during the descent trajectory. Depending on
+sensor performance, map generation can begin a kilometer or more from the map-based landing target selected by
+mission planners (referred to by ALHAT as the Intended Landing Point, or ILP). The Digital Elevation Model/Map
+(DEM) resulting from the mosaic of 3-D frames is then parsed to identify and rank the available safe landing
+locations based on the design characteristics and operational constraints of the lander. But identifying safe landing
+sites is only the first part of the HDA challenge. In order to avoid hazards and land near the selected safe site, it is
+critical to maintain a highly accurate, onboard, surface-relative navigation state in terms of position, velocity, and
+attitude. ALHAT utilizes the HRN function to supplement the ground-relative navigation data provided by high
+precision, laser-based altimeter and velocimeter sensors. The HRN function correlates flash lidar frames acquired
+during the latter stages of the approach phase with the DEM developed for hazard detection to provide position
+updates accurate to a fraction of a meter. Using an IMU to propagate this surface-relative navigation state
+knowledge, the vehicle can then descend to the planetary surface with minimal error over the final tens of seconds of
+the trajectory in the absence of terrain-relative sensor inputs. Dead-reckoning on an IMU during terminal descent
+eliminates the complications of attempting to acquire accurate sensor measurements through the dust field created
+by the descent engine plume.
+
+The ALHAT team initially developed seven Level 0 requirements to drive the development of the ALHAT system.
+As shown in Table 1, the landing precision requirement was subsequently divided into global and local aspects to
+address the complementary, but distinct functions of navigating to a map-based planetary target (R0.003a) and
+landing in close proximity to a safe landing site identified in real-time during the descent trajectory (R0.003b). After
+thorough research and analysis, the ALHAT team determined that advancements in active, laser-based sensors
+capable of providing highly accurate ground-relative measurements of position, velocity, and 3-D topography were
+essential for satisfying three key components of the ALHAT Level 0 requirements: real-time HDA, local landing
+precision, and independence from ambient surface lighting conditions. In addition, a Hazard Detection System
+(HDS) that can rapidly map and process a large area of terrain for human exploration missions requires a high-
+speed, high-volume computing architecture significantly more capable than existing space-qualified processors. The
+ALHAT team chose to pursue the challenge of satisfying the Level 0 requirements for a human mission with the
+understanding that the results would be scalable and tailorable to less demanding exploration scenarios.
+
+                                                                       2
+
+                                        American Institute of Aeronautics and Astronautics
+                                             Table 1. ALHAT Level 0 Requirements
+
+R0.001%Landing%Location%
+The$ALHAT$System$shall$enable$landing$of$the$vehicle$at$any$surface$location$certified$as$feasible$for$landing.
+
+R0.002%Lighting%Condition%
+The$ALHAT$System$shall$enable$landing$of$the$vehicle$in$any$lighting$condition.
+R0.003a%Global%Landing%Precision%
+The$ALHAT$System$shall$enable$touchdown$of$the$vehicle$at$a$pre=defined,$map=based$landing$target$with$a$1=sigma$error$of$less$
+than$30$meters$in$the$absence$of$a$hazard$avoidance$maneuver.$
+
+R0.003b%Local%Landing%Precision%
+The$ALHAT$System$shall$enable$landing$of$the$vehicle$at$a$selected$safe$landing$point$with$a$1$sigma$error$of$less$than$3$meters.
+
+R0.004%Hazard%Detection%and%Avoidance
+The$ALHAT$System$shall$detect$hazards$with$an$elevation$change$of$30$cm$or$larger$and$detect$slopes$of$5$deg$and$steeper,$and$
+provide$landing$point$designation$based$on$detected$hazards.$
+
+R0.005%Vehicle%Commonality%
+The$ALHAT$System$shall$enable$landing$of$crewed,$cargo,$and$robotic$vehicles.
+
+R0.006%Operate%Automatically
+The$ALHAT$System$shall$have$the$capability$to$operate$automatically.
+
+R0.007%Crew%Supervisory%Control%
+The$ALHAT$System$shall$accept$supervisory$control$from$the$onboard$crew.
+
+The ALHAT team pursued several parallel paths of research and development to satisfy the Level 0 requirements.
+The Jet Propulsion Laboratory (JPL) team focused primarily on the development, modeling, and simulation of TRN,
+HDA, and HRN algorithms and associated computing hardware. JPL also led the planning and execution of the
+ALHAT field tests from FY2006 through FY2009. The Johns Hopkins University Applied Physics Laboratory
+(APL) team developed a separate passive optical TRN approach along with new software for using scientific lunar
+rock and crater distribution models to synthetically enhance detail in reconnaissance maps to support high fidelity
+TRN and HDA simulations. APL also provided detailed scientific analyses of lunar terrain characteristics and
+ambient lighting conditions, as well as the capabilities and limitations of human vision for HDA. The Langley
+Research Center (LaRC) team focused on the development and testing of a new generation of lidar sensors to
+support TRN, HDA, and HRN, and also managed the contracts resulting from the NASA Research Announcement
+(NRA) solicitation released by the ALHAT project in FY2007. LaRC personnel were also critical in the rapid
+planning, integration and execution of the integrated ALHAT helicopter test in FY2012. ALHAT project
+management was located at the Johnson Space Center (JSC) along with the systems engineering and integration
+(SE&I) and GNC development and simulation functions. The JSC team also served as the liaison between the
+Morpheus and ALHAT teams for the integration and testing of the ALHAT system with the Morpheus lander at JSC
+and KSC.
+
+As summarized in Table 2, the ALHAT team led or partnered in the execution of twelve major field tests. These
+tests initially focused on sensor characterization, then evolved to address integrated sensor/software tests of the core
+TRN, HDA, HRN, and surface-relative navigation functions and, finally, culminated in autonomous demonstrations
+of real-time hazard detection and avoidance and precision landing on the Morpheus rocket-powered lander. Through
+analysis, simulation, test, and demonstration, the ALHAT team addressed all eight Level 0 requirements to varying
+degrees of fidelity, with a strong emphasis placed on integrated tests of sensors and software in relevant, dynamic
+flight environments. By focusing on eight simple and clearly defined requirements, the multicenter ALHAT team
+achieved substantial advances in EDL technology development and demonstration over a period of eight years that
+spanned the retirement of the Shuttle program and the cancellation of the Constellation program, as well as
+significant shifts in human exploration objectives and budget priorities.
+
+                                                                       3
+
+                                        American Institute of Aeronautics and Astronautics
+                                Table 2. Summary of ALHAT Field Test Activities
+
+   Test%ID          Date           Test        Sensors                Test%         Description
+      FT0                       Objective                          Platform
+                 September
+   JIGSAW            2006       HDA            Scanning5Lidar Helicopter 5Characterization5of5a5scanning5lidar5sensor
+      FT1
+      FT2        September            HDA        MIT5Lincoln5Lab   Helicopter   JIGSAW5helicopter5field5test5of5MIT5Lincoln5Lab5flash5lidar
+      FT3            2007                           Flash5Lidar                 (test5not5managed5by5ALHAT,5data5classified5after5test)
+      FT4             May          HDA/HRN                         Helicopter   Early5characterization5of5COTS5flash5lidar5sensor5and5HDA/HRN5
+      FT5            2008                        Optical5Camera                 algorithms;5TRN5using5COTS5passive5optical5camera
+                    August        Navigation      Doppler5Lidar    Helicopter   Early5characterization5of5the5ALHAT5Doppler5lidar5sensor5and5
+Free5Flight510       2008            Sensor      Flash,5Doppler,5               algorithm5for5highly5accurate5groundSrelative5navigation
+Free5Flight511      March                      Altimeter,5Cameras  FixedSwing5  TRN5test5of5ALHAT5flash/altimeter5lidar5sensors5&5COTS5passive5
+Free5Flight512       2009             TRN        Flash,5Doppler,5    Aircraft   optical5cameras;5Doppler5lidar5sensor5test
+Free5Flight513      August                                                      Integrated5HDA/HRN5system5test5using5ALHAT5flash5lidar5with5
+Free5Flight514       2009          HDA/HRN           Altimeter     Helicopter   realStime,5onboard5data5processing;5Doppler5lidar5and5altimeter
+                                                 ALHAT5System                   RealStime,5quasiSclosed5loop5field5test5of5second5generation5
+                  December         HDA/HRN                         Helicopter   prototype5HDA/HRN5system5developed5for5Morpheus5flights
+                     2012                        ALHAT5System                   Morpheus5flight5of5second5generation5prototype5ALHAT5system
+                                  Open5Loop                        Morpheus     Morpheus5navigation5used5for5flight5control5and5HDS5pointing
+                April52,52014     Evaluation     ALHAT5System          VTB      Morpheus5flight5of5second5generation5prototype5ALHAT5system
+                                  Open5Loop                                     Morpheus5navigation5used5for5flight5control5and5HDS5pointing
+                April524,52014    Refinement     ALHAT5System      Morpheus     Morpheus5flight5of5second5generation5prototype5ALHAT5system
+                                  Open5Loop                            VTB      Morpheus5navigation5used5for5flight5control5and5HDS5pointing
+                April530,52014    Refinement     ALHAT5System                   Morpheus5flight5of5second5generation5prototype5ALHAT5system
+                                 Closed5Loop                       Morpheus     ALHAT5navigation5used5for5flight5control5and5HDS5pointing
+                May522,52014    Demonstration    ALHAT5System          VTB      Morpheus5flight5of5second5generation5prototype5ALHAT5system
+                                 Closed5Loop                                    ALHAT5navigation5used5for5flight5control5and5HDS5pointing
+                May529,52014    Demonstration                      Morpheus
+                                                                       VTB
+
+                                                                   Morpheus
+                                                                       VTB
+
+In the fourth quarter of FY2011, NASA Headquarters directed the Morpheus and ALHAT projects to join forces to
+demonstrate autonomous, real-time HDA and precision landing on the Morpheus rocket-powered lander. During the
+remainder of FY2011 and FY2012, the two teams integrated the ALHAT system with the Morpheus vehicle,
+completed a series of tether tests, and developed a large, high-fidelity hazard field of lunar analog terrain to support
+Morpheus/ALHAT safe landing demonstrations at the NASA Kennedy Space Center (KSC).3 As shown in Figure 1,
+KSC saved a considerable amount of money by constructing the highly durable, 100-meter by 100-meter hazard
+field using "crawler fines" for fill material and ground cover, as well as to build up the craters and slope features.
+Twenty-four craters were constructed ranging from 2.0m to 4.8m in diameter with depths of 0.20m to 0.96m.
+Concrete debris from demolition projects was salvaged to form several hundred rock features varying in height from
+30cm to 100cm with a typical height-to-width ratio of 1:2.4 Crawler fines - crushed gravel created by the massive
+treads of the crawlers used to transport the Saturn V and the Space Shuttle vehicles - form a hard crust that inhibits
+plant growth and is highly resistant to wind and water erosion. Both of the 10-meter diameter concrete landing pads
+were covered with a thin layer of crawler fines for the Morpheus/ALHAT flights to present the flash lidar with
+terrain of reasonably uniform reflectivity. As visible in Figure 1 (top), the exhaust plume from the Morpheus main
+engine generates a dust cloud during descent starting at around 30m altitude.
+
+Although the Morpheus 1.5a vehicle was lost during its second free flight in August 2012, the Morpheus and
+ALHAT teams were prepared to execute a rapid turnaround. Due to the risks associated with the early Morpheus
+1.5a free flights, mass simulators were employed in place of the actual ALHAT sensors, avionics, and power
+systems. In addition, the Morpheus team had already begun development of a second lander vehicle, Morpheus 1.5b,
+based on the same general design, but incorporating a number of small improvements based upon operational
+experience with the original vehicle. As a result, the combined team was able to assemble Morpheus 1.5b, fully
+integrate the ALHAT system, and begin tether testing at the NASA Johnson Space Center (JSC) in roughly eighteen
+months.
+
+                                                               4
+                                American Institute of Aeronautics and Astronautics
+                   Figure 1. Lunar Analog Terrain Constructed at the North End of the KSC SLF
+
+The Morpheus lander was designed for a lunar mission in terms of tank sizing and engine thrust. As a result, its
+performance as a terrestrial testbed is constrained by Earth's stronger gravitational field, even after engine upgrades
+were incorporated to increase its maximum thrust to nearly 22 kN (5000 lbf). As usable propellant was displaced by
+growth in dry mass, the size and duration of the Hazard Detection Phase (HDP) trajectory envelope supported by
+Morpheus gradually decreased from the original goal of a 1000m initial slant range and a flight duration of 120
+seconds or greater. The team eventually compromised on the HDP trajectory displayed in Figures 2 and 3, with a
+groundtrack distance of 424m to the Initial Landing Point 1 (ILP1) and 405m to the center of the near landing pad,
+designated Landing Site 1 (LS1). ILP1 is the pre-defined (and unsafe) landing target for Morpheus and also
+represents the approximate center of the DEM generated by the HDS. The nominal HDP trajectory reaches a
+maximum altitude of approximately 245m, provides an initial slant range at the start of HDS terrain mapping of
+roughly 460m, and has a total flight duration of approximately 98 seconds. The team allocated a total of 14.1
+seconds to the HDS to generate the DEM, identify and rank the top five safe landing sites, and return the safe site
+list to the Morpheus Autonomous Flight Manager (AFM) software for validation against truth data. At the end of
+that 14.1 second interval, roughly 150m downtrack from the launch pad in the nominal HDP trajectory, the
+Morpheus lander begins a blend maneuver to divert towards LS1. If the safe site selected by the ALHAT HDS is
+valid (within 2m radius of LS1), then the AFM accepts the HDS site as the new landing target. If the HDS does not
+
+                                                                       5
+
+                                        American Institute of Aeronautics and Astronautics
+provide a site within the allocated interval or the identified top ranked HDS site is not valid, then the AFM uses the
+surveyed truth location of LS1 as the new landing target.
+
+423.7m%
+
+         150m%  X%LVLH%%
+                (+DR)%
+
+         Y%LVLH%%
+         (+CR)%
+
+Figure 2. Configuration of the SLF Test Area for the Morpheus/ALHAT Flights
+
+Figure 3 shows the expansion of the Morpheus 1.5b free flight trajectory profiles (altitude vs. crossrange in meters)
+from FF3 through FF14. Prior to FF10, Morpheus 1.5b carried mass simulators in place of the ALHAT sensors,
+avionics, and power system. For FF10 through FF14, the five longest and highest trajectories shown tightly
+overlapped in Figure 3, the ALHAT system was installed and fully operational on Morpheus 1.5b.
+
+  Figure 3. Free Flight Trajectory Expansion
+
+                               6
+American Institute of Aeronautics and Astronautics
+                   II. ALHAT INTEGRATION WITH THE MORPHEUS LANDER
+
+A block diagram illustrating the electrical interfaces between the Morpheus and ALHAT systems is provided in
+Figure 4. The color coding of the components highlight the multi-center organization of the Morpheus and ALHAT
+projects. The only top-level Morpheus/ALHAT interface change since the ALHAT integration with Morpheus 1.5a
+is the addition of voltage monitoring circuits between the HDS Battery Box and the Morpheus Avionics and Power
+Unit (APU). Adding these three signals to the APU telemetry stream provided the control room with insight into the
+battery charge state for the HDS gimbal, flash lidar, and compute element circuits.
+
+    HDS$Flash$Lidar$            HDS$Flash$Lidar$             Morpheus$GNC$
+      Sensor$Head$              Electronics$Box$                Subsystem$
+      HDS$Gimbal$
+                                                        Morpheus$$Avionics$and$
+                HDS$IMU$                                    Power$Unit$(APU)$
+
+HDS$Compute$Element$            HDS$Power$Distribu8on$    Laser$
+           (CE)$                        Unit$(PDU)$     Al8meter$
+
+       Control/Data*Connec-on*   HDS$BaFery$Box$(BB)$        Doppler$Lidar$
+       Power*Connec-on*
+       Fiber*Op-c*Connec-on*                                 Doppler$Lidar$
+                                                              Op8cal$Head$
+
+ALHAT/JPL$Components$           ALHAT/LaRC$Components$  Morpheus/JSC$Components$
+
+                                    Figure 4. ALHAT/Morpheus Interface Block Diagram
+
+The HDS consists of the components located within the gray box in Figure 4. The command and control interfaces
+between the HDS and the Morpheus vehicle include the vehicle navigation state, pulse-per-second (PPS) timing
+signal, AFM moding commands, HDS safe site information, and a range of health and status telemetry. The HDS
+Compute Element (CE) interfaces with the flash lidar sensor, directs the gimbal, contructs the DEM, develops the
+hazard probability map, and identifies/ranks the safe sites. Only the HDS end product - the ranked safe site list - is
+sent to the Morpheus AFM for action. To simplify the interfaces between two complex systems that were developed
+in parallel, the HDS includes its own electrical power and distribution system. For spaceflight applications, the HDS
+and host vehicle will likely use an integrated power system to reduce size and mass.
+
+The Morpheus Avionics and Power Unit (APU) executes two extended Kalman navigation filters in parallel. The
+Morpheus navigation filter processes inputs from GPS, IMU, and a short-range COTS laser altimeter. The ALHAT
+navigation filter uses the Morpheus IMU data, but substitutes the ALHAT laser altimeter for the Morpheus COTS
+unit. The ALHAT navigation filter also processes ALHAT Doppler lidar velocimetry measurements and HRN
+position updates. During pre-flight operations, the Morpheus navigation solution is passed to the ALHAT navigation
+filter as a crossfeed measurement. The crossfeed is turned off prior to liftoff
+
+From an integration standpoint, the ALHAT laser altimeter and Doppler lidar navigation sensors were treated as
+Morpheus elements. All of the power and data interfaces for these two sensors are routed to the Morpheus APU and
+GNC subsystem in support of the parallel navigation filter approach.
+
+The Morpheus body coordinate system designates the vehicle centerline as the X-axis with +X upwards. The liquid
+methane tanks are located along the Y-axis with +Y to the right. The liquid oxygen tanks are located along the Z-
+axis with +Z in the forward direction of travel to complete the right-hand coordinate system. For reference, the +Z
+
+                                                                       7
+
+                                        American Institute of Aeronautics and Astronautics
+oxygen tank is visible in the foreground of Figure 5(a) with the HDS gimbal assembly cantilevered from the
+Morpheus upper deck in the +Y/+Z quadrant. The forward and outboard location of the HDS gimbal assembly was
+selected to provide a broad field of regard for the flash lidar sensor, both laterally and vertically, to facilitate terrain
+imaging during HDA and HRN. In practice, however, the Morpheus lander proved to be quite stable in attitude
+during the approach phase, requiring only modest articulation of the HDS gimbal to complete the mosaic while also
+compensating for vehicle motion.
+
+(a) Forward View  (b) Aft View
+
+                  Figure 5. Gimbaled Flash Lidar Sensor Mounted on Morpheus 1.5b
+
+In FY2008, the ALHAT project was directed to support the Constellation program in the implementation of safe
+landing system technologies to support human lunar exploration missions. The Constellation requirement for global
+lunar access meant that the ALHAT system must be able to locate suitable safe landing sites in rugged terrain with
+poor lighting conditions, such as near the lunar poles. In combination with the rugged terrain, the large diameter of
+the Altair lander meant that the ALHAT system would have to be capable of rapidly imaging and analyzing a large
+area of lunar terrain in order to maintain a high probability of finding a safe site. As a result, the ALHAT team
+began analyzing DEM sizes of 90x90m and 180x180m and investigating beam steering technologies applicable to
+the generation of large mosaics. For the purposes of landing system technology development, a two-axis gimbal
+appeared to be the most expedient and lowest risk approach for demonstrating the core HDS functions. However, it
+should be noted that there there are other approaches for lidar beam steering that may offer mass, size, and power
+advantages for spaceflight missions. For some robotic missions, beam steering may not even be required.
+
+In a gimbaled system, power and data signals are generally routed to a connector at the base of the gimbal and then
+through slip rings to the instrument. However, there were concerns about the power quality that could be delivered
+to the Fibertek laser through the gimbal slip rings. In addition, the slip rings could only support a subset of the
+desired signals. As a result, a separate, external wire harness was routed to the flash lidar sensor head via a service
+loop, as shown in Figure 5(b). This service loop is quite large because it was sized to support the full pan/tilt range
+of the gimbal to its mechanical hardstops. This protected the wire harness from damage in the event of a violation of
+the more restrictive software-imposed pan/tilt limits. The service loop did not appear to adversely impact the
+performance of the HDS during flight.
+
+The linear mode flash lidar currently employed by ALHAT is a modified version of the TigerEye sensor developed
+by Applied Scientific Concepts, Inc. LaRC installed a Class IV Fiberset laser (1064nm, 50mJ) to quadruple its
+operational range and also carefully calibrated the sensor to improve its range measurement noise, frame-to-frame
+range consistency, and range/intensity performance. As shown in Figure 5(a), the TigerEye employs separate
+transmit/receive optics - the receive lens is uncovered in this photo while the smaller transmit lens just to its right is
+capped for eye-safety during preflight operations. In FY2009, the ALHAT team explored the use of collinear
+transmit/receive optics and zoom lenses for flash lidar sensors. Collinear optics avoid parallax issues and are
+advantageous for compact beam steering techniques, such as mirrors and prisms. Zoom or stepped optics can be
+used to extend the operational range of a flash lidar for TRN, perform multiple cycles of HD at increasing
+
+                                                 8
+                  American Institute of Aeronautics and Astronautics
+resolutions, and/or expand the sensor field of view at lower altitudes for HRN. Both collinear optics and
+zoom/stepped lenses may be of benefit for future spaceflight missions that employ flash lidar sensors.
+
+The ALHAT HDS uses an LN200 IMU to enable highly accurate gimbal pointing during the HDA mosaic. This
+small sensor is barely visible on the back side of the gimbal mount in Figure 5(a). If the host vehicle can provide
+navigation state updates to the HDS at a sufficiently high rate, this additional IMU is not required.
+
+The remaining HDS components are located on the Morpheus 1.5b upper deck. From left to right in Figure 6(a), the
+HDS Flash Lidar Electronics Box, HDS Compute Element and the Morpheus Space Integrated GPS INS (SIGI) are
+visible near the front of the upper deck. The tall aluminum frame in the background to the far right supports the
+Doppler Lidar Chassis. In Figure 6(b), the HDS Battery Box is stacked on top of the HDS Power Distribution Unit
+(PDU) near the center of the photo. The box to the far left is the Morpheus Avionics and Power Unit (APU).
+
+(a) Forward View  (b) Aft View
+
+                  Figure 6. Components on the Morpheus Upper Deck
+
+The ALHAT team wanted to mount the ALHAT Doppler lidar sensor head and laser altimeter sensor on or near the
+upper deck to provide separation of the sensors from the Morpheus main engine and associated vibration, acoustics,
+and thermal environments at the base of the lander. However, these sensors require an unobstructed view of the
+ground and the Morpheus cruciform tank and leg configuration greatly restricts nadir lines of sight from the upper
+deck. The three-beam Doppler lidar optical head posed a particular challenge because the three beams are canted
+22.5o from nadir and spaced symmetrically at 120o intervals about a central shaft. For the FY2014 free flight
+campaigns, these two sensors were mounted in separate locations outboard of the lower deck surrounded by
+propellant tanks and the landing gear struts. In Figure
+7, the Doppler lidar optical head is visible below the
+Morpheus APU in the -Y/-Z quadrant of the vehicle.
+This location was chosen to help trim the vehicle
+center of gravity. The cylindrical baffles protruding
+beneath the Doppler sensor head were added to help
+protect the optics from debris impacts and the base
+thermal environment. The performance of the
+Doppler lidar sensor, in particular, was adversely
+impacted by its mounting location near the Morpheus
+main engine. The laser altimeter is visible to the right
+in the +Y/-Z quadrant of the vehicle, partially hidden
+by the main strut of a leg.
+
+                                               Figure 7 Doppler Lidar and Laser Altimeter Sensors
+                                                 9
+
+                  American Institute of Aeronautics and Astronautics
+                         III. ALHAT FLIGHT OBJECTIVES AND PLANNING
+
+The fundamental objective for the integrated Morpheus/ALHAT free flight campaigns was to successfully
+demonstrate real-time, autonomous HDA followed by a controlled, accurate landing near the selected safe site
+during a representative, closed loop, terrestrial free flight on a rocket-powered lander. Successful demonstration of
+these capabilities using the ALHAT navigation filter would serve to elevate the tested ALHAT safe landing system
+and its associated functions, components, and software to TRL 6. In order to achieve success at the integrated level,
+each ALHAT component must also perform at a satisfactory level in cooperation with the rest of the ALHAT
+system and the Morpheus host vehicle. The detailed test objectives for the HDS functions, ALHAT navigation filter,
+and individual ALHAT lidar sensors are described below.
+
+  Hazard Detection System (HDS)
+     · HDS pointing with respect to the GIDE target satisfies the accuracy specification
+     · HDS pointing with respect to the Lidar target satisfies the accuracy specification
+     · HDS provides accurate pointing to the selected HRN feature
+     · Gimbal performance satisfies static and dynamic pointing requirements
+     · HDS meets safe site identification and ranking objectives using Morpheus navigation
+     · HDS meets safe site identification and ranking objectives using ALHAT navigation
+     · DEM is successfully generated within six seconds of HDA initiation
+     · DEM map-tie error is less than one meter
+     · HDS generates an accurate DEM that is highly representative of the hazard field truth data
+     · Safe sites are identified appropriately relative to the actual hazard field
+     · Safe site rankings show appropriate discrimination and distribution
+     · Top ranked safe site is located on the landing pad
+     · Top ranked safe site is with a two meter radius of the center of the landing pad (threshold imposed by
+           Morpheus)
+
+  Hazard Relative Navigation (HRN)
+     · Strong DEM reference feature selected for HRN correlations
+     · HRN reference feature is maintained within the flash lidar FOV during HRN operations
+     · Valid and accurate HRN measurements are produced during the relevant operational region of the approach
+           trajectory
+     · HRN measurements improve the ALHAT navigation state estimate
+     · HRN produces valid measurements on VTB nav
+     · HRN produces valid measurements on ALHAT navigation
+
+  Flash Lidar (FL)
+     · FL maintains full operational status after multiple exposures to the Morpheus flight environment
+     · Automatic Gain Correction (AGC) maintains images within the dynamic range of the flash lidar sensor
+     · FL maintains its internal subsystems within their defined operational environmental bounds
+     · FL operation is independent of ambient lighting conditions
+     · FL sensitivity is sufficient to produce high-quality range images at the maximum slant range provided
+           during the Morpheus HDP free flight trajectory
+     · FL images demonstrate the low levels of range measurement noise required for successful detection of
+           small hazards and the identification and ranking of safe sites
+     · FL range accuracy is adequate for HRN measurements
+     · FL range and intensity images are free from pixel pre-triggering
+                                                                      10
+
+                                        American Institute of Aeronautics and Astronautics
+  Navigation Doppler Lidar (NDL)
+
+     · NDL maintains full operational status after multiple exposures to the Morpheus flight environment
+
+     · NDL performance is demonstrated to be independent of ambient lighting conditions
+     · NDL provides a high degree of measurement data availability throughout the approach trajectory
+
+     · NDL provides superior data quality with the precision of beam LOS velocities within 3cm/s, 1-sigma
+
+  Laser Altimeter (LAlt)
+
+     · LAlt maintains full operational status after multiple exposures to the Morpheus flight environment
+     · LAlt performance is demonstrated to be independent of lighting conditions
+
+     · LAlt provides a high degree of measurement data availability throughout the approach trajectory
+     · LAlt provides superior data quality with a LOS range measurement error within 25cm, 1-sigma
+
+  ALHAT Navigation Filter
+
+     · ALHAT Nav correctly processes LAlt measurements
+
+     · ALHAT Nav correctly processes NDL measurements
+     · ALHAT Nav correctly processes HRN measurements
+     · Error for the ALHAT Nav estimated position relative to Morpheus Nav remains within the established error
+
+           tolerance threshold during the entire HDP trajectory
+     · Error for the ALHAT Nav estimated velocity relative to Morpheus Nav remains within the established error
+
+           tolerance threshold during the entire HDP trajectory
+     · Error growth in the ALHAT Nav estimated attitude is sufficiently limited to support the execution of the
+
+           HDA and HRN and achieve a safe, controlled landing
+
+The GNC moding approach evolved during the free flight campaigns as the team gained experience with the
+ALHAT system and progressed towards the objective of fully closing the loop on ALHAT navigation and satisfying
+the objectives listed above. Figure 10 summarizes the GNC and AFM moding configuration used during FF14 for
+the Prime Nav, VTB Crossfeed, ALHAT measurements, HDS UPP Source (used for HDS pointing), and AFM HDS
+Commands. For FF14, ALHAT nav was used to fly the vehicle except in the event of a soft or hard abort, and VTB
+crossfeed was turned off just prior to liftoff. The ALHAT LAlt measurements were only processed by ALHAT nav
+from the FlightAcent through the FlightApproachFinal modes. Similarly, the NDL velocity measurements are only
+processed during a subset of the approach trajectory. To avoid excess measurement noise from the concentration of
+dust and hot, turbulent air during liftoff and landing, the ALHAT nav does not process the LAlt and NDL
+measurement when the vehicle is in close proximity to the ground. This is consistent with the established ALHAT
+approach of using dead-reckoning during terminal descent. The NDL LOS range measurements (labeled DL_Alt in
+Figure 8) were not processed by ALHAT nav during FF14 because the processing of these measurements proved to
+be problematic during FF10 and FF11 and a fix has not been found. HRN processing is enabled during the
+appropriate flight modes following DEM generation and concluding as the vehicle reached final approach. The
+pointing source for the HDS was designated to be the ALHAT nav. However, it should be noted that in the current
+version of the AFM flight software, the HDS UPP Source automatically changes to VTB nav if the AFM commands
+a Prime Nav downmode. The Prime Nav downmode occurred very late in the FF14 trajectory and, thus, did not
+affect HDS operations. In FF13, however, the downmode to VTB nav occurred during Flight Approach and affected
+HDS pointing during HRN measurements. The AFM HDS Command simply modes the HDS from standby (noop or
+"no operations") through Prepare, Operate, and Site Index, back to noop, and then shutdown during terminal
+descent. The Operate command instructs the HDS to generate the DEM and develop the safe site list. The HDS then
+sends the Site Index to AFM for the validation of the top-ranked safe site as the new landing target. Following the
+conclusion of the HRN measurements, the HDS goes back into standby and then shuts down. The HDS shut down
+sequence tilts the flash lidar sensor head up 30o above the horizontal to help protect its optics from landing debris.
+For future Morpheus/ALHAT free flights, the expectation is that the processing of NDL velocity measurements will
+begin earlier in ascent. In addition, the cutoff altitude for the LAlt and NDL measurements will be raised to 30m
+rather than the current 22m (FlightDescent1 in Figure 8) to eliminate noisy readings. It is currently unclear whether
+or not the NDL LOS range measurements will be processed by ALHAT nav in future free flights.
+
+                                                                      11
+
+                                        American Institute of Aeronautics and Astronautics
+Nominal(Closed-Loop(Tes1ng(for(FREEFLIGHT14(
+
+                                          VTB(
+
+!!                         Prime(Nav( Crossfeed( LA_ALT(              DL_Alt(             DL_Vel(  HRN(             HDS(UPP(Src(  AFM(HDS(cmd(
+                                                                        Off!                Off!   Off!                  n/a!          noop!
+Off                                 n/a!  n/a!  Off!                    Off!                Off!   Off!                  n/a!
+                                                                        Off!                Off!   Off!                                noop!
+NavStartup                          n/a!  n/a!  Off!                    Off!                Off!   Off!                ALHAT!          noop!
+                                                                        Off!                Off!   Off!                ALHAT!          noop!
+NavOn                      ALHAT!         On!   Off!                    Off!                Off!   Off!                ALHAT!          noop!
+                                                                        Off!                Off!   Off!                ALHAT!          noop!
+GNC!Actuator!Tests         ALHAT!         On!   Off!                    Off!                Off!   Off!                ALHAT!          noop!
+                                                                        Off!                Off!   Off!                ALHAT!         prepare!
+GuidOn                     ALHAT!         On!   Off!                    Off!                On!     On!                ALHAT!         operate!
+                                                                        Off!                On!     On!                ALHAT!       site_index!
+CntrlOnStandby             ALHAT!         On!   Off!                    Off!                On!    Off!                ALHAT!          noop!
+                                                                        Off!                Off!   Off!                ALHAT!          noop!
+IgnSeq                     ALHAT!         On!   Off!                    Off!                Off!   Off!                ALHAT!          noop!
+                                                                        Off!                Off!   Off!                ALHAT!       shutdown!
+FlightAscent               ALHAT!         Off!             On!          Off!                On!    Off!                ALHAT!       shutdown!
+                                                                        Off!                Off!   Off!                ALHAT!       shutdown!
+FlightHDSPrep              ALHAT!         Off!             On!          Off!                Off!   Off!                ALHAT!       shutdown!
+                                                                                                                       ALHAT!
+FlightHDA                  ALHAT!         Off!             On!
+
+FlightApproach             ALHAT!         Off!             On!
+
+FlightApproachFinal(166m) ALHAT! Off!                      On!
+
+FlightDescent1(22m!!alt)   ALHAT!         Off!  Off!
+
+FlightDescent2((15m!alt)   ALHAT!         Off!  Off!
+
+FlightDescentFinal((4m) ALHAT! Off!             Off!
+
+AbortSoL                            VTB!  Off!             On!
+
+EngineShutdown             ALHAT!         On!   Off!
+
+AbortHard                           VTB!  Off!  Off!
+
+                           Figure 8. GNC and AFM Moding Configuration for FF14
+
+Figure 8 is a plot of the GNC modes and HDS modes versus mission elapsed time (MET) for FF14. During FF14,
+the HDS operation extended from roughly 43 seconds to 69 seconds MET and the processing of ALHAT NDL and
+LAlt measurements continued until approximately 91.6 seconds MET. The number and sequence of Morpheus GNC
+modes and ALHAT HDS modes are not expected to change for future Morpheus/ALHAT free flights. However,
+variations in the trajectory, such as flying a longer distance to ILP2/landing pad 2, will likely impact the duration
+and MET of these modes. The ALHAT nav processing modes for the ALHAT navigation sensors are expected to
+change as the issues identified in FF10 through FF14 are addressed and solutions are implemented.
+
+                                             Pitchover((                                           approach_final(                          descent_(
+                                             Complete(                                                                                      final(
+                                          (AFM(4.4Ksec(                                                                         descent2(
+                                          (Lmer(expires)(                                                           descent1(
+
+                                            hds_prep(                 approach(
+
+                                                                hda(
+
+     cntrl_on_(  ign_seq(  ascent(                                         Begin(Divert(
+     standby(                                                                Blending(
+                                                                                          Quad2(                                     HDS(
+                                                                Quad1(                                                            Shutdown(
+
+                                          HDS(Prepare( HDS(Operate( HDS(Site(Index(                                 Descent(
+
+                           Ascent(
+
+                           Figure 9. FF14 Modes Versus Mission Elapsed Time (MET)
+
+                                                                  12
+                                    American Institute of Aeronautics and Astronautics
+                     IV. OVERVIEW OF MORPHEUS/ALHAT FREE FLIGHTS
+
+The Morpheus/ALHAT GNC configurations for FF10 through FF14 are shown in Figure 10. The color coding in the
+table indicates changes between flights. FF10 marked the first time that the Morpheus/ALHAT system executed an
+HDP trajectory and collected ALHAT sensor data at relevant altitudes and velocities in the induced environment
+produced by the Morpheus vehicle. The first three Morpheus/ALHAT free flights, FF10-FF12, used the VTB
+navigation solution both to control the vehicle trajectory and as an input to the HDS to drive the pointing of the
+gimbaled flash lidar sensor. During these flights, the ALHAT system collected and processed HDS and navigation
+data in "open loop" mode to determine how well the Morpheus/ALHAT system would perform if guidance and
+control were closed on the ALHAT navigation solution. Each flight represented a learning experience for the team
+with respect to the performance of the sensors in the induced flight environment and the interactions between the
+Morpheus and ALHAT systems. The third free flight, FF12, marked a milestone when the Morpheus AFM accepted
+and validated the safe site input from the ALHAT HDS and landed at that location. The final two flights closed the
+loop on the ALHAT navigation solution for control of the vehicle trajectory and as the input to the HDS for DEM
+generation, safe site selection, and HRN.
+
+The Morpheus APU processes two navigation filters in parallel - VTB nav and ALHAT nav. VTB nav, which
+employs GPS, IMU, and altimeter measurements, was tested and refined during dozens of tether tests and nine free
+flights prior to ALHAT integration at KSC. As a result, VTB nav is relied upon as a close approximation of the
+vehicle "truth" state. Comparisons between the Morpheus and ALHAT navigation solutions are used to monitor the
+performance of ALHAT during free flights, and VTB nav serves as the backup in the event of a problem. In order to
+keep the two navigation filters in close agreement, the team employed a "crossfeed" technique in which the VTB
+navigation solution is fed into the ALHAT navigation filter as a measurement. The AFM directed the ALHAT
+navigation filter to stop processing the crossfeed measurement at the AFM mode listed in the "VTB Crossfeed" row
+
+                         FF10                  FF11                          FF12                   FF13                   FF14               Next Flight
+                                                                                                                                          ALHAT Closed Loop
+AFM Nav/Sensor Moding        Morpheus VTB         Morpheus VTB         Morpheus VTB        ALHAT Closed Loop      ALHAT Closed Loop
+Vehicle Nav Source        (ALHAT Open Loop)    (ALHAT Open Loop)    (ALHAT Open Loop)      Crossfeed on until     Crossfeed on until
+VTB Crossfeed                                   Crossfeed on until  Crossfeed on until      after GNCIgnSeq        after GNCIgnSeq
+Laser Altimeter            Crossfeed on until  after FlightHDSPrep
+                         after FlightHDA mode                         after GNCIgnSeq              mode                   mode
+                                                        mode                mode            Inhibitied at 22m      Inhibitied at 22m
+                         Used Ascent through   Used Ascent through
+                                Shutdown                                Inhibitied at
+                                                     Shutdown       DescentFinal (3 m)
+
+                                                                    Post-­-Mosaic until                              Post-­-Mosaic until
+                         Used Ascent through   Used Ascent through Inhibitied at Descent2  Post-­-Mosaic until       Inhibitied at 22m
+Doppler Lidar Velocity         Shutdown        Shutdown                                    Inhibitied at 22m      Only processed with 3
+
+                                                                    (30 m)                                              good beams
+
+Doppler Lidar Altimetry  Used Ascent through   Used Ascent through  No longer used         No longer used         No longer used                  Enabled
+HDS Pointing Source             Shutdown              Shutdown                                                                            Same corridor
+HDS Site Selection                                                  Pointed on VTB Nav     Pointed on ALHAT       Pointed on ALHAT
+HRN                      Pointed on VTB Nav    Pointed on VTB Nav   (Intended to point on  Nav until switch       Nav until switch
+                         Inhibited             Inhibited            ALHAT Nav)             (Intended to point on  (Intended to point on
+AFM Nav Difference       (3.35 m from LS)      (0.77 m from LS)                            ALHAT Nav              ALHAT Nav
+Corridor                 Pointed on VTB Nav    Pointed on VTB Nav   Enabled                throughout)            throughout)
+                                                                    (1.40 m from LS)       Enabled                Enabled
+                         N/A                   N/A                                         (0.35 m from LS)       (2.55 m from LS)
+                                                                    Pointed on VTB Nav     Pointed on ALHAT       Pointed on ALHAT
+                                                                    (Intended to point on  Nav until switch       Nav until switch
+                                                                    ALHAT Nav)             (Intended to point on  (Intended to point on
+                                                                                           ALHAT Nav              ALHAT Nav
+                                                                    N/A                    throughout)            throughout)
+                                                                                                                  1.7% slant range
+                                                                                           1.5% slant range,      + 2.1 bias,
+                                                                                           2.5 m limit            2.5 m limit
+                                                                                           Inhibited below 15 m   Inhibited below 15 m
+                                                                                           altitude               altitude
+
+Figure 10. Summary of Morpheus and ALHAT GNC System Configurations for the KSC Free Flights
+
+                                                             13
+                               American Institute of Aeronautics and Astronautics
+of Figure 8. The crossfeed technique was felt to be the best way to initialize the ALHAT nav during launch and
+maintain close agreement with VTB nav during ascent. However, the crossfeed approach also resulted in
+timing/latency issues in state comparisons between the two filters. The VTB nav measurements effectively included
+a time lag of roughly 180 msec compared to the incoming ALHAT navigation sensor measurements. During
+dynamic flight, this latency manifests as phase shifts in the velocity and position estimates. This is not a problem for
+the VTB nav since the GPS measurement dominates and the latency effect diminishes as the vehicle slows down and
+begins its terminal descent. But this latency had a significant adverse impact on the ALHAT navigation solution and
+its comparison with VTB nav. Based on the analysis of flight data from FF10 and FF11, the AFM mode trigger was
+revised so that ALHAT nav stopped processing the VTB crossfeed information just prior to launch.
+
+Flying in a terrestrial environment proved to be a much bigger challenge than anticipated. The ALHAT lidar sensors
+are affected by dust kicked up by launch and landing, as well as by the mass of turbulent, hot air created by the
+Morpheus main engine exhaust. This dust attenuated the signals of the Doppler lidar and laser altimeter sensors
+during launch and landing, resulting in significant measurement noise and even signal loss. Depending on the winds
+of the day, the dust cloud created during launch can also drift between the vehicle and the hazard field during the
+descending approach trajectory, causing pretriggering of pixels in the flash lidar range image. This reduces the
+quality of the flash lidar images for hazard detection and, in some cases, renders the images unusable for generating
+HRN measurements. After the first two Morpheus/ALHAT free flights, the area around the launch pad was watered
+down just prior to liftoff to minimize the dust cloud. But even a reduced amount of dust can cause a problem if the
+winds blow the particles in front of the ALHAT sensors. So a wind placard was implemented for FF13 and FF14 to
+restrict the direction and velocity of the prevailing winds at liftoff. It should be noted that other airborne particulates,
+such as pollen or smoke from grass fires, can also cause pixel pretriggering in flash lidar sensor images. However,
+the dust, pollen, or smoke particles must be fairly close to the flash lidar sensor - a few tens of meters - in order to
+produce a sufficiently strong signal to trigger a detector pixel. A mitigation approach is to implement a time delay
+(commonly referred to as a range gate) before the flash lidar sensor begins processing return signals. The ALHAT
+team attempted to implement a range gate on the modified TigerEye sensor, but the feature had to be removed
+because it interfered with the calibration of the instrument. However, it is highly recommended that future
+generations of flash lidar sensors intended for EDL applications include a user-configurable range gate.
+
+The other major environmental problem for the ALHAT lidar sensors was the adverse effect of the large mass of hot
+air generated by the exhaust plume of the Morpheus main engine. With unfavorable winds, this hot air could rise
+between the vehicle and the hazard field and degrade the output from the flash lidar. The ALHAT flash lidar
+operates in the near-infrared (NIR) part of the spectrum very close to visible light, and the heated turbulent air
+caused by the Morpheus engine can produce a blurring effect analogous to the heat shimmer visible over hot ground
+in the daytime. The hot air had a much more serious effect on the performance of the NDL sensor, which is located
+much closer to the Morpheus engine. Rather than pointing ahead of the vehicle at a shallow angle like the flash lidar,
+the three NDL beams point downwards and slightly away from nadir. Depending on the relative wind direction and
+velocity (a function of the prevailing wind combined with vehicle motion) at various points during a flight, the mas
+of hot air often resulted in a loss of signal from one or two beams, and occasionally all three beams. This had a
+major effect on the quantity of velocity data available for the ALHAT navigation filter. After several flights, it
+became clear that the velocity estimates obtained from the current implementation of the ALHAT navigation filter
+were excellent when all three NDL beams were available, but drifted away from the VTB nav estimate when only
+one or two NDL beams were providing data. Because of the tight position corridor imposed on the VTB versus
+ALHAT nav comparison, even a small velocity drift could quickly result in a violation of the boundary of the
+navigation comparison corridor. As a result, the navigation filter was revised to process NDL measurements for
+FF13 and FF14 only when all three beams were available. This occurred only for a short period of time during the
+latter portion of the approach phase and, unfortunately, this limited availability of the NDL was not quite sufficient
+to keep the ALHAT navigation solution within the corridor in the absence of good HRN measurements. Since each
+NDL beam provide very accurate data, it is unclear why the availability of only one or two beams should result in
+divergence of the ALHAT navigation velocity estimate. This is one of the key post-flight issues that is under
+assessment and must be fixed before another Morpheus/ALHAT flight campaign can occur. It is not known at this
+time if the problem is in the output of the NDL, the manner in which the NDL measurements are processed in the
+ALHAT navigation filter, or a combination of the two. For future Morpheus/ALHAT flights, the team plans to
+redesign the NDL optical head and relocate it to a higher and forward mounting location on the vehicle. This should
+greatly improve the availability of all three NDL beams during the approach trajectory. In addition, the same wind
+placard will benefit both the flash lidar and the NDL sensors.
+
+                                                                      14
+
+                                        American Institute of Aeronautics and Astronautics
+Although the Morpheus/ALHAT flights have focused on the velocimetry data provided by the NDL, each beam of
+this instrument is also capable of providing LOS range measurements. When LOS range measurements from all
+three NDL beams are available, the instrument can estimate the vehicle altitude and surface-relative attitude. The
+LOS range measurements from the NDL were processed by the ALHAT navigation filter during the first two flights,
+but resulted in some ALHAT navigation estimate issues that could not be quickly resolved. As a result, the LOS
+range measurements were not processed by the ALHAT navigation filter during the last three free flights, as shown
+in Figure 8.
+
+Because of concerns that the heat from the VTB engine and the debris blown up during launch could damage the
+NDL and laser altimeter optics, debris shields were installed beneath the lenses. Acrylic debris shields were
+employed during FF10, but they deformed from heat during flight and resulted in poor NDL and laser altimeter
+availability. Polycarbonate material was used for the FF11 debris shields because of its much higher melting point,
+but the results were similar to those of FF10. The polycarbonate debris shields sagged from the heat, forming
+concave areas in front of the optics, and also tended to collect moisture and dust which further degraded the lidar
+signals. For FF12 and beyond, the debris shields were eliminated in favor of cylindrical aluminum baffles to reduce
+the exposure of the lenses to debris strikes. The baffles worked well and had no adverse impact on sensor
+performance.
+
+The attitude and pointing information from the ALHAT navigation filter and the VTB navigation filter were
+consistently close throughout the entire series of free flights, and the HDS was able to generate a high quality DEM
+of the hazard field during every flight. Based upon truth data, five safe landing areas exist within the 60x60m DEM
+generated by the HDS during the approach trajectory. However, because the Morpheus team wanted to land on a
+concrete pad, the hazard field was slightly modified for the Morpheus/ALHAT flights to increase the apparent safety
+of the landing pad relative to the other safe areas. During all five free flights the safe landing sites identified by the
+HDS were valid (always fell within the five areas known to be safe from truth data), and the HDS site ranked
+highest in terms of safety probability was always on the landing pad. The HDS safe site was used for FF12 and
+FF13, but on FF14 the safe site location was 0.5m outside of the 2m radius threshold imposed by the VTB to ensure
+touchdown on the concrete landing pad and was rejected by AFM.
+
+The Morpheus GNC used the Morpheus navigation solution during FF10 through FF12. The ALHAT navigation
+filter executed "open loop" during these flights in order to gather performance data. Issues were identified and fixed
+after each of the three flights and the decision was made to close the loop on ALHAT nav for FF13 and FF14. The
+dual-string Morpheus/ALHAT navigation filter approach used by the Morpheus vehicle provides a unique and
+highly useful flight safety feature. The proven VTB nav always runs as a hot backup to the parallel nav string and
+the AFM controls which navigation output is routed to GNC to fly the vehicle. At any point in the trajectory that the
+ALHAT navigation estimate drifts outside of the boundary of the acceptable corridor defined around the VTB
+navigation estimate, the AFM switches back to VTB nav to complete the flight. This technique enables a new
+navigation approach to be safely tested in closed loop flight with far fewer flights than would normally be required
+since the proven VTB navigation filter is always ready to take over. On FF14, the ALHAT nav stayed within the
+defined VTB corridor throughout most of the flight, with AFM switching over to VTB nav just four seconds before
+the end of the effective corridor. Analysis after the flight showed that ALHAT nav would have safely landed the
+vehicle on the pad if it had been allowed to complete the flight.
+
+HRN was the only ALHAT technique that was not fully verified during the Morpheus/ALHAT free flights. Only
+one or two HRN measurements (out of 8 to 10 opportunities) were collected and processed by the ALHAT
+navigation filter during each of the closed loop flights. Some HRN images were obscured by pixel pretriggering due
+to dust and could not be correlated with the DEM basemap. Other images did not meet the correlation threshold
+imposed by ALHAT to define a valid HRN measurement, or exceeded the correlation radius and produced no
+measurement. In addition, the processing of HRN measurements tended to drive the ALHAT navigation solution
+away from the VTB navigation solution. The reasons for this behavior are unclear, and the flight data is being
+carefully examined using flight data replay and GNC simulations. HRN is still considered to be a highly valuable
+technique for limiting the growth in surface-relative position errors during the time between safe site selection and
+terminal descent to a planetary surface. Understanding and fixing these HRN issues is a major priority for the team
+before the Morpheus/ALHAT system is flown again.
+
+The five free flights of the ALHAT system on Morpheus occurred during a relatively short time span (just under two
+months) considering the complexity and scope of the endeavor. The number and duration of the test campaigns were
+limited, for the most part, by the stringent project funding profile. The time between free flights ranged from six
+
+                                                                      15
+
+                                        American Institute of Aeronautics and Astronautics
+days to two weeks, which provided very little time for indepth analysis of data, identification of beneficial or
+required changes, and the implementation and verification of updates to the Morpheus and ALHAT hardware,
+software, and procedures. Thanks to the dedication of a very good ALHAT/Morpheus team, FF13 and FF14 came
+very close to achieving full success with only a few issues left to understand and fix. The Morpheus/ALHAT team is
+continuing to focus on post-flight analysis and rework to prepare the system for follow-on flight campaigns in
+FY2015 should funding become available.
+
+                                    V. ALHAT SYSTEM PERFORMANCE
+Completion of the current free-flight campaign has provided the ALHAT and Morpheus teams with a wealth of data.
+Overall, the integrated ALHAT/Morpheus systems performed very well and achieved a majority of the desired
+flight-test objectives. Detailed analysis of individual sensor and ALHAT Navigation (aka., ALHAT Nav)
+performance is still underway, and some revisions are in work for future playback analysis and potential future free
+flights. This section will provide an overview of the current state of the performance analysis for each of the
+ALHAT sensors and the ALHAT Nav filter. Data will be shown primarily from FF14, which was the second fully
+closed-loop flight of ALHAT, but discussions will include some details from FF10-FF13. The first closed-loop
+flight was FF13, and FF10-FF12 were open loop for ALHAT sensors.
+The nominal flight trajectory used for all flights of ALHAT onboard Morpheus is shown in Figure 11. The flight
+profile went to a maximum altitude near 250 meters and traversed just over 400 meters to the landing site. The first
+half of the descent trajectory was designed to mimic a lunar-like approach trajectory with a 30 degree slant angle, as
+desired for ALHAT imaging with the HDS. The latter half of the descent implemented a divert to the selected safe
+landing site (pre-determined or ALHAT-determined based on the flight objectives).
+
+                  Figure 11. Flight trajectory profile for all ALHAT free flights onboard Morpheus
+The timeline for the trajectory profile is visible within the FF14 LAlt data in Figure 12. As seen in the plot, the
+ascent portion of the trajectory is from approximately 15 seconds of Mission Elapsed Time (MET) after ignition
+until 40 seconds MET. The slant descent is from 40 seconds MET until ~87 seconds MET, and then the terminal
+
+                               Figure 12. ALHAT Laser Altimeter data from Free Flight 14
+                                                                      16
+
+                                        American Institute of Aeronautics and Astronautics
+vertical descent from ~35 meters to the ground occurs after ~87 seconds MET. Overall, the LAlt produced
+consistent data throughout all of the free flights. Minimal measurement drops occurred during the flights, and the
+drops that did occur were mostly due to known degradation in the LAlt laser power that affected the signal to noise
+ratio; the laser will be replaced for any future flights. The 10 meter measurements prior to ~12 seconds MET occur
+when the sensor is at or below a 10 meter minimum range threshold; the LAlt is intended for use during TRN from
+very long ranges up to 20+ kilometers at the Moon. The increase in measurement drops and noise after 85 seconds
+is believed to be primarily the result of dust kicked up during engine plume interactions with the ground.
+The HDS provides three primary functions during the descent trajectory: 1) generate a Digital Elevation Map/Model
+(DEM); 2) conduct Hazard Detection (HD) on the DEM to determine and report safe landing sites to the vehicle
+Autonomous Flight Manager (AFM); and, 3) provide Hazard Relative Navigation (HRN) measurements to ALHAT
+Nav based on tracking a feature identified within the DEM. The DEM generation and HD performance was superb
+for all five free-flights of HDS on Morphues. Safe sites determined within the DEM were always safe in truth, and
+the top safe site was always on the truly safest region of the terrain. To find safe sites, the HDS FL measurements
+and HD algorithms were required to differential true roughness hazards of 30 centimenters or larger from FL range
+noise on the order of 8-cm (1s). The hazard field was constructed so that the safest region would be on a concrete
+landing pad, which aids in landing site reusability and vehicle accessibility. The image and digital terrain in Figure
+13 are of the hazard field, the outline of the DEM scanning region, and the actual 3-D construction of the DEM from
+HDS FL data obtained in FF11. The DEM from FF11 was the best of all five flights, due in part to a head wind that
+minimized dust and heated air from increasing noise in the FL range images.
+
+Figure 13. Hazard field with outlined scanning region (left) and Digital Elevation Map generated by the HDS
+               during Free Flight 11
+
+The FF11 DEM in Figure 13 is stretched herein to highlight the rocks and craters within the terrain map. The HD
+algorithm that runs in real time onboard the HDS processes this DEM to determine candidate landing sites that are
+ranked by safety probabilities. The HD algorithm makes use of geometric parameters for the lander, including
+vehicle and footpad dimensions, engine nozzle clearance, vehicle landing orientations, and slope tolerances for
+landing. Additionally, FL range precision and ALHAT Nav knowledge uncertainty are considered within the safety
+probability calculations used to locate and rank the safe sites. The top five ranks safe sites, as shown in Figure 14
+for FF11, are sent into the Morpheus AFM for determination of which site will be used for the divert (always the top
+safe site for these flight test campaigns). The AFM also compares the HDS sites to known surveys of the top
+landing site to ensure the desired landing location is selected for the terrestrial test campaign.
+
+                                                                      17
+                                        American Institute of Aeronautics and Astronautics
+Figure 14. Free Flight 11 DEM with top five ranked safe sites (black dotted circles with % safety probability)
+               and selected feature for HRN tracking (white asterix within black dotted circle)
+
+The HDS points the FL to the terrain field based on the pose estimate provided by ALHAT Nav for the HDS
+location relative to an Intended Landing Point (ILP). The ILP is an a priori landing location typically chosen from
+coarse orbital reconnaissance data early in a mission. The DEM is centered on the ILP, and coordinates of the
+locally determined safe sites are provide in an ILP coordinate frame. Knowledge error in the ALHAT Nav estimate
+of ILP-relative HDS pose causes a map tie error between the DEM and the pre-mission desired mapping region.
+This is a known phenomenon and is not a problem in the architecture of ALHAT Nav, and HRN measurements are
+used after HD to minimize the additional growth of DEM-relative errors. This map tie does however caused issues
+with terrestrially testing ALHAT since the Morpheus AFM, which also is unaware of the map tie shift, compares the
+HDS top safe site with a truth survey. To accommodate the error, an artificial 2-meter VTB threshold is allowed for
+the ALHAT determined safe site, as shown in Figure 15. Again, this is a terrestrial test constraint for Morpheus
+flights and does not impact ALHAT Nav performance.
+
+Figure 15.  AFM comparison of HDS reported safe sites against the truth survey of the pad center (LS1).
+            Safe sites for FF10 and FF14 where outside of the 2-meter VTB constraint. This terrestrial test
+            constraint is impacted by map tie error that does not affect ALHAT Nav.
+
+                                                                 18
+
+                                   American Institute of Aeronautics and Astronautics
+For FF12-FF14, the Morpheus AFM selected either the HDS determined safe site or the surveyed safe site for the
+guidance divert for vehicle landing. The surveyed site was planned for use in FF10 and FF11. In both FF12 and
+FF13, the top HDS site was within the VTB threshold and was selected. In FF14, the site was outside of the
+threshold, so the surveyed landing site (LS1) was used instead. After the safe site selection, the HDS transitions into
+HRN feature tracking and provides HRN measurements that provide ALHAT Nav with DEM-relative position
+updates to minimize position error growth after safe site determination. More details on HRN will be covered later
+in this section.
+The NDL has three independent beams that provide Line of Sight (LOS) velocity and range measurments. During
+the flight testing, the location of the NDL subjected the sensor beams to excessive heated air and thermal gradients.
+This caused drops in certain beams based on the wind direction for each flight, as visible in Figure 16 for FF14. In
+the plot, Beam 1, the forward beam, drops out during ~25 - 45 seconds MET, which corresponds to the ascent
+portion of the flight. Beams 2 and 3, which point 120 degrees aft in opposite directions, drop out over flight
+segments from the peak of the trajectory until midway through the descent. Similar to the LAlt, the loss of all three
+NDL beams after 90 seconds is believed be the result of the engine plume kicking up dust at the landing area.
+During the open-loop flights, FF10-FF12, the NDL measurement drops and less than three simultaneous beams
+appeared to coincide with odd behavior and apparent sensitivities within the ALHAT Navigation filter. During the
+closed-loop flight testing in FF13 and FF14, the NDL range measurements were excluded and additional
+requirements and constraints were put in place to govern when NDL velocity measurements were processed. For
+FF13 the NDL velocity data was only processed after the HDS generated its Digital Elevation Map (DEM) to ensure
+a well behaved Navigation state for HDS pointing and slewing. For FF14, the NDL measurement processing was
+further constrained to require that all three beams had velocity measurments. In depth analyses including playback
+of flight data are currently underway to fully understand the filter interactions with the NDL and other ALHAT
+measurements to resolve the processing issues.
+
+                              Figure 16. Navigation Doppler Lidar data from Free Flight 14
+The ALHAT Nav filter processes measurements from the HDS, LAlt and NDL, along with IMU data from the
+Morpheus SIGI. The filter provides the glue between the ALHAT system and the Morpheus GN&C functions. The
+Morpheus GN&C implements a dual-string Nav architecture that runs both the ALHAT Nav filter and a VTB Nav
+filter (based on GPS, SIGI and other non-ALHAT sensor data). The VTB Nav runs in the background and is used
+by the Morpheus AFM to monitor the ALHAT Nav state. This dual-string architecture enables the Morpheus VTB
+to safely test and rapidly mature ALHAT (or other prototype GN&C) technologies. In the event that ALHAT Nav
+
+                                                                      19
+                                        American Institute of Aeronautics and Astronautics
+violates state-threshold criteria relative to VTB Nav, the Morpheus AFM switches the guidance and control loop
+from ALHAT Nav to VTB Nav to ensure vehicle safety; this is called downmoding. There are threshold corridors
+for position, velocity and attitude: Figure 17 shows the position threshold corridor, along with the ALHAT versus
+VTB position difference for FF14.
+
+Figure 17. Position threshold corridor used to monitor ALHAT Nav versus VTB Nav. Data shown for FF14.
+
+The data in Figure 17 shows the position difference between ALHAT Nav and VTB Nav, along with the position
+threshold used by AFM for downmoding. Several events are noted in the figure, including locations where HRN
+measurements were processed, as well as all NDL measurements being available (for FF14). In both closed-loop
+flights, FF13 and FF14, there was an AFM downmode event. The downmode in FF14 is near 90 seconds MET, and
+the downmode in FF13 was at 67 seconds MET. The FF14 downmode was within the final 25 meters of terminal
+vertical descent where engine plume interaction with the surface kicked up dust that adversely affected the NDL and
+LAlt measurements processed by the ALHAT Nav filter. To handle dust interactions, ALHAT Nav implements a
+cutoff altitude below which the IMU is used for dead reckoning and NDL and LAlt measurements are not processed.
+The FF14 cutoff was set based on observations in prior flights which turned out to not be conservative enough. This
+is not deemed an issue for assessing overall ALHAT performance since nominal lunar descent plans a 30 meter
+cutoff altitude (or higher based on continued analysis).
+The difference data in Figure 17 shows that only two HRN measurements were processed, followed by a trend
+toward the threshold. When 3-beam NDL data comes in near 75 seconds MET, the difference data attains
+significant margin from the threshold. This growth trend after HRN processing is a source of ongoing analysis. The
+team is currently investigating both the production of HRN measurements within the HDS and the processing of
+those measurements within ALHAT Nav. Additionally, basic tuning analysis of the filter is underway to determine
+if measurement weightings are causing odd filter behavior. There is a current requirement in the measurement
+processing to only accept NDL measurements when all three beams are available. This requirement was due to a
+similar walkoff in FF13 that caused a downmode to VTB Nav at 67 seconds MET. The quick turnaround analysis
+between FF13 and FF14 identified the filter sensitivities to dropouts in NDL data, which drove the prior mentioned
+constraint of requiring all NDL beams for filter processing. The walkoff in FF14 indicates other filter or
+measurement processing sensitivities, so analysis is ongoing to fully understand the behavior in both simulation and
+playback of flight data.
+The HRN capability is a key innovation within ALHAT to enable precision landing to within 1-meter (1s) of the
+determined safe landing site. The HRN algorithms within HDS and the measurement processing by ALHAT Nav
+was an untested feature prior to the Morpheus flight tests, so the teams conducted cutting-edge technology
+development during the campaign. Significant progress toward maturing HRN was accomplished during the
+campaign, and continued analysis is underway. The HDS was able to accurately point to the desired terrain feature
+during initial HRN measurments, but closed-loop pointing between HDS and ALHAT Nav prevented successful
+HRN after the first two measurements on both FF13 and FF14. Some insight has been provided by the ALHAT Nav
+response to HRN measurements in Figure 18. These errors may not be related to a filter formulation error, but
+rather filter sensitivies to tuning and weighting of other ALHAT sensor measurements or errors within the
+measurements themselves since they are derived from HDS comparisons between the FL images and the DEM. The
+team is actively analyzing this phenomenon to refine HRN and overall filter tuning for future flight testing.
+
+                                                                      20
+                                        American Institute of Aeronautics and Astronautics
+Figure 18. Current HRN processing indicates filter sensitivities to HRN measurements or potential errors
+                within the measurements themselves. Analysis is underway to determine the root cause.
+
+                        VI. ALHAT COMPONENT AND SYSTEM MATURITY
+
+  Two ASC Tiger Eye flash lidar hazard detection sensors were used by ALHAT for the all of the field tests since
+  the beginning of the project. These were purchased in 2007 with one used for early field testing and all of the
+  helicopter flight tests. Over the course of this testing this flash lidar had over a thousand pixels go bad due to
+  mosture condensation on the array. By masking these bad pixels in software the imaging software could still give
+  good images but as the number increased the quality of the images also decreased. Because of this, the second
+  flash lidar with less than fifty bad pixels was calibrated and utilized in the Morpheus flight testing. To avoid the
+  moisture condensation issue, a purge of dry nitrogen was used whenever the dew point temperature was within 2
+  degrees of the ambient temperature. This worked well except during final vehicle flight preparation and flight
+  when it was not possible to keep the purge on the lidar. Thus, there was some pixel damage during the night flight
+  and night flight dry run due to the dew point temperature but was still limited in scope and the lidar with pixel
+  masking continued to function well. There were some bad pixels around the edges of the array during flight but
+  not during static conditions, the cause of which is not fully explained. It was assumed to be due to the vibration
+  environment during flight so these pixels were always masked after the effect was identified on the first flight.
+  With this masking and very good calibration this flash lidar gave very good images of the hazard field with very
+  good DEMs.
+
+  Flash lidar technology has improved considerably since the ALHAT Project purchased them and some have flown
+  in space. The ALHAT/Morpheus flights demonstrated the viability of flash lidars as hazard detection sensors for
+  real-time hazard detection and avoidance for planetary landings. Thus the utilization of flash lidar sensors for
+  planetary landing HDA is considered to be at TRL 6 or higher with the understanding that any flight lander would
+  need to certify their unit for spaceflight.
+
+  The Navigational Doppler Lidar (NDL) is not commerically available and was developed at the LaRC. During the
+  ALHAT/Morpheus flights the hot air plume from the rocket engine caused considerable drop outs of the NDL
+  beams during flight. This effect was not known preflight and the location of the NDL on the under side of the
+  vehicle was problematic. In future terrestrial flights this should be a major consideration. Even with these
+  environmental issues the NDL provided excellent velocity data during portions of the flights. Based on these
+  Morpheus flight tests and the other ALHAT field testing of the NDL it is considered to be at TRL 6. It will require
+  some refinements in components to reach space certification and it is well known that the size, mass, and power
+  could and should be reduced considerably before it is viable for a space mission. It should be noted that the NDL
+  can also measure altitude and attitude but was not utilized for that purpose during the ALHAT testing.
+
+  The ALHAT laser altimeter was designed and built at LaRC. It has been tested to 30 km in the earth atmosphere
+  and by extroplation is expected to work in space to at least 50 km with accuracies on the order of 30 cm with
+  some dependence on distance. This sensor also is not commercially available but has proven to be an excellent
+  landing sensor. It is considered to be at TRL 6 or higher but again would require some refinements in components
+  to reach space certification and the size, mass, and power should be reduced before it is ready for spaceflight.
+
+                                                                      21
+
+                                        American Institute of Aeronautics and Astronautics
+  The TRL 6 for the three sensors above includes both the hardware design and function as well as the associated
+  software. All of the software proved to be robust and is ready to be taken the next step for spaceflight
+  certification.
+
+  The Hazzard Detection System (HDS), designed and developed at JPL, uses the data from the flash lidar to build a
+  DEM of the hazard field and identify safe sites. This system running on a special multicore processor worked very
+  well on helicopter and the ALHAT/Morpheus flight tests in identifying safe landing sites. This system is also used
+  to perform HRN and while we were able to get a few HRN data points it did not work as expected. It is unclear at
+  this time where the problem lies but several items are under investigation and expected to be fixed for any future
+  flight tests. The hazard detection and safe site selection is definitely at TRL 6 and the HRN technique should be at
+  TRL 6 once the problem is fixed.
+
+  The ALHAT navigation Kalman developed at JSC was finalized shortly before it was put into service for the
+  ALHAT/Morpheus test flight campaign. Overall the filter worked very well except in the HRN function and the
+  utilization of the NDL velocity data. Again, it is unclear at this time where the problems with these two items
+  reside but considerable effort is going into identifying the problems and getting them fixed before the next flight
+  demonstration. It could be a matter of tuning the filter or getting the timing correct in the measurement data. This
+  is a very stable filter and works well and should be at TRL 6 once these issues are understood.
+
+  The ALHAT techniques of TRN, HDA, and HRN have all been demonstrated and are at TRL6 or higher. Also,
+  the technique of using precision terrain relative sensors to maintain very precise navigation states during approach
+  and landing which allowed dead reckoning to the surface during the last 50 m of descent, have been demonstrated
+  and are considered to be at TRL 6 or higher. Thus, all of the ALHAT stystems and techniques are considered to be
+  at the TRL 6 level and ready to be utilized in planetary missiona pending the resolution of the two issues
+  described above.
+
+                                        VII. THE FUTURE OF ALHAT
+
+The ALHAT Project has brought autonomous precision landing and real-time hazard detection and avoidance with
+safe landing to the planetary landing technology forefront. The decision from inception was to develop a completely
+general system that would work for any lander under any lighting conditions. Because of the any lighting conditions
+constraint, all of our systems use active laser sensing systems. However, it was clearly understood that removing the
+any lighting conditions constraint opened up the utilization of passive camera systems to perform some of the
+ALHAT functions. In particular, TRN was demonstrated on FT3 with two different passive camera systems and
+both worked well with appropriate lighting. There are also some HDA techniques using passive cameras that have
+been suggested but they generally are limited in capability. In addition, in the past few years some very high speed
+scanning lidars and hybrid lidars have been developed that could be considered for the HDA and HRN functions.
+
+The long term goal of the ALHAT Project is to encourage and support the utilization of ALHAT techniques on
+planetary landing missions. These technologies have a lot to offer and should be considered in planning any future
+landing mission. It appears that many of the future planned robotic landers will use some form of TRN for precision
+landing. This is a relatively easy addition to robotic missions and will provide the capability of landing close to the
+premission defined location. Most of them will be performed using passive optical cameras.
+
+There is also considerable interest in adding Doppler lidar velocimetry to some of the robotic missions that are in
+planning. The ability to precisely measure the lander ground relative velocity of a landing vehicle is a very valuable
+navigation asset. The ALHAT project is seeking funding to construct a flight certifiable Doppler lidar unit that can
+be available for future robotic missions. The ALHAT project is also seeking funding to construct a flight certifiable
+laser altimeter which also is a very valuable navigation asset during approach and landing, particularly at higher
+altitudes.
+
+The next step in the evolution of ALHAT technologies is the addition of real-time hazard detection and avoidance
+during the last 1000 meters from landing. This technology has more cost and risk associated with adding it to a
+landing mission but offers high probability for a safe landing particularly in areas that are somewhat hazardous and
+possibly of great scientific interest.
+
+The NASA investment of over $80M in full cost dollars over approximately nine years has opened the planetary
+lander technology to any planned mission and in the future will prove to be a good investiment as these technologies
+
+                                                                      22
+
+                                        American Institute of Aeronautics and Astronautics
+get utilizied in landing missions. All of these technologies are tailorable to specific missions including techniques
+and sensors.
+
+                                                       Acknowledgments
+The authors gratefully acknowledge the tremendously awesome ALHAT/Morpheus team including members from
+JSC, JPL, KSC, LaRC, IM, Helios, CSDL, SSC, and Marquette University, who supported the ALHAT system
+flight demonstrations on the Morpheus vehicle in FY2014. This cross NASA center and contractor team showed
+unsurpassed dedication and support for all systems and activities working together as one to make the
+demonstrations successful. There are stories of amazing sacrifice and going beyond expectations by many members
+of the team and all are greatly acknowledged.
+
+                                                          References
+
+Proceedings:
+    1Epp, C.D. and Smith, T.B., "Autonomous Landing and Hazard Avoidance Technology (ALHAT)," in Aerospace
+
+Conference, 2007 IEEE, 2007, pp. 1-7.
+    2Epp, C.D., Robertson, E.A., and T. Brady, "Autonomous Landing and Hazard Avoidance Technology (ALHAT)," in
+
+Aerospace Conference, 2008 IEEE, 2008, pp. 1-7.
+    3Rutishauser, D.K., Epp, C. D.,Robertson, E.A., "Free-Flight Terrestrial Rocket Lander Demonstration for NASA's
+
+Autonomous Landing and Hazard Avoidance Technology (ALHAT) System", AIAA SPACE 2012 Conference & Exposition.
+September
+
+    4J.M. Carson, E.S. Bailey, N. Trawny, A.E. Johnson, V.E. Roback, F. Amzajerdian, and R.A. Werner. "Operations concept,
+hardware implementation and ground-test verification of a hazard detection system for autonomous and safe precision lunar
+landing". AAS/AIAA Astrodynamics Specialist Conference, Hilton Head Island, SC, August 11-15, 2013.
+
+    5Diego F. Pierrottet, Farzin Amzajerdian, Larry Petway, Glenn Hines, and Bruce Barnes. "Field Demonstration of a Precision
+Navigation Lidar System for Space Vehicles". AIAA Guidance, Navigation, and Control Conference, Boston, Massachusetts,
+August 19-22, 2013.
+
+    6 Farzin Amzajerdian, Diego Pierrottet, Larry B. Petway, Glenn D. Hines, Vincent E. Roback, Robert A. Reisse. "Lidar
+Sensors for Autonomous Landing and Hazard Avoidance" AIAA Space2013, San Diego, CA, September 10-12, 2013.
+
+    7John M. Carson, Nikolas Trawny, Andres Huertas, Michael Luna, Vincent E. Roback, Andrew E. Johnson, Keith Martin.
+"Performance of a Real-Time Hazard Detection System for Lunar Landing". AIAA Space2013, San Diego, CA, September 10-
+12, 2013.
+
+                                                                      23
+                                        American Institute of Aeronautics and Astronautics
+

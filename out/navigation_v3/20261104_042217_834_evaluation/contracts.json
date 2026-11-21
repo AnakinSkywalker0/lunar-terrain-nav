@@ -1,0 +1,18 @@
+{
+    "passed": true,
+    "checks": [
+        "Analytical Kalman mean and covariance",
+        "Nonfinite/negative/indefinite observation guards",
+        "Innovation gate precedes bounded optional ML; rejection is nonmutating",
+        "Out-of-order range/terrain delivery equals chronological replay",
+        "Duplicate/stale/future/invalid timestamps do not mutate state",
+        "Fixed-lag history has bounded lifetime",
+        "Terrain-gradient altitude fusion and cross-axis covariance",
+        "Unknown/out-of-map altitude remains explicit with finite fallback control",
+        "Persistent map-height error is not counted as independent range noise",
+        "Bias observability under repeated fixes; covariance remains positive definite",
+        "Flat terrain provides no confident horizontal fix",
+        "Latched terminal braking, thrust/tilt limits, explicit stale-sensor mode",
+        "Physical contact, strict speed/distance boundaries and frame transform"
+    ]
+}

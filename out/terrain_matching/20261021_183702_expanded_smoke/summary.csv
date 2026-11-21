@@ -1,0 +1,7 @@
+id,kind,condition,altitude,seed,matching,touchdown,success,time_s,horizontal_error_m,vertical_error_m,target_miss_m,impact_vz,impact_vh,fuel_kg,accepted_matches,wrong_matches,attempted_matches,horizontal_rmse_m,site_id,site_x,site_z,error_id,initial_error_x,initial_error_z,contact_definition
+stationary_original_e0_aligned_500_11_on,stationary,aligned,500,11,True,False,False,0,1,0,0,0,0,800,1,0,1,1,original,6198,8512,e0,60,-40,PhysX_contact
+descent_original_e0_aligned_500_11_off,descent,aligned,500,11,False,True,False,41.84965,72.09037,2.600512,67.50106,1.718013,0.4575838,748.599,10,0,10,72.1327501983942,original,6198,8512,e0,60,-40,PhysX_contact
+descent_original_e0_aligned_500_11_on,descent,aligned,500,11,True,True,True,41.54965,0.1566833,0.1099789,0.1347399,1.740179,0.009334289,749.2451,10,0,10,0.383375727603941,original,6198,8512,e0,60,-40,PhysX_contact
+stationary_area01_e0_aligned_500_11_on,stationary,aligned,500,11,True,False,False,0,0,0,0,0,0,800,1,0,1,0,area01,2593.75,1968.75,e0,60,-40,PhysX_contact
+descent_area01_e0_aligned_500_11_off,descent,aligned,500,11,False,True,False,41.14966,72.09078,-3.82926,67.17093,1.782038,0.4908174,749.3922,10,0,10,72.1334951893609,area01,2593.75,1968.75,e0,60,-40,PhysX_contact
+descent_area01_e0_aligned_500_11_on,descent,aligned,500,11,True,True,True,41.54965,0.9012135,0.1894274,0.5975274,1.749256,0.02600108,749.248,10,0,10,0.94106611600726,area01,2593.75,1968.75,e0,60,-40,PhysX_contact

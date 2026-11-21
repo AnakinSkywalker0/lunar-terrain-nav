@@ -1,0 +1,130 @@
+{
+    "cases": [
+        {
+            "site": "development",
+            "condition": "nominal",
+            "arm": "classical_pd",
+            "altitude": 500,
+            "seed": 1201
+        },
+        {
+            "site": "development",
+            "condition": "nominal",
+            "arm": "classical_terminal",
+            "altitude": 500,
+            "seed": 1201
+        },
+        {
+            "site": "development",
+            "condition": "nominal",
+            "arm": "ml_terminal",
+            "altitude": 500,
+            "seed": 1201
+        },
+        {
+            "site": "development",
+            "condition": "range_spike",
+            "arm": "classical_pd",
+            "altitude": 500,
+            "seed": 1201
+        },
+        {
+            "site": "development",
+            "condition": "range_spike",
+            "arm": "classical_terminal",
+            "altitude": 500,
+            "seed": 1201
+        },
+        {
+            "site": "development",
+            "condition": "range_spike",
+            "arm": "ml_terminal",
+            "altitude": 500,
+            "seed": 1201
+        },
+        {
+            "site": "development",
+            "condition": "range_dropout",
+            "arm": "classical_pd",
+            "altitude": 500,
+            "seed": 1201
+        },
+        {
+            "site": "development",
+            "condition": "range_dropout",
+            "arm": "classical_terminal",
+            "altitude": 500,
+            "seed": 1201
+        },
+        {
+            "site": "development",
+            "condition": "range_dropout",
+            "arm": "ml_terminal",
+            "altitude": 500,
+            "seed": 1201
+        },
+        {
+            "site": "development",
+            "condition": "scan_dropout",
+            "arm": "classical_pd",
+            "altitude": 500,
+            "seed": 1201
+        },
+        {
+            "site": "development",
+            "condition": "scan_dropout",
+            "arm": "classical_terminal",
+            "altitude": 500,
+            "seed": 1201
+        },
+        {
+            "site": "development",
+            "condition": "scan_dropout",
+            "arm": "ml_terminal",
+            "altitude": 500,
+            "seed": 1201
+        },
+        {
+            "site": "development",
+            "condition": "gross_map_shift",
+            "arm": "classical_pd",
+            "altitude": 500,
+            "seed": 1201
+        },
+        {
+            "site": "development",
+            "condition": "gross_map_shift",
+            "arm": "classical_terminal",
+            "altitude": 500,
+            "seed": 1201
+        },
+        {
+            "site": "development",
+            "condition": "gross_map_shift",
+            "arm": "ml_terminal",
+            "altitude": 500,
+            "seed": 1201
+        },
+        {
+            "site": "development",
+            "condition": "gross_relief",
+            "arm": "classical_pd",
+            "altitude": 500,
+            "seed": 1201
+        },
+        {
+            "site": "development",
+            "condition": "gross_relief",
+            "arm": "classical_terminal",
+            "altitude": 500,
+            "seed": 1201
+        },
+        {
+            "site": "development",
+            "condition": "gross_relief",
+            "arm": "ml_terminal",
+            "altitude": 500,
+            "seed": 1201
+        }
+    ]
+}

@@ -1,0 +1,192 @@
+     Open-Loop Flight Testing of COBALT GN&C
+           Technologies for Precise Soft Landing
+
+John M. Carson III1,3,, Farzin Amzajerdian2,, Carl R. Seubert3,, Carolina I. Restrepo1,§
+
+             1NASA Johnson Space Center (JSC), 2NASA Langley Research Center (LaRC),
+                      3Jet Propulsion Laboratory (JPL), California Institute of Technology,
+
+    A terrestrial, open-loop (OL) flight test campaign of the NASA COBALT (CoOper-
+ative Blending of Autonomous Landing Technologies) platform was conducted onboard
+the Masten Xodiac suborbital rocket testbed, with support through the NASA Advanced
+Exploration Systems (AES), Game Changing Development (GCD), and Flight Opportuni-
+ties (FO) Programs. The COBALT platform integrates NASA Guidance, Navigation and
+Control (GN&C) sensing technologies for autonomous, precise soft landing, including the
+Navigation Doppler Lidar (NDL) velocity and range sensor and the Lander Vision System
+(LVS) Terrain Relative Navigation (TRN) system. A specialized navigation filter running
+onboard COBALT fuzes the NDL and LVS data in real time to produce a precise navi-
+gation solution that is independent of the Global Positioning System (GPS) and suitable
+for future, autonomous planetary landing systems. The OL campaign tested COBALT as
+a passive payload, with COBALT data collection and filter execution, but with the Xo-
+diac vehicle Guidance and Control (G&C) loops closed on a Masten GPS-based navigation
+solution. The OL test was performed as a risk reduction activity in preparation for an
+upcoming 2017 closed-loop (CL) flight campaign in which Xodiac G&C will act on the
+COBALT navigation solution and the GPS-based navigation will serve only as a backup
+monitor.
+
+I. Introduction
+
+    Introduction will discuss the NASA need for Precision Landing and Hazard Avoidance (PL&HA) tech-
+nologies for future, prioritized solar-system destinations (robotic and human missions), as well as provide
+an overview for the COBALT project and how it fits within the NASA PL&HA technology development
+roadmap.
+
+             Controlled Landing
+
+IMU, Altimeter, Velocimeter, Touch down sensor
+
+Precise Landing Controlled,                              Safe Landing
+Add: Terrain Relative Precise & Safe
+                  Landing                             Add: Hazard Detection
+Navigation (TRN)                                       & Avoidance (HDA)
+
+Figure 1. GN&C landing system capabilities enabled with PL&HA technologies.
+
+COBALT PM, JSC-IPA, AIAA Associate Fellow.            COBALT SE&I, JPL Team Lead, AIAA Senior Member.
+NDL Chief Scientist, LaRC Team Lead, AIAA Member.     §COBALT Deputy PM.
+
+                                                   1
+COBALT                                                             HEOMD&AES)LT)/)STMD&FO)/)SMD)MTDP)
+
+                              II. COBALT Platfrom Overview
+
+A high-level overview of the hardware components within the COBALT platform.
+
+COBALT'Payload'                     Compute)                       Xodiac'Vehicle'
+                                     Element)                                         Payload)
+             Power)                 IMU)                                               Frame)
+         Distribu@on)
+
+              Unit)
+
+        NDL)Electronics)                              LVS)Camera)                                     Courtesy)Masten)
+        Courtesy)NASA/JPL&Caltech)
+                                    NDL)Op@cal)Head)
+
+        Figure 2. CAD models of COBALT payload (left) and Xodiac vehicle (right).
+
+                                    Figure 3. Images of the fully-integrated COBALT payload hardware
+
+                     III. Flight Campaign Concept of Operations
+
+Overview of the flight campaign ConOps and the Xodiac vehicle.
+
+                                                      2
+                                                             Payload
+                                                              Frame
+
+                                   Figure 4. Xodiac Illustration and Free-Flight Image (photo credit: Masten).
+
+                                 IV. Pre-Campaign Ground Tests
+
+    Discussion of some of the pre-campaign ground testing that occured in preparation for integration of the
+COBALT platform onto Xodiac.
+
+                                         Figure 5. Swing Tests (left), PIP tests (center), Driving Tests (right)
+
+                             V. Open-Loop COBALT Performance
+
+    Overview of the COBALT performance, navigation filter highlights, and data analysis.
+
+                            VI. Revisions and Steps to Closed-Loop
+
+    Discussion of post-test revisions in work and plans for closed-loop flight test campaign
+                                                                      3
+                                             Acknowledgments
+
+    We want to acknowledge the large team of engineers across NASA at JSC, JPL and LaRC who are
+supporting the development, implementation and testing of COBALT. We also want to acknowledge the
+team at Masten that is working diligently to prepare the Xodiac vehicle for the COBALT flight campaigns.
+Additionally, the authors acknowledge the prior JPL ADAPT project team whose work the COBALT team
+is leveraging. The COBALT Project derives funding and support from multiple NASA directorates and
+programs, including the Human Exploration and Operations Mission Directorate (HEOMD) Advanced Ex-
+ploration Systems (AES) Program (through the Lander Technologies Project), the Space Technology Mission
+Directorate (STMD) Game Changing Development (GCD) Program, and the STMD Flight Opportunities
+(FO) Program. The LVS TRN software within COBALT has been developed through multi-directorate
+contributions, as well, including the NASA Science Mission Directorate (SMD) and STMD. As previously
+stated, the STMD-FO Program is provide the funding and coordination of the COBALT flight campaigns
+onboard the Masten Xodiac vehicle. The work described herein is being performed within NASA JSC, JPL
+and LaRC, as well as within Masten Space Systems. The COBALT work at the Jet Propulsion Laboratory,
+California Institute of Technology, is being performed under contract with the National Aeronautics and
+Space Administration (Government sponsorship acknowledged).
+
+                                                   References
+
+       1Carson III, J. M., Seubert, C. R., Amzajerdian, F., Villalpando, C. Y., Bergh, C., O'Neal, T., Robertson, E. A., Hines,
+G. D., and Pierrottet, D. F., "COBALT: a Payload for Closed-Loop Flight Testing of ALHAT GN&C Technologies on Terrestrial
+Rockets," Proc. AIAA Space 2016 Conference & Exposition, Long Beach, CA, September 2016.
+
+       2Epp, C. D., Robertson, E. A., and Carson III, J. M., "Developing Autonomous Precision Landing and Hazard Avoidance
+Technology from Concept through Flight-Tested Prototypes," Proc. AIAA GN&C Conference, AIAA 2015-0324, Kissimmee,
+FL, Jan. 5-8 2015.
+
+       3Epp, C. and Smith, T., "The Autonomous Precision Landing and Hazard Detection and Avoidance Technology (AL-
+HAT)," Proc. Space Technology and Applications International Forum (STAIF), 2007.
+
+       4Epp, C., Robertson, E., and Brady, T., "Autonomous Landing and Hazard Avoidance Technology (ALHAT)," Proc.
+IEEE Aerospace Conference (AEROCONF 2008), March 2008.
+
+       5Carson, J. M., Bailey, E. S., Trawny, N., Johnson, A. E., Roback, V. E., Amzajerdian, F., and Werner, R. A., "Operations
+Concept, Hardware Implementation and Ground-Test Verification of a Hazard Detection System for Autonomous and Safe
+Precision Lunar Landing," AAS/AIAA Astrodynamics Specialist Conference, AAS 13-856, Hilton Head, SC, Aug. 11-15 2013.
+
+       6Trawny, N., Huertas, A., Luna, M. E., Villalpando, C. Y., Martin, K., Carson, J. M., Johnson, A. E., Restrepo, C., and
+Roback, V. E., "Flight testing a Real-Time Hazard Detection System for Safe Lunar Landing on the Rocket-Powered Morpheus
+Vehicle," Proc. AIAA GN&C Conference, AIAA 2015-0326, Kissimmee, FL, Jan. 5-8 2015.
+
+       7Carson III, J. M., Robertson, E. A., Trawny, N., and Amzajerdian, F., "Flight Testing ALHAT Precision Landing
+Technologies Integrated Onboard the Morpheus Rocket Vehicle," Proc. AIAA Space 2015 Conference & Exposition, Pasadena,
+CA, August 2015.
+
+       8Trawny, N., Benito, J., Tweddle, B., Bergh, C. F., Khanoyan, G., Vaughan, G. M., Zheng, J. X., Villalpando, C. Y.,
+Cheng, Y., Scharf, D. P., Fisher, C. D., Sulzen, P. M., Montgomery, J. F., Johnson, A. E., Aung, M., Regehr, M. W., Dueri, D.,
+A¸cikme¸se, B., Masten, D., O'Neal, T., and Nietfeld, S., "Flight testing of terrain-relative navigation and large-divert guidance
+on a VTVL rocket," Proc. AIAA SPACE 2015 Conference & Exposition, August 2015.
+
+       9Scharf, D., Regehr, M., Dueri, D., Acikmese, B., Vaughan, G., Benito, J., Ansari, H., Aung, M., Johnson, A., Masten, D.,
+Nietfeld, S., Casoliva, J., and Mohan, S., "ADAPT Demonstrations of Onboard Large-Divert Guidance with a VTVL Rocket,"
+Proc. IEEE Aerospace Conference, March 2014.
+
+     10Johnson, A., Bergh, C., Cheng, Y., et al., "Design and Ground Test Results for the Lander Vision System," 36th Annual
+AAS Guidance and Control Conference, AAS 13-042, Breckenridge, CO, Feb. 1-6 2013.
+
+     11Johnson, A. E., Cheng, Y., Montgomery, J., Trawny, N., Tweddle, B., and Zheng, J., "Real-Time Terrain Relative
+Navigation Test Results from a Relevant Environment for Mars Landing," Proc. AIAA GN&C Conference, AIAA 2015-0851,
+Kissimmee, FL, Jan. 5-8 2015.
+
+     12Johnson, A. E., Aaron, S., Cheng, Y., Montgomery, J., Trawny, N., Tweddle, B., Vaughan, G., and Zheng, J., "Design
+and Analysis of Map Relative Localization for Access to Hazardous Landing Sites on Mars," Proc. AIAA GN&C Conference,
+AIAA 2016-0379, San Diego, CA, Jan. 4-8 2016.
+
+     13Amzajerdian, F., Pierrottet, D., Petway, L., Hines, G., and Barnes, B., "Doppler lidar sensor for precision navigation in
+GPS-deprived environment," Proc. International Society for Optics and Photonics (SPIE), June 2013.
+
+     14Pierrottet, D. F., Amzajerdian, F., Petway, L. B., Hines, G. D., and Barnes, B., "Field Demonstration of a Precision
+
+                                                                      4
+Navigation Lidar System for Space Vehicles," Proc. AIAA Guidance, Navigation, and Control Conference, Boston, MA, August
+2013.
+
+     15Amzajerdian, F., Pierrottet, D., Hines, G., Petway, L., and Barnes, B., "Fiber-based Doppler Lidar Sensor for Vector
+Velocity and Altitude Measurements," Frontiers in Optics 2015 , OSA Technical Digest, 2015.
+
+     16Amzajerdian, F., Hines, G. D., Petway, L. B., Barnes, B. W., and Pierrottet, D. F., "Development and Demonstration of
+Navigation Doppler Lidar for Future Landing Mission," Proc. AIAA Space 2016 Conference & Exposition, Long Beach, CA,
+September 2016.
+
+     17Steering Committee for NASA Technology Roadmaps; National Research Council of the National Academies, NASA
+Space Technology Roadmaps and Priorities: Restoring NASA's Technological Edge and Paving the Way for a New Era in
+Space, The National Academies Press, 2012.
+
+     18Office of the Chief Technologist, 2015 NASA Technology Roadmaps, NASA, 2015.
+     19Hebert, P., Ma, J., Borders, J., Aydemir, A., Bajracharya, M., Hudson, H., Shankar, K., Karumanchi, S., Douillard,
+B., and Burdick, J., "Supervised Remote Robot with Guided Autonomy and Teleoperation (SURROGATE): A framework for
+whole-body manipulation," Proc. IEEE International Conference on Robotics and Automatic (ICRA), May 2015.
+     20Karumanchi, S., Edelberg, K., Baldwin, I., Nash, J., Reid, J., Bergh, C., Leichty, J., Carpenter, K., Shekels, M., Gildner,
+M., Newill-Smith, D., Carlton, J., Koehler, J., Dobreva, T., Frost, M., Hebert, P., Borders, J., Ma, J., Douillard, B., Backes,
+P., Kennedy, B., Satzinger, B., Lau, C., Byl, K., Shankar, K., and Burdick, J., "Team RoboSimian: Semi-autonomous Mobile
+Manipulation at the 2015 DARPA Robotics Challenge Finals," Journal of Field Robotics Special Issue: DARPA Robotics
+Challenge (DRC), 2015.
+
+                                                                      5
+

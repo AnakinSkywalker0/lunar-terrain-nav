@@ -1,0 +1,1 @@
+IMPLEMENTATION CHECK FAILED before simulation: isolated PhysicsScene requires Play mode. No measured results.

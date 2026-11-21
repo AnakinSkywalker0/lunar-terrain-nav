@@ -1,0 +1,105 @@
+{
+  "dataset": "Site01",
+  "slope_window_radius_m": 25,
+  "seed": 20261104,
+  "smoke_sites": [
+    {
+      "id": "site01_transfer00",
+      "x": 7960.9375,
+      "z": 8023.4375,
+      "target_window_max_slope_deg": 4.470786928141398
+    }
+  ],
+  "evaluation_sites": [
+    {
+      "id": "site01_transfer01",
+      "x": 1406.25,
+      "z": 2562.5,
+      "target_window_max_slope_deg": 4.810843322201237
+    },
+    {
+      "id": "site01_transfer02",
+      "x": 1492.1875,
+      "z": 12914.0625,
+      "target_window_max_slope_deg": 4.657350819667306
+    },
+    {
+      "id": "site01_transfer03",
+      "x": 13171.875,
+      "z": 2562.5,
+      "target_window_max_slope_deg": 4.96142681376593
+    }
+  ],
+  "wide_sites": [
+    {
+      "id": "site01_wide01",
+      "x": 6700.0,
+      "z": 14300.0,
+      "target_window_max_slope_deg": 4.3182962684632935
+    },
+    {
+      "id": "site01_wide02",
+      "x": 3900.0,
+      "z": 9500.0,
+      "target_window_max_slope_deg": 4.995960953830217
+    },
+    {
+      "id": "site01_wide03",
+      "x": 9900.0,
+      "z": 12300.0,
+      "target_window_max_slope_deg": 4.675795386014818
+    },
+    {
+      "id": "site01_wide04",
+      "x": 9500.0,
+      "z": 5900.0,
+      "target_window_max_slope_deg": 4.706372850305793
+    },
+    {
+      "id": "site01_wide05",
+      "x": 13100.0,
+      "z": 9900.0,
+      "target_window_max_slope_deg": 4.307194250983202
+    },
+    {
+      "id": "site01_wide06",
+      "x": 11900.0,
+      "z": 13900.0,
+      "target_window_max_slope_deg": 4.429923821350461
+    },
+    {
+      "id": "site01_wide07",
+      "x": 5100.0,
+      "z": 6300.0,
+      "target_window_max_slope_deg": 4.961426813767086
+    },
+    {
+      "id": "site01_wide08",
+      "x": 13100.0,
+      "z": 5100.0,
+      "target_window_max_slope_deg": 4.307194250983656
+    },
+    {
+      "id": "site01_wide09",
+      "x": 7900.0,
+      "z": 3100.0,
+      "target_window_max_slope_deg": 4.123115876763406
+    }
+  ],
+  "evaluation_errors": [
+    {
+      "x": 32.217669870835415,
+      "z": 13.675589497124582
+    },
+    {
+      "x": -64.43533974167083,
+      "z": 27.351178994249164
+    },
+    {
+      "x": 18.126854560771786,
+      "z": -93.25458242752806
+    }
+  ],
+  "source_sha256": "3ba7b97cb00a2bcf21189c3aeb535f65afc21207154ab9f0d43c5bdc1f7e747e",
+  "raw_sha256": "90b595b331f0e6406e65555273b78da0cdb5e7ba910c460fadb0495a67fb1670"
+}

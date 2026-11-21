@@ -1,0 +1,14 @@
+{
+    "passed": true,
+    "checks": [
+        "serialized scene and terrain assets",
+        "default classical mode",
+        "pause",
+        "ML toggle on restart",
+        "live rendering",
+        "missing-model fallback",
+        "scenario restart",
+        "no runtime errors"
+    ],
+    "message": "Play-mode demo checks passed"
+}

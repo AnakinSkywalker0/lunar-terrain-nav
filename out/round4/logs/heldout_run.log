@@ -1,0 +1,71 @@
+21:01:52 multi 17 cliff independent
+21:01:53 multi 17 cliff common
+21:01:53 multi 17 x4 independent
+21:01:53 multi 17 x4 common
+21:02:40 multi 17 x8 common
+21:02:41 multi 17 x8 independent
+21:02:51 multi 17 x16 independent
+21:02:57 multi 17 x16 common
+21:03:57 multi 18 cliff independent
+21:03:59 multi 18 cliff common
+21:04:02 multi 18 x4 common
+21:04:07 multi 18 x4 independent
+21:04:45 multi 18 x8 common
+21:04:45 multi 18 x8 independent
+21:05:04 multi 18 x16 independent
+21:05:08 multi 18 x16 common
+21:06:00 multi 19 cliff common
+21:06:01 multi 19 cliff independent
+21:06:07 multi 19 x4 independent
+21:06:10 multi 19 x4 common
+21:06:48 multi 19 x8 independent
+21:06:50 multi 19 x8 common
+21:07:15 multi 19 x16 independent
+21:07:17 multi 19 x16 common
+21:08:03 multi 20 cliff independent
+21:08:05 multi 20 cliff common
+21:08:07 multi 20 x4 independent
+21:08:09 multi 20 x4 common
+21:08:50 multi 20 x8 independent
+21:08:54 multi 20 x8 common
+21:09:06 single 17 wrong100 single
+21:09:07 single 18 wrong100 single
+21:09:10 multi 20 x16 independent
+21:09:12 multi 20 x16 common
+21:09:20 single 20 wrong100 single
+21:09:21 single 19 wrong100 single
+fault_mode                                            common  independent
+condition config                                                         
+cliff     A: floor (both) + footprint terrain           77.1         76.5
+          B: floor (update only) + footprint terrain    76.6         78.1
+          pitfal_mb                                     73.1         73.6
+          tol_mb + floor (both)                         80.1         80.4
+          tol_mb + oracle noise (not deployable)        76.2         79.9
+          tolerance_mb                                  76.2         79.9
+x16       A: floor (both) + footprint terrain           79.8         80.2
+          B: floor (update only) + footprint terrain    57.5         60.4
+          pitfal_mb                                     63.1         63.5
+          tol_mb + floor (both)                         81.4         80.5
+          tol_mb + oracle noise (not deployable)        81.5         83.1
+          tolerance_mb                                  36.6         38.1
+x4        A: floor (both) + footprint terrain           82.5         82.4
+          B: floor (update only) + footprint terrain    80.1         81.2
+          pitfal_mb                                     76.1         78.8
+          tol_mb + floor (both)                         84.9         84.5
+          tol_mb + oracle noise (not deployable)        84.4         83.4
+          tolerance_mb                                  78.6         77.8
+x8        A: floor (both) + footprint terrain           82.5         84.6
+          B: floor (update only) + footprint terrain    74.9         74.1
+          pitfal_mb                                     79.6         79.2
+          tol_mb + floor (both)                         82.4         84.8
+          tol_mb + oracle noise (not deployable)        84.9         85.1
+          tolerance_mb                                  60.2         60.2
+config
+single tolerance                   55.8
+single tolerance + floor (both)    68.2
+
+Pre-registered verdicts
+R1 NOT met {'independent cliff': 4.5, 'independent x4': 2.5, 'independent x8': -5.1, 'common cliff': 3.5, 'common x4': 4.0, 'common x8': -4.8}
+R2 NOT met {'independent': -3.1, 'common': -5.6}
+R3 MET {'independent cliff': 2.9, 'independent x4': 3.6, 'common cliff': 4.0, 'common x4': 6.4}
+R4 MET {'floor minus plain tolerance, 100 m map offset': 12.5}

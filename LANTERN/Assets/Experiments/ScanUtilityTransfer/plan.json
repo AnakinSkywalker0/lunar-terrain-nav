@@ -1,0 +1,61 @@
+{
+  "dataset": "Site01",
+  "smoke_sites": [
+    {
+      "id": "site01_transfer00",
+      "x": 7960.9375,
+      "z": 8023.4375,
+      "target_window_max_slope_deg": 4.470786928141398
+    }
+  ],
+  "evaluation_sites": [
+    {
+      "id": "site01_transfer01",
+      "x": 1406.25,
+      "z": 2562.5,
+      "target_window_max_slope_deg": 4.810843322201237
+    },
+    {
+      "id": "site01_transfer02",
+      "x": 1492.1875,
+      "z": 12914.0625,
+      "target_window_max_slope_deg": 4.657350819667306
+    },
+    {
+      "id": "site01_transfer03",
+      "x": 13171.875,
+      "z": 2562.5,
+      "target_window_max_slope_deg": 4.96142681376593
+    }
+  ],
+  "evaluation_errors": [
+    {
+      "x": 32.217669870835415,
+      "z": 13.675589497124582
+    },
+    {
+      "x": -64.43533974167083,
+      "z": 27.351178994249164
+    },
+    {
+      "x": 18.126854560771786,
+      "z": -93.25458242752806
+    }
+  ],
+  "expected_evaluation_cases": 810,
+  "expected_smoke_cases": 15,
+  "raw_sha256": "90b595b331f0e6406e65555273b78da0cdb5e7ba910c460fadb0495a67fb1670",
+  "source_sha256": "3ba7b97cb00a2bcf21189c3aeb535f65afc21207154ab9f0d43c5bdc1f7e747e",
+  "protocol_sha256": "b0ee85da1359163e6f8fc49d0a3211aec1e5e431bb7ac34ca189afa516ea9059",
+  "frozen_sha256": {
+    "LANTERN/Assets/Experiments/ScanUtility/model.json": "eda1c7830f69b76cffd6ded430a5e6ddcd70210ed411fcf4f902c62e46f0dece",
+    "LANTERN/Assets/Experiments/ScanUtility/policy.json": "d23bcba2308299dea5d10b000edd10f4e7e6643c99107dbf06404bde5dadfdb7",
+    "LANTERN/Assets/Experiments/ScanTrust/model.json": "74ed4350c35c30c4f8eba80f2413f61551fb6ee1b9f9e402cf991880c5f4a466",
+    "LANTERN/Assets/Scripts/Experiments/TerrainNavigationCore.cs": "534bde74e2936ca49ad14e25856aa9d5afcb79c5a75596e38c4b789d9771fe76",
+    "LANTERN/Assets/Scripts/Experiments/ScanUtilityPolicy.cs": "7cd73e95990190b45362ea03d18d3be6ca2f0b5f7cd804210b574a1be84c9c4b",
+    "LANTERN/Assets/Scripts/Experiments/PortableScanTrust.cs": "b81d8b1d6be60731c5ec6a56fac8ef98cd4f9821d592dfb01c2bc454bc5c6ebe",
+    "LANTERN/Assets/Scripts/Experiments/TerrainTouchdownRecorder.cs": "bf9fa6def3e8c48d43b1a37b17d90a56f6acb3b4dbae12a18ba10a3fb06f6b30"
+  },
+  "baseline_evaluation": "out/scan_utility/20261021_204054_eval",
+  "prior_exposure": "Site01 used in older separate sensor studies; excluded from scan-utility fitting/selection"
+}

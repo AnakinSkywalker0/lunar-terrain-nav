@@ -1,0 +1,2272 @@
+{
+    "cases": [
+        {
+            "site": "reserved_01",
+            "condition": "nominal",
+            "arm": "classical_pd",
+            "altitude": 500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_01",
+            "condition": "nominal",
+            "arm": "classical_terminal",
+            "altitude": 500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_01",
+            "condition": "nominal",
+            "arm": "ml_terminal",
+            "altitude": 500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_01",
+            "condition": "range_spike",
+            "arm": "classical_pd",
+            "altitude": 500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_01",
+            "condition": "range_spike",
+            "arm": "classical_terminal",
+            "altitude": 500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_01",
+            "condition": "range_spike",
+            "arm": "ml_terminal",
+            "altitude": 500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_01",
+            "condition": "range_dropout",
+            "arm": "classical_pd",
+            "altitude": 500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_01",
+            "condition": "range_dropout",
+            "arm": "classical_terminal",
+            "altitude": 500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_01",
+            "condition": "range_dropout",
+            "arm": "ml_terminal",
+            "altitude": 500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_01",
+            "condition": "scan_dropout",
+            "arm": "classical_pd",
+            "altitude": 500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_01",
+            "condition": "scan_dropout",
+            "arm": "classical_terminal",
+            "altitude": 500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_01",
+            "condition": "scan_dropout",
+            "arm": "ml_terminal",
+            "altitude": 500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_01",
+            "condition": "gross_map_shift",
+            "arm": "classical_pd",
+            "altitude": 500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_01",
+            "condition": "gross_map_shift",
+            "arm": "classical_terminal",
+            "altitude": 500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_01",
+            "condition": "gross_map_shift",
+            "arm": "ml_terminal",
+            "altitude": 500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_01",
+            "condition": "gross_relief",
+            "arm": "classical_pd",
+            "altitude": 500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_01",
+            "condition": "gross_relief",
+            "arm": "classical_terminal",
+            "altitude": 500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_01",
+            "condition": "gross_relief",
+            "arm": "ml_terminal",
+            "altitude": 500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_01",
+            "condition": "nominal",
+            "arm": "classical_pd",
+            "altitude": 500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_01",
+            "condition": "nominal",
+            "arm": "classical_terminal",
+            "altitude": 500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_01",
+            "condition": "nominal",
+            "arm": "ml_terminal",
+            "altitude": 500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_01",
+            "condition": "range_spike",
+            "arm": "classical_pd",
+            "altitude": 500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_01",
+            "condition": "range_spike",
+            "arm": "classical_terminal",
+            "altitude": 500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_01",
+            "condition": "range_spike",
+            "arm": "ml_terminal",
+            "altitude": 500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_01",
+            "condition": "range_dropout",
+            "arm": "classical_pd",
+            "altitude": 500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_01",
+            "condition": "range_dropout",
+            "arm": "classical_terminal",
+            "altitude": 500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_01",
+            "condition": "range_dropout",
+            "arm": "ml_terminal",
+            "altitude": 500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_01",
+            "condition": "scan_dropout",
+            "arm": "classical_pd",
+            "altitude": 500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_01",
+            "condition": "scan_dropout",
+            "arm": "classical_terminal",
+            "altitude": 500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_01",
+            "condition": "scan_dropout",
+            "arm": "ml_terminal",
+            "altitude": 500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_01",
+            "condition": "gross_map_shift",
+            "arm": "classical_pd",
+            "altitude": 500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_01",
+            "condition": "gross_map_shift",
+            "arm": "classical_terminal",
+            "altitude": 500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_01",
+            "condition": "gross_map_shift",
+            "arm": "ml_terminal",
+            "altitude": 500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_01",
+            "condition": "gross_relief",
+            "arm": "classical_pd",
+            "altitude": 500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_01",
+            "condition": "gross_relief",
+            "arm": "classical_terminal",
+            "altitude": 500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_01",
+            "condition": "gross_relief",
+            "arm": "ml_terminal",
+            "altitude": 500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_01",
+            "condition": "nominal",
+            "arm": "classical_pd",
+            "altitude": 500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_01",
+            "condition": "nominal",
+            "arm": "classical_terminal",
+            "altitude": 500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_01",
+            "condition": "nominal",
+            "arm": "ml_terminal",
+            "altitude": 500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_01",
+            "condition": "range_spike",
+            "arm": "classical_pd",
+            "altitude": 500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_01",
+            "condition": "range_spike",
+            "arm": "classical_terminal",
+            "altitude": 500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_01",
+            "condition": "range_spike",
+            "arm": "ml_terminal",
+            "altitude": 500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_01",
+            "condition": "range_dropout",
+            "arm": "classical_pd",
+            "altitude": 500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_01",
+            "condition": "range_dropout",
+            "arm": "classical_terminal",
+            "altitude": 500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_01",
+            "condition": "range_dropout",
+            "arm": "ml_terminal",
+            "altitude": 500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_01",
+            "condition": "scan_dropout",
+            "arm": "classical_pd",
+            "altitude": 500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_01",
+            "condition": "scan_dropout",
+            "arm": "classical_terminal",
+            "altitude": 500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_01",
+            "condition": "scan_dropout",
+            "arm": "ml_terminal",
+            "altitude": 500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_01",
+            "condition": "gross_map_shift",
+            "arm": "classical_pd",
+            "altitude": 500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_01",
+            "condition": "gross_map_shift",
+            "arm": "classical_terminal",
+            "altitude": 500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_01",
+            "condition": "gross_map_shift",
+            "arm": "ml_terminal",
+            "altitude": 500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_01",
+            "condition": "gross_relief",
+            "arm": "classical_pd",
+            "altitude": 500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_01",
+            "condition": "gross_relief",
+            "arm": "classical_terminal",
+            "altitude": 500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_01",
+            "condition": "gross_relief",
+            "arm": "ml_terminal",
+            "altitude": 500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_01",
+            "condition": "nominal",
+            "arm": "classical_pd",
+            "altitude": 1500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_01",
+            "condition": "nominal",
+            "arm": "classical_terminal",
+            "altitude": 1500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_01",
+            "condition": "nominal",
+            "arm": "ml_terminal",
+            "altitude": 1500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_01",
+            "condition": "range_spike",
+            "arm": "classical_pd",
+            "altitude": 1500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_01",
+            "condition": "range_spike",
+            "arm": "classical_terminal",
+            "altitude": 1500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_01",
+            "condition": "range_spike",
+            "arm": "ml_terminal",
+            "altitude": 1500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_01",
+            "condition": "range_dropout",
+            "arm": "classical_pd",
+            "altitude": 1500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_01",
+            "condition": "range_dropout",
+            "arm": "classical_terminal",
+            "altitude": 1500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_01",
+            "condition": "range_dropout",
+            "arm": "ml_terminal",
+            "altitude": 1500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_01",
+            "condition": "scan_dropout",
+            "arm": "classical_pd",
+            "altitude": 1500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_01",
+            "condition": "scan_dropout",
+            "arm": "classical_terminal",
+            "altitude": 1500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_01",
+            "condition": "scan_dropout",
+            "arm": "ml_terminal",
+            "altitude": 1500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_01",
+            "condition": "gross_map_shift",
+            "arm": "classical_pd",
+            "altitude": 1500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_01",
+            "condition": "gross_map_shift",
+            "arm": "classical_terminal",
+            "altitude": 1500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_01",
+            "condition": "gross_map_shift",
+            "arm": "ml_terminal",
+            "altitude": 1500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_01",
+            "condition": "gross_relief",
+            "arm": "classical_pd",
+            "altitude": 1500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_01",
+            "condition": "gross_relief",
+            "arm": "classical_terminal",
+            "altitude": 1500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_01",
+            "condition": "gross_relief",
+            "arm": "ml_terminal",
+            "altitude": 1500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_01",
+            "condition": "nominal",
+            "arm": "classical_pd",
+            "altitude": 1500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_01",
+            "condition": "nominal",
+            "arm": "classical_terminal",
+            "altitude": 1500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_01",
+            "condition": "nominal",
+            "arm": "ml_terminal",
+            "altitude": 1500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_01",
+            "condition": "range_spike",
+            "arm": "classical_pd",
+            "altitude": 1500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_01",
+            "condition": "range_spike",
+            "arm": "classical_terminal",
+            "altitude": 1500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_01",
+            "condition": "range_spike",
+            "arm": "ml_terminal",
+            "altitude": 1500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_01",
+            "condition": "range_dropout",
+            "arm": "classical_pd",
+            "altitude": 1500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_01",
+            "condition": "range_dropout",
+            "arm": "classical_terminal",
+            "altitude": 1500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_01",
+            "condition": "range_dropout",
+            "arm": "ml_terminal",
+            "altitude": 1500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_01",
+            "condition": "scan_dropout",
+            "arm": "classical_pd",
+            "altitude": 1500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_01",
+            "condition": "scan_dropout",
+            "arm": "classical_terminal",
+            "altitude": 1500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_01",
+            "condition": "scan_dropout",
+            "arm": "ml_terminal",
+            "altitude": 1500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_01",
+            "condition": "gross_map_shift",
+            "arm": "classical_pd",
+            "altitude": 1500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_01",
+            "condition": "gross_map_shift",
+            "arm": "classical_terminal",
+            "altitude": 1500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_01",
+            "condition": "gross_map_shift",
+            "arm": "ml_terminal",
+            "altitude": 1500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_01",
+            "condition": "gross_relief",
+            "arm": "classical_pd",
+            "altitude": 1500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_01",
+            "condition": "gross_relief",
+            "arm": "classical_terminal",
+            "altitude": 1500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_01",
+            "condition": "gross_relief",
+            "arm": "ml_terminal",
+            "altitude": 1500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_01",
+            "condition": "nominal",
+            "arm": "classical_pd",
+            "altitude": 1500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_01",
+            "condition": "nominal",
+            "arm": "classical_terminal",
+            "altitude": 1500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_01",
+            "condition": "nominal",
+            "arm": "ml_terminal",
+            "altitude": 1500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_01",
+            "condition": "range_spike",
+            "arm": "classical_pd",
+            "altitude": 1500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_01",
+            "condition": "range_spike",
+            "arm": "classical_terminal",
+            "altitude": 1500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_01",
+            "condition": "range_spike",
+            "arm": "ml_terminal",
+            "altitude": 1500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_01",
+            "condition": "range_dropout",
+            "arm": "classical_pd",
+            "altitude": 1500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_01",
+            "condition": "range_dropout",
+            "arm": "classical_terminal",
+            "altitude": 1500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_01",
+            "condition": "range_dropout",
+            "arm": "ml_terminal",
+            "altitude": 1500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_01",
+            "condition": "scan_dropout",
+            "arm": "classical_pd",
+            "altitude": 1500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_01",
+            "condition": "scan_dropout",
+            "arm": "classical_terminal",
+            "altitude": 1500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_01",
+            "condition": "scan_dropout",
+            "arm": "ml_terminal",
+            "altitude": 1500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_01",
+            "condition": "gross_map_shift",
+            "arm": "classical_pd",
+            "altitude": 1500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_01",
+            "condition": "gross_map_shift",
+            "arm": "classical_terminal",
+            "altitude": 1500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_01",
+            "condition": "gross_map_shift",
+            "arm": "ml_terminal",
+            "altitude": 1500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_01",
+            "condition": "gross_relief",
+            "arm": "classical_pd",
+            "altitude": 1500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_01",
+            "condition": "gross_relief",
+            "arm": "classical_terminal",
+            "altitude": 1500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_01",
+            "condition": "gross_relief",
+            "arm": "ml_terminal",
+            "altitude": 1500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_02",
+            "condition": "nominal",
+            "arm": "classical_pd",
+            "altitude": 500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_02",
+            "condition": "nominal",
+            "arm": "classical_terminal",
+            "altitude": 500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_02",
+            "condition": "nominal",
+            "arm": "ml_terminal",
+            "altitude": 500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_02",
+            "condition": "range_spike",
+            "arm": "classical_pd",
+            "altitude": 500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_02",
+            "condition": "range_spike",
+            "arm": "classical_terminal",
+            "altitude": 500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_02",
+            "condition": "range_spike",
+            "arm": "ml_terminal",
+            "altitude": 500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_02",
+            "condition": "range_dropout",
+            "arm": "classical_pd",
+            "altitude": 500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_02",
+            "condition": "range_dropout",
+            "arm": "classical_terminal",
+            "altitude": 500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_02",
+            "condition": "range_dropout",
+            "arm": "ml_terminal",
+            "altitude": 500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_02",
+            "condition": "scan_dropout",
+            "arm": "classical_pd",
+            "altitude": 500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_02",
+            "condition": "scan_dropout",
+            "arm": "classical_terminal",
+            "altitude": 500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_02",
+            "condition": "scan_dropout",
+            "arm": "ml_terminal",
+            "altitude": 500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_02",
+            "condition": "gross_map_shift",
+            "arm": "classical_pd",
+            "altitude": 500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_02",
+            "condition": "gross_map_shift",
+            "arm": "classical_terminal",
+            "altitude": 500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_02",
+            "condition": "gross_map_shift",
+            "arm": "ml_terminal",
+            "altitude": 500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_02",
+            "condition": "gross_relief",
+            "arm": "classical_pd",
+            "altitude": 500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_02",
+            "condition": "gross_relief",
+            "arm": "classical_terminal",
+            "altitude": 500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_02",
+            "condition": "gross_relief",
+            "arm": "ml_terminal",
+            "altitude": 500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_02",
+            "condition": "nominal",
+            "arm": "classical_pd",
+            "altitude": 500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_02",
+            "condition": "nominal",
+            "arm": "classical_terminal",
+            "altitude": 500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_02",
+            "condition": "nominal",
+            "arm": "ml_terminal",
+            "altitude": 500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_02",
+            "condition": "range_spike",
+            "arm": "classical_pd",
+            "altitude": 500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_02",
+            "condition": "range_spike",
+            "arm": "classical_terminal",
+            "altitude": 500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_02",
+            "condition": "range_spike",
+            "arm": "ml_terminal",
+            "altitude": 500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_02",
+            "condition": "range_dropout",
+            "arm": "classical_pd",
+            "altitude": 500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_02",
+            "condition": "range_dropout",
+            "arm": "classical_terminal",
+            "altitude": 500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_02",
+            "condition": "range_dropout",
+            "arm": "ml_terminal",
+            "altitude": 500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_02",
+            "condition": "scan_dropout",
+            "arm": "classical_pd",
+            "altitude": 500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_02",
+            "condition": "scan_dropout",
+            "arm": "classical_terminal",
+            "altitude": 500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_02",
+            "condition": "scan_dropout",
+            "arm": "ml_terminal",
+            "altitude": 500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_02",
+            "condition": "gross_map_shift",
+            "arm": "classical_pd",
+            "altitude": 500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_02",
+            "condition": "gross_map_shift",
+            "arm": "classical_terminal",
+            "altitude": 500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_02",
+            "condition": "gross_map_shift",
+            "arm": "ml_terminal",
+            "altitude": 500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_02",
+            "condition": "gross_relief",
+            "arm": "classical_pd",
+            "altitude": 500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_02",
+            "condition": "gross_relief",
+            "arm": "classical_terminal",
+            "altitude": 500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_02",
+            "condition": "gross_relief",
+            "arm": "ml_terminal",
+            "altitude": 500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_02",
+            "condition": "nominal",
+            "arm": "classical_pd",
+            "altitude": 500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_02",
+            "condition": "nominal",
+            "arm": "classical_terminal",
+            "altitude": 500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_02",
+            "condition": "nominal",
+            "arm": "ml_terminal",
+            "altitude": 500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_02",
+            "condition": "range_spike",
+            "arm": "classical_pd",
+            "altitude": 500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_02",
+            "condition": "range_spike",
+            "arm": "classical_terminal",
+            "altitude": 500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_02",
+            "condition": "range_spike",
+            "arm": "ml_terminal",
+            "altitude": 500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_02",
+            "condition": "range_dropout",
+            "arm": "classical_pd",
+            "altitude": 500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_02",
+            "condition": "range_dropout",
+            "arm": "classical_terminal",
+            "altitude": 500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_02",
+            "condition": "range_dropout",
+            "arm": "ml_terminal",
+            "altitude": 500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_02",
+            "condition": "scan_dropout",
+            "arm": "classical_pd",
+            "altitude": 500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_02",
+            "condition": "scan_dropout",
+            "arm": "classical_terminal",
+            "altitude": 500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_02",
+            "condition": "scan_dropout",
+            "arm": "ml_terminal",
+            "altitude": 500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_02",
+            "condition": "gross_map_shift",
+            "arm": "classical_pd",
+            "altitude": 500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_02",
+            "condition": "gross_map_shift",
+            "arm": "classical_terminal",
+            "altitude": 500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_02",
+            "condition": "gross_map_shift",
+            "arm": "ml_terminal",
+            "altitude": 500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_02",
+            "condition": "gross_relief",
+            "arm": "classical_pd",
+            "altitude": 500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_02",
+            "condition": "gross_relief",
+            "arm": "classical_terminal",
+            "altitude": 500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_02",
+            "condition": "gross_relief",
+            "arm": "ml_terminal",
+            "altitude": 500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_02",
+            "condition": "nominal",
+            "arm": "classical_pd",
+            "altitude": 1500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_02",
+            "condition": "nominal",
+            "arm": "classical_terminal",
+            "altitude": 1500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_02",
+            "condition": "nominal",
+            "arm": "ml_terminal",
+            "altitude": 1500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_02",
+            "condition": "range_spike",
+            "arm": "classical_pd",
+            "altitude": 1500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_02",
+            "condition": "range_spike",
+            "arm": "classical_terminal",
+            "altitude": 1500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_02",
+            "condition": "range_spike",
+            "arm": "ml_terminal",
+            "altitude": 1500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_02",
+            "condition": "range_dropout",
+            "arm": "classical_pd",
+            "altitude": 1500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_02",
+            "condition": "range_dropout",
+            "arm": "classical_terminal",
+            "altitude": 1500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_02",
+            "condition": "range_dropout",
+            "arm": "ml_terminal",
+            "altitude": 1500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_02",
+            "condition": "scan_dropout",
+            "arm": "classical_pd",
+            "altitude": 1500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_02",
+            "condition": "scan_dropout",
+            "arm": "classical_terminal",
+            "altitude": 1500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_02",
+            "condition": "scan_dropout",
+            "arm": "ml_terminal",
+            "altitude": 1500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_02",
+            "condition": "gross_map_shift",
+            "arm": "classical_pd",
+            "altitude": 1500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_02",
+            "condition": "gross_map_shift",
+            "arm": "classical_terminal",
+            "altitude": 1500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_02",
+            "condition": "gross_map_shift",
+            "arm": "ml_terminal",
+            "altitude": 1500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_02",
+            "condition": "gross_relief",
+            "arm": "classical_pd",
+            "altitude": 1500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_02",
+            "condition": "gross_relief",
+            "arm": "classical_terminal",
+            "altitude": 1500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_02",
+            "condition": "gross_relief",
+            "arm": "ml_terminal",
+            "altitude": 1500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_02",
+            "condition": "nominal",
+            "arm": "classical_pd",
+            "altitude": 1500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_02",
+            "condition": "nominal",
+            "arm": "classical_terminal",
+            "altitude": 1500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_02",
+            "condition": "nominal",
+            "arm": "ml_terminal",
+            "altitude": 1500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_02",
+            "condition": "range_spike",
+            "arm": "classical_pd",
+            "altitude": 1500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_02",
+            "condition": "range_spike",
+            "arm": "classical_terminal",
+            "altitude": 1500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_02",
+            "condition": "range_spike",
+            "arm": "ml_terminal",
+            "altitude": 1500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_02",
+            "condition": "range_dropout",
+            "arm": "classical_pd",
+            "altitude": 1500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_02",
+            "condition": "range_dropout",
+            "arm": "classical_terminal",
+            "altitude": 1500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_02",
+            "condition": "range_dropout",
+            "arm": "ml_terminal",
+            "altitude": 1500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_02",
+            "condition": "scan_dropout",
+            "arm": "classical_pd",
+            "altitude": 1500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_02",
+            "condition": "scan_dropout",
+            "arm": "classical_terminal",
+            "altitude": 1500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_02",
+            "condition": "scan_dropout",
+            "arm": "ml_terminal",
+            "altitude": 1500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_02",
+            "condition": "gross_map_shift",
+            "arm": "classical_pd",
+            "altitude": 1500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_02",
+            "condition": "gross_map_shift",
+            "arm": "classical_terminal",
+            "altitude": 1500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_02",
+            "condition": "gross_map_shift",
+            "arm": "ml_terminal",
+            "altitude": 1500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_02",
+            "condition": "gross_relief",
+            "arm": "classical_pd",
+            "altitude": 1500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_02",
+            "condition": "gross_relief",
+            "arm": "classical_terminal",
+            "altitude": 1500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_02",
+            "condition": "gross_relief",
+            "arm": "ml_terminal",
+            "altitude": 1500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_02",
+            "condition": "nominal",
+            "arm": "classical_pd",
+            "altitude": 1500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_02",
+            "condition": "nominal",
+            "arm": "classical_terminal",
+            "altitude": 1500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_02",
+            "condition": "nominal",
+            "arm": "ml_terminal",
+            "altitude": 1500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_02",
+            "condition": "range_spike",
+            "arm": "classical_pd",
+            "altitude": 1500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_02",
+            "condition": "range_spike",
+            "arm": "classical_terminal",
+            "altitude": 1500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_02",
+            "condition": "range_spike",
+            "arm": "ml_terminal",
+            "altitude": 1500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_02",
+            "condition": "range_dropout",
+            "arm": "classical_pd",
+            "altitude": 1500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_02",
+            "condition": "range_dropout",
+            "arm": "classical_terminal",
+            "altitude": 1500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_02",
+            "condition": "range_dropout",
+            "arm": "ml_terminal",
+            "altitude": 1500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_02",
+            "condition": "scan_dropout",
+            "arm": "classical_pd",
+            "altitude": 1500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_02",
+            "condition": "scan_dropout",
+            "arm": "classical_terminal",
+            "altitude": 1500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_02",
+            "condition": "scan_dropout",
+            "arm": "ml_terminal",
+            "altitude": 1500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_02",
+            "condition": "gross_map_shift",
+            "arm": "classical_pd",
+            "altitude": 1500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_02",
+            "condition": "gross_map_shift",
+            "arm": "classical_terminal",
+            "altitude": 1500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_02",
+            "condition": "gross_map_shift",
+            "arm": "ml_terminal",
+            "altitude": 1500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_02",
+            "condition": "gross_relief",
+            "arm": "classical_pd",
+            "altitude": 1500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_02",
+            "condition": "gross_relief",
+            "arm": "classical_terminal",
+            "altitude": 1500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_02",
+            "condition": "gross_relief",
+            "arm": "ml_terminal",
+            "altitude": 1500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_03",
+            "condition": "nominal",
+            "arm": "classical_pd",
+            "altitude": 500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_03",
+            "condition": "nominal",
+            "arm": "classical_terminal",
+            "altitude": 500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_03",
+            "condition": "nominal",
+            "arm": "ml_terminal",
+            "altitude": 500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_03",
+            "condition": "range_spike",
+            "arm": "classical_pd",
+            "altitude": 500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_03",
+            "condition": "range_spike",
+            "arm": "classical_terminal",
+            "altitude": 500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_03",
+            "condition": "range_spike",
+            "arm": "ml_terminal",
+            "altitude": 500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_03",
+            "condition": "range_dropout",
+            "arm": "classical_pd",
+            "altitude": 500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_03",
+            "condition": "range_dropout",
+            "arm": "classical_terminal",
+            "altitude": 500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_03",
+            "condition": "range_dropout",
+            "arm": "ml_terminal",
+            "altitude": 500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_03",
+            "condition": "scan_dropout",
+            "arm": "classical_pd",
+            "altitude": 500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_03",
+            "condition": "scan_dropout",
+            "arm": "classical_terminal",
+            "altitude": 500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_03",
+            "condition": "scan_dropout",
+            "arm": "ml_terminal",
+            "altitude": 500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_03",
+            "condition": "gross_map_shift",
+            "arm": "classical_pd",
+            "altitude": 500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_03",
+            "condition": "gross_map_shift",
+            "arm": "classical_terminal",
+            "altitude": 500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_03",
+            "condition": "gross_map_shift",
+            "arm": "ml_terminal",
+            "altitude": 500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_03",
+            "condition": "gross_relief",
+            "arm": "classical_pd",
+            "altitude": 500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_03",
+            "condition": "gross_relief",
+            "arm": "classical_terminal",
+            "altitude": 500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_03",
+            "condition": "gross_relief",
+            "arm": "ml_terminal",
+            "altitude": 500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_03",
+            "condition": "nominal",
+            "arm": "classical_pd",
+            "altitude": 500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_03",
+            "condition": "nominal",
+            "arm": "classical_terminal",
+            "altitude": 500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_03",
+            "condition": "nominal",
+            "arm": "ml_terminal",
+            "altitude": 500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_03",
+            "condition": "range_spike",
+            "arm": "classical_pd",
+            "altitude": 500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_03",
+            "condition": "range_spike",
+            "arm": "classical_terminal",
+            "altitude": 500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_03",
+            "condition": "range_spike",
+            "arm": "ml_terminal",
+            "altitude": 500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_03",
+            "condition": "range_dropout",
+            "arm": "classical_pd",
+            "altitude": 500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_03",
+            "condition": "range_dropout",
+            "arm": "classical_terminal",
+            "altitude": 500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_03",
+            "condition": "range_dropout",
+            "arm": "ml_terminal",
+            "altitude": 500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_03",
+            "condition": "scan_dropout",
+            "arm": "classical_pd",
+            "altitude": 500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_03",
+            "condition": "scan_dropout",
+            "arm": "classical_terminal",
+            "altitude": 500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_03",
+            "condition": "scan_dropout",
+            "arm": "ml_terminal",
+            "altitude": 500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_03",
+            "condition": "gross_map_shift",
+            "arm": "classical_pd",
+            "altitude": 500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_03",
+            "condition": "gross_map_shift",
+            "arm": "classical_terminal",
+            "altitude": 500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_03",
+            "condition": "gross_map_shift",
+            "arm": "ml_terminal",
+            "altitude": 500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_03",
+            "condition": "gross_relief",
+            "arm": "classical_pd",
+            "altitude": 500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_03",
+            "condition": "gross_relief",
+            "arm": "classical_terminal",
+            "altitude": 500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_03",
+            "condition": "gross_relief",
+            "arm": "ml_terminal",
+            "altitude": 500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_03",
+            "condition": "nominal",
+            "arm": "classical_pd",
+            "altitude": 500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_03",
+            "condition": "nominal",
+            "arm": "classical_terminal",
+            "altitude": 500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_03",
+            "condition": "nominal",
+            "arm": "ml_terminal",
+            "altitude": 500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_03",
+            "condition": "range_spike",
+            "arm": "classical_pd",
+            "altitude": 500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_03",
+            "condition": "range_spike",
+            "arm": "classical_terminal",
+            "altitude": 500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_03",
+            "condition": "range_spike",
+            "arm": "ml_terminal",
+            "altitude": 500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_03",
+            "condition": "range_dropout",
+            "arm": "classical_pd",
+            "altitude": 500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_03",
+            "condition": "range_dropout",
+            "arm": "classical_terminal",
+            "altitude": 500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_03",
+            "condition": "range_dropout",
+            "arm": "ml_terminal",
+            "altitude": 500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_03",
+            "condition": "scan_dropout",
+            "arm": "classical_pd",
+            "altitude": 500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_03",
+            "condition": "scan_dropout",
+            "arm": "classical_terminal",
+            "altitude": 500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_03",
+            "condition": "scan_dropout",
+            "arm": "ml_terminal",
+            "altitude": 500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_03",
+            "condition": "gross_map_shift",
+            "arm": "classical_pd",
+            "altitude": 500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_03",
+            "condition": "gross_map_shift",
+            "arm": "classical_terminal",
+            "altitude": 500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_03",
+            "condition": "gross_map_shift",
+            "arm": "ml_terminal",
+            "altitude": 500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_03",
+            "condition": "gross_relief",
+            "arm": "classical_pd",
+            "altitude": 500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_03",
+            "condition": "gross_relief",
+            "arm": "classical_terminal",
+            "altitude": 500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_03",
+            "condition": "gross_relief",
+            "arm": "ml_terminal",
+            "altitude": 500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_03",
+            "condition": "nominal",
+            "arm": "classical_pd",
+            "altitude": 1500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_03",
+            "condition": "nominal",
+            "arm": "classical_terminal",
+            "altitude": 1500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_03",
+            "condition": "nominal",
+            "arm": "ml_terminal",
+            "altitude": 1500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_03",
+            "condition": "range_spike",
+            "arm": "classical_pd",
+            "altitude": 1500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_03",
+            "condition": "range_spike",
+            "arm": "classical_terminal",
+            "altitude": 1500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_03",
+            "condition": "range_spike",
+            "arm": "ml_terminal",
+            "altitude": 1500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_03",
+            "condition": "range_dropout",
+            "arm": "classical_pd",
+            "altitude": 1500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_03",
+            "condition": "range_dropout",
+            "arm": "classical_terminal",
+            "altitude": 1500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_03",
+            "condition": "range_dropout",
+            "arm": "ml_terminal",
+            "altitude": 1500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_03",
+            "condition": "scan_dropout",
+            "arm": "classical_pd",
+            "altitude": 1500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_03",
+            "condition": "scan_dropout",
+            "arm": "classical_terminal",
+            "altitude": 1500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_03",
+            "condition": "scan_dropout",
+            "arm": "ml_terminal",
+            "altitude": 1500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_03",
+            "condition": "gross_map_shift",
+            "arm": "classical_pd",
+            "altitude": 1500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_03",
+            "condition": "gross_map_shift",
+            "arm": "classical_terminal",
+            "altitude": 1500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_03",
+            "condition": "gross_map_shift",
+            "arm": "ml_terminal",
+            "altitude": 1500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_03",
+            "condition": "gross_relief",
+            "arm": "classical_pd",
+            "altitude": 1500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_03",
+            "condition": "gross_relief",
+            "arm": "classical_terminal",
+            "altitude": 1500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_03",
+            "condition": "gross_relief",
+            "arm": "ml_terminal",
+            "altitude": 1500,
+            "seed": 2201
+        },
+        {
+            "site": "reserved_03",
+            "condition": "nominal",
+            "arm": "classical_pd",
+            "altitude": 1500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_03",
+            "condition": "nominal",
+            "arm": "classical_terminal",
+            "altitude": 1500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_03",
+            "condition": "nominal",
+            "arm": "ml_terminal",
+            "altitude": 1500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_03",
+            "condition": "range_spike",
+            "arm": "classical_pd",
+            "altitude": 1500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_03",
+            "condition": "range_spike",
+            "arm": "classical_terminal",
+            "altitude": 1500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_03",
+            "condition": "range_spike",
+            "arm": "ml_terminal",
+            "altitude": 1500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_03",
+            "condition": "range_dropout",
+            "arm": "classical_pd",
+            "altitude": 1500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_03",
+            "condition": "range_dropout",
+            "arm": "classical_terminal",
+            "altitude": 1500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_03",
+            "condition": "range_dropout",
+            "arm": "ml_terminal",
+            "altitude": 1500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_03",
+            "condition": "scan_dropout",
+            "arm": "classical_pd",
+            "altitude": 1500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_03",
+            "condition": "scan_dropout",
+            "arm": "classical_terminal",
+            "altitude": 1500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_03",
+            "condition": "scan_dropout",
+            "arm": "ml_terminal",
+            "altitude": 1500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_03",
+            "condition": "gross_map_shift",
+            "arm": "classical_pd",
+            "altitude": 1500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_03",
+            "condition": "gross_map_shift",
+            "arm": "classical_terminal",
+            "altitude": 1500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_03",
+            "condition": "gross_map_shift",
+            "arm": "ml_terminal",
+            "altitude": 1500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_03",
+            "condition": "gross_relief",
+            "arm": "classical_pd",
+            "altitude": 1500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_03",
+            "condition": "gross_relief",
+            "arm": "classical_terminal",
+            "altitude": 1500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_03",
+            "condition": "gross_relief",
+            "arm": "ml_terminal",
+            "altitude": 1500,
+            "seed": 2202
+        },
+        {
+            "site": "reserved_03",
+            "condition": "nominal",
+            "arm": "classical_pd",
+            "altitude": 1500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_03",
+            "condition": "nominal",
+            "arm": "classical_terminal",
+            "altitude": 1500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_03",
+            "condition": "nominal",
+            "arm": "ml_terminal",
+            "altitude": 1500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_03",
+            "condition": "range_spike",
+            "arm": "classical_pd",
+            "altitude": 1500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_03",
+            "condition": "range_spike",
+            "arm": "classical_terminal",
+            "altitude": 1500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_03",
+            "condition": "range_spike",
+            "arm": "ml_terminal",
+            "altitude": 1500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_03",
+            "condition": "range_dropout",
+            "arm": "classical_pd",
+            "altitude": 1500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_03",
+            "condition": "range_dropout",
+            "arm": "classical_terminal",
+            "altitude": 1500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_03",
+            "condition": "range_dropout",
+            "arm": "ml_terminal",
+            "altitude": 1500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_03",
+            "condition": "scan_dropout",
+            "arm": "classical_pd",
+            "altitude": 1500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_03",
+            "condition": "scan_dropout",
+            "arm": "classical_terminal",
+            "altitude": 1500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_03",
+            "condition": "scan_dropout",
+            "arm": "ml_terminal",
+            "altitude": 1500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_03",
+            "condition": "gross_map_shift",
+            "arm": "classical_pd",
+            "altitude": 1500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_03",
+            "condition": "gross_map_shift",
+            "arm": "classical_terminal",
+            "altitude": 1500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_03",
+            "condition": "gross_map_shift",
+            "arm": "ml_terminal",
+            "altitude": 1500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_03",
+            "condition": "gross_relief",
+            "arm": "classical_pd",
+            "altitude": 1500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_03",
+            "condition": "gross_relief",
+            "arm": "classical_terminal",
+            "altitude": 1500,
+            "seed": 2203
+        },
+        {
+            "site": "reserved_03",
+            "condition": "gross_relief",
+            "arm": "ml_terminal",
+            "altitude": 1500,
+            "seed": 2203
+        }
+    ]
+}

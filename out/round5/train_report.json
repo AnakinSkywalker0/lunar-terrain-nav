@@ -1,0 +1,21 @@
+{
+ "train_rows": 1253162,
+ "valid_rows": 696934,
+ "train_floor_correct_share": 0.9908886480758274,
+ "valid_floor_correct_share": 0.9935417127016332,
+ "valid_accuracy": 0.9985895364553888,
+ "valid_always_floor_accuracy": 0.9935417127016332,
+ "valid_always_tight_accuracy": 0.006458287298366838,
+ "conformal": {
+  "chi_single": {
+   "limit": 92.29327848733787,
+   "n_valid_readings": 2024336,
+   "fraction_above_6635": 0.05769200369899068
+  },
+  "chi_multi": {
+   "limit": 19.460006521469282,
+   "n_valid_readings": 12198300,
+   "fraction_above_6635": 0.026689948599394997
+  }
+ }
+}

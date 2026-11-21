@@ -1,0 +1,62 @@
+{
+  "task": "scan_optimal_gain_v2",
+  "fit_rows": 4172,
+  "validation_rows": 2732,
+  "training_sites": [
+    "original",
+    "area01",
+    "area02"
+  ],
+  "validation_sites": [
+    "area03",
+    "area04"
+  ],
+  "source": "D:\\newprj\\out\\scan_utility\\20261021_203240_collect",
+  "source_scans_sha256": "1192d3f00eddac06bee0e26687c55c0e3abca1c2014c45be5399d4381befc9bb",
+  "source_summary_sha256": "36b03b786e65e19bc31686185aeb8787ee66f93c42a43d7c3c7858c993604634",
+  "plan_sha256": "e638c6e99176b3198ea4201ccd23ebedf638c51797f6d039aa2ee6d3b54d91fa",
+  "protocol_sha256": "d5a27475d878136120003d5b2aed687234d90baea9d0a3a891a9cf076df3daa6",
+  "evaluation_sites": [
+    {
+      "id": "utility_fresh01",
+      "x": 5640.625,
+      "z": 1406.25,
+      "target_window_max_slope_deg": 4.26217901661944
+    }
+  ],
+  "expected_evaluation_cases": 270,
+  "seeds": [
+    {
+      "seed": 11,
+      "validation_mae": 0.212973561063268,
+      "validation_rmse": 0.2953292488671767
+    },
+    {
+      "seed": 22,
+      "validation_mae": 0.21196086548298002,
+      "validation_rmse": 0.2955183395157989
+    },
+    {
+      "seed": 33,
+      "validation_mae": 0.21195415470844334,
+      "validation_rmse": 0.2939028788924528
+    }
+  ],
+  "selected_seed": 11,
+  "selection_reason": "Predetermined seed; policies selected later on complete development landings",
+  "portable_max_difference": 0.0,
+  "refit_on_validation": false,
+  "uses_prior_final_evaluation": false,
+  "validation_always_gain1_mae": 0.22101393121727675,
+  "validation_training_mean_mae": 0.27837595637300283,
+  "model_sha256": "eda1c7830f69b76cffd6ded430a5e6ddcd70210ed411fcf4f902c62e46f0dece",
+  "nodes": 5874,
+  "feature_importances": {
+    "normalized_rms": 0.23307457724264574,
+    "confidence_feature": 0.11205215606470459,
+    "correction_norm_m": 0.5441154920517606,
+    "agl_feature_m": 0.09751266049012891,
+    "consistency_m": 0.011713686888596381,
+    "has_previous": 0.0015314272621636134
+  }
+}

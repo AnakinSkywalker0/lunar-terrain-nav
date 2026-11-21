@@ -1,0 +1,197 @@
+diff --git a/sim/engine.py b/sim/engine.py
+index ef7dd4a..6b6be7a 100644
+--- a/sim/engine.py
++++ b/sim/engine.py
+@@ -4,6 +4,7 @@ All state arrays have a leading run axis N so hundreds of descents run in lock-s
+ Every judge sees identical truth-independent noise (common random numbers), see Draws.
+ """
+ from dataclasses import dataclass, field
++import types
+ import numpy as np
+ 
+ G = 1.62
+@@ -11,6 +12,45 @@ G0 = 9.80665
+ CHI2_99 = 6.635          # 1-dof 99 % gate
+ DT = 0.25
+ 
++# --- multi-beam slant-range sensor (round-3 extension; used only with beams >= 2 and the *_mb judges) ---
++BEAM_CANT_DEG = 22.5     # ASSUMED beam cant from nadir (NDL-like); not the real instrument's geometry
++MB_JUDGES = ("pitfal_mb", "tolerance_mb")
++_F_GRID = np.geomspace(0.02, 4.0, 40)
++
++
++def _slant_range(height, px, py, z, ux, uy, ct, st):
++    """Slant range of a beam leaving (px, py, z) along horizontal direction (ux, uy), canted by angle theta from nadir
++    (ct = cos, st = sin): first crossing of the ray with the terrain `height(x, y)`, by coarse marching then bisection.
++    If the ray never meets the terrain within 4x the nadir range, the upper bound is returned."""
++    agl = np.maximum(z - height(px, py), 0.5)
++    s_nom = agl / ct
++    S = s_nom[:, None] * _F_GRID[None, :]
++    f = (z[:, None] - S * ct) - height((px[:, None] + S * st * ux).ravel(), (py[:, None] + S * st * uy).ravel()).reshape(S.shape)
++    hit = f <= 0
++    anyhit = hit.any(axis=1)
++    first = np.where(anyhit, hit.argmax(axis=1), len(_F_GRID) - 1)
++    rows = np.arange(len(S))
++    hi = S[rows, first]
++    lo = np.where(first > 0, S[rows, np.maximum(first - 1, 0)], 0.0)
++    for _ in range(12):
++        mid = 0.5 * (lo + hi)
++        above = (z - mid * ct - height(px + mid * st * ux, py + mid * st * uy)) > 0
++        lo = np.where(above, mid, lo)
++        hi = np.where(above, hi, mid)
++    return np.where(anyhit, 0.5 * (lo + hi), hi)
++
++
++def _consensus_ok(zapp, var):
++    """PITFAL-style consensus check (our interpretation) on the apparent altitudes of the K beams of each run.
++    zapp, var: (m, K). A beam is inconsistent if its apparent altitude differs from the median of the beams by more than the
++    99 % chi-square limit allows. Needs K >= 3 to tell which beam is the odd one out; with K < 3 every beam is kept."""
++    K = zapp.shape[1]
++    if K < 3:
++        return np.ones(zapp.shape, dtype=bool)
++    med = np.median(zapp, axis=1)
++    chi = (zapp - med[:, None]) ** 2 / (var * (1.0 + 1.0 / K))
++    return chi <= CHI2_99
++
+ 
+ @dataclass
+ class Vehicle:
+@@ -64,7 +104,28 @@ def _cam_model():
+ class Draws:
+     """Pre-drawn random numbers shared by all judges (same descents, noise and faults for everyone)."""
+ 
++    def mb(self, K, scen):
++        """Extra random numbers for a K-beam sensor (independent noise and fault bursts per beam), drawn from a SEPARATE generator so
++        none of the legacy draws change. Cached per K."""
++        if getattr(self, "_mb_cache", None) is not None and self._mb_cache[0] == K:
++            return self._mb_cache[1]
++        rng = np.random.default_rng([int(self.seed), 7919, int(K)])
++        n, T = self.n, self.T
++        g = rng.standard_normal((n, T, K)).astype(np.float32)
++        starts = rng.random((n, T, K)) < scen.burst_rate * DT
++        lens = rng.integers(scen.burst_len[0], scen.burst_len[1] + 1, (n, T, K))
++        burst = np.zeros((n, T, K), dtype=bool)
++        for i in np.nonzero(starts.any(axis=(1, 2)))[0]:
++            for t0, k0 in zip(*np.nonzero(starts[i])):
++                burst[i, t0:t0 + lens[i, t0, k0], k0] = True
++        sign = np.where(rng.random((n, T, K)) < 0.5, -1.0, 1.0)
++        bias = (sign * rng.uniform(30.0, 400.0, (n, T, K))).astype(np.float32)
++        out = types.SimpleNamespace(g=g, burst=burst, bias=bias)
++        self._mb_cache = (K, out)
++        return out
++
+     def __init__(self, world, scen, n, seed, t_max=None):
++        self.seed = seed
+         rng = np.random.default_rng(seed)
+         self.n = n
+         self.T = int((t_max or scen.t_max) / DT) + 2
+@@ -150,7 +211,8 @@ def simulate(world, track, scen, judge, draws, veh=None, scan=False, ml_model=No
+              record_idx=None, sigma_probation=3.0, K_prob=10, ellipse_k=2.0, wide_gate=1.0, cam_policy=None, timestamps=None,
+              ml2_mode="soft", ml2_vertical_only=False, ml2_terrain_R=False, ml2_threshold=0.5, ml2_noise_model=None,
+              ml2_noise_scale=1.0, ml2_noise_normal=False, ml2_noise_heuristic=False, ml2_rule_gate=False,
+-             fault_label_noise_aware=False, terrain_R=False, tol_noise_floor=False):
++             fault_label_noise_aware=False, terrain_R=False, tol_noise_floor=False,
++             beams=0, beam_fault="independent", mb_consensus=False):
+     """Run all N descents for one judge. Returns a dict of per-run result arrays (+ optional recorded traces).
+ 
+     Round-3 candidate switches (all default off, so every earlier result and tag stays reproducible bit for bit):
+@@ -172,6 +234,14 @@ def simulate(world, track, scen, judge, draws, veh=None, scan=False, ml_model=No
+     a tolerance-style chi-square gate whose noise level adapts through s_hat (use together with ml2_noise_heuristic=True).
+     All other judges are unchanged.
+     """
++    mb_mode = judge in MB_JUDGES
++    if mb_mode:
++        if beams < 2:
++            raise ValueError("judge %s needs beams >= 2" % judge)
++        if scen.map_mode == "missing" or scen.delay_s != (0.0, 0.0):
++            raise ValueError("multi-beam judges do not support a missing map or delayed readings")
++        if beam_fault not in ("independent", "common"):
++            raise ValueError("beam_fault must be 'independent' or 'common'")
+     veh = veh or Vehicle()
+     if judge == "ml2":
+         import ml_features as MF
+@@ -358,6 +428,84 @@ def simulate(world, track, scen, judge, draws, veh=None, scan=False, ml_model=No
+         avail = alive & (agl_true < 20000.0)
+         if scen.dropout_agl > 0:
+             avail &= agl_true > scen.dropout_agl
++        if mb_mode:
++            # ---- multi-beam slant-range sensor: `beams` beams canted BEAM_CANT_DEG from nadir, evenly spaced in azimuth ----
++            idx = np.nonzero(avail)[0]
++            if idx.size:
++                Kb = beams
++                ct, st = np.cos(np.deg2rad(BEAM_CANT_DEG)), np.sin(np.deg2rad(BEAM_CANT_DEG))
++                mbd = draws.mb(Kb, scen)
++                dirs = [(np.cos(2 * np.pi * kb / Kb), np.sin(2 * np.pi * kb / Kb)) for kb in range(Kb)]
++                s_meas = np.zeros((idx.size, Kb))
++                lbl_b = np.zeros((idx.size, Kb), dtype=bool)
++                for kb, (ux, uy) in enumerate(dirs):
++                    s_t = _slant_range(truth.height, p[idx, 0], p[idx, 1], p[idx, 2], ux, uy, ct, st)
++                    sig_t = (1.0 + 0.0015 * s_t) * mult[idx]
++                    if beam_fault == "common":      # one fault burst hits all beams alike (consensus cannot see it)
++                        bias = np.where(draws.burst[idx, tt], draws.burst_bias[idx, tt], 0.0)
++                    else:
++                        bias = np.where(mbd.burst[idx, tt, kb], mbd.bias[idx, tt, kb], 0.0)
++                    s_meas[:, kb] = s_t + mbd.g[idx, tt, kb] * sig_t + bias
++                    lbl_b[:, kb] = np.abs(s_meas[:, kb] - s_t) > 5.0 * sig_t + 1.0
++                # state snapshot used for the consensus check and the terrain-variance term
++                xi, yi = nav.x[idx, 0], nav.x[idx, 1]
++                sig_hi = np.sqrt(np.maximum(nav.P[idx, 0, 0], nav.P[idx, 1, 1]))
++                s_terr_b = stats.hstd(xi, yi, ellipse_k * sig_hi) ** 2
++                R_b = (1.0 + 0.0015 * np.maximum(s_meas, 0)) ** 2
++                R_ad = np.maximum(R_b, s_hat[idx, None] ** 2) if (tol_noise_floor and judge == "tolerance_mb") else R_b
++                zapp = np.zeros_like(s_meas)
++                for kb, (ux, uy) in enumerate(dirs):
++                    zapp[:, kb] = mapq(xi + s_meas[:, kb] * st * ux, yi + s_meas[:, kb] * st * uy, idx) + s_meas[:, kb] * ct
++                var_z = (np.sqrt(R_ad) * ct) ** 2 + s_terr_b[:, None] + world.map_sigma ** 2
++                use_cons = (judge == "pitfal_mb") or mb_consensus
++                cons_ok = _consensus_ok(zapp, var_z) if use_cons else np.ones(s_meas.shape, dtype=bool)
++                acc_any = np.zeros(n, dtype=bool)
++                flag_any = np.zeros(n, dtype=bool)
++                nu_abs = np.zeros(n)
++                n_acc = np.zeros(n)
++                for kb, (ux, uy) in enumerate(dirs):
++                    xe_i, ye_i, ze_i = nav.x[idx, 0], nav.x[idx, 1], nav.x[idx, 2]
++                    s_p = s_meas[:, kb].copy()
++                    for _ in range(3):      # predicted slant range from the map at the predicted footprint
++                        s_p = np.clip((ze_i - mapq(xe_i + s_p * st * ux, ye_i + s_p * st * uy, idx)) / ct, 1.0, 1e5)
++                    gxk, gyk = mapg(xe_i + s_p * st * ux, ye_i + s_p * st * uy, idx)
++                    nu_k = s_meas[:, kb] - s_p
++                    Dk = np.maximum(ct + st * (gxk * ux + gyk * uy), 0.1)
++                    Hk = np.zeros((n, 9))
++                    Hk[idx, 0] = -gxk / Dk
++                    Hk[idx, 1] = -gyk / Dk
++                    Hk[idx, 2] = 1.0 / Dk
++                    HPHk = np.einsum("ni,nij,nj->n", Hk[idx], nav.P[idx], Hk[idx])
++                    if judge == "pitfal_mb":
++                        Rk = R_b[:, kb] * np.where(flag_timer[idx] > 0, 10.0, 1.0)
++                        gate_ok = nu_k * nu_k / (HPHk + Rk) <= CHI2_99
++                    else:
++                        Rk = R_ad[:, kb] + s_terr_b + world.map_sigma ** 2
++                        gate_ok = nu_k * nu_k / (HPHk + Rk) <= CHI2_99
++                    ok = gate_ok & cons_ok[:, kb]
++                    m = np.zeros(n, dtype=bool)
++                    m[idx] = ok
++                    nu_full = np.zeros(n)
++                    nu_full[idx] = nu_k
++                    R_full = np.ones(n)
++                    R_full[idx] = Rk
++                    _scalar_update(nav.x, nav.P, Hk, nu_full, R_full, m)
++                    lb = lbl_b[:, kb]
++                    res["valid_total"][idx] += ~lb
++                    res["fault_total"][idx] += lb
++                    res["valid_rej"][idx] += (~ok & ~lb)
++                    res["fault_acc"][idx] += (ok & lb)
++                    acc_any[idx] |= ok
++                    flag_any[idx] |= ~ok
++                    nu_abs[idx] += np.where(ok, np.abs(nu_k), 0.0)
++                    n_acc[idx] += ok
++                if judge == "pitfal_mb":
++                    flag_timer = np.where(flag_any, 40, np.maximum(flag_timer - 1, 0))
++                elif tol_noise_floor:
++                    upd_mb = n_acc > 0
++                    mean_nu = nu_abs / np.maximum(n_acc, 1)
++                    s_hat = np.where(upd_mb, 0.97 * s_hat + 0.03 * np.minimum(1.25 * mean_nu, 6.0 * s_hat + 1.0), s_hat)
++            avail = np.zeros(n, dtype=bool)      # the single-beam path below sees no reading
+         if fault_label_noise_aware:      # true noise level (nominal sigma x scenario multiplier), as in sim/ml_labels.py
+             fault_lbl = np.abs(r_meas - r_true) > 5.0 * (sig_nom * mult) + 1.0
+         else:

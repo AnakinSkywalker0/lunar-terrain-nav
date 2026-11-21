@@ -1,0 +1,522 @@
+Space Technology Mission Directorate
+
+Game Changing Development Program
+
+Gavin Mendeck | Wade May | FY23 SPLICE Annual Review Presentation | 08.21.2023
+
+gavin.f.mendeck@nasa.gov
+
+GCD FY23 Annual Program Review                                                  1
+                           Project Overview                                                                    INSERT OVERVIEW
+                                                                                                                 PICTURE HERE
+ Technology Products Capability
+                                                                                                                                                                                           1
+         SPLICE Precision Landing and Hazard Avoidance (PL&HA) technologies will improve landing
+             precision by an order of magnitude and enable high-resolution real-time 3-D mapping for hazard
+             detection and avoidance during descent.
+
+ Technical Capabilities
+
+         Portfolio of sensors, avionics and algorithms for PL&HA appropriate to be infused as individual
+             technologies, or can be fully integrated
+                � Hazard Detection (HD) Lidar - high resolution terrain mapping
+                � GN&C/PL&HA Algorithms improving integrated functions and real-time performance
+                � Descent and Landing Computer (DLC) with COTS HPSC surrogate for PL&HA+GN&C
+                    computing
+
+         Analysis and Test capabilities to mature PL&HA and GN&C technologies
+                � Hardware-in-the-loop (HWIL) Simulation Testbed for development, low-cost V&V, and
+                    integrated testing (prior to costly field tests)
+                � Flight Testbeds (terrestrial and suborbital) for component or integrated systems testing in
+                    relevant environments (risk mitigation and TRL maturation toward mission infusion)
+
+ Exploration & Science Applicability
+
+         Technologies enable precise, safe, and soft landing in close proximity to targeted surface
+             locations (hazardous terrain, pre-positioned cargo, cached samples, etc.) on the Moon, Mars, or
+             other solar system destinations
+
+         Technologies have commercial space applications for companies interested in landing payloads
+             (and eventually people) on the Moon or Mars
+
+GCD FY23 Annual Program Review
+                                Project Needs & Goals
+
+HLS, STMD                               Technology Development Needs Addressed by Project                                EDL &
+HPSC                                                                                                                     Precision Landing
+                                How do we safely land near where we intend to?
+                                Develop precision landing & hazard avoidance sensor and software components for landers  Advanced Avionics
+                                at Moon, Mars, and other destinations.
+
+                                How do we leverage high performance computing development?
+                                Utilize a high performance space computing prototype for processing sensor data and
+                                algorithms to flight demonstration precision landing and hazard avoidance.
+
+Goal #1                                                               Project Goals
+
+                                Design, integrate, and flight demonstrate a portfolio of sensor and software components that together or independently
+                                enable precision landings within 50m while avoiding landing hazards. The portfolio consists of:
+                                � A descent guidance trajectory-planning software library that generates trajectory solutions within 3 seconds that
+
+                                    achieve constraints on sensor pointing, position, and thrust bounds while minimizing propellant use.
+                                � A Hazard Detection Lidar to scan and provide within 2 seconds a 1 MP digital elevation map of 100x100m area at
+
+                                    1.5cm (1) elevation precision.
+                                � A hazard detection software library that processes a 1 MP DEM within 2 seconds, then provides a prioritized list of
+
+                                    safe landing sites meeting lander-specific parameters.
+                                � A Navigation & FSW architecture using these technologies fused with traditional Navigation sensors to achieve
+
+                                    onboard position accuracy of 3m (3) relative to a safe site within the DEM.
+
+Goal #2                         Design, integrate, and suborbital-flight demonstrate this portfolio of capabilities leveraging an HPSC-class terrestrial
+                                prototype computer.
+
+Goal #3                         Achieve TRL 6 and SRL 6 for the portfolio components.
+
+GCD FY23 Annual Program Review                                                                                                                            1
+                                             Project Objectives
+
+Objective #1                                                                      Project Objectives
+Objective #2
+Objective #3                                 Design and implement a Descent and Landing Computer (DLC) Engineering Test Unit (ETU) capable of spaceflight that
+Objective #4                                 performs sensor fusion, runs GN&C computing applications, and can transfer, process, and store data at high speeds
+Objective #5
+Objective #6                                 Complete a full set of flight software and firmware applications using cFS that includes navigation and guidance
+Objective #7                                 algorithmic technology advancements, navigation filter for sensor fusion, data processing, i/o, and storage
+Objective #8
+                                             Develop and implement a Hazard Detection Lidar that rapidly collects measurements to generate a digital elevation
+                                             map (DEM) of the landing area.
+
+                                             Develop and implement a long-range altimeter channel within the Hazard Detection Lidar, usable for active terrain
+                                             relative navigation.
+
+                                             Develop and implement software on DLC that processes the DEM, identifies a ranked list of safe sites, chooses a new
+                                             landing target, and calculates and updated trajectory to the new landing target within modeled vehicle constraints
+
+                                             Develop both guidance and hazard detection algorithm technologies as software C/C++ libraries that meet at least
+                                             NASA Class C FSW standards, to ease infusion into flight projects.
+
+                                             HWIL integration and testing of all SPLICE system components
+
+                                             Flight test of the integrated SPLICE system and system components
+
+GCD FY1282 MAnidnuYaelaPrrRogervaiemwReview                                                                                                                       4
+               SPLICE Project Organization
+
+   EDL SCLT Lead                STMD TIM for Precision Landing     STMD Game Changing Dev                         STMD Flight Opportunities             STMD Avionics PT
+Michelle Munk - HQ                    John M. Carson - HQ              Program Executive                               Program Executive                   Wes Powell
+                                                                                                                        Chris Baker - HQ
+                                                                      Niki Werkheiser - HQ
+                                                                      Kevin Somervill - HQ                           FO Program Manager       Campaign
+                                                                                                                       John Kelly - AFRC      Manager
+                                                                      GCD Program Manager
+                                                                        David Moore - LaRC                        Danielle McCulloch -- AFRC
+
+                                                                     PEM - Wade May -- LaRC
+
+                                Safe & Precise Landing               Project Manager                                                                    High Performance
+                                Integrated Capabilities Evolution  Gavin Mendeck - JSC                                                                  Spaceflight Computing
+                                (SPLICE) Project                                                                                                        (HPSC) Project
+                                                                                          Project Chief Engineer
+                                                                                            Sam Pedrotty - JSC                                              Project Manager
+                                                                                                                                                              Charles Dunn
+                                                  PAO + EPO                      S&MA                                                                               JPL
+                                            STMD-GCD/STMD-FO                    STMD-FO
+                                                                                                                                                                Legend
+Psionic, LLC                    HWIL/Sim       GNC                     FSW       Sensor PI   HDL                        DLC                                    Direct Oversight
+                                Teming Tse  Kyle Smith             James Berck  Bryan Blair                           David
+     PS-NDL                                                                                            Proj Mgr    Rutishauser                                 Coordination
+  M. Cisewski                        JSC      Draper                    JSC        GSFC            William Potter                                              Level 1 (Leadership)
+                                                                                                                        JSC                                    Level 2 (Programs)
+                                                                                                         GSFC                                                  Level 3 (Projects)
+
+GCD FY23 Annual Program Review                                                                                                                                                                                 5
+                                Collaborations & Partnerships
+
+NASA Center                                                                      Terrain Relative Navigation demo
+Academia                                                                         (V&V leverages SPLICE Trick Simulation)
+Industry
+                                Guidance Research     Suborbital Testing 2020/1       Astrobotic      Terrain Relative Navigation
+                                                      SAA Adv. Guidance          (STMD-TP, A-TRN)     GN&C software
+                                 Univ. Washington
+                                                       Blue Origin
+                                                       (STMD-TP)
+
+                                                                                                      Draper
+
+Suborbital Testing 2025                                                                                                       Hazard Detection Lidar (HDL)
+
+ Astrobotic Space Systems                                                                             NASA GSFC cFS
+      (STMD-TP, Xogdor)
+
+         Hazard Detection algorithms                                                               Psionic                SBIR Navigation Doppler Lidar (NDL)
+High Performance Space Computing
+                                            NASA JPL                              (SBIR & STMD-TP) TP NDL Demo 2024 (potential)
+                                    (HPSC)
+
+                        NASA AFRC                      NASA JSC                    NASA KSC                                 NASA MSFC
+             (STMD Flight Ops Program)
+                                                      Project Leadership          HDL Flight Testing                      Inputs to Human Landing System (HLS)
+                Suborbital Test Coordination          Descent & Landing Computer                                          Oversight & Insight
+                                                      HWIL Simulation Testbed
+                                                      GN&C Software                                                             Georgia Tech
+
+                                                                                                                               Review of ECF Hazard
+                                                                                                                               Detection algorithms that
+                                                                                                                               leverage Machine Learning
+
+GCD FY23 Annual Program Review                                                                                                                                  6
+                                             SPLICE TRL & SRL Progression
+
+                           Project Milestone                          GCD (Key) Milestone          Controlled Milestone                      TRL Progression
+
+           7 HDL Sensor NDL Sensor                                                                                                                    HDL             Xogdor
+                                                                                                                                             Env Testing              SPLICE
+                                           S/W Guidance                                                                                                              Flight Test
+                                           S/W Haz Detect
+TRL & SRL                                                                                                 PS-NDL Prototype        HDL Field                HDL ETU1
+           6                                                                                              Static & Dyn Tests,        Test                  Delivery
+
+                                                           Guid on                                                      Delivery
+                                                          Suborbital                                  HD in Sim &
+                                                         Test NS#2                                 Tested on DLC
+                              HDL Dynamic
+
+           5 Test
+
+                 HDL EDU       HDL                                                                                                HDL ETU1
+                Assembled  Static Test                                                                                             complete
+
+           4
+
+    3                                                                                Slowed        FSW+GNC                                   FSW+GNC "CDR"           SPLICE SPLICE
+                                                                                      Work               "PDR"
+                              FFYY1281                                                                      FY23                                   DLC ETU           Delivery     Final
+                                                                                      GCD FY22                                                     complete          to Xogdor Review
+GCD FY1282 MAnidnuYaelaPrrRogervaiemwReview                                              budget                                   DLC ETU                     PPR
+                                                                                                                                       HWIL
+                                                                                     adjustment &
+                                                                                        rescope                                              FY24                    FY25
+
+                                                                      FY22                                                                                                                                7
+Accomplishments in FY23
+
+                         Guidance Software
+
+ Project has partnered with University of Washington on Dual
+     Quaternion Guidance (DQG) to provide real-time trajectory
+     solutions that meet multiple constraints, including sensor
+     pointing, while minimizing propellant use.
+
+ Initial implementation flew successfully as part of SPLICE "ride-
+     along" payload on New Shepard flight in 2021.
+
+ Used UW custom second-order cone programming (SOCP) solver, with ~10k
+     lines of code that were refactored into ~500k lines for run time efficiency.
+
+ Ran on single DLC ARM A53 processor with a simple constraint set, repeatedly
+     providing valid solutions within 3 seconds each time.
+
+ UW SOCP generic software was never intended to meet spaceflight FSW
+     standards. Software needed to be streamlined for review and reliability.
+
+ UW developed first-order proportional integral projected
+     gradient (PIPG) solver in FY22-23 to simplify the software and
+     improve performance. FY23Q4 prototype benchmark testing on
+     DLC ARM A53 shows PIPG is ~20% the run time of SOCP and
+     with less than 1k lines of code.
+
+ FY23 work added sensor constraints which, while successful,
+     slowed down the SOCP solver beyond the project's goal.
+
+    Project is proceeding with implementing PIPG as a software                     6DOF lander simulation illustrating SPLICE DQG successfully points
+        library meeting FSW Class C to meet goals and objectives                   the HDL sensor field-of-view (green) within 50m of the site
+                                                                                   (red circle) and diverts to an identified safe site (red dot).
+    Project also supports Blue Origin SAA on advanced guidance
+GCD FY1282 MAdnidneuYaevlaPrerRolgeorvaiepmwmReveiewnt and implementation                                                                                                                                                                8
+                                 Accomplishments in FY23
+
+Hazard Detection Lidar  Project partnered with GSFC to design, build,                                                     HDL Scanner testing using Motor
+                                                                                                                         Controller Board (MCB) breadboard
+     and test the Hazard Detection Lidar (HDL)
+                                                                 HDL EDU Dynamic Testing w/ Truck (2021)                   KSC helicopter flight concept for
+                                                                 With Post-Processed Motion Compensation                              scanner mount
+
+ Design implements a scanning lidar with pointing                                                                                                                                                  9
+
+controlled by two high-speed spinning Risley prisms to
+
+make millions of precise point measurements per second
+
+with <1.5 cm (1) range accuracy
+
+ HDL avionics compensate for motion while populating a
+     1 MP 100x100 m digital elevation map during the 2 sec
+     scan, allowing hazards of 30cm diameter or larger to be
+     identified
+
+ FY23 has focused on assembly and testing of
+     the ETU1 for both Hazard Detection Lidar and
+     Long-Range Altimeter
+
+ All components assembled except for the
+    altimeter telescope. Completed: Detector and
+    its electronics, altimeter laser electronics, master
+    electronics unit, HDL interface harnesses, motor
+    & power chassis, scanner assembly, main power
+    interface board, fiber lasers and harnesses
+
+ Begun vibration acceptance testing of major
+    subassemblies
+
+ Begun FPGA programming to process DEM
+
+ Planning underway for FY24 KSC helicopter                       HDL ETU1 Detectors, Altimeter LEU Housing, Fiber Delay
+     flight tests, which reduces risk prior to Xogdor            Box & Laser subassembly mounted to vibration plate
+
+GCD FYS1282PMAniLdnuYIaCelaPrErRogervfaielmwigRehvitewin FY25Q3
+Accomplishments in FY23
+Hazard Detection Software
+
+ Project has partnered with JPL to refine the hazard detection                                                      Depiction of
+     software used on the Morpheus PL&HA demonstration flights in                                              Lander Hazards
+     2013-2014.
+                                                                                                                                                                                         roughness
+           This software processes a DEM against defined lander characteristics to
+               identify sites most likely to avoid slope and roughness (lander clearance)                            Hazard Detection Processing Steps of DEM
+               hazards.
+                                                                                            Slope Hazards
+           2013 implementation required parallelization on multiple CPUs to process
+               within 6 seconds. Processor speed improvements (i.e., HPSC) since then have                     Combined Hazards  Combined Hazards w/
+               reduced the need to parallelize this algorithm.                                                                      Landing Accuracy
+
+           FY22 work on algorithm development to improve performance (~60% of original      Roughness Hazards                    10
+               execution time) and implement as a software library package.
+
+ FY23 focused on HD library code review, analyses, & testing
+
+           Deep-dive library code and documentation review by FSW and GNC peers,
+               collecting ~300 comments on code, ~100 comments on documentation and
+               design. 99% of all comments now closed. Updated library delivered.
+
+           Quantifying technical and execution time performance with combinations of
+               different algorithm parameters, including small to large lander sizes
+
+           Evaluating algorithm performance using simulated HDL DEMs from Blue Origin
+               2021 ACO to compare with published Blue results. Evaluating LuNaMaps
+               DEMs.
+
+           Testing a 1 MP DEM on DLC ARM A53 achieved 2 second goal for a 5m
+               diameter lander, with <0.1% false positive rates
+
+ FY24 will include further analysis, flight test planning support,
+     and testing this algorithm real-time on the HDL helicopter tests
+     using the DLC
+
+GCD FY1282 MAnidnuYaelaPrrRogervaiemwReview
+                                             Accomplishments in FY23
+
+                     Descent Landing Computer
+
+ Project previously developed and qual'd a Descent Landing
+    Computer EDU for New Shepard flights
+
+ Four ARM A53 processors running 64-bit cFS on a Pentalinux OS
+
+ FY23 has Descent and Landing Computer (DLC) ETU design in
+    fabrication and testing
+
+ ETU design corrects time synchronization deficiencies that were       DLC SSDR Testing
+   accepted to ride-along on New Shepard. These deficiencies must
+   be corrected for Xogdor, as that vehicle will respond to SPLICE
+   guidance commands.
+
+ DLC main processor boards in second round of fabrication and
+   evaluation. DLC FPGA board preparing for procurement. O/S and
+   firmware updates for ETU. Mercury solid state data recorder (SSDR)
+   interfacing in development.
+
+ Now participating in industry consortium to influence SpaceVPX
+   development towards future NASA needs
+
+ FY24 will complete assembly and testing of two DLC ETU
+
+assembly, and include applying ETU firmware updates to existing
+
+DLC EDU units to support HDL and potentially NDL flight tests
+
+GCD FY1282 MAnidnuYaelaPrrRogervaiemwReview                                              11
+Accomplishments in FY23
+         Psionic NDL
+
+ Project partnered with Psionic, LLC. to develop and                                           Psionic NDL Prototype
+    deliver commercial Navigation Doppler Lidar unit
+
+ Sensor provides softer controlled touchdown with low lateral velocity
+    and significantly reduced navigated position error, improving
+    precision landing
+
+ SBIR Phase 3 to develop of two photonic integrated circuit (PIC)
+    upgrades and build a 5th Generation NDL EDU, reducing mass by
+    70% from prototype and more redundancy. EDU mass target is 3
+    kg.
+
+ FY23 accomplishments
+
+        Developed sensor software and early integrated testing
+
+        Prototype w/o PIC delivered in FY23Q4
+
+        Potential for project to minimally support Psionic Tipping Point flight
+           testing in FY24. Utilizing project hardware previously flown on
+           New Shepard.
+
+ PPBE25 funding constraints descoped Psionic NDL from
+
+project. Expect its descope will negatively impact
+
+suborbital flight testing as onboard position knowledge
+
+GCD FY1282 MAwnidnuYiaellalPrrRbogerveaiemwdReeviegw raded relative to identified safe sites.                         12
+                                             Project Assessment Summary
+
+Project Name                                    Performance                                             Comments
+
+  Mid Year                                   CSTP            Schedule - Projected ~3mo delays to HDL and DLC completion milestones
+   Annual                                    GYGY            Programmatic - GSFC and JSC workforce support reduced in late FY22 and has not
+                                                             recovered fully; competing with other projects.
+                                             GYGY
+                                                             Schedule - Mitigations to HDL delays in work. DLC completion milestone slipping
+                                                             ~3 mo due to both redesign after pathfinder testing and to critical resources
+                                                             supporting flight tests with DLC EDU for HDL; not critical path to Xogdor TP.
+                                                             Programmatic - GSFC and JSC workforce support reduced in late FY22 and has not
+                                                             recovered fully; competing with other projects. Budget for FY24-26 descoped Psionic
+                                                             NDL.
+
+GCD FY1282 MAnidnuYaelaPrrRogervaiemwReview                                                                                                       13
+                                             SPLICE Infusion & Partnerships
+
+ EDL/PL&HA domain goal is to address capability gaps and promote infusion and commercialization by achieving TRL 9 for
+     the following technologies via lunar flight demo. These technologies may be infused separately or collectively.
+
+SPLICE Component                             Component Description                                               Commercial/Mission Infusion Targets         Development
+                                                                                                                                                             Partnerships
+Hazard Detection Lidar                       A scan-array lidar capable of short- and long-range mapping to      Pursuing potential lunar demo. Several New  One RSAA,
+(HDL)                                        support HD applicable to Moon, Mars, Icy Moons, Ocean Worlds,       Frontiers proposals. Interest with several  GSFC SAA
+                                             etc. Long-range altimeter to support active TRN.                    companies regarding use or licensing.
+Psionic Navigation                                                                                                                                           Army-PNT &
+Doppler Lidar (PS NDL)                       An evolved commercial NDL with SBIR Photonic Integrated Circuits    LaRC NDL on IM-1 & AB-1 CLPS. Psionic NDL   Army-ERDC
+Dual Quaternion                              which provide ~70% reduction in mass & more redundancy              on VIPER.                                   Univ. of
+Guidance (DQG) FSW                                                                                                                                           Washington
+                                             A 6-DOF trajectory planner software with integrated control &       Two RSAAs. Collaborating with HLS.
+                                             state constraints to perform hazard detection & precision landing.  Licensing available through partner.
+
+Hazard Detection FSW ALHAT-evolved hazard detection software application and library                             JPL/SMD (Europa Lander). Licensing          JPL/Caltech
+                                                                                                                 available through partner.                  Draper
+Navigation S/W                               Incorporates NDL data and fault logic, TRN/AFP measurements,        Potential CLPS/HLS & Orion Artemis/OpNav.   GSFC
+Core Flight S/W (cFS)                        and hazard/site relative navigation (SRN)                           Blue RSAA. AFP TT patent.
+                                                                                                                                                             HPSC
+Descent Landing                              Ported onto DLC to process all SPLICE sensor data and               Interest by two companies in tech transfer
+Computer (DLC)                               algorithms. SPLICE was early adopter of 64-bit cFS, which eases     patents
+                                             migration to HPSC.
+
+                                             A SpaceVPX architecture including internal redundancies, COTS
+                                             multicore processor (with rad-tolerance provisions), and PL&HA
+                                             I/O for sensor fusion and algorithms processing during EDL/DDL
+
+GCD FY1282 MAnidnuYaelaPrrRogervaiemwReview                                                                                                                                14
+                                             Xogdor Tipping Point
+
+� Astrobotic/Masten awarded a Flight Opportunities Tipping Point in 2021                                                 Xodiac flying COBALT, 2017
+
+- "...to conduct flight tests demonstrating the capability to conduct testing of Precision Landing and
+    Hazard Avoidance (PL&HA), plume surface interactions, and other technologies and phenomena."
+
+- Masten has previously flown third-party GNC algorithms while employing an independent monitoring
+    algorithm and vehicle GN&C that will override for vehicle and range safety
+
+- Technical and management team has ramped up after Astrobotic acquisition of Masten in late 2022
+
+� SPLICE Xogdor flight scheduled for late FY2025
+
+- Closed-loop suborbital flight test of PL&HA sensors and software that include navigation, guidance,
+    hazard detection
+
+- SPLICE provides the anchor payload for the Astrobotic/Masten Xogdor Tipping Point
+
+� The mutual benefits to NASA (GCD+FO) and Astrobotic of flight validating SPLICE on Xogdor
+
+- NASA PL&HA strategy closes several high-priority gaps: provides relevant & real sensor/software data
+    and maps benefiting partners
+
+- Astrobotic showcases Xogdor closed-loop capabilities and relevance to EDL maturation
+
+� Provides performance data on Xogdor PL&HA-specific test profiles (2+km altitude & lunar-relevant trajectory)
+
+� Provides flight validation of Xogdor ability to inject third-party guidance and navigation inputs (i.e., closed loop)
+
+� Develops Xogdor payload interfaces (electrical, mechanical, telemetry, comm and onboard C&DH)
+
+� Identifies flight operations locations for PL&HA-relevant testing (i.e., terrains for good TRN & HD field testing)
+
+GCD FY1282 MAnidnuYaelaPrrRogervaiemwReview                                                                                                          Xogdor, 2025
+
+                                                                                                                                                                          15
+                                             Education/Public Outreach
+
+                EPO Involvement                                                   EPO Calendar Outlook (High Priorities):
+
+ JPL Hazard Detection algorithm presented at 3rd Space                            6 Month Look-Ahead
+    Imaging Workshop @ Atlanta, GA, October 2022
+                                                                                  2024 AIAA SciTech Forum, Orlando, FL  Jan 8 - 12
+ SPLICE poster and booth at the SMD Technology
+    Showcase in January 2023                                                       Upcoming Notable Events in FY24
+
+ SPLICE Guidance paper presented at AIAA SciTech in                                      HDL Helicopter Testing @ KSC, FY24Q2-3
+    January 2023                                                                         (potential) Psionic Tipping Point Testing @ AFRC, FY24Q3
+                                                                                         DLC ETU hardware-in-loop testing @ JSC, FY24Q4
+        "Customized Real-Time First-Order Methods for Onboard Dual
+            Quaternion-based 6-DoF Powered-Descent Guidance ", Kamath, A.;
+            Elango, P.; Kim, T.; Mceowen, S.; Meshabi, M.; Acikmese, B.; Yu, Y.;
+            Carson, J.
+
+ SPLICE DLC paper presented at IEEE Space Computing
+    Conference @ Pasadena, CA, July 2023
+
+        "A System to Provide Deterministic Flight Software Operation and
+            Maximize Multicore Processing Performance: The Safe and Precise
+            Landing - Integrated Capabilities Evolution (SPLICE) Datapath",
+            Rutishauser, D.; Prothro, J.; Fail, J
+
+GCD FY1282 MAnidnuYaelaPrrRogervaiemwReview                                                                                                        16
+                                             Summary
+
+ Major Accomplishments for the Year
+
+ Hazard Detection Lidar assembly nearly complete and testing well underway
+
+ Hazard Detection FSW meeting accuracy and time execution goals on target hardware,
+   completed formal code review
+
+ Guidance FSW development on track to meet time execution goals
+
+ Navigation architecture maturation to support precision landing and hazard avoidance goals
+
+ DLC ETU components maturing
+
+ Psionic NDL prototype delivered
+
+ SPLICE is building up to a suborbital, closed-loop test flight with the Astrobotic
+   Xogdor vehicle, to demonstrate all technology components in real-time
+
+ SPLICE payload on track to be ready by FY25Q1 for functional fitchecks before FY25Q3 flight
+
+ HDL will close at TRL6 with environmental testing, with multiple infusions and transitions routes.
+
+ FSW Guidance and Hazard Detection technologies will close at TRL6, meeting at least NASA
+   Class C FSW standards, and be available for licensing. Both have multiple infusion routes.
+
+ Project post-flight report and flight data will be released after the Xogdor flight.
+GCD FY1282 MAnidnuYaelaPrrRogervaiemwReview                                                          17
+

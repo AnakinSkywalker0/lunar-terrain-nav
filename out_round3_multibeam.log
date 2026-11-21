@@ -1,0 +1,41 @@
+13:49:03 ('proc', 11) cliff + faults (nominal noise) common
+13:49:03 ('proc', 11) x4 below 6000 m common
+13:49:06 ('proc', 11) cliff + faults (nominal noise) independent
+13:49:06 ('proc', 11) x4 below 6000 m independent
+13:49:49 ('proc', 11) x8 below 6000 m (TRAINING) common
+13:49:53 ('proc', 11) x8 below 6000 m (TRAINING) independent
+13:49:57 ('proc', 11) x16 below 6000 m common
+13:50:01 ('proc', 11) x16 below 6000 m independent
+13:51:03 ('proc', 12) cliff + faults (nominal noise) independent
+13:51:06 ('proc', 12) cliff + faults (nominal noise) common
+13:51:17 ('proc', 12) x4 below 6000 m common
+13:51:18 ('proc', 12) x4 below 6000 m independent
+13:52:25 ('proc', 12) x8 below 6000 m (TRAINING) common
+13:52:33 ('proc', 12) x8 below 6000 m (TRAINING) independent
+13:52:57 ('proc', 12) x16 below 6000 m common
+13:52:59 ('proc', 12) x16 below 6000 m independent
+13:53:39 ('proc', 13) cliff + faults (nominal noise) independent
+13:53:41 ('proc', 13) cliff + faults (nominal noise) common
+13:54:08 ('proc', 13) x4 below 6000 m common
+13:54:10 ('proc', 13) x4 below 6000 m independent
+13:54:45 ('proc', 13) x8 below 6000 m (TRAINING) independent
+13:54:48 ('proc', 13) x8 below 6000 m (TRAINING) common
+13:55:43 ('site01', 2.0) cliff + faults (nominal noise) common
+13:55:46 ('site01', 2.0) cliff + faults (nominal noise) independent
+13:55:53 ('proc', 13) x16 below 6000 m independent
+13:55:54 ('proc', 13) x16 below 6000 m common
+13:56:40 ('site01', 2.0) x4 below 6000 m common
+13:56:42 ('site01', 2.0) x4 below 6000 m independent
+13:57:14 ('site01', 2.0) x8 below 6000 m (TRAINING) common
+13:57:20 ('site01', 2.0) x8 below 6000 m (TRAINING) independent
+13:58:15 ('site01', 2.0) x16 below 6000 m common
+13:58:22 ('site01', 2.0) x16 below 6000 m independent
+Traceback (most recent call last):
+  File "D:\newprj\sim\round3_multibeam.py", line 91, in <module>
+    main()
+    ~~~~^^
+  File "D:\newprj\sim\round3_multibeam.py", line 83, in main
+    print("\nFAULT MODE:", mode, "- landing success %, mean of the 4 tuning worlds (n=%d each)\n" % a.n,
+                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~
+ValueError: unsupported format character ',' (0x2c) at index 19
+exit=1

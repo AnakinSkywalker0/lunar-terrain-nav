@@ -1,0 +1,1 @@
+810 unique cases; 270 complete OFF/ON pairs; initial scan and matcher outputs agree within every pair before correction; all trajectory/cloud files present; success labels recomputed; source snapshot hashes verified; algorithm source identical to frozen v1.

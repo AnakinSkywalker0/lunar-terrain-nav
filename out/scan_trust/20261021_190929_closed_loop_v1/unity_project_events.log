@@ -1,0 +1,7 @@
+[ScanTrust] Python/Unity parity passed: {"passed":true,"rows":10530,"max_score_difference":3.3306690738754696E-16,"wall_ms":41.5749,"model_id":"scan_trust_v1_forest_full"}
+[ScanTrustExperiment] known-offset/sign, flat ambiguity, empty scan and map-bound checks passed.
+[ScanTrust] Python/Unity parity passed: {"passed":true,"rows":10530,"max_score_difference":3.3306690738754696E-16,"wall_ms":38.3893,"model_id":"scan_trust_v1_forest_full"}
+[ScanTrustExperiment] Complete; 12 cases; wall_seconds=2.4; D:\newprj\out\scan_trust\20261021_190913_smoke
+[ScanTrustExperiment] known-offset/sign, flat ambiguity, empty scan and map-bound checks passed.
+[ScanTrust] Python/Unity parity passed: {"passed":true,"rows":10530,"max_score_difference":3.3306690738754696E-16,"wall_ms":34.613800000000005,"model_id":"scan_trust_v1_forest_full"}
+[ScanTrustExperiment] Complete; 648 cases; wall_seconds=137.7; D:\newprj\out\scan_trust\20261021_190929_closed_loop_v1

@@ -1,0 +1,35 @@
+{
+  "stage": "eval",
+  "selected_policy": "utility_hybrid",
+  "cases": 270,
+  "paired_configurations": 54,
+  "comparisons": {
+    "off": {
+      "mean_miss_reduction_m": 35.480750188888884,
+      "improved": 39,
+      "worsened": 9,
+      "tied": 6
+    },
+    "geometric": {
+      "mean_miss_reduction_m": 5.722896762962964,
+      "improved": 41,
+      "worsened": 7,
+      "tied": 6
+    },
+    "bounded": {
+      "mean_miss_reduction_m": 3.754124911111111,
+      "improved": 40,
+      "worsened": 8,
+      "tied": 6
+    },
+    "old_ml": {
+      "mean_miss_reduction_m": 35.480750188888884,
+      "improved": 39,
+      "worsened": 9,
+      "tied": 6
+    }
+  },
+  "evaluation_areas": 1,
+  "model_sha256": "eda1c7830f69b76cffd6ded430a5e6ddcd70210ed411fcf4f902c62e46f0dece",
+  "speed_definition": ">=2m/s vertical or >=1m/s horizontal; target success also requires contact and miss<10m"
+}

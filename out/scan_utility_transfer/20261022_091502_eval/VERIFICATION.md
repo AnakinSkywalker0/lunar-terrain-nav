@@ -1,0 +1,1 @@
+810 unique cases; 13011 unique scan records. Labels recomputed from archived distances; partial-correction geometry checked; feature schema finite; frozen core/source hashes checked; all trajectory/cloud pairs present. Complete arms, identical initial observable inputs, success labels and correction-routing checks passed; Python/Unity parity confirmed.

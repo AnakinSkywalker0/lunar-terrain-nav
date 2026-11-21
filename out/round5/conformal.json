@@ -1,0 +1,12 @@
+{
+ "chi_single": {
+  "limit": 92.29327848733787,
+  "n_valid_readings": 2024336,
+  "fraction_above_6635": 0.05769200369899068
+ },
+ "chi_multi": {
+  "limit": 19.460006521469282,
+  "n_valid_readings": 12198300,
+  "fraction_above_6635": 0.026689948599394997
+ }
+}

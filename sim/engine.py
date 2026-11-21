@@ -8,6 +8,8 @@ import types
 import warnings
 import numpy as np
 
+import dyn6 as _dyn6
+
 G = 1.62
 G0 = 9.80665
 CHI2_99 = 6.635          # 1-dof 99 % gate
@@ -36,6 +38,26 @@ def _slant_range(height, px, py, z, ux, uy, ct, st):
     for _ in range(12):
         mid = 0.5 * (lo + hi)
         above = (z - mid * ct - height(px + mid * st * ux, py + mid * st * uy)) > 0
+        lo = np.where(above, mid, lo)
+        hi = np.where(above, hi, mid)
+    return np.where(anyhit, 0.5 * (lo + hi), hi)
+
+
+def _slant_range_dir(height, px, py, z, dx, dy, cz):
+    """Like _slant_range for an arbitrary beam direction: (dx, dy) = horizontal components of the unit direction, cz = its downward
+    component (all arrays, one entry per run). Used by the 6-DOF dynamics, where the beams are fixed to the tilting body."""
+    agl = np.maximum(z - height(px, py), 0.5)
+    S = (agl / cz)[:, None] * _F_GRID[None, :]
+    f = (z[:, None] - S * cz[:, None]) - height((px[:, None] + S * dx[:, None]).ravel(), (py[:, None] + S * dy[:, None]).ravel()).reshape(S.shape)
+    hit = f <= 0
+    anyhit = hit.any(axis=1)
+    first = np.where(anyhit, hit.argmax(axis=1), len(_F_GRID) - 1)
+    rows = np.arange(len(S))
+    hi = S[rows, first]
+    lo = np.where(first > 0, S[rows, np.maximum(first - 1, 0)], 0.0)
+    for _ in range(12):
+        mid = 0.5 * (lo + hi)
+        above = (z - mid * cz - height(px + mid * dx, py + mid * dy)) > 0
         lo = np.where(above, mid, lo)
         hi = np.where(above, hi, mid)
     return np.where(anyhit, 0.5 * (lo + hi), hi)
@@ -317,7 +339,7 @@ def simulate(world, track, scen, judge, draws, veh=None, scan=False, ml_model=No
              beams=0, beam_fault="independent", mb_consensus=False,
              tol_floor_mode="both", tol_floor_source="innovation", oracle_R=False, mb_terrain_at_footprint=False, ar1_phi=0.0,
              gate_chi2=CHI2_99, robust_t=0.0, cusum=False, imm=False, selector=None, sel_collect=None, chi_collect=None,
-             delay_est=False, map_search=False, joint_update=False, solsep=False, alt2=False):
+             delay_est=False, map_search=False, joint_update=False, solsep=False, alt2=False, dyn6=None):
     """Run all N descents for one judge. Returns a dict of per-run result arrays (+ optional recorded traces).
 
     Round-3 candidate switches (all default off, so every earlier result and tag stays reproducible bit for bit):
@@ -358,7 +380,16 @@ def simulate(world, track, scen, judge, draws, veh=None, scan=False, ml_model=No
     alt2 = a second, dissimilar altimeter (3x noise, independent faults, no dropout; single beam, ASSUMED model).
     Scenario.fault_type selects stuck-at, drift, scale-factor (single beam) or beam-dropout (multi-beam) faults instead of bias bursts.
     Result key nees_sum = summed position NEES (3 dof) over the descent.
+
+    Round-6 switch (default off, bit-identical when off): dyn6 = a sim/dyn6.py Dyn6Config switches the truth dynamics from a point mass
+    that obeys the commanded acceleration at once to a 6-DOF rigid body with one body-fixed engine (throttle lag, attitude control with
+    a torque limit, inertia, thrust misalignment, centre-of-mass offset), a gyro + star-tracker attitude estimate, a strapdown
+    accelerometer rotated with the ESTIMATED attitude and body-fixed altimeter beams. Touchdown also needs the tilt and body rate below
+    the Dyn6Config limits. Result keys with dyn6: impact_tilt, impact_rate, tilt_max, att_err_rms_deg, rcs_fuel, success_legacy
+    (the 3-DOF criteria only). Not with a missing map.
     """
+    if dyn6 is not None and (scen.map_mode == "missing" or alt2):
+        raise ValueError("dyn6 does not support a missing map or the second altimeter")
     if tol_floor_mode not in FLOOR_MODES:
         raise ValueError("tol_floor_mode must be one of %s" % (FLOOR_MODES,))
     if tol_floor_source not in ("innovation", "diff"):
@@ -442,6 +473,10 @@ def simulate(world, track, scen, judge, draws, veh=None, scan=False, ml_model=No
                                     "alt_sq", "alt_n", "z_sq", "valid_total", "valid_rej", "fault_total", "fault_acc",
                                     "cam_w_sum", "cam_w_n", "z_final_true_agl", "s_hat_max", "nees_sum"]}
     res["success"] = np.zeros(n, dtype=bool)
+    if dyn6 is not None:
+        res["impact_tilt"], res["impact_rate"] = np.zeros(n), np.zeros(n)
+        res["success_legacy"] = np.zeros(n, dtype=bool)
+    dy = None                                       # 6-DOF state, created at the first step from the first thrust direction
     res["outcome"] = np.array(["flying"] * n, dtype=object)
     rec = None
     if record_idx is not None:
@@ -509,6 +544,12 @@ def simulate(world, track, scen, judge, draws, veh=None, scan=False, ml_model=No
             gx[m], gy[m] = gxm, gym
         return gx, gy
 
+    def foot(kb, s, ux, uy):
+        """Horizontal offset of the point a beam of slant range s reaches, on the nominal geometry or (6-DOF) on the estimated attitude."""
+        if dy is None:
+            return s * st * ux, s * st * uy
+        return s * DXE[:, kb], s * DYE[:, kb]
+
     g_est = coarse.height(nav.x[:, 0], nav.x[:, 1]).astype(np.float64)
     s_hat = np.ones(n)
     use_gest = v2 and missing
@@ -563,12 +604,20 @@ def simulate(world, track, scen, judge, draws, veh=None, scan=False, ml_model=No
             r_f = r_f + rate_f * DT + 0.5 * aA * DT * DT
             rate_f = rate_f + aA * DT
         # ---------------- truth dynamics ----------------
-        am = np.linalg.norm(a_cmd, axis=1)
-        burn = mass * am / (veh.isp * G0) * DT
-        fuel = np.maximum(0.0, fuel - burn * alive)
-        acc = a_cmd + np.array([0, 0, -G])
-        p_new = p + v * DT + 0.5 * acc * DT * DT
-        v_new = v + acc * DT
+        if dyn6 is None:
+            am = np.linalg.norm(a_cmd, axis=1)
+            burn = mass * am / (veh.isp * G0) * DT
+            fuel = np.maximum(0.0, fuel - burn * alive)
+            acc = a_cmd + np.array([0, 0, -G])
+            p_new = p + v * DT + 0.5 * acc * DT * DT
+            v_new = v + acc * DT
+        else:
+            if dy is None:
+                zd0, am0 = _dyn6.command_from_accel(a_cmd, dyn6)
+                dir0 = np.where((am0 > 1e-6)[:, None], zd0, np.array([0.0, 0.0, 1.0]))
+                dy = _dyn6.Dyn6(dyn6, n, draws.seed, dir0)
+            p_new, v_new, f_body, t_mean, rcs_kg = dy.step(p, v, a_cmd, mass, veh.tmax, alive & (fuel > 0.0), DT)
+            fuel = np.maximum(0.0, fuel - (t_mean / (veh.isp * G0) * DT + rcs_kg) * alive)
         ht_new = truth.height(p_new[:, 0], p_new[:, 1])
         contact = alive & (p_new[:, 2] <= ht_new)
         if contact.any():
@@ -582,6 +631,10 @@ def simulate(world, track, scen, judge, draws, veh=None, scan=False, ml_model=No
                 np.hypot(p_new[ci, 0] - div_target[0], p_new[ci, 1] - div_target[1])
             res["z_final_true_agl"][ci] = 0.0
             ok = (res["impact_vz"][ci] <= 2.0) & (res["impact_vh"][ci] <= 1.5) & (res["impact_slope"][ci] <= 10.0) & (fuel[ci] > 0)
+            if dy is not None:      # 6-DOF: the vehicle must also touch down upright and not spinning
+                res["success_legacy"][ci] = ok
+                res["impact_tilt"][ci], res["impact_rate"][ci] = dy.tilt_deg()[ci], dy.rate_dps()[ci]
+                ok = ok & (res["impact_tilt"][ci] <= dyn6.tilt_land_max_deg) & (res["impact_rate"][ci] <= dyn6.rate_land_max_dps)
             res["success"][ci] = ok
             res["outcome"][ci] = np.where(ok, "landed", np.where(res["impact_vz"][ci] > 2.0, "crash", "rough"))
             touched[ci] = True
@@ -589,7 +642,11 @@ def simulate(world, track, scen, judge, draws, veh=None, scan=False, ml_model=No
         p = np.where(alive[:, None], p_new, p)
         v = np.where(alive[:, None], v_new, v)
         # ---------------- IMU + EKF predict ----------------
-        a_meas = a_cmd + draws.bias_true + 0.003 * draws.imu_g[:, k, :]
+        if dy is None:
+            a_meas = a_cmd + draws.bias_true + 0.003 * draws.imu_g[:, k, :]
+        else:
+            dy.estimate(k + 1, DT, alive)
+            a_meas = dy.accel_world_meas(f_body, draws.bias_true, 0.003 * draws.imu_g[:, k, :])
         nav.predict(a_meas)
         x_est = nav.x
         tt = k + 1
@@ -597,6 +654,10 @@ def simulate(world, track, scen, judge, draws, veh=None, scan=False, ml_model=No
         ht = truth.height(p[:, 0], p[:, 1])
         agl_true = p[:, 2] - ht
         r_true = agl_true
+        if dy is not None and not mb_mode:      # body-fixed beam: true slant range, converted to a vertical range with the ESTIMATED tilt
+            Rt = dy.R_true()
+            s_t1 = _slant_range_dir(truth.height, p[:, 0], p[:, 1], p[:, 2], -Rt[:, 0, 2], -Rt[:, 1, 2], np.maximum(Rt[:, 2, 2], 0.2))
+            r_true = s_t1 * np.maximum(dy.R_est()[:, 2, 2], 0.2)
         r_hist[:, tt] = r_true
         d_idx = np.maximum(tt - draws.delay_steps, 0)
         r_src = r_hist[allidx, d_idx]
@@ -630,10 +691,18 @@ def simulate(world, track, scen, judge, draws, veh=None, scan=False, ml_model=No
                 ct, st = np.cos(np.deg2rad(BEAM_CANT_DEG)), np.sin(np.deg2rad(BEAM_CANT_DEG))
                 mbd = draws.mb(Kb, scen)
                 dirs = [(np.cos(2 * np.pi * kb / Kb), np.sin(2 * np.pi * kb / Kb)) for kb in range(Kb)]
+                if dy is not None:      # beams fixed to the body: world directions from the true (sensor) and estimated (filter) attitude
+                    Bb = np.array([(st * ux_, st * uy_, -ct) for ux_, uy_ in dirs])
+                    Dt = np.einsum("nij,kj->nki", dy.R_true()[idx], Bb)
+                    De = np.einsum("nij,kj->nki", dy.R_est()[idx], Bb)
+                    DXE, DYE, CZE = De[:, :, 0], De[:, :, 1], np.maximum(-De[:, :, 2], 0.2)
                 s_meas = np.zeros((idx.size, Kb))
                 lbl_b = np.zeros((idx.size, Kb), dtype=bool)
                 for kb, (ux, uy) in enumerate(dirs):
-                    s_t = _slant_range(truth.height, p[idx, 0], p[idx, 1], p[idx, 2], ux, uy, ct, st)
+                    if dy is None:
+                        s_t = _slant_range(truth.height, p[idx, 0], p[idx, 1], p[idx, 2], ux, uy, ct, st)
+                    else:
+                        s_t = _slant_range_dir(truth.height, p[idx, 0], p[idx, 1], p[idx, 2], Dt[:, kb, 0], Dt[:, kb, 1], np.maximum(-Dt[:, kb, 2], 0.2))
                     sig_t = (1.0 + 0.0015 * s_t) * mult[idx]
                     if beam_fault == "common":      # one fault burst hits all beams alike (consensus cannot see it)
                         bias = np.where(draws.burst[idx, tt], draws.burst_bias[idx, tt], 0.0)
@@ -647,7 +716,7 @@ def simulate(world, track, scen, judge, draws, veh=None, scan=False, ml_model=No
                 xi, yi = nav.x[idx, 0], nav.x[idx, 1]
                 sig_hi = np.sqrt(np.maximum(nav.P[idx, 0, 0], nav.P[idx, 1, 1]))
                 if mb_terrain_at_footprint:     # terrain spread where each beam actually lands, not under the vehicle
-                    s_terr_b = np.stack([stats.hstd(xi + s_meas[:, kb] * st * ux, yi + s_meas[:, kb] * st * uy, ellipse_k * sig_hi) ** 2
+                    s_terr_b = np.stack([stats.hstd(xi + foot(kb, s_meas[:, kb], ux, uy)[0], yi + foot(kb, s_meas[:, kb], ux, uy)[1], ellipse_k * sig_hi) ** 2
                                          for kb, (ux, uy) in enumerate(dirs)], axis=1)
                 else:
                     s_terr_b = np.repeat((stats.hstd(xi, yi, ellipse_k * sig_hi) ** 2)[:, None], Kb, axis=1)
@@ -660,8 +729,9 @@ def simulate(world, track, scen, judge, draws, veh=None, scan=False, ml_model=No
                     R_gate_b = R_upd_b = R_b
                 zapp = np.zeros_like(s_meas)
                 for kb, (ux, uy) in enumerate(dirs):
-                    zapp[:, kb] = mapq(xi + s_meas[:, kb] * st * ux, yi + s_meas[:, kb] * st * uy, idx) + s_meas[:, kb] * ct
-                var_z = (np.sqrt(R_gate_b) * ct) ** 2 + s_terr_b + world.map_sigma ** 2
+                    fxk, fyk = foot(kb, s_meas[:, kb], ux, uy)
+                    zapp[:, kb] = mapq(xi + fxk, yi + fyk, idx) + s_meas[:, kb] * (ct if dy is None else CZE[:, kb])
+                var_z = (np.sqrt(R_gate_b) * (ct if dy is None else CZE)) ** 2 + s_terr_b + world.map_sigma ** 2
                 use_cons = (judge == "pitfal_mb") or mb_consensus
                 cons_ok = _consensus_ok(zapp, var_z) if use_cons else np.ones(s_meas.shape, dtype=bool)
                 acc_any = np.zeros(n, dtype=bool)
@@ -689,11 +759,14 @@ def simulate(world, track, scen, judge, draws, veh=None, scan=False, ml_model=No
                 for kb, (ux, uy) in enumerate(dirs):
                     xe_i, ye_i, ze_i = nav.x[idx, 0], nav.x[idx, 1], nav.x[idx, 2]
                     s_p = s_meas[:, kb].copy()
+                    ctk = ct if dy is None else CZE[:, kb]
                     for _ in range(3):      # predicted slant range from the map at the predicted footprint
-                        s_p = np.clip((ze_i - mapq(xe_i + s_p * st * ux, ye_i + s_p * st * uy, idx)) / ct, 1.0, 1e5)
-                    gxk, gyk = mapg(xe_i + s_p * st * ux, ye_i + s_p * st * uy, idx)
+                        fxp, fyp = foot(kb, s_p, ux, uy)
+                        s_p = np.clip((ze_i - mapq(xe_i + fxp, ye_i + fyp, idx)) / ctk, 1.0, 1e5)
+                    fxp, fyp = foot(kb, s_p, ux, uy)
+                    gxk, gyk = mapg(xe_i + fxp, ye_i + fyp, idx)
                     nu_k = s_meas[:, kb] - s_p
-                    Dk = np.maximum(ct + st * (gxk * ux + gyk * uy), 0.1)
+                    Dk = np.maximum(ct + st * (gxk * ux + gyk * uy), 0.1) if dy is None else np.maximum(CZE[:, kb] + gxk * DXE[:, kb] + gyk * DYE[:, kb], 0.1)
                     Hk = np.zeros((n, 9))
                     Hk[idx, 0] = -gxk / Dk
                     Hk[idx, 1] = -gyk / Dk
@@ -803,10 +876,20 @@ def simulate(world, track, scen, judge, draws, veh=None, scan=False, ml_model=No
         elif use_map and not missing:
             hp = mapq(xe, ye, allidx)
             gx, gy = mapg(xe, ye, allidx)
+            if dy is not None:      # 6-DOF: predict the range along the ESTIMATED beam direction (footprint away from the nadir point)
+                De1 = -dy.R_est()[:, :, 2]
+                dxe, dye, cze = De1[:, 0], De1[:, 1], np.maximum(-De1[:, 2], 0.2)
+                s_p1 = np.maximum(ze - hp, 1.0) / cze
+                for _ in range(3):
+                    s_p1 = np.clip((ze - mapq(xe + s_p1 * dxe, ye + s_p1 * dye, allidx)) / cze, 1.0, 1e5)
+                gxf, gyf = mapg(xe + s_p1 * dxe, ye + s_p1 * dye, allidx)
+                D1 = np.maximum(cze + gxf * dxe + gyf * dye, 0.1)
+                hp = ze - s_p1 * cze
+                gx, gy, hz = cze * gxf / D1, cze * gyf / D1, cze / D1
         else:
             hp = coarse.height(xe, ye)
             gx, gy = coarse.grad(xe, ye, step=400.0)
-        H = np.zeros((n, 9)); H[:, 0] = -gx; H[:, 1] = -gy; H[:, 2] = 1.0
+        H = np.zeros((n, 9)); H[:, 0] = -gx; H[:, 1] = -gy; H[:, 2] = 1.0 if dy is None or not (use_map and not missing) else hz
         r_pred = ze - hp
         nu = r_meas - r_pred
         R = (1.0 + 0.0015 * np.maximum(r_meas, 0)) ** 2
@@ -1215,6 +1298,10 @@ def simulate(world, track, scen, judge, draws, veh=None, scan=False, ml_model=No
     res["rec"] = rec
     res["est_lag"] = lag_sum / np.maximum(lag_n, 1.0)    # round 5: delay estimate averaged over the descent above 200 m (steps) and map-offset-search output (m)
     res["est_off_x"], res["est_off_y"] = est_off[:, 0].copy(), est_off[:, 1].copy()
+    if dy is not None:
+        res["tilt_max"] = dy.tilt_max.copy()
+        res["att_err_rms_deg"] = np.sqrt(dy.att_sq / np.maximum(dy.att_n, 1.0))
+        res["rcs_fuel"] = dy.rcs_used.copy()
     return res
 
 

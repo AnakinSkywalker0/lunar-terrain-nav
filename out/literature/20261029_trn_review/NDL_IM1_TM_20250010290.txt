@@ -1,0 +1,1153 @@
+NASA/TM-20250010290
+
+Navigation Doppler Lidar Performance
+Assessment and Trajectory
+Reconstruction of the Intuitive Machines
+IM-1 Lunar Landing
+
+Christopher D. Karlgaard
+Analytical Mechanics Associates, Inc., Hampton, Virginia
+Rafael A. Lugo, Jeremy D. Shidner, Glenn D. Hines, Farzin Amzajerdian,
+Aram Gragossian, and Daniel K. Litton
+NASA Langley Research Center, Hampton, Virginia
+Scott R. Angster
+Analytical Mechanics Associates, Inc., Hampton, Virginia
+
+November 2025
+NASA STI Program Report Series
+
+Since its founding, NASA has been dedicated          CONFERENCE PUBLICATION.
+to the advancement of aeronautics and space          Collected papers from scientific and
+science. The NASA scientific and technical           technical conferences, symposia, seminars,
+information (STI) program plays a key part           or other meetings sponsored or
+in helping NASA maintain this important              co-sponsored by NASA.
+role.
+                                                     SPECIAL PUBLICATION. Scientific,
+The NASA STI Program operates under the              technical, or historical information from
+auspices of the Agency Chief Information             NASA programs, projects, and missions,
+Officer. It collects, organizes, provides for        often concerned with subjects having
+archiving, and disseminates NASA's STI.              substantial public interest.
+The NASA STI Program provides access to
+the NTRS Registered and its public                   TECHNICAL TRANSLATION. English-
+interface, the NASA Technical Report                 language translations of foreign scientific
+Server, thus providing one of the largest            and technical material pertinent to
+collections of aeronautical and space science        NASA's mission.
+STI in the world. Results are published in
+both non-NASA channels and by NASA in             Specialized services also include organizing
+the NASA STI Report Series, which includes        and publishing research results, distributing
+the following report types:                       specialized research announcements and
+                                                  feeds, providing information desk and
+   TECHNICAL PUBLICATION. Reports of              personal search support, and enabling data
+   completed research or a major significant      exchange services.
+   phase of research that present the results
+   of NASA programs and include extensive         For more information about the NASA STI
+   data or theoretical analysis. Includes         Program, see the following:
+   compilations of significant scientific and
+   technical data and information deemed to          Access the NASA STI program home page
+   be of continuing reference value. NASA            at http://www.sti.nasa.gov
+   counterpart of peer-reviewed formal
+   professional papers, but having less              Help desk contact information:
+   stringent limitations on manuscript length        https://www.sti.nasa.gov/sti-contact-form/
+   and extent of graphic presentations.              and select the "General" help request type.
+
+   TECHNICAL MEMORANDUM.
+   Scientific and technical findings that are
+   preliminary or of specialized interest, e.g.,
+   quick release reports, working papers, and
+   bibliographies that contain minimal
+   annotation. Does not contain extensive
+   analysis.
+
+   CONTRACTOR REPORT. Scientific and
+   technical findings by NASA-sponsored
+   contractors and grantees.
+NASA/TM-20250010290
+
+Navigation Doppler Lidar Performance
+Assessment and Trajectory
+Reconstruction of the Intuitive Machines
+IM-1 Lunar Landing
+
+Christopher D. Karlgaard
+Analytical Mechanics Associates, Inc., Hampton, Virginia
+Rafael A. Lugo, Jeremy D. Shidner, Glenn D. Hines, Farzin Amzajerdian,
+Aram Gragossian, and Daniel K. Litton
+NASA Langley Research Center, Hampton, Virginia
+Scott R. Angster
+Analytical Mechanics Associates, Inc., Hampton, Virginia
+
+National Aeronautics and
+Space Administration
+Langley Research Center
+Hampton, Virginia 23681-2199
+
+November 2025
+                              Acknowledgments
+
+This work was funded under the Technology Engineering and Aerospace Mission Support
+3 contract number 80LARC17C0003 with NASA Langley Research Center. The NDL
+sensor development was supported by multiple NASA program offices including the Space
+Technology Mission Directorate, Science Mission Directorate's Exploration Program Of-
+fice, Commercial Lunar Payload Services, and Langley Research Center's Director's Of-
+fice, Space Technology and Exploration Directorate, and Engineering Directorate. The
+authors gratefully acknowledge helpful discussion provided by Shaun Stewart, Andrew
+Hollister, and Giovanni Molina-Ramos of Intuitive Machines. Additional visualization
+support for this paper was provided by Michael S. Manwell and assistance in creating
+the surface terrain plot in Figure 11 was provided by James W. Williams, both with
+Analytical Mechanics Associates.
+
+The use of trademarks or names of manufacturers in this report is for accurate reporting and
+does not constitute an official endorsement, either expressed or implied, of such products or
+manufacturers by the National Aeronautics and Space Administration.
+
+                                                     Available from:
+                                      NASA STI Program / Mail Stop 150
+
+                                          NASA Langley Research Center
+                                              Hampton, VA 23681-2199
+Abstract
+
+The Navigation Doppler Lidar instrument was developed at NASA Langley Research
+Center to support precision landing at locations such as the Moon and Mars. The
+instrument uses a frequency modulated continuous wave method that provides simul-
+taneous range and velocity measurement data that can be processed in an onboard
+navigation filter for vehicle state estimation. The sensor has been tested thoroughly
+in laboratory settings and on various helicopter and suborbital rocket flight tests.
+The Navigation Doppler Lidar instrument was recently flown as a payload onboard
+the Intuitive Machines mission IM-1, which was designed to soft-land on the surface
+of the Moon on February 22, 2024. The instrument provided valid measurements at
+ranges that exceeded preflight expectations. This paper describes the post-flight data
+processing and trajectory reconstruction of the IM-1 lander based on data from the
+Navigation Doppler Lidar and an onboard Inertial Measurement Unit. An Unscented
+Kalman Filter was used to combine the data sources to reconstruct the approximate
+final three minutes of the trajectory prior to touchdown, where both sets of data
+were available. A digital elevation map was used to model the lunar surface terrain,
+and a ray tracing terrain engine was used to model the lidar beams. The results of
+the reconstruction show agreement between the lidar and modeled measurements to
+within approximately 5 m and 0.5 m/s, indicating that the Navigation Doppler Lidar
+produced accurate measurements and the reconstruction results provided additional
+flight validation of the ray tracing terrain engine and underlying digital elevation
+map.
+
+                                                      1
+Contents
+
+1 Introduction . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+
+2 Intuitive Machines IM-1 Mission Overview . . . . . . . . . . . . . . 6
+
+3 Data Sources . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7
+    3.1 Navigation Doppler Lidar . . . . . . . . . . . . . . . . . . . . . . . . 8
+    3.2 Inertial Measurement Units . . . . . . . . . . . . . . . . . . . . . . . 11
+    3.3 Terrain Models . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 12
+    3.4 Gravity Model . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+    3.5 Post-Mission Trajectory . . . . . . . . . . . . . . . . . . . . . . . . . 13
+
+4 Trajectory Reconstruction Methods . . . . . . . . . . . . . . . . . . 14
+    4.1 NDL-Only Analysis . . . . . . . . . . . . . . . . . . . . . . . . . . . . 14
+    4.2 New Statistical Trajectory Estimation Program . . . . . . . . . . . . 15
+           4.2.1 Filter Process Model . . . . . . . . . . . . . . . . . . . . . . . 16
+           4.2.2 Filter Measurement Model . . . . . . . . . . . . . . . . . . . . 17
+
+5 Trajectory Reconstruction Results . . . . . . . . . . . . . . . . . . . 18
+
+6 Trajectory Animation . . . . . . . . . . . . . . . . . . . . . . . . . . . 24
+
+7 Conclusion . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 25
+
+References . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 26
+
+List of Tables
+
+    1 IMU performance specifications. . . . . . . . . . . . . . . . . . . . . . 12
+
+List of Figures
+
+    1 IM-1 Odysseus lander [22]. . . . . . . . . . . . . . . . . . . . . . . . . 6
+    2 NDL installed on IM-1 Odysseus lander. . . . . . . . . . . . . . . . . 8
+    3 NDL installation in the IM-1 lunar lander. . . . . . . . . . . . . . . . 9
+    4 NDL sensor frame. . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+    5 NDL beam/surface intersection geometry. . . . . . . . . . . . . . . . 10
+    6 NDL ranges and velocities. . . . . . . . . . . . . . . . . . . . . . . . . 11
+    7 Lunar DEM: 75 to 90 south latitude, with 30 m per pixel resolution. 13
+    8 Reconstructed trajectory. . . . . . . . . . . . . . . . . . . . . . . . . 20
+    9 Incidence and velocity angles. . . . . . . . . . . . . . . . . . . . . . . 21
+    10 NDL Beam A measurement residuals. . . . . . . . . . . . . . . . . . 22
+    11 NDL beam/surface intersection ground tracks. . . . . . . . . . . . . . 23
+    12 EVE animation still image during Beam C crater impingement. . . . 24
+    13 Beam ranges during crater crossing. . . . . . . . . . . . . . . . . . . 25
+
+                                                      2
+Nomenclature
+
+ax, ay, az  = Body axis sensed linear accelerations, m/s2
+
+e0, e1, e2, e3 = Euler parameters for the transformation from topodetic
+
+              frame to body frame
+
+gu, gv, gw  = Topocentric gravity components, m/s2
+
+hp          = Height above plane formed by NDL measurements, m
+
+n           = Surface normal unit vector
+
+RCN         = Rotation matrix from local topocentric frame to Nova-C
+
+              vehicle frame
+
+RCD         = Rotation matrix from local topocentric frame to topodetic
+
+              frame
+
+RDN         = Rotation matrix from local topodetic frame to Nova-C ve-
+
+              hicle frame
+
+RMN         = Rotation matrix from Moon Mean Equator frame to Nova-
+
+              C vehicle frame
+
+RSN         = Rotation matrix from NDL sensor frame to Nova-C vehicle
+
+              frame
+
+R$          = Lunar mean equatorial radius, m
+
+rAB, rAC , rBC = Position vector from point A to point B, A to C, and B to
+
+              C, m
+
+rOA, rOB, rOC = Position vector from point O to point A, B, and C, m
+
+rNO         = Position of the NDL sensor frame origin from the Nova-C
+
+              body frame origin, m
+
+r           = Radius of the vehicle center of mass measured from the
+
+              center of the Moon, m
+
+S           = NDL sensor pointing matrix
+
+sA, sB, sC  = Beam A, B, and C pointing vectors in the NDL sensor
+
+              frame
+
+u           = X (North) component of topocentric inertial velocity, m/s
+
+V           = Ground-relative velocity in the body frame, m/s
+
+Vx, Vy, Vz  = Body frame components of the ground-relative velocity,
+
+              m/s
+
+v           = Y (East) component of topocentric inertial velocity, m/s
+
+w           = Z (-Radial) component of topocentric inertial velocity, m/s
+
+x           = Filter state
+
+y           = Filter measurement
+
+            = Angle of attack, rad
+
+   T        = Total angle of attack, rad
+
+            = Angle of sideslip, rad
+
+            = Ground-relative flight path angle, rad
+
+$           = Eccentricity of lunar reference ellipse
+
+            = Ground-relative pitch angle, rad
+
+   A, B, C  = Beam A, B, and C velocity angles, rad
+
+            = Longitude angle, rad
+
+                               3
+ A, B, C    = Beam A, B, and C incidence angles, rad
+ A, B, C    = Beam A, B, and C velocity measurements, m/s
+ A, B, C    = Range, m
+            = Beam A, B, and C range measurements, m
+  td        = Standard deviation
+            = Declination angle, rad
+!           = Topodetic latitude angle, rad
+!x, !y, !z  = Angular velocity of the moon, rad/s
+            = Body axis angular velocity, rad/s
+            = Body axis angular velocity components, rad/s
+
+Abbreviations
+
+ALHAT = Autonomous Landing and Hazard Avoidance Technology
+
+CLPS        = Commercial Lunar Payload Service
+
+COBALT = Co-Operative Blending of Autonomous Landing Technology
+
+DEM         = Digital Elevation Model
+
+DOF         = Degrees of Freedom
+
+DSN         = Deep Space Network
+
+EVE         = Exploration Visualization Environment
+
+FMCW = Frequency Modulated Continuous Wave
+
+GeoTIFF = Georeferenced Tagged Image File Format
+
+GN&C        = Guidance, Navigation, and Control
+
+GPS         = Global Positioning System
+
+GRAIL = Gravity Recovery and Interior Laboratory
+
+IM          = Intuitive Machines
+
+IMU         = Inertial Measurement Unit
+
+IUKF        = Iterative Unscented Kalman Filter
+
+LOLA        = Lunar Orbiter Laser Altimeter
+
+LOS         = Line of Sight
+
+NDL         = Navigation Doppler Lidar
+
+NED         = North-East-Down
+
+NetCDF = Network Common Data Form
+
+NewSTEP = New Statistical Trajectory Estimation Program
+
+SPLICE = Safe and Precise Landing - Integrated Capability Evolution
+
+TDS         = Terminal Descent Sensor
+
+UTC         = Coordinated Universal Time
+
+                                       4
+1 Introduction
+
+NASA Langley Research Center's (LaRC) Navigation Doppler Lidar (NDL) instru-
+ment was developed to provide an onboard sensing solution for landing vehicles to
+meet the requirements of safe and precise landings on planetary bodies [1]. The NDL
+provides line-of-sight range and velocity measurements that can be used to aid the
+onboard Guidance, Navigation, and Control (GN&C) systems. Prior landers have
+made use of radar measurements to provide updates to the navigation state of the
+vehicle used in the on-board closed-loop GN&C [24].
+
+    NDL sensors have recently reached the maturity to be considered as replacement
+sensors, due to a combination of ground and ight testing. The Autonomous Land-
+ing and Hazard Avoidance Technology (ALHAT) project [5] conducted a series of
+helicopter ight test campaigns in August 2008 at NASA Dryden (now Armstrong)
+Flight Research Center [6,7], and in December 2012 at NASA Kennedy Space Center
+(KSC) [8]. These ight tests successfully demonstrated real-time NDL sensing ca-
+pabilities and the performance of the altitude and velocity estimates in comparison
+with integrated Global Positioning System (GPS) and Inertial Measurement Unit
+(IMU) navigation solutions. The ALHAT project conducted six ight tests of the
+NDL sensor on the rocket powered Morpheus test vehicle at KSC in 2014 [9,10]. The
+rst three ights with the NDL were open-loop (meaning the sensor was collecting
+data but not used in the onboard GN&C) for assessing sensor performance, and the
+last three tests used the sensors in the closed-loop GN&C for demonstration of the
+ALHAT navigation system. The open-loop ight tests showed that the NDL veloci-
+ties agreed with the Morpheus navigation state to within 5 cm/s [11]. These ight
+tests successfully demonstrated the real-time closed-loop performance of a navigation
+lter that ingested NDL velocity measurements for precision landing.
+
+    Additional suborbital rocket-based ight testing of the NDL was carried out
+under the CoOperative Blending of Autonomous Landing Technology (COBALT)
+project, which ew several tethered and free ight tests onboard the Masten Space
+Systems (MSS) Xodiac suborbital rocket in 2017, in Mojave, California [12, 13].
+The NDL sensor was own in an open-loop data collection mode for post-ight
+performance evaluation, while the Xodiac test vehicle used its own GPS-aided inertial
+navigation for closed-loop GN&C [12]. These ight tests completed all objectives and
+demonstrated the real-time navigation lter that ingested NDL velocity and range
+measurements. The experimental navigation lter based on the COBALT sensors
+agreed with the Xodiac GPS/IMU navigation solution to within approximately 5 m
+in position and 0.5 m/s in velocity.
+
+    Further ight testing of the NDL was conducted during the Safe and Precise
+Landing - Integrated Capability Evolution (SPLICE) project [14], which supported
+rocket sled tests at the Naval Air Weapons Station China Lake [15]. These tests
+were designed to stress the upper limits of NDL velocity and range measurements.
+The tests demonstrated the ability of the NDL to track the target at velocities above
+200 m/s and at ranges up to 4 km. The SPLICE project ew NDL sensors on the
+Blue Origin New Shepard suborbital rocket on two ights in 2020 and 2021 [16].
+The NDL operation was adversely aected by the helium environment of the New
+Shepard rocket during these ights and provided limited measurements. Attempts
+
+                                                      5
+to mitigate the eect of the rocket environment before the second ight were not
+successful and the NDL performance could not be evaluated [17].
+
+    The NDL sensor has been considered for closed-loop GN&C and its impact on
+trajectory performance for precision landing of human-scale landing systems has
+been evaluated in simulation studies. These studies included linear covariance [18]
+and Monte Carlo 6 degrees-of-freedom (DOF) trajectory analysis techniques [19, 20]
+at landing sites on the Moon and Mars. The ndings in [19] indicate that the use
+of NDL on a human-scale Mars entry system can signicantly improve the both the
+likelihood of safe landing, and precision of the landing in a Monte Carlo statistical
+sense.
+
+    Recently, an NDL sensor was own as a payload on the Intuitive Machines (IM)
+IM-1 lunar lander [21]. IM was selected by the NASA Commercial Lunar Payload
+Services (CLPS) program for providing delivery of payloads to the lunar surface.
+The rst such mission, IM-1, ew a variety of NASA, educational, and commercial
+payloads, including an NDL, to the Moon in February, 2024 [22]. The NDL sensor
+own on IM-1 was intended to be used as a secondary navigation sensor during the
+mission, but software issues prevented the navigation lter from ingesting the data.
+In this work, the NDL data acquired during the IM-1 lunar landing were combined
+with linear accelerations and angular rates recorded by an IMU in a Kalman lter to
+reconstruct the descent and landing trajectory of the vehicle for post-ight analysis
+and performance assessment of the sensor. This process also permitted the evaluation
+and validation of the models used to simulate terrain and NDL beam data in the
+lter.
+
+2 Intuitive Machines IM-1 Mission Overview
+
+The IM-1 mission to the lunar surface was launched from KSC on a SpaceX Falcon
+9 launch vehicle on 06:05:00 UTC, February 15, 2024, carrying the Nova-C class
+lander namedOdysseus[22]. The vehicle was 3.9 m tall by 1.6 m in diameter with
+a hexagonal cross section, with a wet mass at launch of 2035 kg and dry mass of
+677 kg [22]. A diagram of the lander is shown in Figure 1 [22]. The spacecraft
+performed three trajectory correction maneuvers during transit, followed by a lunar
+orbit insertion maneuver that placed the spacecraft in a 20 by 200 km altitude orbit
+on February 21, 2024, at 14:35:51 UTC [22, 23].
+
+                           Figure 1: IM-1 Odysseus lander [22].
+
+                                                      6
+    The Odysseus lander's GN&C system consisted of an array of sensors, including
+an IMU, an optical feature tracking instrument for terrain-relative navigation, and a
+laser altimeter to provide autonomous navigation solutions from a Kalman lter that
+was initialized based on orbit determination from the Deep Space Network (DSN)
+[24, 25]. The NDL velocity measurements were intended to be used as secondary
+inputs to the navigation lter [21]. The outputs of the lter provided the navigation
+state to the vehicle guidance and control during its descent and landing on the lunar
+surface.
+
+    A discovery was made prior to descent initiation that the laser altimeter was not
+operational and could not provide data to the navigation lter. Thus, the lter would
+rely on an IMU and optical feature tracking alone. An eort was made to modify the
+ight software to enable processing of the NDL range and velocity measurements;
+however, the attempt proved to be unsuccessful and the vehicle conducted its landing
+without the use of any NDL data [21, 24].
+
+    The de-orbit insertion maneuver was executed on February 22, 2024 at 05:49:29
+UTC [23] followed by initiation of the powered lunar landing sequence on February
+22, 2024, 23:10:32 UTC [22]. Odysseus landed near the Malapert-A crater at the
+location -80.1276 N, 1.4367 E on February 22, 2024 at 23:23:00 UTC [24]. Details
+of the powered ight post-ight performance reconstruction can be found in [24].
+
+3 Data Sources
+
+The data sources available for producing the reconstruction include an IMU in ad-
+dition to the NDL sensor data. Terrain and gravitational model data were also used
+in conjunction with the NDL and IMU sensor data, respectively.
+
+    Coordinate frames required for the data processing and reconstruction analysis
+are described as follows. The Nova-C vehicle body frame is denoted as tNheframe.
+The origin of the frame is in the plane formed by the vehicle landing pads, and
+the positive x-axis of this frame is along the centerline of the vehicle away from the
+ground when landed [23]. The NDL sensor frame is denoted bSy and is xed in the
+Nova-C body frame.
+
+    The topocentric, C, frame is a body-carried frame in which the z-axis is oriented
+toward the center of the moon, the y-axis is to the east, and the x-axis is oriented to-
+wards geographic north and completes the right-handed system [26]. The topodetic,
+D, frame is similar to the topocentric frame but has its z-axis oriented downwards
+perpendicular to the lunar reference ellipse and x-axis tangent to the reference ellipse
+to the north [26]. The M frame is a Moon-Centered Moon-Fixed frame where the
+xy plane corresponds to the Moon's mean equator and the z-axis is perpendicular to
+the mean equator towards the north pole.
+
+                                                      7
+3.1 Navigation Doppler Lidar
+
+The NDL instrument uses a frequency modulated continuous wave (FMCW) ap-
+proach to measure line of sight (LOS) ranges and velocities from three laser beams
+xed at dierent pointing angles in the instrument. The NDL was designed to mea-
+sure velocities up to 218 m/s along the LOS of its beams and ranges from 5 km
+to 2 m [27], at a sample rate of 20 Hz. Testing and calibration of the instrument
+indicated 1 range and velocity measurement uncertainties of 1:2 10 4 + 0 :16
+m and 1:11 10 6 + 1 :4 10 3 m/s, respectively.
+
+    The instrument consists of an electro-optic chassis and an optical head. All of
+the lidar components including the transmitter laser, receivers, and signal proces-
+sor are housed in the electro-optic chassis. The optical head, which houses three
+transmit/receive lenses, is mounted rigidly on the vehicle with a clear eld-of-view
+to the ground. The optical head is connected to the electro-optic chassis through a
+ber optic cable carrying the transmitted beams to the lenses. The cables direct the
+returned signals collected by the same lenses to the receivers. The full transmit to
+received signal processing chain for each beam is calledchaannel. The NDL electro-
+optic chassis and optical head are shown installed on the IM-1 Odysseus lander in
+Figure 2.
+
+                Figure 2: NDL installed on IM-1 Odysseus lander.
+    The nominal NDL sensor beam pointing directions are illustrated in Figure 3.
+Beam A was oriented at an 80 angle relative to the vehicle centerline. Beams B
+and C were symmetric with an angle of 57.5 relative to the centerline and 42.5
+outboard. The NDL sensor coordinate frame is shown in Figure 4. These pointing
+
+                                                      8
+directions were chosen to capture long range measurements based on the expected
+vehicle trajectory and orientation. The channel A telescope was designed to be
+pointed close to nadir during most of the vehicle's descent.
+
+     6+X N                                                 6+X N
+
+                 Beam A
+
+-ZN                         Beam C                                Beam B
+
+                 Beams B and C
+
+     Figure 3: NDL installation in the IM-1 lunar lander.
+
+                            Beam C                        Beam B
+                                         Beam A
+
+            Figure 4: NDL sensor frame.
+
+     The as-installed beam pointing directions expressed in the NDL sensor framSe
+
+are         2 |3 2                                         3
+
+            sA      0:98430 0:00241 0:17647
+
+     S = 4 sB| 5 = 4 0:61990 0:56916 0:54017 5                    (1)
+
+            sC|     0:61986 0:56790 0:54106
+
+    Post-installation metrology indicated a 1 milliradian uncertainty in the beam
+installation directions. This error source was applied as a 1 uncertainty indepen-
+dently to both the beam alignment within the NDL frame, and to the NDL sensor
+frame alignment to the Nova-C vehicle body frame.
+
+                         9
+The transformation from the NDL sensor frame to the Nova-C vehicle body frame
+
+is given by            2        3
+
+                          00 1
+
+             R SN = 4 0 1 0 5      (2)
+
+                          10 0
+
+    The as-installed NDL sensor origin point O relative to the Nova-C vehicle body
+frame origin is
+
+                              r NO = 1:402 0:055 0:844 | m (3)
+
+    The notional orientation of the beams relative to the lunar surface are illustrated
+in Figure 5. Here, the vehicle is moving from left to right as it decelerates towards
+the designated landing site. Beam A in the center is oriented towards the nadir
+direction slightly in trail. Beams B and C are oriented further outward and down
+toward the landing legs such that the beams are directed ahead of the vehicle as it
+descends to the surface.
+
+             r OA         r OB
+
+                   hp
+
+                                                      C
+                                n r AC
+
+                                A
+                                              r AB
+                                                                    B
+
+               Figure 5: NDL beam/surface intersection geometry.
+
+    The NDL range and velocity measurements obtained during the IM-1 lunar land-
+ing are shown in Figure 6. Beam A, pointing nearly nadir, was able to measure ranges
+of more than 20 km, in excess of the expected 5 km performance. Beams B and C re-
+ported ranges of more than 10 km after 23:18 UTC during descent. All three beams
+intersect with the lunar surface and provide range and velocity data from 23:18:20.6
+UTC in time until touchdown at 23:23:45.0 with no dropouts or outliers. The total
+duration of the data set included approximately 629 s of Beam A range and velocity
+
+                                                     10
+measurements, 324 s of Beam B, and 336 s of Beam C. Note that the nal data point
+shown in Figure 6 corresponds to the vehicle's rst contact with the lunar surface.
+
+(a) Beam ranges.      (b) Beam velocities.
+
+Figure 6: NDL ranges and velocities.
+
+    The start of the provided IMU data set at 23:20:41.34 UTC is indicated in Fig-
+ure 6 by the vertical dashed line. The complete 6-DOF trajectory reconstruction
+is limited to this segment of the landing, though some trajectory information can
+be obtained from the NDL measurements alone earlier in the trajectory as will be
+discussed later in the paper. The IMU data are discussed further in the next section.
+
+    There are several noteworthy features in the measured data. The channel A range
+measurement shows an increase/decrease feature that peaks at approximately 23:16
+UTC. The channel C range measurement shows a deviation from the channel A and
+B measurements at 23:18:40 UTC. Three smaller deviations can be noted in channel
+C starting at approximately 23:19:20, 23:19:57, and 23:21:47 UTC. These deviations
+were likely due to the beam intersecting several craters during descent. Note that
+the corresponding velocity channels do not show any sizable deviations during these
+crater intersections. The insensitivity of the NDL velocity measurements to crater
+impingement is because the NDL velocities are produced independently from range.
+Also note that channel A has negative velocity measurements over the majority of
+the trajectory while channels B and C have positive measurements. This is because
+of the position and pointing of the optical head, where channel A has a view of the
+ground where the terrain is receding from the vehicle, while B and C have a view
+where the terrain is approaching the vehicle, as indicated in Figure 5.
+
+3.2 Inertial Measurement Units
+
+The IM-1 lunar lander had two IMUs that were recording data during the landing.
+The IMUs provided linear acceleration and angular rate data in the spacecraft body
+frame. The rst IMU was a Honeywell HG1700 with a sample rate of 100 Hz and the
+second IMU was an Emcore SDI-505 with a sample rate of 200 Hz. The data were
+compared and found to be in agreement. The IMU data were limited to approxi-
+mately the last 184 s of the trajectory due to constraints on the data volume that
+
+                  11
+could be sent back to Earth for post-ight analysis. The 200 Hz sample rate Emcore
+SDI-505 IMU was chosen as the primary sensor for purposes of this trajectory re-
+construction due to its higher sample rate. Other performance specications of the
+two IMU models are generally comparable as shown in Table 1, based on publicly
+available vendor specication sheets. Note that internal misalignment specications
+were not available for either unit and were assumed to be negligible. Due to the
+proprietary nature of the data, further details cannot be shown.
+
+Table 1: IMU performance specications.
+
+Parameter                             HG17001  SDI-5052
+
+Accelerometer Bias, mg (3 )           3             3
+                                                   600
+Accelerometer Scale Factor, ppm (p3)  900
+                                                 0.177
+Accelerometer Random Walk, m/s/ hr (3 ) 0.02        3
+                                                   600
+Gyroscope Bias, /hr (3 )              3
+                                                  0.02
+Gyroscope Scale Factor, ppmp (3)       450          200
+Gyroscope Random Walk, / hr (3 )
+Sample Rate, Hz                       0.125
+                                        100
+
+3.3 Terrain Models
+
+Accurate modeling and simulation of the lunar surface is a key component to pre-
+and post-ight analysis of spacecraft performance. Digital Elevation Models (DEMs)
+are often used for these applications and typically contain surface elevation data
+measured from a reference sphere at gridded coordinates. In this work, a DEM
+representing a region of the lunar south pole below 75south latitude at a resolution
+of 30 m per pixel using polar-stereographic coordinates is used, and a similar DEM
+of 20 m per pixel resolution was used below 80south latitude [28]. Data from
+the 30 m per pixel DEM is shown in Figure 7, corresponding to the region from
+75 south latitude to the south pole. These DEMs are the best resolution sets of
+data currently available from the Lunar Orbiter Laser Altimeter (LOLA) science
+team [28] in the region of interest for the IM-1 NDL data analysis. In this work, the
+DEM representation of the surface was assumed to be truth and no uncertainty was
+applied to the elevations.
+
+    1 https://aerospace.honeywell.com/us/en/products-and-services/products/navigation-and-
+sensors/inertial-measurement-units/hg1700-inertial-measurement-unit, accessed June 2024.
+
+    2 https://www.emcore.com/products/post/8470/sdi500-tactical-grade-inertial-measurement-
+unit-imu-non-itar, accessed June 2024.
+
+                                                     12
+Figure 7: Lunar DEM: 75  to 90 south latitude, with 30 m per pixel
+resolution.
+
+3.4 Gravity Model
+
+The gravitational accelerations used for integrating the equations of motion were
+based on a model developed from data acquired during the Gravity Recovery and
+Interior Laboratory (GRAIL) [29] spacecraft pair experiment. Inter-spacecraft range
+measurements and other tracking data from the primary GRAIL science mission were
+used to construct the 660 degree and order gravitational model GRGM660PRIM [29].
+In this work, a truncated 25 degree and order set of spherical harmonics from the
+GRGM660PRIM model were used to compute the gravitational accelerations for the
+trajectory reconstruction process.
+
+3.5 Post-Mission Trajectory
+
+Intuitive Machines provided a post-mission trajectory that was constructed using
+the Copernicus trajectory optimization software [30]. The software was congured
+to t certain known observables and navigation states during the descent and landing
+to the lunar surface. This trajectory was used to analyze NDL performance prior
+to the start of the IMU data. This trajectory was also used to provide the initial
+conditions for the Kalman lter-based trajectory reconstruction described in this
+paper. Further details on the development of this trajectory can be found in [24].
+
+                         13
+4 Trajectory Reconstruction Methods
+
+This section describes the methods used for the NDL/IM-1 trajectory reconstruction.
+These include a geometric approach for processing the three NDL beam range and
+velocity measurements to reconstruct some limited trajectory data during the descent
+and landing, and a Kalman lter method that processes the NDL measurements with
+the IMU to estimate the 6-DOF vehicle trajectory.
+
+4.1 NDL-Only Analysis
+
+The full 6-DOF trajectory reconstruction is restricted to the last 184 s of the tra-
+
+jectory due to the limited amount of IMU data that was returned. Some trajectory
+
+information can be obtained by analyzing the NDL beam ranges and velocities dur-
+
+ing the 140 s of time prior to the start of the IMU data, where all three beams
+
+intersect with the lunar surface after 23:18:20.6 UTC as shown in Figure 6.
+
+The body-axis velocity vector can be computed directly from the beam velocities
+
+and the NDL sensor pointing matrix as
+
+                        89                 89
+                        < Vx =             < A=
+
+                        V = : Vy ; = R SN S 1 : B ; (4)
+                        Vz
+                                              C
+
+The beam velocity angles, dened as the angle between the velocity and the beam
+
+pointing vector, can be computed from the reconstructed body-axis velocity and the
+
+pointing directions as
+
+                        A = cos 1 (V R SN sA =kV k)                          (5)
+
+with similar expressions for Beams B and C. The angles of attack and sideslip can
+be computed from the body-axis velocity as
+
+                        = sin 1 Vy (6)
+                                    kV k
+
+                        sin = Vz (7)
+                                 kV kcos
+
+                        cos = Vx (8)
+                                  kV kcos
+
+                        T = cos 1 (cos cos )                                 (9)
+
+    An estimate of the altitude can be computed from the three simultaneous range
+measurements. The range measurements from the NDL origin (point O) to the
+surface form the vertices of a triangle at points A, B, and C that form the plane
+containing the beam/surface intersection points. The edges of the triangle are formed
+by the vectors r AB = r OB r OA , r AC = r OC r OA , and r BC = r OC r OB ,
+where r OA = A sA , r OB = B sB , and r OC = C sC . The geometry of the vector
+measurements are illustrated in Figure 5.
+
+    The surface normal that denes the plane containing the intersection points can
+be computed from the cross product [1]
+
+                                          n = r AB r AC (10)
+                                                 kr AB r AC k
+
+                                       14
+    The height of the NDL origin relative to this plane can then be computed from
+the projection of any one range measurement along the surface normal, such as
+
+hp = r OA n                   (11)
+
+    The beam incidence angle, pitch angle, and ight path with respect to the lunar
+surface normal can be computed from the equations
+
+A = cos 1 ( sA n )            (12)
+
+= = 2 cos 1 0 0 1 | n (13)
+
+= = 2 cos 1 R SN | V n =kV k  (14)
+
+    In summary, the body-axis velocities, velocity angles, incidence angles, height
+above the beam-surface intercept plane, the pitch angle, and ight path angle relative
+to the plane can be estimated. Thus, some trajectory information can be obtained
+based solely on the NDL measurement data where all three beams have returned
+valid measurements.
+
+4.2 New Statistical Trajectory Estimation Program
+
+The New Statistical Trajectory Estimation Program (NewSTEP) is a Matlab-based
+Kalman lter/smoother code that has been formulated specically for solving post-
+ight trajectory reconstruction problems [26,31]. The code has been used on numer-
+ous other trajectory reconstruction problems over the last two decades. Notably, the
+Mars Science Laboratory [32] and Mars 2020 [33] missions both ew a radar Termi-
+nal Descent Sensor (TDS) [4] that provided slant range and velocity data of a similar
+form to that of the NDL, thus providing prior validation of the measurement models
+used in the lter. NewSTEP's Iterative Unscented Kalman Filter (IUKF) [34] was
+used to perform the trajectory reconstruction for this problem.
+
+    The code functions as a forward and backward lter, passing through the mea-
+surement data. The forward and backaward lter passes are combined using a Fraser-
+Potter smoother to produce the nal estimated trajectory. The lter states are ex-
+pressed in spherical coordinates relative to the center of the primary body. The equa-
+tions of motion are propagated from one measurement point to another by numerical
+integration of the IMU measured linear accelerations and angular rates. The lter
+was congured for this problem to consider all IMU measurement systematic errors
+and the NDL beam alignment uncertainties for realistic covariance estimates [35].
+The code outputs position, velocity, and attitude in various coordinate systems, and
+from those outputs, other quantities of interest for this problem can be calculated
+including the beam incidence angles and other outputs described in the previous
+subsection. Note that the incidence angles and other surface-relative quantities are
+calculated from the DEM surface normal rather than the beam/surface intersection
+plane formed by the three range measurements as in the previous section.
+
+15
+4.2.1 Filter Process Model
+
+The lter state for this problem is specied as the position, velocity, and attitude of
+the vehicle with respect to the center of the moon, expressed in a rotating coordinate
+frame xed to the vehicle. The state of the system is
+
+                         x = r u v w e 0 e1 e2 e3 | (15)
+
+wherer , , and are the radius, declination, and longitude of the vehicle with respect
+to the moon center, u, v, and w are the inertial velocity components expressed in
+the topocentric frame wherew is along the radial direction, v is to the east, and u
+is towards the north, and e0, e1, e2, and e3 are the Euler parameters that describe
+the attitude of the vehicle with respect to a local topodetic frame.
+
+    The process model that describes the state dynamics is
+
+           r_= w                                                                              (16)
+
+           _= u                                                                               (17)
+                    r
+           _= v
+           r cos                                                                              (18)
+
+89                        8 98                 2                            9
+< u_ =                    < ax = < uw v tan =r + gu =
+: v_ ; = R CN | : ay ; + : (uv tan + vw) =r + gv (19) 2 2 ;
+       w_                 az                   u + v =r + gw
+89                     2                    3
+>> e_0 >>                 e1 e2 e3 0 8                     9                8             91
+< e_1 = 1 6 e0 e3 e2 7 < ! x = 1 < v =
+           =6                               7@ !y                r R CN :          u ; A (20)
+>> e_2 >> 2 4 e3 e0 e1 5 :                                 ;
+: e_3 ;                   e2 e1 e0 ! z                                             v tan
+
+where ax , ay, az, ! x , ! y and ! z are the body-axis           linear acceleration      and angular
+                                                                 is given by R CN =       R DN R CD,
+rate measurements from the IMU. The matrix R CN
+                                                                    2 (e1e3 e0e2)
+where                                                               2 (e0e1 + e2e3)
+                                                                   e2 e2 e2 + e2
+          22 2                      e2 e2    2 (e1e2 + e0e3)                              3
+              e0 + e1                       e2 e2 + e2 e2            0123
+                                     23                                                   5   (21)
+R DN = 4 2 (e1e2                             0123
+                                     e0e3)
+
+                 2     2 (e1e3 + e0e2)      2 (e2e3    e0e1)
+       R CD = 4                                             3
+                          cos ( td  )0      sin ( td                                          (22)
+                                0       1           0    )
+                                                            5
+
+                          sin ( td ) 0 cos ( td )
+
+where td is the topodetic latitude of the vehicle. The topodetic latitude and decli-
+nation are related by the equation [36]
+
+                                                       R$     2  sin  td
+                          tan td = tan +               q      $                               (23)
+
+                                               r cos          1  2    sin2     td
+                                                                 $
+
+    The gravitational accelerations (gu, gv, and gw) were computed using the trun-
+cated 25 degree and order GRGM660PRIM model developed from the GRAIL data
+described in the previous section [29].
+
+                                               16
+4.2.2 Filter Measurement Model
+
+The lter was congured to process each beam range and velocity measurement
+
+to correct the prediction based on numerical integration of the process model. An
+
+ecient ray-tracing algorithm originally developed for simulating Mars Science Lab-
+
+oratory radar measurements [37] was used to model the NDL beams. First, the NDL
+
+beams are assumed to be innitely thin rays xed to the vehicle structural frame with
+
+a specied origin and pointing direction. The ray-tracing algorithm then searches
+
+along the ray direction until an intersection with the terrain surface is detected.
+
+Once an intersection is determined, an interpolation scheme is used to compute the
+
+intersect coordinates and compute the along-beam range. This range is used within
+
+the IUKF as the measurement equation to compute residuals.
+
+    The ray-tracing algorithm is a component of a larger terrain modeling engine
+
+that integrates the DEM using ecient data loading methods. The raw DEM data,
+
+contained in a Georeferenced Tagged Image File Format (GeoTIFF) le, is converted
+
+to a Network Common Data Form (NetCDF) le format [38], which permits loading
+
+subsections of the DEM data such that memory management can be optimized by the
+
+user. Additionally, since the ray-tracing algorithm inherently assumes the underlying
+
+DEM data are represented in cylindrical coordinates, the polar-stereographic DEM
+
+data are converted to cylindrical coordinates prior to NetCDF conversion [39].
+
+    The beam velocities are computed from the projection of the ground-relative ve-
+
+locity onto the beam pointing vector. The range and velocity measurement equations
+
+for Beam A are (equations for Beams B and C are of the same form):
+
+           8                            9
+           <  r cos cos r A cos A cos A =
+    A= :      r cos sin r A cos A sin A ; + R MN | r NO
+                  r sin r A sin A                                          (24)
+    A = sA        2 89                            8
+                  < u=                            < r A cos A sin A     93
+              R |SN 4 R CN : v ; + ! r NO R MN : r A cos A cos A        =
+                       w                                     0
+                                                                          5
+                                                                        ;
+
+                                                                        (25)
+
+where r A , A , and A are the coordinates of the beam/surface intersection point
+
+computed from the ray-tracing algorithm. Note that these intersection points are
+
+functions of the vehicle position and attitude relative to the DEM. R MN is the
+
+matrix for the transformation from the lunar mean equator frame to the Nova-C
+
+body frame [36]:
+
+              22 2 2 2                                              3
+                 e0 + e1 e2 e3 2 (e1e2 + e0e3) 2 (e1e3 e0e2)
+    R MN = 4 2 (e1e2 e0e3)         e2 e2 + e2 e2     2 (e0e1 + e2e3) 5
+                                                                        (26)
+                                    0123
+                                                  e2 e2 e2 + e2
+                  2 (e1e3 + e0e2)  2 (e2e3 e0e1)
+                                                   0123
+              2                                           3
+                  sin td cos       sin td sin     cos td
+
+              4   sin              cos            05                    (27)
+
+                  cos td cos cos td sin           sin td
+
+    The lter measurements consisting of beam ranges and velocities were assembled
+
+as                y= A B C A B C |
+
+                                                                        (28)
+
+                                   17
+    The sensitivities of the measurement equation for the lter update step were
+computed using numerical partial derivatives.
+
+5 Trajectory Reconstruction Results
+
+This section describes the results of the NewSTEP trajectory reconstruction based
+on the NDL and IMU data, processed using the IUKF. The Copernicus post-mission
+trajectory was used to obtain the initial conditions for the 6-DOF trajectory recon-
+struction process.
+
+    Some results of the trajectory reconstruction are shown in Figure 8. Figure 8(a)
+shows the altitude above ground level. This altitude was computed from the recon-
+structed position above the terrain height from the DEM. The altitude above ground
+level at the start of the NDL reconstruction where all three beams intersect with the
+surface of the Moon was 8017.7 m. The altitude above ground level at the start of
+the IMU data segment was 1921.2 m. The maximum dierence between the two re-
+constructed altitudes was 83.6 m, which occurred close to the start of the IMU/NDL
+reconstruction. The two reconstructions agree to within approximately 4.4 m over
+the nal minute of the trajectory. Note that the blue and black dashed curves corre-
+spond to the altitude above ground level. The NDL-only estimate is computed from
+the plane formed by the three range vector measurements and the curve correspond-
+ing to the IMU/NDL reconstruction is the altitude computed from the DEM. The
+red curve in Figure 8(a) is the IMU/NDL reconstructed altitude above the point of
+the vehicle's rst touchdown on the lunar surface. The initial altitude above the
+landing site at the start of the IMU/NDL reconstruction was 1596.7 m. Dierences
+between the altitude above ground level and the altitude above the landing site are
+due to local terrain variations that are captured in the DEM data. The 3 uncer-
+tainties of the IMU/NDL altitude based on the Kalman lter state covariance are
+within 0.15 m over the time period, though note these uncertainties do not contain
+an estimate of the DEM altitude uncertainty.
+
+    Figure 8(b) shows the magnitude of the Moon-relative velocity. The initial ve-
+locity based on the NDL measurements was 543.3 m/s, and the nal velocity at rst
+contact with the ground was 7.79 m/s. The initial velocity based on the IMU/NDL
+reconstruction at the start time of the IMU data set was 283.5 m/s and the velocity
+at the rst ground contact was 7.80 m/s. The two reconstructions agree to within
+0.32 m/s over the time period of the IMU/NDL reconstruction. The 3 uncertainty
+of the IMU/NDL reconstruction was within 0.012 m/s.
+
+    The reconstructed vehicle pitch angles are shown in Figure 8(c). The NDL-
+only pitch angle is the attitude of the vehicle relative to the plane formed by the
+three range vector measurements. The IMU/NDL angle is computed relative to the
+surface normal given by the DEM. The two angles dier by up to 12.0 over the
+time period of the IMU/NDL reconstruction. The dierences are mainly due to the
+apparent higher variability of the IMU/NDL reconstruction that results from the
+ner terrain resolution of the DEM compared to the coarse approximation based
+on the three range vector measurements. A third angle corresponding to the pitch
+relative to the local north-east-down (NED) frame is shown with the red curve in
+
+                                                     18
+Figure 8(c). This angle represents the attitude of the vehicle relative to the line
+tangent to the lunar reference ellipse rather than the local terrain. The dierences
+between the two IMU/NDL angles are solely due to the terrain variation. The
+oscillations apparent in the ground-relative pitch angle are due to the local terrain
+rather than any attitude motion of the vehicle, as indicated by the smooth and
+slowly varying NED-relative curve. The reconstructed pitch attitude relative to the
+local terrain according to the DEM at the instant of rst contact with the ground
+was 76.83 and the corresponding pitch angle relative to NED was 85.42. The
+reconstructed pitch angle 3 uncertainties from the IMU/NDL reconstruction were
+within 0.18 .
+
+    The reconstructed ight path angle is shown in Figure 8(d). These data include
+the NDL-only terrain relative ight path angle and a similar angle that was com-
+puted based on the surface normal derived from the DEM. The maximum dierence
+between the two reconstructed angles is 12.35. Similar to the pitch angle, these
+dierences are largely due to apparent high frequency signal that is caused by the
+terrain data captured in the DEM compared with the coarse slope estimate com-
+puted from the three range vector measurements. The red curve in Figure 8(d)
+corresponds to the ight path angle computed relative to the tangent of the local
+reference ellipse. The dierences between the two IMU/NDL angles is again solely
+due to the terrain variations, and a similar conclusion as in the pitch angle can
+be reached, indicating that the oscillations in the ground-relative angle are due to
+variations in the terrain and not tied to motion of the vehicle, given the smooth
+variation in the NED-relative angle. The ground-relative and NED relative ight
+path angles at the moment of rst contact with the ground were -44.46 and -48.99 ,
+respectively. The 3 uncertainties in the IMU/NDL reconstructed ight path angle
+were within 0.020 .
+
+    The reconstructed angles of attack and sideslip are shown in Figure 8(e) and
+(f), respectively. These angles represent the attitude of the vehicle with respect to
+the Moon-relative velocity vector. Dierences between the angles computed directly
+from the NDL measurements and the IMU/NDL reconstruction are within 0.44 in
+angle of attack and 0.59 in the sideslip angle. The 3 uncertainties in each angle
+from the IMU/NDL reconstruction are within 0.021 .
+
+                                                     19
+(a) Altitude above ground.             (b) Ground-relative velocity.
+
+(c) Terrain-relative pitch angle.      (d) Terrain-relative ight path angle.
+
+(e) Angle of attack.                   (f) Sideslip angle.
+
+Figure 8: Reconstructed trajectory.
+
+    The reconstructed incidence and velocity angles are shown in Figure 9. The NDL-
+only incidence angles are computed as the intercept angle between the beam and
+the plane formed by the three range vector measurements, whereas the IMU/NDL
+reconstructed angles are computed based on the angle between the beam and the
+surface normal from DEM. The dierences across all three beam incidence angles
+
+                                   20
+are within 16.7 . As previously noted, the dierences are largely due to the ner
+terrain resolution captured by the DEM compared to the coarse estimate based
+on the plane formed by the three range vector measurements. The velocity angle
+dierences between the two reconstructions are within 0.33 across all three beam
+directions. Note that although Beams B and C have symmetric pointing directions,
+their velocity incidence angles do not exactly match during the IMU/NDL phase of
+the reconstruction. These dierences arise due to the ability of the 6-DOF trajectory
+reconstruction to estimate the vehicle roll attitude. The reconstructed roll attitude
+varies between -45 to +90 over the last 90 s of the ight.
+
+(a) Beam A incidence angle.      (b) Beam B incidence angle.
+
+(c) Beam C incidence angle.      (d) Beam velocity angles.
+
+Figure 9: Incidence and velocity angles.
+
+    The beam A residuals from the IMU/NDL reconstruction are shown in Figure 10.
+Note that the timescale here corresponds to the time range from the overlap between
+the IMU and NDL data. The residuals are computed as the dierence between the
+NDL measurement and the corresponding lter prediction based on the reconstructed
+trajectory. The 3 uncertainties are computed based on the combination of mea-
+surement uncertainty and the state error covariance projected into the measurement
+space. The range and velocity residuals in Figures 10(a) and (b), respectively, are
+approximately centered on a value of zero and the values are largely encapsulated by
+
+                             21
+the 3 uncertainty bounds. These results indicate that the reconstruction lter is
+consistent in the sense that the dierences are bounded by the predicted uncertain-
+ties. Some excursions in the range residuals compared to the uncertainty bounds
+shown in Figure 10(a) could be due to the assumption of no uncertainties in the
+DEM terrain elevation model. The beam velocity residual uncertainties shown in
+Figure 10(b) are notably conservative early in the trajectory, and were found to
+be due to the beam alignment uncertainties. The residuals indicate that the re-
+constructed beam range and velocity are within approximately 5 m and 0.5 m/s,
+respectively. The beam measurement residuals for channels B and C produce similar
+results and are therefore not shown here.
+
+(a) Beam A range residual.  (b) Beam A velocity residual.
+
+  (c) Beam A range residual with coarse DEM. (d) Beam A velocity residual with coarse DEM.
+
+                 Figure 10: NDL Beam A measurement residuals.
+
+    The sensitivities of the beam residuals with respect to the DEM resolution are
+illustrated in Figures 10(c) and (d). Here a coarser DEM with 120 m per pixel
+resolution was used to evaluate the range and velocity measurements along the re-
+constructed trajectory. The magnitude of the range residuals from the 120 m DEM
+shown in Figure 10(c) are clearly larger than those corresponding to the ner 30
+and 20 m DEM resolution shown in Figure 10(a). The residuals based on the 120
+m resolution DEM are not encapsulated by the predicted 3 bounds computed from
+
+                                                     22
+the lter covariance. Note that no adjustment to account for DEM terrain elevation
+uncertainty was included in these calculations. The velocity residual from the coarse
+120 m DEM shown in Figure 10(d) is less sensitive to the DEM resolution than the
+position residuals. This result is due to the Doppler-based beam velocity measure-
+ments rather than a range-rate type measurement that would be more sensitive to
+the terrain model.
+
+Malapert-K       "
+    #       Schomberger
+
+(a) Beam/surface intersection.  (b) Beam/surface intersection (detail during
+                                portion of trajectory where IMU data are avail-
+                                able).
+
+Figure 11: NDL beam/surface intersection ground tracks.
+
+    The suspected terrain features in the range measurement data were investigated
+by extracting the latitude and longitude of the beam/surface intersection point and
+comparing that to a map of the lunar surface. The crater crossings can be visualized
+by plotting the ground track of the beam/surface intersections along the DEM terrain
+model. The NDL beam/surface intersection ground tracks are shown in Figure 11.
+Recall that Beam A points approximately in the vehicle nadir direction. Beam A
+crossed through Shomberger crater early in the trajectory, as evident in the feature
+shown in Figure 6(a) that peaks at approximately 23:16 UTC. Beam C crosses over
+four unnamed craters to the south of crater Malapert K during the vehicle's approach
+to the landing site. These crossings can be noted by features in the Beam C range
+data shown in Figure 6(a) at 23:18:40, 23:19:20, 23:19:57, and 23:21:47, respectively.
+For purposes of scale, note that Shomberger and Malapert K craters have diameters
+of approximately 85 km and 46 km, respectively. The traversed ground tracks from
+the rst data point to the moment of touchdown are approximately 345 km for
+Beam A, 79 km for Beam B, and 85 km for Beam C.
+
+    A detailed view of the beam/surface intersection ground tracks over the time
+period where IMU data was available is shown in Figure 11(b). This gure shows
+the crossing of Beam C through the fourth crater described previously, which lies to
+the south of the vehicle groundtrack and to the east of the landing site. The high
+level of agreement between the observed and simulated beam range measurements
+indicated in Figure 10(a) and (b), coupled with tying the observed range changes to
+the DEM using the ground tracks, is additional validation of the terrain engine.
+
+                                23
+

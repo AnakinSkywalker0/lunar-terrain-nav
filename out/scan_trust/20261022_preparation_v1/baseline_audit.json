@@ -1,0 +1,74 @@
+{
+  "all": {
+    "valid_proposals": 10530,
+    "bad_proposals": 4881,
+    "accepted": 9196,
+    "accepted_bad": 3547,
+    "rejected_safe": 0,
+    "safe_proposals": 5649
+  },
+  "aligned": {
+    "valid_proposals": 3510,
+    "bad_proposals": 0,
+    "accepted": 3510,
+    "accepted_bad": 0,
+    "rejected_safe": 0,
+    "safe_proposals": 3510
+  },
+  "site:original": {
+    "valid_proposals": 2106,
+    "bad_proposals": 994,
+    "accepted": 1853,
+    "accepted_bad": 741,
+    "rejected_safe": 0,
+    "safe_proposals": 1112
+  },
+  "relief_change": {
+    "valid_proposals": 3510,
+    "bad_proposals": 1371,
+    "accepted": 3344,
+    "accepted_bad": 1205,
+    "rejected_safe": 0,
+    "safe_proposals": 2139
+  },
+  "map_shift": {
+    "valid_proposals": 3510,
+    "bad_proposals": 3510,
+    "accepted": 2342,
+    "accepted_bad": 2342,
+    "rejected_safe": 0,
+    "safe_proposals": 0
+  },
+  "site:area01": {
+    "valid_proposals": 2106,
+    "bad_proposals": 1038,
+    "accepted": 1852,
+    "accepted_bad": 784,
+    "rejected_safe": 0,
+    "safe_proposals": 1068
+  },
+  "site:area02": {
+    "valid_proposals": 2106,
+    "bad_proposals": 992,
+    "accepted": 1817,
+    "accepted_bad": 703,
+    "rejected_safe": 0,
+    "safe_proposals": 1114
+  },
+  "site:area03": {
+    "valid_proposals": 2106,
+    "bad_proposals": 1076,
+    "accepted": 1835,
+    "accepted_bad": 805,
+    "rejected_safe": 0,
+    "safe_proposals": 1030
+  },
+  "site:area04": {
+    "valid_proposals": 2106,
+    "bad_proposals": 781,
+    "accepted": 1839,
+    "accepted_bad": 514,
+    "rejected_safe": 0,
+    "safe_proposals": 1325
+  }
+}

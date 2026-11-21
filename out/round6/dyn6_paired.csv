@@ -1,0 +1,61 @@
+comparison,part,condition,variant,diff,lo,hi
+single: floor A - PITFAL-style,single,cliff,3-DOF (point mass),8.5,4.6,13.3
+single: floor A - PITFAL-style,single,cliff,6-DOF default,2.6,-0.2,6.9
+single: floor A - PITFAL-style,single,cliff,6-DOF sluggish,0.2,-2.0,2.0
+single: floor A - PITFAL-style,single,cliff,6-DOF degraded,0.0,0.0,0.0
+single: floor A - PITFAL-style,single,x8,3-DOF (point mass),17.2,10.9,23.0
+single: floor A - PITFAL-style,single,x8,6-DOF default,14.4,6.5,25.2
+single: floor A - PITFAL-style,single,x8,6-DOF sluggish,2.2,-0.4,5.0
+single: floor A - PITFAL-style,single,x8,6-DOF degraded,0.0,0.0,0.0
+single: floor A - PITFAL-style,single,x16,3-DOF (point mass),37.4,32.6,42.0
+single: floor A - PITFAL-style,single,x16,6-DOF default,42.6,30.9,51.1
+single: floor A - PITFAL-style,single,x16,6-DOF sluggish,4.4,2.8,6.3
+single: floor A - PITFAL-style,single,x16,6-DOF degraded,0.0,0.0,0.0
+single: Student-t - PITFAL-style,single,cliff,3-DOF (point mass),10.6,6.1,15.2
+single: Student-t - PITFAL-style,single,cliff,6-DOF default,-2.2,-5.4,-0.0
+single: Student-t - PITFAL-style,single,cliff,6-DOF sluggish,1.7,-0.6,3.7
+single: Student-t - PITFAL-style,single,cliff,6-DOF degraded,0.0,0.0,0.0
+single: Student-t - PITFAL-style,single,x8,3-DOF (point mass),24.3,17.0,31.1
+single: Student-t - PITFAL-style,single,x8,6-DOF default,6.3,-0.6,13.0
+single: Student-t - PITFAL-style,single,x8,6-DOF sluggish,2.0,-0.9,5.2
+single: Student-t - PITFAL-style,single,x8,6-DOF degraded,0.0,0.0,0.0
+single: Student-t - PITFAL-style,single,x16,3-DOF (point mass),48.3,42.8,54.8
+single: Student-t - PITFAL-style,single,x16,6-DOF default,41.5,25.7,55.4
+single: Student-t - PITFAL-style,single,x16,6-DOF sluggish,1.9,0.6,3.3
+single: Student-t - PITFAL-style,single,x16,6-DOF degraded,0.0,0.0,0.0
+multi: floor A - PITFAL-style multi,multi,cliff,3-DOF (point mass),-6.5,-14.5,0.2
+multi: floor A - PITFAL-style multi,multi,cliff,6-DOF default,0.2,0.0,0.6
+multi: floor A - PITFAL-style multi,multi,cliff,6-DOF sluggish,1.1,-1.7,3.9
+multi: floor A - PITFAL-style multi,multi,cliff,6-DOF degraded,-0.4,-1.1,0.0
+multi: floor A - PITFAL-style multi,multi,x8,3-DOF (point mass),-9.8,-27.0,2.6
+multi: floor A - PITFAL-style multi,multi,x8,6-DOF default,0.6,0.0,1.3
+multi: floor A - PITFAL-style multi,multi,x8,6-DOF sluggish,-0.6,-3.7,2.4
+multi: floor A - PITFAL-style multi,multi,x8,6-DOF degraded,0.0,0.0,0.0
+multi: floor A - PITFAL-style multi,multi,x16,3-DOF (point mass),25.6,20.9,29.6
+multi: floor A - PITFAL-style multi,multi,x16,6-DOF default,30.4,26.3,34.3
+multi: floor A - PITFAL-style multi,multi,x16,6-DOF sluggish,1.9,-0.9,4.8
+multi: floor A - PITFAL-style multi,multi,x16,6-DOF degraded,0.0,0.0,0.0
+multi: Student-t - PITFAL-style multi,multi,cliff,3-DOF (point mass),7.0,0.4,16.5
+multi: Student-t - PITFAL-style multi,multi,cliff,6-DOF default,-0.2,-1.1,0.4
+multi: Student-t - PITFAL-style multi,multi,cliff,6-DOF sluggish,-0.6,-2.8,2.2
+multi: Student-t - PITFAL-style multi,multi,cliff,6-DOF degraded,-0.4,-1.1,0.0
+multi: Student-t - PITFAL-style multi,multi,x8,3-DOF (point mass),-0.9,-5.0,2.6
+multi: Student-t - PITFAL-style multi,multi,x8,6-DOF default,0.6,0.0,1.3
+multi: Student-t - PITFAL-style multi,multi,x8,6-DOF sluggish,1.1,-1.3,3.1
+multi: Student-t - PITFAL-style multi,multi,x8,6-DOF degraded,0.0,0.0,0.0
+multi: Student-t - PITFAL-style multi,multi,x16,3-DOF (point mass),26.7,21.7,30.6
+multi: Student-t - PITFAL-style multi,multi,x16,6-DOF default,30.6,26.1,34.4
+multi: Student-t - PITFAL-style multi,multi,x16,6-DOF sluggish,1.7,-2.6,5.9
+multi: Student-t - PITFAL-style multi,multi,x16,6-DOF degraded,0.0,0.0,0.0
+multi: Student-t - floor A,multi,cliff,3-DOF (point mass),13.5,0.7,30.9
+multi: Student-t - floor A,multi,cliff,6-DOF default,-0.4,-1.1,0.0
+multi: Student-t - floor A,multi,cliff,6-DOF sluggish,-1.7,-4.1,0.9
+multi: Student-t - floor A,multi,cliff,6-DOF degraded,0.0,0.0,0.0
+multi: Student-t - floor A,multi,x8,3-DOF (point mass),8.9,0.0,22.2
+multi: Student-t - floor A,multi,x8,6-DOF default,0.0,0.0,0.0
+multi: Student-t - floor A,multi,x8,6-DOF sluggish,1.7,-0.6,3.9
+multi: Student-t - floor A,multi,x8,6-DOF degraded,0.0,0.0,0.0
+multi: Student-t - floor A,multi,x16,3-DOF (point mass),1.1,0.0,3.0
+multi: Student-t - floor A,multi,x16,6-DOF default,0.2,0.0,0.6
+multi: Student-t - floor A,multi,x16,6-DOF sluggish,-0.2,-3.3,3.0
+multi: Student-t - floor A,multi,x16,6-DOF degraded,0.0,0.0,0.0

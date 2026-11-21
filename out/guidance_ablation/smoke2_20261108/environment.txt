@@ -1,0 +1,6 @@
+UTC=2026-11-08T15:35:08.4309605Z
+Unity=6000.3.24f1
+CPU=Intel(R) Core(TM) i7-14700HX
+Platform=WindowsEditor
+DT=0.05
+3-DOF PhysX; ideal attitude; frozen scan-trust model inference; training performed separately in Python

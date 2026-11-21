@@ -1,0 +1,287 @@
+                                                                                                                                               Jet Propulsion Laboratory
+
+                                                                                                                                                                               California Institute of Technology
+
+Mars 2020 Lander Vision System
+
+Workshop for Lunar Mapping for Precision Landing
+
+Andrew Johnson
+
+Mars 2020 Lander Vision System Lead
+Jet Propulsion laboratory, California Institute of Technology
+
+3/2/2021
+Mars 2020 Terrain Relative Navigation                          Jet Propulsion Laboratory
+
+                                                               California Institute of Technology
+
+        descent        Vision                                  Jezero Crater Landing Site
+        imaging        Compute
+                       Element                                                                                Hazard Map
+IMU
+                                                         LCAM                              Safe Target Points
+
+                  The Lander Vision System                     Safe Target Selection picks a landing site
+                 estimates map relative position                  that avoids hazards and existing MSL
+
+                                                               systems guide the vehicle to a safe landing
+
+     LVS                                                       Simple TRN interface "does
+     map                                                       no harm" to MSL EDL
+
+Launch: July 2020                                              Can still land without TRN
+EDL: February 18th, 2021
+LVS Hardware        Honeywell MIMUs
+operated nominally
+during EDL.               DIMU-B DIMU-A
+
+Vision Compute Element (VCE) built by JPL                          LCAM
+· RAD750 general purpose processor
+                                                      LVS Camera (LCAM)
+      · VCE flight sofware                            · 1024x1024 pixels
+· Power conditioning card                             · global shutter
+· Computer Vision Accelerator Card (CVAC)             · 90°x90° FOV
+                                                      · 100ms latency
+      · RTAX2000 housekeeping FPGA                    · 200us exposure
+      · reprogrammable Virtex5 FPGA                   · built by Malin Space
+
+             · up to 7000 MIPS image processing        Science Systems
+      · heat strap for thermal management
+      · flash memory for maps and data products  VCE
+Lander Vision System Processing                                                      Jet Propulsion Laboratory
+
+                                                                                     California Institute of Technology
+
+sun elevation between 25° & 55°                                       off nadir angle < 45° & angular rates < 50°/s
+sun azimuth between 240° & 310°                     horizontal velocity < 70 m/s & vertical velocity between 60 and 115 m/s
+
+                  coarse landmark matching                               fine landmark matching
+
+start as              IMU      IMU          batch           EKF          EKF                  operate until
+high as          Image 1   Image 2          update          update       update                2000m or
+4200m                                                                                          back-shell
+                                                       IMU        IMU           IMU            separation
+        outlier                                              Image 4
+                                            Image 3                      Image 5
+                                                                outlier
+                                                                                     Image 6
+
+                 landmark
+                 matches
+
+Remove Initial                     slope < 15°              Reduced Position Error   Nominal Position Error
+Position Error               terrain relief < 150m                 40m 99%tile              40m 99%tile
+                           appearance entropy > 4                  at 6 seconds            at 10 seconds
+    of 3.2km                                                       (95% of time)            (99% of time)
+Coarse Landmark Matching                                       Jet Propulsion Laboratory
+
+                                                               California Institute of Technology
+
+              descent image  selected landmarks RDC/warped templates normalized templates
+
+  position       position                                      correlation
+knowledge      knowledge                                        template
+error before    error after
+              coarse match   coarse map image  normalized map
+    MRL
+
+              descent
+               image
+
+              reference                        FFT correlation surface
+                 map                            and close up of peak
+  LVS Flight Landmark Matches                                                                                               Jet Propulsion Laboratory
+
+    incorrect landmark matches (outliers)   correct landmark matches (inliers)  footprint predicted image  region map crop  California Institute of Technology
+Fine Landmark Matching                                                  Jet Propulsion Laboratory
+
+                                                                        California Institute of Technology
+
+             descent image     selected landmarks RDC/warped templates  correlation
+                                                                         template
+
+  position       position      fine map image  search windows           correlation
+knowledge      knowledge                                                  window
+error after  error after fine
+                                                                          spatial
+  coarse          match                                                 correlation
+   match
+                   descent                                                surface
+                    image
+
+reference map
+  LVS Flight Landmark Matches                                                                                               Jet Propulsion Laboratory
+
+    incorrect landmark matches (outliers)   correct landmark matches (inliers)  footprint predicted image  region map crop  California Institute of Technology
+LVS Map Definition                                                                                               Jet Propulsion Laboratory
+
+                                   P                                                                                          California Institute of Technology
+
+                                                          Appearance Map Elevation Map
+
+                                                       P
+P
+
+                                                          9
+Mars 2020 Hazard Map      Jet Propulsion Laboratory
+
+                           California Institute of Technology
+
+                      LHSaanfzedaiTrndagrMgSeaitpes
+                      Safe Targets
+EDL V&V Trifecta                                                           Jet Propulsion Laboratory
+
+                                                                           California Institute of Technology
+
+                                                 Simulations
+
+                                 · High fidelity models & FSW
+                                 · Cover operational envelope
+                                 · Sensitivity studies and stress testing
+                                 · Monte Carlo EDL system sim
+
+           Field Test
+
+· EM Hardware
+
+· Real surface and Illumination
+· Representative dynamics
+· Used for model validation &
+
+  retiring "worry beads"
+
+                                          HWIL Testbeds
+
+                                 · Flight and EM Hardware
+                                 · Low-level testing and debugging
+                                 · Complete EDL profiles
+                                 · Tests with M2020 avionics
+Mars 2020 LVS Team                                                           Jet Propulsion Laboratory
+
+GNC PDM/LVS Lead        LCAM                                                        California Institute of Technology
+Andrew Johnson          Hugh Ansari - Lead
+                        Mike Ravine (MSSS)     LVS Map
+LVS SE                  Jake Schaffner (MSSS)  Yang Cheng
+Jim Montgomery          Joe Shamah (MSSS)      Robin Fergason (USGS)
+                                               Trent Hare (USGS)
+VCE                     VCEFSWE         Lead
+Steve Schroeder - Lead  Johnny Chang -         LVS Field Test
+Chuck Bergh             Richard Cheng          Nate Villaume - Lead
+Helene Bourdu           Ken Clark              David Sternberg
+Jim Butler              Kim Gostelow           John Tamburro (Pursuit Aviation)
+Robert Donnelly         Will Jay               Doug Holgate (Pursuit Aviation)
+Allen Fong              Michael Jordan         Kyle Holgate (Pursuit Aviation)
+Eddie Miller            Jack Morrison
+Jimmy Roberts           Boris Shenker          GNC
+Carson Umsted           George Sun             Swati Mohan
+Geoff Vaughan                                  Paul Brugarolas
+Carlos Villalpando      MRL                    Jordi Casoliva
+Keyana Willcox          Nikolas Trawny - Lead  Anup Katake
+Jason Zheng             Seth Aaron
+                        Dan Clouse             EDL
+                                               Aaron Stehura
+                                               Al Chen
+                                               Jenny Shatts
+BACKUP
+Coarse Match Mode Processing                                                               Jet Propulsion Laboratory
+
+                                                                                           California Institute of Technology
+
+ip                                                                         CDR Coarse Match Mode
+camera
+ model,  homography   fixed point H                               LVS
+              prep                                               state
+  MAP
+                       float H             repeat             filter                         LVS
+ image   coarse int op                     3 times                                         coarse
+ (~1Hz)                                                               batch                 state
+            window                                                  estimator               (8Hz)
+           selection
+                                                                                  iterate  s/c init
+                       64 64x64 win                                    IMU                 packet
+                                                                  propagation              (once)
+            interest
+           operator                                                           time
+                                                                           ordered
+                      64 img pix
+                                                                              data
+         coarse lmk    sun                         MAP
+          selection   vector                                  seq
+                                           crop map
+                    5 map pixels                                   sequencer
+           windowed                                norm
+                                                   coarse
+         homography/                               map
+
+          RDC warp
+                   streamed 5 148x148 win
+
+           windowed
+
+           normalize
+
+             image
+
+         5 128x128 win
+
+             FFT      norm map FFT         forward FFT              IMU       image
+         correlation                                                data    exposure
+                                           coarse outlier         (200Hz)  time (~1Hz)
+         5 peak pix                           rejection
+                                                           lmk matches
+         correlation  5 sub pix peaks                                                      RAD750
+           peak fit                                                                        VP FPGA
+                                                                                           MRL func
+                                           camera model, MAP
+Fine Match Mode Processing                                                           Jet Propulsion Laboratory
+
+                                                                                     California Institute of Technology
+
+ip                                                                     CDR Fine Match Mode
+camera
+ model,  homography   fixed point H                             LVS
+              prep                                             state
+  MAP
+                       float H                              filter                   LVS
+ image     fine int op                                                                fine
+ (~1Hz)                                                       EKF estimator          state
+            window                                                                   (8Hz)
+           selection
+                                                                            iterate
+                       150 64x64 win
+                                                                 IMU
+            interest                                        propagation
+            operator
+                                                   MAP                      time
+                        150 img pix                                      ordered
+                                         fine crop map
+         transform to                                                       data
+              map                                  fine
+                                                   cropped  seq
+                    150 map pix                    map
+           windowed                                              sequencer
+         homography/
+          RDC warp
+
+                          streamed
+                       150 21x21 win
+
+           spatial                                              IMU       image
+         correlation                                            data    exposure
+                                                              (200Hz)  time (~1Hz)
+         150 peak pix
+                                                       lmk matches
+         correlation  150 sub pix peaks  fine outlier                                RAD750
+           peak fit                       rejection                                  VP FPGA
+                                                                                     MRL func
+                                      camera model, MAP
+  Example Landmark Matches from Field Test                                                                                  Jet Propulsion Laboratory
+
+    incorrect landmark matches (outliers)   correct landmark matches (inliers)  footprint predicted image  region map crop  California Institute of Technology
+Position Error Time History              Jet Propulsion Laboratory
+
+                                         California Institute of Technology
+
+Example State Estimates from Field Test
+

@@ -1,0 +1,47 @@
+{
+  "projection_parameters_equal": true,
+  "terrain_extent_checks": [
+    {
+      "site": "site01_transfer00",
+      "projected_bounds": [
+        -12239.0625,
+        -13176.5625,
+        -9839.0625,
+        -10776.5625
+      ],
+      "outside_entire_site04": true
+    },
+    {
+      "site": "site01_transfer01",
+      "projected_bounds": [
+        -18793.75,
+        -18637.5,
+        -16393.75,
+        -16237.5
+      ],
+      "outside_entire_site04": true
+    },
+    {
+      "site": "site01_transfer02",
+      "projected_bounds": [
+        -18707.8125,
+        -8285.9375,
+        -16307.8125,
+        -5885.9375
+      ],
+      "outside_entire_site04": true
+    },
+    {
+      "site": "site01_transfer03",
+      "projected_bounds": [
+        -7028.125,
+        -18637.5,
+        -4628.125,
+        -16237.5
+      ],
+      "outside_entire_site04": true
+    }
+  ],
+  "algorithm_methods_match_archive": true,
+  "frozen_components_unchanged": true
+}

@@ -1,0 +1,22 @@
+{
+  "geometric": {
+    "first_amp_no_better_than_off": 8.0,
+    "first_amp_violation_over_5pct": 2.0
+  },
+  "bounded": {
+    "first_amp_no_better_than_off": 8.0,
+    "first_amp_violation_over_5pct": 2.0
+  },
+  "authority": {
+    "first_amp_no_better_than_off": 16.0,
+    "first_amp_violation_over_5pct": 4.0
+  },
+  "kf_chi2": {
+    "first_amp_no_better_than_off": null,
+    "first_amp_violation_over_5pct": 16.0
+  },
+  "utility": {
+    "first_amp_no_better_than_off": 16.0,
+    "first_amp_violation_over_5pct": 2.0
+  }
+}
