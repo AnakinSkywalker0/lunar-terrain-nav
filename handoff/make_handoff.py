@@ -31,7 +31,7 @@ def tbl(rows, widths):
 
 
 S.append(Paragraph("LANTERN: Project Status and Handoff Report", T))
-p("<b>Prepared 20 November 2026</b> for external review. Team: Abhishek Mishra (240365), Rishabh Kumar (240605), Neil Jain (240553), Khushi (240511). "
+p("<b>Prepared 20 November 2026, updated 21 November 2026 (round 6 added; everything is now pushed)</b> for external review. Team: Abhishek Mishra (240365), Rishabh Kumar (240605), Neil Jain (240553), Khushi (240511). "
   "Mentor: Dr. Sukhandeep Kaur. BML Munjal University, Project-I, August to December 2026. Repository: AnakinSkywalker0 (GitHub), local copy D:\\newprj.")
 p("<b>Everything here is simulation only.</b> No real flight data has been used. Claims are about which navigation ideas work in a simulated South Pole landing, not about real mission safety.")
 
@@ -46,11 +46,11 @@ bl(["A working simulator (Python test bench plus a Unity testbed) with an extend
     "Three rounds of pre-registered evaluation. Round 3 was run <b>once</b> on the held-out Site04 and <b>all five pre-registered rules (Q1 to Q5) were met</b>.",
     "Main finding: letting the tolerance gate follow the altimeter's current noise level (a 'noise floor') kept landing success at about 95% at eight times normal noise, against 61.6% for plain tolerance, 65.6% for the PITFAL-style baseline and 89.0% for our trust v2. No machine learning is needed.",
     "Learned (ML) judges did not beat these simple rules; an earlier claim that a shadow-aware camera is the big win disappeared under fair comparison. Two earlier results were corrected and recorded.",
-    "A multi-beam altimeter extension, a round-4 development study and a round-5 comparison of eleven build-plan techniques (exploratory) were done; the best candidates were then frozen (tag prereg-round5) and run once on worlds 41-50: five of seven rules met (Student-t and delay estimation replicated; Student-t did not beat the full floor at low noise). No rule wins everywhere; the world-12 collapse is not caused by the floor misreading map error (an oracle collapses too). The round-4 held-out test was frozen (tag prereg-round4, commit 36e2942) and run once on worlds 17-20: candidate B FAILED rules R1 and R2, R3 and R4 were met. Nothing is pushed."])
+    "A multi-beam altimeter extension, a round-4 development study and a round-5 comparison of eleven build-plan techniques (exploratory) were done; the best candidates were then frozen (tag prereg-round5) and run once on worlds 41-50: five of seven rules met (Student-t and delay estimation replicated; Student-t did not beat the full floor at low noise). No rule wins everywhere; the world-12 collapse is not caused by the floor misreading map error (an oracle collapses too). The round-4 held-out test was frozen (tag prereg-round4, commit 36e2942) and run once on worlds 17-20: candidate B FAILED rules R1 and R2, R3 and R4 were met. Round 6 (exploratory, 6-DOF lander dynamics) kept the ranking of the rules with a working attitude loop; see 6e. Everything was pushed on 21 Nov 2026 (commit 722aa7b)."])
 
 h1("3. GitHub branches, tags and history")
 tbl([["Ref", "Commit", "Status / meaning"],
-     ["main (local and origin/main)", "5b26430", "Current. Contains round-3 freeze, Site04 result, ml-eval reproduction, project documents. Pushed."],
+     ["main (local and origin/main)", "722aa7b", "Current (21 Nov). Adds rounds 3-6 work: round-4/5 pre-registrations and results, 6-DOF dynamics, college report, handoff, docs/PROJECT_SUMMARY_2026-11-21.md. Pushed together with tags prereg-round4 and prereg-round5. Raw per-descent dumps (about 1.3 GB), *.raw, downloaded paper PDFs and local config files are left out of git."],
      ["origin/ml-eval", "9df6032", "Rishabh's branch. Already merged into main via PR #1 and PR #2 (merge 0f9d8df). Contains HANDOFF.md-style documentation of his ML evaluation."],
      ["tag round1", "-", "Frozen settings of the first evaluation round."],
      ["tag prereg-round2", "ca61ea6", "Frozen before the round-2 Site04 run."],
@@ -69,7 +69,7 @@ tbl([["Date", "Author", "Commit", "What"],
      ["2026-11-20", "Abhishek", "e63c7a6", "Round-3 freeze: noise floor, terrain variance, noise-aware label switches"],
      ["2026-11-20", "Abhishek", "5b26430", "Round-3 Site04 result, ml-eval reproduction, project documents"]],
     [2.2, 2.0, 4.3, 8.5])
-p("<b>Uncommitted local work (not pushed):</b> multi-beam sensor and round-4 switches in sim/engine.py (a backup of the pre-round-4 engine and a patch of the multi-beam code are in out/round4/), sim/round3_multibeam*.py, sim/round4_*.py, tests/test_multibeam.py and tests/test_round4_*.py, docs/ROUND4_DEV_RESULTS.md, docs/PREREG_ROUND4.md, docs/WORLD12_DIAGNOSIS.md, docs/NEXT_DIRECTION_REVIEW_AND_BUILD.md, out/round3/multibeam_*.csv, out/round4/, the college report build in report/, and project skills in .claude/skills/. Uncommitted since: round-5 switches in sim/engine.py (backup in out/round5/), sim/round5_*.py, tests/test_round5_switches.py, docs/ROUND5_DEV_RESULTS.md, out/round5/. The round-5 freeze is committed locally too (f742d08, tag prereg-round5). Committed locally on main: the round-4 freeze (36e2942, tag prereg-round4: engine, runner, dev script, pre-registration, tests). Nothing is pushed. Per the owner's rule, nothing is pushed without an explicit request.")
+p("<b>Superseded note (written 20 Nov, before the 21 Nov push; all of this is now committed in 722aa7b except the exclusions above):</b> multi-beam sensor and round-4 switches in sim/engine.py (a backup of the pre-round-4 engine and a patch of the multi-beam code are in out/round4/), sim/round3_multibeam*.py, sim/round4_*.py, tests/test_multibeam.py and tests/test_round4_*.py, docs/ROUND4_DEV_RESULTS.md, docs/PREREG_ROUND4.md, docs/WORLD12_DIAGNOSIS.md, docs/NEXT_DIRECTION_REVIEW_AND_BUILD.md, out/round3/multibeam_*.csv, out/round4/, the college report build in report/, and project skills in .claude/skills/. Uncommitted since: round-5 switches in sim/engine.py (backup in out/round5/), sim/round5_*.py, tests/test_round5_switches.py, docs/ROUND5_DEV_RESULTS.md, out/round5/. The round-5 freeze is committed locally too (f742d08, tag prereg-round5). Committed locally on main: the round-4 freeze (36e2942, tag prereg-round4: engine, runner, dev script, pre-registration, tests). The owner asked for the push on 21 Nov and it was done.")
 
 h1("4. Rishabh's work (branch ml-eval)")
 p("Rishabh's branch asked: <i>can machine learning decide fault versus terrain better than simple rules?</i> It added 52 files (about 3,200 lines): the ML evaluation tools (ml_eval.py, ml_features.py, ml_labels.py, ml_train.py, ml_faults.py), the ml2 experiments (ml2_*.py), checks that old judges are unchanged (check_unchanged.py, tests/ref_old_judges.npz), and result tables under out/ml_eval, out/ml_eval_v2, out/ml_faults, out/ml_labels and out/ml2.")
@@ -158,6 +158,17 @@ bl(["The development edge of Student-t over the full floor at low noise did not 
     "Still open: 2 km wrong map (at most 5%), unstamped delays (51% with estimation vs 90% with true stamps), stuck-at faults for Student-t (development finding), overconfident estimates. Not tested: new real site, real sensor data.",
     "Worlds 41-50 are now used; any further confirmatory test needs fresh worlds and a new pre-registration."])
 
+h1("6e. Round 6: 6-DOF lander dynamics (exploratory, 21 Nov 2026)")
+p("Code: sim/dyn6.py and switch <i>dyn6=</i> in sim/engine.py (default off, bit-identical when off; tests/test_dyn6.py, 17 tests); study sim/round6_dyn6.py; results docs/ROUND6_DYN6_RESULTS.md, out/round6/. Nine development worlds, 60 descents per cell; never Site04 or reserved worlds; not pre-registered. <b>All vehicle numbers are assumed.</b> Model: one body-fixed engine (thrust along body z, throttle lag 0.3 s), torque-limited attitude control (800 N m), thrust misalignment 0.15 deg and CoM offset 2 cm, delta-angle gyro plus star tracker, accelerometer rotated with the estimated attitude, body-fixed beams, RCS propellant, thrust tilt capped at 35 deg, touchdown also needs tilt up to 12 deg and rate up to 5 deg/s. Not modelled: slosh, flex, engine transients, plume, gear crush; filter process noise excludes attitude error.")
+tbl([["Success %, x16 noise", "Single beam 3-DOF", "6-DOF", "Three beams 3-DOF", "6-DOF"],
+     ["PITFAL-style", "44", "34", "73", "69"], ["Floor in gate and update (A)", "82", "76", "98", "100"], ["Student-t + floor", "93", "75", "99", "100"]],
+    [5.0, 3.0, 2.0, 3.2, 2.0])
+bl(["The rule ranking holds with a working attitude loop: three beams at x16, floor and Student-t about +30 over PITFAL-style (95% interval 26 to 34); one beam, floor +43.",
+    "Student-t's low-noise edge over the floor disappears (+13.5 to -0.4, three beams, cliff), matching the round-5 held-out result; single-beam Student-t falls below the floor at x8 and cliff.",
+    "Single-beam landing is lower than 3-DOF in 8 of 9 cells (up to 20 points); three-beam landing is higher at low noise (untested explanation: actuator lag smooths noisy commands). This does not mean 6-DOF is easier.",
+    "A sluggish vehicle (3-11%) and a degraded one (0-0.4%) fail with every rule; these say nothing about the altimeter rules, only that guidance and attitude sensing fail first. Needed next: vehicle-tuned guidance and attitude error in the filter.",
+    "Real flight data: raw descent telemetry of modern landers is not public (web search, nothing downloaded); candidates are ISRO PRADAN science data, Morpheus/ALHAT papers on NASA NTRS and Apollo guidance code."])
+
 h1("7. What we are aiming for")
 bl(["<b>Deliver the Project-I report</b> and a clear, honest statement of which trust rules work and when.",
     "Decide whether to pre-register the full floor in both places against Student-t weighting and PITFAL-style on fresh worlds and a new real site (worlds 17-20, 41-50 and Site04 are used). Then consider a second real site (needs a PGDA download, not requested yet), delayed readings without time stamps and realistic map-error fields.",
@@ -167,7 +178,7 @@ bl(["<b>Deliver the Project-I report</b> and a clear, honest statement of which 
 
 h1("8. Deadlines and report status")
 tbl([["Milestone", "Date", "Status"],
-     ["First draft with supervisor", "20 Nov 2026 (today)", "Draft exists: report/LANTERN_Project_Report.docx and .pdf (51 pages, 11 figures, 25 tables, 29 references), follows the supplied front-page and body-format templates. Round 3, the round-4 held-out result and the exploratory round-4 and round-5 studies are included."],
+     ["First draft with supervisor", "20 Nov 2026", "Draft exists: report/LANTERN_Project_Report.docx and .pdf (54 pages, 11 figures, 26 tables, 29 references), follows the supplied front-page and body-format templates. Round 3, the round-4 and round-5 held-out results, the exploratory round-4 and round-5 studies and round 6 (6-DOF) are included."],
      ["Final draft + plagiarism report", "27 Nov 2026", "Plagiarism report not yet produced."],
      ["Printed, signed spiral report", "2 Dec 2026", "Needs supervisor signature."]],
     [4.5, 3.5, 9.0])
@@ -188,8 +199,8 @@ bl(["Is the noise-floor gate a sound idea, or is it hiding failures (more faults
 
 h1("11. Contents of the attached zip")
 bl(["01_this_report: this PDF.",
-    "02_college_report: report/LANTERN_Project_Report.pdf and .docx (current draft).",
-    "03_docs: project documents (round-3 and round-4 pre-registrations and results, world-12 diagnosis, review plan, progress, full log, handoffs, protocols).",
+    "02_college_report: report/LANTERN_Project_Report.pdf and .docx (current draft, includes round 6).",
+    "03_docs: project documents (round-3 to round-5 pre-registrations and results, round-6 6-DOF results, project summary, world-12 diagnosis, review plan, progress, full log, handoffs, protocols).",
     "04_code: sim/ and tests/ (including uncommitted multi-beam code), CLAUDE.md, README.md.",
     "05_results: out/round3, out/round4 (development grid, audits, engine backup and multi-beam patch) and out/ml2_repro_2026-11-20 result tables.",
     "06_git: branch, tag and commit listings."])
